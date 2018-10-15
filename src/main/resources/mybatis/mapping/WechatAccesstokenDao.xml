@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.WechatAccesstokenDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <select id="findOne" resultType="com.lq.entity.WechatAccesstoken" parameterType="long">
+        SELECT * FROM  wechat_accesstoken  WHERE id=#{id} AND status = 1
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.WechatAccesstoken">
+        SELECT * FROM  wechat_accesstoken WHERE status = 1
+    </select>
+
+    <insert id="save" parameterType="com.lq.entity.WechatAccesstoken" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+            wechat_accesstoken(create_time,wechat_info_id,access_tokne,last_update_time)
+        VALUES
+            (
+              #{createTime},#{wechatInfoId},#{accessTokne},#{lastUpdateTime}
+            )
+    </insert>
+
+
+    <update id="update" parameterType="com.lq.entity.WechatAccesstoken">
+        UPDATE
+            wechat_accesstoken
+        <trim prefix="set" suffixOverrides=",">
+            
+            <if test="createTime!=null">create_time=#{createTime},</if>
+            <if test="wechatInfoId!=null">wechat_info_id=#{wechatInfoId},</if>
+            <if test="accessTokne!=null">access_tokne=#{accessTokne},</if>
+            <if test="lastUpdateTime!=null">last_update_time=#{lastUpdateTime},</if>
+        </trim>
+        WHERE
+            id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE
+            wechat_accesstoken
+        WHERE
+            id=#{id}
+    </delete>
+
+
+
+</mapper>

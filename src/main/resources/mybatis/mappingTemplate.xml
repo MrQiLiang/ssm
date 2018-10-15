@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="@DaoName">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <select id="findOne" resultType="@BeanName" parameterType="long">
+        SELECT * FROM  @tableName  WHERE id=#{id} AND status = 1
+    </select>
+
+    <select id="findAll" resultType="@BeanName">
+        SELECT * FROM  @tableName WHERE status = 1
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM @tableName WHERE status = 1
+    </select>
+
+    <insert id="save" parameterType="@BeanName" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+            @tableName(@tableColumn)
+        VALUES
+            (
+              @beanAttribute
+            )
+    </insert>
+
+
+    <update id="update" parameterType="@BeanName">
+        UPDATE
+            @tableName
+        <trim prefix="set" suffixOverrides=",">
+            @ColumnEqAttribute
+        </trim>
+        WHERE
+            id=#{id}
+    </update>
+
+    <update id="delete" parameterType="Long">
+        UPDATE
+           FROM @tableName
+        SET
+          status = 0
+        WHERE
+            id=#{id}
+    </update>
+
+
+
+</mapper>

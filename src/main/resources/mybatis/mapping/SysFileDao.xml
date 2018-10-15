@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.SysFileDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <select id="findOne" resultType="com.lq.entity.SysFile" parameterType="long">
+        SELECT * FROM  sys_file  WHERE id=#{id}
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.SysFile">
+        SELECT * FROM  sys_file
+    </select>
+
+    <insert id="save" parameterType="com.lq.entity.SysFile" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        sys_file(path,file_name,create_time,file_type)
+        VALUES
+        (
+        #{path},#{fileName},#{createTime},#{fileType}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.lq.entity.SysFile">
+        UPDATE
+        sys_file
+        <trim prefix="set" suffixOverrides=",">
+
+            <if test="path!=null">path=#{path},</if>
+            <if test="fileName!=null">file_name=#{fileName},</if>
+            <if test="createTime!=null">create_time=#{createTime},</if>
+            <if test="fileType!=null">file_type=#{fileType},</if>
+        </trim>
+        WHERE
+        id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE
+          FROM sys_file
+        WHERE
+        id=#{id}
+    </delete>
+
+
+
+</mapper>

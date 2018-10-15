@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.SysLogDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <select id="findOne" resultType="com.lq.entity.SysLog" parameterType="long">
+        SELECT * FROM  sys_log  WHERE id=#{id} AND status = 1
+    </select>
+
+
+    <select id="count" resultType="int" parameterType="com.lq.cms.vo.SysLogVo">
+        SELECT count(*) FROM sys_log WHERE status = 1
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.SysLog">
+        SELECT * FROM  sys_log
+    </select>
+
+    <select id="findListPage" resultType="com.lq.cms.vo.SysLogVo" parameterType="com.lq.cms.vo.SysLogVo">
+        SELECT * FROM sys_log  ORDER BY create_time DESC
+    </select>
+
+    <insert id="save" parameterType="com.lq.entity.SysLog">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        sys_log(CREATE_TIME,USER_IP,URL)
+        VALUES
+        (
+        #{createTime},#{userIp},#{url}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.lq.entity.SysLog">
+        UPDATE sys_log SET CREATE_TIME=#{createTime},USER_IP=#{userIp},URL=#{url} name= WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE
+          FROM sys_log
+        WHERE id=#{id}
+
+    </delete>
+
+
+
+</mapper>
+

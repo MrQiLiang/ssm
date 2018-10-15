@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+  <settings>
+      <!-- 获得数据库主键增长 -->
+      <setting name="mapUnderscoreToCamelCase" value="true"/>
+      <setting name="useColumnLabel" value="true"/>
+      <setting name="useGeneratedKeys" value="true"/>
+      <!-- 打印sql-->
+      <!-- <setting name="logImpl" value="STDOUT_LOGGING" />-->
+      
+  </settings>
+
+
+    <plugins>
+      <plugin interceptor="com.lq.code.interceptor.PageInteceptor">
+          <property name="dialect" value="mysql"/>
+          <property name="pageSqlId" value=".*ListPage.*"/>
+      </plugin>
+   </plugins>
+
+  </configuration>

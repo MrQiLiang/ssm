@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<description>applicationContext文件列表</description>
+	<!-- redis 集成-->
+	<import resource="classpath:spring/spring-redis.xml"></import>
+	<!--实物管理-->
+	<import resource="classpath:spring/spring-aop.xml"></import>
+	<!-- 安全框架 shiro-->
+	<import resource="classpath:spring/spring-shiro.xml"></import>
+    <!-- spring 定时任务-->
+	<import resource="classpath:spring/spring-task.xml"></import>
+	<!-- spring 邮箱-->
+	<import resource="classpath:spring/spring-email.xml"></import>
+
+	<!-- websocket -->
+	<import resource="classpath:spring/spring-websocket.xml"/>
+</beans>

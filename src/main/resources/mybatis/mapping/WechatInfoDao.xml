@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.WechatInfoDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <select id="findOne" resultType="com.lq.entity.WechatInfo" parameterType="long">
+        SELECT * FROM  wechat_info  WHERE id=#{id} AND status = 1
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.WechatInfo">
+        SELECT * FROM  wechat_info WHERE status = 1
+    </select>
+
+    <insert id="save" parameterType="com.lq.entity.WechatInfo" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+            wechat_info(wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status)
+        VALUES
+            (
+              #{wechatOpenId},#{appSecpet},#{createTime},#{appId},#{encodingType},#{wechatName},#{url},#{token},#{encodingAesKey},#{lastUpdateTime},#{status}
+            )
+    </insert>
+
+
+    <update id="update" parameterType="com.lq.entity.WechatInfo">
+        UPDATE
+            wechat_info
+        <trim prefix="set" suffixOverrides=",">
+            
+            <if test="wechatOpenId!=null">wechat_open_id=#{wechatOpenId},</if>
+            <if test="appSecpet!=null">app_secpet=#{appSecpet},</if>
+            <if test="createTime!=null">create_time=#{createTime},</if>
+            <if test="appId!=null">app_id=#{appId},</if>
+            <if test="encodingType!=null">encoding_type=#{encodingType},</if>
+            <if test="wechatName!=null">wechat_name=#{wechatName},</if>
+            <if test="url!=null">url=#{url},</if>
+            <if test="token!=null">token=#{token},</if>
+            <if test="encodingAesKey!=null">encoding_aes_key=#{encodingAesKey},</if>
+            <if test="lastUpdateTime!=null">last_update_time=#{lastUpdateTime},</if>
+            <if test="status!=null">status=#{status},</if>
+        </trim>
+        WHERE
+            id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE
+           FROM wechat_info
+        WHERE
+            id=#{id}
+        AND
+          status = 1
+    </delete>
+
+    <select id="count" resultType="int" parameterType="com.lq.cms.vo.WechatInfoVo">
+        SELECT count(*) FROM wechat_info
+    </select>
+
+    <select id="findListPage" parameterType="com.lq.cms.vo.WechatInfoVo" resultType="com.lq.cms.vo.WechatInfoVo">
+        SELECT t1.*
+        FROM wechat_info t1
+        WHERE status = 1
+        ORDER BY t1.create_time DESC
+    </select>
+
+</mapper>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.SysUserDao">
+    <!-- 开启mybatis的二级缓存-->
+    <!--<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+    -->
+    <select id="findOne" parameterType="Long" resultType="com.lq.entity.SysUser">
+      SELECT * FROM sys_user
+      WHERE id=#{id}
+      AND status = 1
+    </select>
+
+    <select id="findByEmail" resultType="com.lq.entity.SysUser">
+        SELECT * FROM sys_user where email = #{email} AND  status = 1
+    </select>
+
+    <select id="findByLoginNameAndPassword" resultType="com.lq.entity.SysUser" >
+        SELECT * FROM sys_user t WHERE t.login_name=#{loginName} AND t.password=#{password} AND t.status =1
+    </select>
+
+    <select id="findListPage" resultType="com.lq.cms.vo.SysUserVo" parameterType="com.lq.cms.vo.SysUserVo">
+        SELECT * FROM sys_user WHERE status = 1
+    </select>
+
+    <select id="count" parameterType="com.lq.cms.vo.SysUserVo" resultType="Int">
+        SELECT  count(*) FROM sys_user WHERE status =1
+    </select>
+
+    <insert id="save" parameterType="com.lq.entity.SysUser" useGeneratedKeys="true" keyProperty="id">
+        <selectKey keyProperty="id" order="AFTER" resultType="long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        sys_user(login_name,password,create_time,update_time,last_login_time,status,remarks,email,img_url)
+        VALUES (
+          #{loginName},
+          #{password},
+          #{createTime},
+          #{updateTime},
+          #{lastLoginTime},
+          #{status},
+          #{remarks},
+          #{email},
+          #{imgUrl}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.lq.entity.SysUser">
+        UPDATE
+        sys_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="lastLoginTime!=null">LAST_LOGIN_TIME=#{lastLoginTime},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="createTime!=null">CREATE_TIME=#{createTime},</if>
+            <if test="loginName!=null">LOGIN_NAME=#{loginName},</if>
+            <if test="updateTime!=null">UPDATE_TIME=#{updateTime},</if>
+            <if test="remarks!=null">REMARKS=#{remarks},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="email!=null">EMAIL=#{email},</if>
+            <if test="imgUrl!=null">IMG_URL=#{imgUrl},</if>
+        </trim>
+        WHERE
+        id=#{id}
+    </update>
+
+    <update id="delete" parameterType="Long">
+        DELETE
+            sys_user
+        SET status = 0
+        WHERE
+            id=#{id}
+    </update>
+
+</mapper>

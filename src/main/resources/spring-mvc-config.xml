@@ -1,0 +1,91 @@
+<beans xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd
+		">
+	<!-- 文件上传路径配置-->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:file.properties"/>
+	</bean>
+
+	<!-- 扫描 -->
+    <context:component-scan base-package="com.lq.*.web" />
+
+	<!-- 定义jsp位置-->
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/views/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 将 Controller 抛出的异常转到特定的 view-->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<!--  没有授权-->
+				<prop key="org.apache.shiro.authz.AuthorizationException">error/403</prop>
+				<!-- 无权访问跳转的页面 -->
+				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+			</props>
+
+		</property>
+
+	</bean>
+
+	<!-- 支持上传文件 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+
+
+    <mvc:annotation-driven>
+     <!--消息转换器： 处理@ResponseBody中文乱码问题 注意使用位置必须在<mvc:annotation-driven />之前-->
+	  <mvc:message-converters register-defaults="true">
+	    <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	    <property name="supportedMediaTypes" value="text/html;charset=utf-8"/>
+	    </bean></mvc:message-converters>
+	</mvc:annotation-driven>
+
+
+
+	<!-- spring mvc 拦截器-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<!-- 静态资源文件不拦截-->
+			<mvc:exclude-mapping path="/**/*.css"/>
+			<mvc:exclude-mapping path="/**/*.js"/>
+			<mvc:exclude-mapping path="/**/*.png"/>
+			<mvc:exclude-mapping path="/**/*.gif"/>
+			<mvc:exclude-mapping path="/**/*.jpg"/>
+			<mvc:exclude-mapping path="/**/*.jpeg"/>
+			<bean class="com.lq.code.interceptor.SpringmvcInterceptor"></bean>
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+	<!-- shiro AOP 式方法级权限检测 start-->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true"/>
+	</bean>
+
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager"/>
+	</bean>
+	<!-- shiro AOP 式方法级权限检测 end-->
+
+
+	<!-- 引入静态文件-->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<mvc:resources mapping="/loadFile/**" location="file:${file.upload}"/>
+</beans>
