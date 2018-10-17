@@ -40,15 +40,17 @@ public class MysqlBuilder extends AbstractDbBuiler {
          }
 
         List<Table> tableList = JdbcUtils.getAllTable();
-         Iterator<Table> tableIterator = tableList.iterator();
-        while (tableIterator.hasNext()){
-            Table table = (Table) tableIterator.next();
+        //初始化的时候,tableList可能为null
+        if(tableList!=null) {
+            Iterator<Table> tableIterator = tableList.iterator();
+            while (tableIterator.hasNext()) {
+                Table table = (Table) tableIterator.next();
                 if (map.containsKey(table.getTableName())) {
                     Class clazz = map.get(table.getTableName());
                     Map<String, Object> clazzMap = new HashMap<>();
                     List<Field> fieldsList = BeanUtil.getAllField(clazz);
                     Iterator<Field> fieldsIterator = fieldsList.iterator();
-                    while (fieldsIterator.hasNext()){
+                    while (fieldsIterator.hasNext()) {
                         Field f = fieldsIterator.next();
                         clazzMap.put(SqlUtil.caseToHump(f.getName()), f);
                     }
@@ -64,7 +66,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
 
                     }
                     columnIterator = columnList.iterator();
-                    while (columnIterator.hasNext()){
+                    while (columnIterator.hasNext()) {
                         Column column = columnIterator.next();
                         sql.append("ALTER TABLE " + table.getTableName() + " DROP COLUMN " + column.getColumnName() + ";");
                     }
@@ -86,8 +88,8 @@ public class MysqlBuilder extends AbstractDbBuiler {
                     }
                     map.remove(table.getTableName());
                 }
+            }
         }
-
         for (String key : map.keySet()) {
             sql.append(this.createTableStr(map.get(key)));
         }
