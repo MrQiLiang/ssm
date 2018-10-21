@@ -256,14 +256,14 @@
                     </li>
 
                     <li>
-                        <a href="javascript:setData()">
+                        <a href="javascript:void">
                             <i class="icon-user"></i>
                             个人资料
                         </a>
                     </li>
 
                     <li>
-                        <a href="javascript:setData()">
+                        <a href="javascript:setPass()">
                             <i class="icon-edit"></i>
                             修改密码
                         </a>
@@ -293,8 +293,9 @@
         imager.setAttribute("src", "${ctx}/resources/aceAdmin/assets/avatars/user.jpg");
       //  imager.style.display = 'block';
    }
-
-   function setData() {
+   
+   // 修改账号密码
+   function setPass() {
        var html = '<div ><table><tr><td>旧密码:</td><td><input type="password" id="oldPass"></td></tr><tr><td>新密码:</td><td><input type="password" id="newPass"></td>'
        html += '</tr><tr><td>确 认：</td><td><input type="password" id="twoNewPass"></td></tr></table><br><br></div>';
        layer.open({
@@ -344,7 +345,12 @@
 
             },
 
-        });
+         });
+   }
+
+   //设置用户资料
+   function setUserData() {
+       
    }
     
 </script> 

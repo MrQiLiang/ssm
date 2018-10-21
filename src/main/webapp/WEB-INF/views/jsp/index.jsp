@@ -6,15 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="common/import-tag.jsp"%>
+<%@ include file="common/import-tag.jsp" %>
 <html>
 <head>
     <title>堂吉诃德网</title>
 </head>
+
 <body>
+<script id="container" name="content" type="text/plain">
+
+</script>
 
 
-<a href="http://www.youku.com">优酷网</a>
-<a href="${ctx}/webUtil/letter/toletter">在线大小写字母</a>
 </body>
+<!-- 配置文件-->
+<script type="text/javascript" src="${ctx}/resources/plugins/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件-->
+<script type="text/javascript" src="${ctx}/resources/plugins/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var  ue = UE.getEditor("container");
+</script>
 </html>

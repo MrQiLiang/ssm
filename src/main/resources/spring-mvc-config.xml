@@ -86,6 +86,7 @@
 
 	<!-- 引入静态文件-->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/ueditor/**" location="/ueditor/"/>
 
 	<mvc:resources mapping="/loadFile/**" location="file:${file.upload}"/>
 </beans>

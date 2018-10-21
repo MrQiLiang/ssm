@@ -29,7 +29,7 @@
 
     <bean id="sessionDAO" class="com.lq.code.cache.RedisSessionDao">
         <constructor-arg ref="redisTempale"/>
-        <constructor-arg value="3600"/>
+        <constructor-arg value="300000"/>
     </bean>
 
     <!-- 配置需要向Cookie中保存数据的配置模版 -->

@@ -26,7 +26,7 @@ public class RedisSessionDao extends CachingSessionDAO {
 
     private RedisTemplate<String,Object> redisTemplate;
 
-    private int defaultExpireTime = 3600;
+    private int defaultExpireTime ;
 
     private CacheManager cm = null;
 
