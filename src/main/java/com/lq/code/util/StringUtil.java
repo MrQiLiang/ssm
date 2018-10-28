@@ -2,6 +2,7 @@ package com.lq.code.util;
 
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by qi on 2017/8/13.
@@ -55,8 +56,9 @@ public class StringUtil {
      * @return
      */
     public static char  randomChar(int startInt,int range){
-        Random random=new Random();
-        int randomNum=random.nextInt(range-1);
+      //  Random random=new Random();
+        ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
+        int randomNum=threadLocalRandom.nextInt(range-1);
         int randomInt=randomNum+startInt;
         return (char)randomInt ;
     }
@@ -94,8 +96,10 @@ public class StringUtil {
 
     public String randomString(int length,String needRule){
 
-        Random random=new Random();
-        random.nextInt(100);
+//        Random random=new Random();
+        //jdk 1.7 以后用来取代Random,性能会有提升
+        ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
+        threadLocalRandom.nextInt(100);
         char a1='a';
         int i=a1;
 

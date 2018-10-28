@@ -120,9 +120,10 @@
 
     <!--自定义授权和认证的Realm-->
     <bean id="myRealm" class="com.lq.code.interceptor.shiro.ShiroRealm">
-        <!-- 启动认证缓存-->
-        <property name="authenticationCachingEnabled" value="true"/>
-        <property name="authenticationCacheName" value="authenticationCache"/>
+        <!-- 启动认证缓存 默认false-->
+        <property name="authenticationCachingEnabled" value="false"/>
+        <!-- 启动授权缓存 -->
+        <property name="authorizationCachingEnabled" value="false"/>
 
     </bean>
 

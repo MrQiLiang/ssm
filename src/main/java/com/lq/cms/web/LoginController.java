@@ -30,6 +30,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**管理后台登陆页
  * Created by qi on 2017/7/16.
@@ -121,7 +122,7 @@ public class LoginController extends BaseController{
     public void getAuthCode(HttpServletRequest request, HttpServletResponse response,HttpSession session)throws IOException{
         int width=63;
         int height=37;
-        Random random=new Random();
+        ThreadLocalRandom threadLocalRandom=ThreadLocalRandom.current();
         //设置response头部信息
         //禁止缓存
         response.setHeader("Pragma","No-cache");
@@ -138,18 +139,18 @@ public class LoginController extends BaseController{
         //绘制干扰线
         for (int i=0;i<40;i++){
             g.setColor(getRandColor(130,200));
-            int x=random.nextInt(width);
-            int y=random.nextInt(height);
-            int x1=random.nextInt(12);
-            int y1=random.nextInt(12);
+            int x=threadLocalRandom.nextInt(width);
+            int y=threadLocalRandom.nextInt(height);
+            int x1=threadLocalRandom.nextInt(12);
+            int y1=threadLocalRandom.nextInt(12);
             g.drawLine(x,y,x+x1,y+y1);
         }
         //绘制字符
         String strCode="";
         for (int i=0;i<4;i++){
-            String rand=String.valueOf(random.nextInt(10));
+            String rand=String.valueOf(threadLocalRandom.nextInt(10));
             strCode=strCode+rand;
-            g.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nextInt(110)));
+            g.setColor(new Color(20+threadLocalRandom.nextInt(110),20+threadLocalRandom.nextInt(110),20+threadLocalRandom.nextInt(110)));
             g.drawString(rand,13*i+6,28);
         }
         //将字符保存的session中用于前端的验证
