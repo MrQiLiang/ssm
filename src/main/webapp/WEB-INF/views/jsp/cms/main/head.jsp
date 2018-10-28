@@ -323,19 +323,17 @@
                     layer.tips('新密码不能为空','#newPass');
                     return ;
                 }
-                console.log(obj);
                 $.ajax({
                     url: "${ctx}/cms/user/updatePass",
                     dataType:"json",
                     type:"post",
                     data:obj,
                     success: function(result){
-                        console.log(result);
                         if(result.success==true){
                             layer.close(index);
+                            window.location.href="${ctx}/cms/login/loginOut"
                         }else {
-                            alert(result.msg);
-
+                            layer.msg(result.msg);
                         }
                     }});
 

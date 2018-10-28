@@ -1,11 +1,12 @@
 package com.lq.code.entity;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 
 /**
  * Created by qi on 2017/7/16.
  */
-public class IdEntity {
+public class IdEntity implements Serializable {
 
     //数据id
     protected Long id;

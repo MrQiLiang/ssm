@@ -98,7 +98,7 @@
 
                                             <div class="clearfix">
                                                 <label class="inline">
-                                                    <input type="checkbox" class="ace" />
+                                                    <input type="checkbox" class="ace" id="rememberMe"/>
                                                     <span class="lbl"> 记住 我</span>
                                                 </label>
 
@@ -325,17 +325,19 @@
             obj.loginName=$("#username").val();
             obj.password=$("#password").val();
             obj.authCode=$("#authCode").val();
+            obj.rememberMe=$("#rememberMe:checked").val();
             //判断各输入框是否为空
             if(!attrIsNull(obj)){
                 return ;
             }
-            $.ajax({ url: "${ctx}/cms/login/doLogin",type:"post",data:obj,success: function(data){
+            console.log(obj);
+            $.ajax({ url: "${ctx}/cms/login/doLogin?time=New Date()",type:"post",data:obj,success: function(data){
                 if(data.success==true){
                     location.href ="${ctx}/cms/index";
                 }
                 else{
                     layer.msg(data.msg);
-
+                    $("#codeImage").trigger('click');
                 }
             }});
 

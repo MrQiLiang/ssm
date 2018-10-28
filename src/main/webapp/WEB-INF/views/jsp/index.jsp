@@ -10,6 +10,11 @@
 <html>
 <head>
     <title>堂吉诃德网</title>
+    <link href="${ctx}/resources/plugins/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="${ctx}/resources/plugins/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/resources/plugins/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/resources/plugins/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="${ctx}/resources/plugins/umeditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 
 <body>
@@ -20,10 +25,7 @@
 
 </body>
 <!-- 配置文件-->
-<script type="text/javascript" src="${ctx}/resources/plugins/ueditor/ueditor.config.js"></script>
-<!-- 编辑器源码文件-->
-<script type="text/javascript" src="${ctx}/resources/plugins/ueditor/ueditor.all.js"></script>
 <script type="text/javascript">
-    var  ue = UE.getEditor("container");
+    window.um = UM.getEditor("container");
 </script>
 </html>

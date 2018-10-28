@@ -53,16 +53,15 @@ public class LoginController extends BaseController{
 
     @ResponseBody
     @RequestMapping(value = "/doLogin",method = RequestMethod.POST)
-    public Object doLogin(String loginName, String password, HttpSession session,String authCode){
+    public Object doLogin(String loginName, String password, HttpSession session,String authCode,Boolean rememberMe){
         AjaxResult ajaxResult= this.getAjaxResult();
         String strCode=(String) session.getAttribute("strCode");
         session.setAttribute("strCode",null);
-        if (StringUtil.isNotNull(strCode)&&StringUtil.isNotNull(authCode)){
-            if(!authCode.equals(strCode)){
+        //验证码不正确
+        if (StringUtil.isNull(strCode)||StringUtil.isNull(authCode)||!authCode.equals(strCode)){
                 ajaxResult.setMsg("验证码错误");
                 ajaxResult.setSuccess(false);
                 return ajaxResult;
-            }
         }
 
         //判断用户是输入邮箱或者登录名
@@ -74,8 +73,12 @@ public class LoginController extends BaseController{
         }
 
         Subject subject=SecurityUtils.getSubject();
-       // UsernamePasswordToken token=new UsernamePasswordToken(loginName,password.toCharArray());
-        UsernamePasswordToken token=new UsernamePasswordToken(loginName,password,true);
+        System.out.println("=====================");
+        System.out.println(subject.getSession(false));
+        System.out.println(subject.isAuthenticated());
+
+        UsernamePasswordToken token=new UsernamePasswordToken(loginName,password.toCharArray());
+//        UsernamePasswordToken token=new UsernamePasswordToken(loginName,password,false);
         try {
             subject.login(token);
         }catch (UnknownAccountException e){
@@ -177,21 +180,22 @@ public class LoginController extends BaseController{
 
     /**
      *  退出登陆
-     * @param modelAndView
+     * @param
      * @return
      */
-//    @RequestMapping("loginOut")
-//    public String loginOut(){
-//        Subject subject=SecurityUtils.getSubject();
-//        SysUser sysUser= (SysUser) subject.getPrincipal();
-//        if (sysUser!=null){
-//            subject.logout();
-//        }
-//        Session session1=subject.getSession();
-//        System.out.println("session状态：");
-//        System.out.println(session1.getId()+":"+ DateUtil.getDateToStr(session1.getStartTimestamp()));
-//        return "cms/login";
-//    }
+    @RequestMapping("loginOut")
+    public String loginOut(){
+
+        Subject subject=SecurityUtils.getSubject();
+        SysUser sysUser= (SysUser) subject.getPrincipal();
+        if (sysUser!=null){
+            subject.logout();
+        }
+        Session session1=subject.getSession();
+        System.out.println("session状态：");
+        System.out.println(session1.getId()+":"+ DateUtil.getDateToStr(session1.getStartTimestamp()));
+        return "cms/login";
+    }
 
 
 

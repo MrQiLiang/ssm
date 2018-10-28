@@ -15,6 +15,9 @@ import com.lq.entity.SysUser;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.mgt.RealmSecurityManager;
+import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -162,13 +165,16 @@ public class UserController {
         AjaxResult ajaxResult = new AjaxResult();
         Subject subject= SecurityUtils.getSubject();
         SysUser sysUser= (SysUser) subject.getPrincipal();
-        System.out.println(StringUtil.isNotNull(oldPass)&&StringUtil.isNotNull(newPass));
+    //    System.out.println(StringUtil.isNotNull(oldPass)&&StringUtil.isNotNull(newPass));
         if (StringUtil.isNotNull(oldPass)&&StringUtil.isNotNull(newPass)){
             String md5Pass = Md5Util.getMd5(oldPass);
             if (md5Pass.equals(sysUser.getPassword())){
                 sysUser.setPassword(Md5Util.getMd5(newPass));
                 sysUser.setUpdateTime(new Date());
                 sysUserService.update(sysUser);
+                subject.logout();
+                SecurityUtils.getSecurityManager().logout(subject);
+
             }else {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMsg("旧密码不正确!,请重新输入.");
