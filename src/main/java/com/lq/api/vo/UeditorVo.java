@@ -1,4 +1,4 @@
-package com.lq.wap.vo;
+package com.lq.api.vo;
 
 public class UeditorVo {
 

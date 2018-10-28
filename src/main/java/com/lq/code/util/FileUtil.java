@@ -20,7 +20,6 @@ public class FileUtil {
             FileReader reader=new FileReader(filePath);
             while (reader.ready()){
                 stringBuffer.append((char) reader.read());
-
             }
             reader.close();
         } catch (FileNotFoundException e) {
@@ -28,7 +27,6 @@ public class FileUtil {
         } catch (IOException e){
             e.printStackTrace();
         }
-
 
         return stringBuffer.toString();
     }
@@ -72,20 +70,29 @@ public class FileUtil {
      * @return
      */
     public static String getFileType(String fileName){
+        String fileType=null;
         if (StringUtil.isNotNull(fileName)){
             String fileFormat=fileFormat(fileName);
-            String fileType=null;
             switch (fileFormat.toUpperCase()){
                 case "BMP":
                 case "JPEG":
                 case "ICO":
                 case "PNG":
                 case "JNG":
-                   fileType= FileTypeEnum.FILE_TYPE_IMAGE.getValue();break;
-
+                   fileType = FileTypeEnum.FILE_TYPE_IMAGE.getValue();break;
+                case "AVI":
+                case "MOV":
+                case "FLV":
+                case "MP4":
+                case "MPG":
+                    fileType = FileTypeEnum.FILE_TYPE_VIEDO.getValue();break;
+                case "PDF":
+                    fileType = FileTypeEnum.FILE_TYPE_PDF.getValue();break;
+                default:
+                    fileType = FileTypeEnum.FILE_TYPE_OTHER.getValue();break;
             }
         }
-        return null;
+        return fileType;
     }
 
 

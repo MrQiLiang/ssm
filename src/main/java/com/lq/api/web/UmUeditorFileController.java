@@ -1,7 +1,7 @@
-package com.lq.wap.web;
+package com.lq.api.web;
 
 import com.lq.code.util.FileUtil;
-import com.lq.wap.vo.UeditorVo;
+import com.lq.api.vo.UeditorVo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
@@ -43,8 +42,8 @@ public class UmUeditorFileController {
                 fileDir.mkdirs();
             }
             for (MultipartFile file:files){
-                Random random = new Random();
-                Integer uuid = random.nextInt(1000000000);
+                ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
+                Integer uuid = threadLocalRandom.nextInt(1000000000);
                 String fileType = FileUtil.fileFormat(file.getOriginalFilename());
                 File file1 = new File(fileDir.getPath()+"/"+uuid.toString()+"."+fileType);
                 if (!file1.exists()){

@@ -13,7 +13,7 @@ public class SysFile extends IdEntity {
     private String fileName;
     //文件路径(相对路径)
     private String path;
-    //上传事件
+    //上传时间
     private Date createTime;
     //文件类型（image:图片,viedo:视频,other:其他）
     private String fileType;

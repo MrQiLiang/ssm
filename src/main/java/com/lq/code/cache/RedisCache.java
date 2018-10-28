@@ -7,6 +7,8 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.SerializationUtils;
 
+import java.util.concurrent.Callable;
+
 /**
  * Created by qi_liang on 2018/3/31.
  */
@@ -58,6 +60,11 @@ public class RedisCache implements Cache {
     }
 
     @Override
+    public <T> T get(Object o, Callable<T> callable) {
+        return null;
+    }
+
+    @Override
     public void put(Object key, Object value) {
         final String keyf=key.toString();
         final Object vaulef=value;
@@ -71,6 +78,11 @@ public class RedisCache implements Cache {
             }
             return 1L;
         });
+    }
+
+    @Override
+    public ValueWrapper putIfAbsent(Object o, Object o1) {
+        return null;
     }
 
     @Override
