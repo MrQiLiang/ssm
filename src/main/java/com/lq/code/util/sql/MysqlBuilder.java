@@ -98,11 +98,11 @@ public class MysqlBuilder extends AbstractDbBuiler {
     }
 
     @Override
-    public String concatPageSql(String sql, BasePageVo vo) {
+    public String concatPageSql(String sql, PageInterface pageInterface) {
 
         StringBuffer sb=new StringBuffer(sql);
-        Integer index=(vo.getPage()-1)*vo.getRows();
-        sb.append(" limit ").append(index).append(","+vo.getRows());
+        Integer index=(pageInterface.getPage()-1)*pageInterface.getPageSize();
+        sb.append(" limit ").append(index).append(","+pageInterface.getPageSize());
         return sb.toString();
     }
 

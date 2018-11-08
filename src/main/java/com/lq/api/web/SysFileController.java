@@ -1,8 +1,10 @@
 package com.lq.api.web;
 
 import com.lq.api.service.SysFileService;
+import com.lq.api.vo.SysFileVo;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.code.entity.AjaxResult;
+import com.lq.code.util.BeanUtil;
 import com.lq.code.util.FileUtil;
 import com.lq.entity.SysFile;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -37,7 +40,7 @@ public class SysFileController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public Object upload(@RequestParam("files")MultipartFile[] files) throws IOException {
+    public Object upload(@RequestParam("files")MultipartFile[] files, HttpServletRequest request) throws IOException {
         AjaxResult ajaxResult = new AjaxResult();
         ajaxResult.setMsg("上传成功");
         Date nowTime = new Date();
@@ -64,6 +67,19 @@ public class SysFileController {
             sysFileList.add(sysFile);
         }
         ajaxResult.setData(sysFileList);
+        return ajaxResult;
+
+    }
+
+    @RequestMapping("/findAll")
+    @ResponseBody
+    public Object findAll(){
+
+        AjaxResult ajaxResult = new AjaxResult();
+        List<SysFile> list = sysFileService.findAll();
+        ajaxResult.setData(list);
+        ajaxResult.setMsg("");
+        ajaxResult.setSuccess(true);
         return ajaxResult;
     }
 

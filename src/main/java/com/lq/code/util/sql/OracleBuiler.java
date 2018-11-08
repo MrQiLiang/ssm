@@ -16,11 +16,11 @@ public class OracleBuiler extends AbstractDbBuiler {
     }
 
     @Override
-    public String concatPageSql(String sql, BasePageVo vo) {
+    public String concatPageSql(String sql, PageInterface pageInterface) {
         StringBuffer sb=new StringBuffer("select * from (select t1.*,ROWNUM rm from(");
         sb.append(sql);
-        Integer index=(vo.getPage()-1)*vo.getRows();
-        sb.append(")t1 where rownum<="+(index+vo.getRows())+") where rm>"+index);
+        Integer index=(pageInterface.getPage()-1)*pageInterface.getPageSize();
+        sb.append(")t1 where rownum<="+(index+pageInterface.getPageSize())+") where rm>"+index);
         return sb.toString();
     }
 

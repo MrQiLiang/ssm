@@ -76,6 +76,7 @@ public class FileUtil {
             switch (fileFormat.toUpperCase()){
                 case "BMP":
                 case "JPEG":
+                case "JPG":
                 case "ICO":
                 case "PNG":
                 case "JNG":
@@ -92,6 +93,7 @@ public class FileUtil {
                     fileType = FileTypeEnum.FILE_TYPE_OTHER.getValue();break;
             }
         }
+
         return fileType;
     }
 

@@ -1,5 +1,6 @@
 package com.lq.code.util.jdbc;
 
+import com.lq.code.util.PropsUtil;
 import com.lq.code.util.StringUtil;
 import com.lq.code.util.jdbc.mode.Column;
 import com.lq.code.util.jdbc.mode.DbInfo;
@@ -23,18 +24,16 @@ public class JdbcUtils {
 	private static String password = null;
 
 	static {
-		InputStream in = JdbcUtils.class.getClassLoader().getResourceAsStream("jdbc.properties");
-		Properties prop = new Properties();
 		try {
-			prop.load(in);
+			Properties prop = PropsUtil.loadProps("jdbc.properties");
 
-			driver = prop.getProperty("jdbc.driver");
+			driver = PropsUtil.getString(prop,"jdbc.driver");
 
-			url = prop.getProperty("jdbc.url");
+			url =  PropsUtil.getString(prop,"jdbc.url");
 
-			username = prop.getProperty("jdbc.user");
+			username = PropsUtil.getString(prop,"jdbc.user");
 
-			password = prop.getProperty("jdbc.password");
+			password = PropsUtil.getString(prop,"jdbc.password");
 
 			Class.forName(driver);
 		} catch (Exception e) {

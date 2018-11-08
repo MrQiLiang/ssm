@@ -5,6 +5,7 @@ import com.lq.code.util.StringUtil;
 import com.lq.code.util.sql.AbstractDbBuiler;
 import com.lq.code.util.sql.MysqlBuilder;
 import com.lq.code.util.sql.OracleBuiler;
+import com.lq.code.util.sql.PageInterface;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -50,7 +51,7 @@ public class PageInteceptor implements Interceptor {
             if (selectId.matches(pageSqlId)){
                 BoundSql boundSql=(BoundSql)metaStatementHandler.getValue("delegate.boundSql");
                 String sql=boundSql.getSql();
-                BasePageVo vo=(BasePageVo)boundSql.getParameterObject();
+                PageInterface pageInterface=(PageInterface)boundSql.getParameterObject();
                 AbstractDbBuiler db = null;
                 if (dialect.equals("mysql")){
                        db = new MysqlBuilder();
@@ -59,7 +60,7 @@ public class PageInteceptor implements Interceptor {
                      db = new OracleBuiler();
                 }
                 String countSql= db.countSql(sql);
-                String pageSql=db.concatPageSql(sql,vo);
+                String pageSql=db.concatPageSql(sql,pageInterface);
                 metaStatementHandler.setValue("delegate.boundSql.sql",pageSql);
 
             }

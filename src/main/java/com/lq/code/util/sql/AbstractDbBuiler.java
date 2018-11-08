@@ -21,10 +21,10 @@ public abstract class AbstractDbBuiler {
     /**
      *   构建分页sql语句
      * @param sql
-     * @param vo
+     * @param pageInterface
      * @return
      */
-     abstract public String concatPageSql(String sql, BasePageVo vo);
+     abstract public String concatPageSql(String sql, PageInterface pageInterface);
 
     /**
      *  构建创建表的sql语句

@@ -160,17 +160,6 @@
       <artifactId>spring-aop</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    <!-- 处理事务和AOP所需的包 （低于1.7用(@PointCut)切点注解会报错） -->
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjrt</artifactId>
-      <version>1.7.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjweaver</artifactId>
-      <version>1.7.3</version>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -183,6 +172,19 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <!-- 处理事务和AOP所需的包 （低于1.7用(@PointCut)切点注解会报错） -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.7.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.7.3</version>
+    </dependency>
+
+
     <!-- mybatis核心包 -->
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -214,6 +216,7 @@
       <artifactId>commons-dbcp</artifactId>
       <version>1.2.2</version>
     </dependency>
+
     <!-- JSTL标签类 -->
     <!--
     <dependency>

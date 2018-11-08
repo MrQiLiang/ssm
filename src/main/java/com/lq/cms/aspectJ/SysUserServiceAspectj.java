@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SysUserServiceAspectj {
 
-    @Pointcut("execution(* com.lq.cms.service.SysUserService.count(..))")
+    @Pointcut("execution(* com.lq.cms.service.SysUserService.findByLoginNameAndPassword(..))")
     public void perFormEncord(){}
 
 
@@ -34,7 +34,7 @@ public class SysUserServiceAspectj {
     //后置返回通知
     @AfterReturning(value = "perFormEncord()",returning = "retVal")
     public void afterReturning(JoinPoint joinPoint,Object retVal){
-      //  System.out.println(retVal);
+
 
     }
 

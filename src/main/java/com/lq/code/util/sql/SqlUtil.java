@@ -35,6 +35,11 @@ public class SqlUtil {
         return strBuffer.toString().toLowerCase();
     }
 
+    /**
+     *  驼峰装大小写
+     * @param str
+     * @return
+     */
     public static String humpToCase(String str){
         StringBuffer strBuffer=new StringBuffer();
         char[] charArray=str.toCharArray();

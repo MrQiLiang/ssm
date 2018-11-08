@@ -52,7 +52,8 @@
 	  <mvc:message-converters register-defaults="true">
 	    <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 	    <property name="supportedMediaTypes" value="text/html;charset=utf-8"/>
-	    </bean></mvc:message-converters>
+	    </bean>
+	  </mvc:message-converters>
 	</mvc:annotation-driven>
 
 

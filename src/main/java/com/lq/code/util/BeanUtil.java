@@ -187,23 +187,25 @@ public class BeanUtil {
         String entityPath=entityClazz.getName();
         String [] entityNameArray=entityPath.split("\\.");
         String entityName=entityNameArray[entityNameArray.length-1];
-
         return entityName;
     }
 
-    public static void main(String[] args) {
-
-        SysUserVo vo = new SysUserVo();
-        vo.setPage(1);
-        vo.setCreateTime(new Date());
-        vo.setId(1L);
-        SysUser sysUser = new SysUser();
-        sysUser.setLoginName("小米数据");
-        copyNotNull(sysUser,vo);
-
-        System.out.println(sysUser.getId());
-        System.out.println(sysUser.getLoginName());
+    /**
+     *  判断对象是否该与类型一致
+     * @param obj
+     * @param clazzType
+     * @return
+     */
+    public static Boolean isType(Object obj,Class clazzType){
+        if (obj!=null) {
+            Class clazz = obj.getClass();
+            return clazz.getTypeName().equals(clazzType.getTypeName()) ? true : false;
+        }
+        else{
+            return false;
+        }
     }
+
 
     /**
      *  判断对象是否为空 ,为空返回true
