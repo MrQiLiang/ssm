@@ -6,7 +6,6 @@ import com.lq.code.util.BeanUtil;
 import com.lq.code.util.jdbc.JdbcUtils;
 import com.lq.code.util.jdbc.mode.Column;
 import com.lq.code.util.jdbc.mode.Table;
-import org.apache.commons.collections.map.HashedMap;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -16,7 +15,7 @@ import java.util.*;
  */
 public class MysqlBuilder extends AbstractDbBuiler {
 
-    private static Map<String,String> dataTypeMap=new HashedMap();
+    private static Map<String,String> dataTypeMap=new HashMap<>();
 
     static {
 

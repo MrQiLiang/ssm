@@ -1,9 +1,8 @@
 package com.lq.code.util;
 
-import com.lq.cms.vo.SysUserVo;
 import com.lq.code.annotation.Length;
-import com.lq.entity.SysUser;
-import org.apache.commons.collections.map.HashedMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -17,6 +16,8 @@ import java.util.*;
  * Created by qi_liang on 2018/1/29.
  */
 public class BeanUtil {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(BeanUtil.class);
 
     /**
      *  获取类属性，包括父类属性
@@ -106,7 +107,7 @@ public class BeanUtil {
      * @return
      */
     public static Map<String,String> getFiledType(Field[] fields){
-        Map<String,String> map=new HashedMap();
+        Map<String,String> map=new HashMap<>();
         for (Field field:fields){
             map.put(field.getName(),field.getGenericType().toString());
         }
@@ -116,13 +117,13 @@ public class BeanUtil {
     public static List<Map<String,String>> getFileInfo(Field[] fields){
         List<Map<String,String>> list=new ArrayList<>();
         for (Field field:fields){
-            Map<String,String> map = new HashedMap();
+            Map<String,String> map = new HashMap();
             map.put("fieldName",field.getName());
             map.put("fieldType",field.getGenericType().toString());
-            Length length = field.getAnnotation(Length.class);
-            if (length!=null) {
-                map.put("fieldLength",String.valueOf(length.value()));
-            }
+       //     Length length = field.getAnnotation(Length.class);
+//            if (length!=null) {
+//                map.put("fieldLength",String.valueOf(length.value()));
+//            }
             list.add(map);
         }
         return list;
