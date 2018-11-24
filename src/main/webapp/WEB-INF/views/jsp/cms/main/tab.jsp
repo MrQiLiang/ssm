@@ -45,7 +45,6 @@
  function cmainFrameT(){
             var hmainT = document.getElementById("page");
             var bheightT = document.documentElement.clientHeight;
-            console.log(bheightT);
             hmainT .style.width = '100%';
             hmainT .style.height = (bheightT  - 51) + 'px';
         }

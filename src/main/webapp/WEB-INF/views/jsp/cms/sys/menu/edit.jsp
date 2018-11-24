@@ -16,7 +16,7 @@
             $("#menuIco").val('${sysResource.menuIco}');
         })
     </script>
-
+    <link rel="stylesheet" href="${ctx}/resources/aceAdmin/assets/css/font-awesome.min.css" />
 </head>
 <body>
     <div style="margin:20px 0;"></div>
@@ -27,14 +27,14 @@
                         <td>上级目录:</td>
                         <td>
                             <select class="easyui-combobox" id="parentId" <c:if test="${sysResource.parentId==0}">disabled="disabled"</c:if>   >
-                                <option value="0"  <c:if test="${sysResource.parentId==0}">selected</c:if>  >顶级目录</option>
+                                <option value="0"  <c:if test="${sysResource.parentId==0}">selected</c:if>   >顶级目录</option>
                                 <c:forEach var="menu" items="${menuList}">
-                                <option value="${menu.id}"  <c:if test="${menu.id==sysResource.parentId}">selected</c:if>  >${menu.menuName}</option>
+                                <option value="${menu.id}"  <c:if test="${menu.id==sysResource.parentId}">selected</c:if>  onclick="showUrlPath()" >${menu.menuName}</option>
                                 </c:forEach>
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                    <tr id="tr_urlPath">
                         <td>路径:</td>
                         <td><input class="easyui-textbox" type="text" id="urlPath" data-options="required:true" value="${sysResource.urlPath}"></input></td>
                     </tr>
@@ -61,6 +61,13 @@
                         </td>
                     </tr>
 
+                    <tr>
+                        <td></td>
+                        <td>
+                                <i class="icon-pencil"></i>
+                        </td>
+                    </tr>
+
                 </table>
     </div>
 </body>
@@ -68,9 +75,23 @@
     var selectIco = '${sysResource.menuIco}';
 
     $(function () {
+        addControlFunction();
         appendSelect();
     });
+    
+    function addControlFunction() {
 
+        $('#parentId').combobox({
+            onChange: function (newValue, oldValue) {
+                if(newValue==0){
+                    $("#tr_urlPath").hide();
+                }else{
+                    $("#tr_urlPath").show();
+                }
+            }
+        });
+    }
+    
     function appendSelect() {
         var valArray = new Array(
             'icon-asterisk','icon-ban-circle','icon-bar-chart','icon-barcode','icon-beaker',
