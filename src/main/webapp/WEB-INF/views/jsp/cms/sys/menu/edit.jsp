@@ -16,7 +16,6 @@
             $("#menuIco").val('${sysResource.menuIco}');
         })
     </script>
-    <link rel="stylesheet" href="${ctx}/resources/aceAdmin/assets/css/font-awesome.min.css" />
 </head>
 <body>
     <div style="margin:20px 0;"></div>
@@ -58,13 +57,6 @@
 
                             </div>
                             -->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td>
-                                <i class="icon-pencil"></i>
                         </td>
                     </tr>
 

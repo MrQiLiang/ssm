@@ -90,19 +90,19 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
         Long roleId=list.get(0).getRoleId();
         Map<String,Object> map=new HashMap<>();
         map.put("roleId",roleId);
-        map.put("state", StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+        map.put("state", StatusTypeEnum.STATUS_ACTIVITY_NO.getValue());
         sysRoleResourcePermissionDao.updateByRoleIdAndStatus(map);
 
         for (SysRoleResourcePermissionVo vo:list){
             SysRoleResourcePermission sysRoleResourcePermission=sysRoleResourcePermissionDao.findByResourceIdAndPermissionIdAndRoleId(vo.getResourceId(),vo.getPermissionId(),vo.getRoleId());
             if (sysRoleResourcePermission==null){
-                SysRoleResourcePermission sysRoleResourcePermission1=new SysRoleResourcePermission();
-                sysRoleResourcePermission1.setCreateTime(new Date());
-                sysRoleResourcePermission1.setResourceId(vo.getResourceId());
-                sysRoleResourcePermission1.setRoleId(vo.getRoleId());
-                sysRoleResourcePermission1.setPermissionId(vo.getPermissionId());
-                sysRoleResourcePermission1.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
-                sysRoleResourcePermissionDao.save(sysRoleResourcePermission1);
+                sysRoleResourcePermission=new SysRoleResourcePermission();
+                sysRoleResourcePermission.setCreateTime(new Date());
+                sysRoleResourcePermission.setResourceId(vo.getResourceId());
+                sysRoleResourcePermission.setRoleId(vo.getRoleId());
+                sysRoleResourcePermission.setPermissionId(vo.getPermissionId());
+                sysRoleResourcePermission.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+                sysRoleResourcePermissionDao.save(sysRoleResourcePermission);
             }else {
                 sysRoleResourcePermission.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
                 sysRoleResourcePermissionDao.update(sysRoleResourcePermission);

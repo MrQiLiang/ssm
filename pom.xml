@@ -197,6 +197,14 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.2.2</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus -->
+    <!-- mybatis 增加框架(国产)-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+      <version>3.0.6</version>
+    </dependency>
+
     <!-- 导入java ee jar 包 -->
     <dependency>
       <groupId>javax</groupId>

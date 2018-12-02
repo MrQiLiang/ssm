@@ -38,7 +38,12 @@
     </select>
 
     <update id="deleteByUserId" parameterType="Long">
-        UPDATE sys_user_role SET status=0 where user_id=#{userId}
+        UPDATE sys_user_role SET status=0 WHERE user_id=#{userId}
+    </update>
+
+
+    <update id="deleteByRoleId" parameterType="Long">
+        UPDATE sys_user_role SET status=0 WHERE role_id=#{roleId}
     </update>
 
     <update id="update" parameterType="com.lq.entity.SysUserRole">

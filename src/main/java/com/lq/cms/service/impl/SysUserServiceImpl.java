@@ -6,9 +6,11 @@ import com.lq.code.dao.BaseDao;
 import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.Md5Util;
 import com.lq.dao.SysUserDao;
+import com.lq.dao.SysUserRoleDao;
 import com.lq.entity.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
 
     @Autowired
     private SysUserDao sysUserDao;
+    @Autowired
+    private SysUserRoleDao sysUserRoleDao;
 
 
 
@@ -49,5 +53,14 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
     @Override
     public SysUser findByEmail(String email) {
         return sysUserDao.findByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUserById(Long userId) {
+        //删除用户关联的角色
+        sysUserRoleDao.deleteByUserId(userId);
+        //删除用户
+        sysUserDao.delete(userId);
     }
 }

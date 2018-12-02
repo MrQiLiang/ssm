@@ -61,6 +61,8 @@
         WHERE role_id=#{roleId}
     </update>
 
+
+
     <update id="delete" parameterType="Long">
         UPDATE
           sys_role_resource_permission
@@ -68,6 +70,7 @@
         WHERE
         id=#{id}
     </update>
+
 
 
 

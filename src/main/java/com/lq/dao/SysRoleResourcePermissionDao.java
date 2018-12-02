@@ -21,4 +21,5 @@ public interface SysRoleResourcePermissionDao extends BaseDao<SysRoleResourcePer
 
     List<PermissionVo> findAllPermission();
 
+    void deleteByRoleId(Long roleId);
 }

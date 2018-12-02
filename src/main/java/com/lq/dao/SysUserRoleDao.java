@@ -20,4 +20,6 @@ public interface SysUserRoleDao extends BaseDao<SysUserRole> {
 
     void deleteByUserId(Long userId);
 
+    void deleteByRoleId(Long roleId);
+
 }
