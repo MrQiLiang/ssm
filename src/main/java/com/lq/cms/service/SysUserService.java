@@ -3,6 +3,7 @@ package com.lq.cms.service;
 import com.lq.cms.vo.SysUserVo;
 import com.lq.code.service.BaseService;
 import com.lq.entity.SysUser;
+import org.apache.bcel.verifier.statics.LONG_Upper;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface SysUserService extends BaseService<SysUser> {
     SysUser findByLoginNameAndPassword(String loginName, String password);
 
     SysUser findByEmail(String email);
+
+    void deleteUserById(Long userId);
 }

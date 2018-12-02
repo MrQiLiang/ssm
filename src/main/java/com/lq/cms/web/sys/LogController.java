@@ -34,7 +34,6 @@ public class LogController {
     @RequiresPermissions("/cms/log/index:SELECT")
     public ModelAndView index(ModelAndView modelAndView){
         modelAndView.setViewName("cms/sys/log/index");
-
         return modelAndView;
     }
 
