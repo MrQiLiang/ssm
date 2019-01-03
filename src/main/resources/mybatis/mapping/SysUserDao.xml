@@ -6,26 +6,38 @@
     <!-- 开启mybatis的二级缓存-->
     <!--<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
     -->
+
+    <sql id="column_list">
+        id,login_name,password,create_time,update_time,last_login_time,email,img_url,remarks,status
+    </sql>
+
     <select id="findOne" parameterType="Long" resultType="com.lq.entity.SysUser">
-      SELECT * FROM sys_user
+      SELECT <include refid="column_list"/>
+        FROM sys_user
       WHERE id=#{id}
-      AND status = 1
+        AND status = 1
     </select>
 
     <select id="findByEmail" resultType="com.lq.entity.SysUser">
-        SELECT * FROM sys_user where email = #{email} AND  status = 1
+        SELECT <include refid="column_list"/>
+          FROM sys_user
+        where email = #{email} AND  status = 1
     </select>
 
     <select id="findByLoginNameAndPassword" resultType="com.lq.entity.SysUser" >
-        SELECT * FROM sys_user t WHERE t.login_name=#{loginName} AND t.password=#{password} AND t.status =1
+        SELECT <include refid="column_list"/>
+          FROM sys_user t
+        WHERE t.login_name=#{loginName} AND t.password=#{password} AND t.status =1
     </select>
 
     <select id="findListPage" resultType="com.lq.cms.vo.SysUserVo" parameterType="com.lq.cms.vo.SysUserVo">
-        SELECT * FROM sys_user WHERE status = 1
+        SELECT <include refid="column_list"/>
+          FROM sys_user
+        WHERE status = 1
     </select>
 
     <select id="count" parameterType="com.lq.cms.vo.SysUserVo" resultType="Int">
-        SELECT  count(*) FROM sys_user WHERE status =1
+        SELECT  count(id) FROM sys_user WHERE status =1
     </select>
 
     <insert id="save" parameterType="com.lq.entity.SysUser" useGeneratedKeys="true" keyProperty="id">

@@ -5,12 +5,16 @@
 <mapper namespace="com.lq.dao.WechatInfoDao">
     <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+
+    <sql id="column_list">
+        id,wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status
+    </sql>
     <select id="findOne" resultType="com.lq.entity.WechatInfo" parameterType="long">
-        SELECT * FROM  wechat_info  WHERE id=#{id} AND status = 1
+        SELECT <include refid="column_list"/> FROM  wechat_info  WHERE id=#{id} AND status = 1
     </select>
 
     <select id="findAll" resultType="com.lq.entity.WechatInfo">
-        SELECT * FROM  wechat_info WHERE status = 1
+        SELECT <include refid="column_list"/> FROM  wechat_info WHERE status = 1
     </select>
 
     <insert id="save" parameterType="com.lq.entity.WechatInfo" useGeneratedKeys="true" keyProperty="id">
@@ -54,15 +58,15 @@
         WHERE
             id=#{id}
         AND
-          status = 1
+            status = 1
     </delete>
 
     <select id="count" resultType="int" parameterType="com.lq.cms.vo.WechatInfoVo">
-        SELECT count(*) FROM wechat_info
+        SELECT count(id) FROM wechat_info
     </select>
 
     <select id="findListPage" parameterType="com.lq.cms.vo.WechatInfoVo" resultType="com.lq.cms.vo.WechatInfoVo">
-        SELECT t1.*
+        SELECT <include refid="column_list"/>
         FROM wechat_info t1
         WHERE status = 1
         ORDER BY t1.create_time DESC

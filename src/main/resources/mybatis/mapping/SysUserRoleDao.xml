@@ -6,8 +6,13 @@
     <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
 
+    <sql id="column_list">
+       user_id, role_id, create_time, update_time,status
+    </sql>
+
     <select id="findByUserIdAndRoleId" parameterType="Map" resultType="com.lq.entity.SysUserRole">
-        SELECT * FROM sys_user_role WHERE 1=1
+        SELECT <include refid="column_list"/>
+        FROM sys_user_role WHERE 1=1
         <if test="userId != null"> AND  user_id=#{userId}</if>
         <if test="roleId != null">AND role_id=#{roleId}</if>
     </select>

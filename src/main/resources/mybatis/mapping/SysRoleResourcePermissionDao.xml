@@ -6,6 +6,10 @@
     <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
 
+    <sql id="column_list">
+        id,permission_id,resource_id,role_id,create_time,status
+    </sql>
+
     <select id="findByRoleId" resultType="com.lq.cms.vo.PermissionVo">
       SELECT t2.id menu_id,t2.url_path menuUrl,t2.menu_name,t3.name permission_name FROM sys_role_resource_permission t1
       LEFT JOIN sys_resource t2 ON t1.resource_id=t2.id
@@ -46,7 +50,8 @@
     </update>
 
     <select id="findByResourceIdAndPermissionIdAndRoleId" resultType="com.lq.entity.SysRoleResourcePermission">
-          SELECT * FROM sys_role_resource_permission
+          SELECT <include refid="column_list"/>
+            FROM sys_role_resource_permission
           WHERE 1=1
               AND resource_id=#{resourceId}
               AND permission_id=#{permissonId}
@@ -70,9 +75,6 @@
         WHERE
         id=#{id}
     </update>
-
-
-
 
 
 </mapper>

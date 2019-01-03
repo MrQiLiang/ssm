@@ -16,6 +16,7 @@
             $("#menuIco").val('${sysResource.menuIco}');
         })
     </script>
+    <link href="${ctx}/resources/aceAdmin/assets/css/font-awesome.min.css">
 </head>
 <body>
     <div style="margin:20px 0;"></div>

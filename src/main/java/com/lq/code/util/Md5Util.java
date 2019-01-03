@@ -27,10 +27,12 @@ public class Md5Util {
         StringBuffer buffer=new StringBuffer("");
         for (int offset=0;offset<b.length;offset++){
             i=b[offset];
-            if (i<0)
+            if (i<0) {
                 i+=256;
-            if (i<16)
+            }
+            if (i<16) {
                 buffer.append("0");
+            }
             buffer.append(Integer.toHexString(i));
         }
         return  buffer.toString();

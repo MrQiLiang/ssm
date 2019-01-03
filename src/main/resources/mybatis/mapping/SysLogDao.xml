@@ -5,21 +5,30 @@
 <mapper namespace="com.lq.dao.SysLogDao">
     <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <sql id="column_list">
+        id,user_ip,create_time,url,status
+    </sql>
+
     <select id="findOne" resultType="com.lq.entity.SysLog" parameterType="long">
-        SELECT * FROM  sys_log  WHERE id=#{id} AND status = 1
+        SELECT <include refid="column_list"/>
+        FROM  sys_log
+        WHERE id=#{id} AND status = 1
     </select>
 
 
     <select id="count" resultType="int" parameterType="com.lq.cms.vo.SysLogVo">
-        SELECT count(*) FROM sys_log WHERE status = 1
+        SELECT count(id) FROM sys_log WHERE status = 1
     </select>
 
     <select id="findAll" resultType="com.lq.entity.SysLog">
-        SELECT * FROM  sys_log
+        SELECT <include refid="column_list"/>
+        FROM  sys_log
     </select>
 
     <select id="findListPage" resultType="com.lq.cms.vo.SysLogVo" parameterType="com.lq.cms.vo.SysLogVo">
-        SELECT * FROM sys_log  ORDER BY create_time DESC
+        SELECT <include refid="column_list"/>
+        FROM sys_log
+        ORDER BY create_time DESC
     </select>
 
     <insert id="save" parameterType="com.lq.entity.SysLog">
@@ -45,8 +54,6 @@
         WHERE id=#{id}
 
     </delete>
-
-
 
 </mapper>
 

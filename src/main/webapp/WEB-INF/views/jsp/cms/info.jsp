@@ -88,18 +88,6 @@
                     <td>操作系统:</td>
                     <td>${sysInfoVo.osInfo.osName} ${sysInfoVo.osInfo.osVersion}</td>
                 </tr>
-                <tr>
-                    <td>用户的主目录:</td>
-                    <td>4核</td>
-                </tr>
-                <tr>
-                    <td>工作目录</td>
-                    <td>476M</td>
-                </tr>
-                <tr>
-                    <td>系统目录</td>
-                    <td></td>
-                </tr>
             </table>
 
         </div>

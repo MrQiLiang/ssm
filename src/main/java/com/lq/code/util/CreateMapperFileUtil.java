@@ -17,18 +17,21 @@ public class CreateMapperFileUtil {
 
     public static String createXML(String filePath,Class daoClazz,Class entityClazz,AbstractDbBuiler db){
         String result=FileUtil.read(filePath);
+        //dao类名
         result=result.replace("@DaoName",daoClazz.getName());
+        //实体名
         result=result.replace("@BeanName",entityClazz.getName());
+        //表名
         result=result.replace("@tableName", SqlUtil.beanNameToTableName(entityClazz));
 
         StringBuffer columnBuffer=new StringBuffer();
         StringBuffer attributeBuffer=new StringBuffer();
-        StringBuffer columnAndAttributeBuffer=new  StringBuffer();
+        StringBuffer columnAndAttributeBuffer=new StringBuffer();
         Map<String,String> map=SqlUtil.getAttributeAndColumn(entityClazz);
         for (String key:map.keySet()){
             attributeBuffer.append("#{"+key+"},");
             columnBuffer.append(map.get(key)+",");
-            columnAndAttributeBuffer.append("\n            <if test=\""+key+"!=null\">"+map.get(key)+"="+"#{"+key+"},</if>");
+            columnAndAttributeBuffer.append("\n <if test=\""+key+"!=null\">"+map.get(key)+"="+"#{"+key+"},</if>");
         }
         attributeBuffer.deleteCharAt(attributeBuffer.length()-1);
         columnBuffer.deleteCharAt(columnBuffer.length()-1);
@@ -36,9 +39,7 @@ public class CreateMapperFileUtil {
         result=result.replace("@tableColumn",columnBuffer);
         result=result.replace("@beanAttribute",attributeBuffer);
         result=result.replace("@ColumnEqAttribute",columnAndAttributeBuffer);
-
         return  result;
-
 
     }
 

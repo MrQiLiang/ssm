@@ -66,7 +66,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
                 ztreeItme1.setChecked(isCheck(resource.getId(), PermissionTyepEnum.SELECT.getValue(),roleId));
                 ztreeItme1.setAttributes(getAttributes(resource.getId(),PermissionTyepEnum.SELECT.getValue()));
                 for (SysPermission sysPermission:permissionList){
-                    if (sysPermission.getId()==PermissionTyepEnum.SELECT.getValue()){
+                    if (PermissionTyepEnum.SELECT.getValue().equals(sysPermission.getId())){
                         continue;
                     }
                     Ztree ztree=new Ztree();
@@ -144,7 +144,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
     //内部方法，用于判断角色是否有权限
     private boolean isCheck(Long resourceId,Long permissionId,Long roleId){
         SysRoleResourcePermission roleResourcePermission=sysRoleResourcePermissionDao.findByResourceIdAndPermissionIdAndRoleId(resourceId,permissionId,roleId);
-        if (roleResourcePermission!=null&&roleResourcePermission.getStatus()== StatusTypeEnum.STATUS_ACTIVITY_YES.getValue()){
+        if (roleResourcePermission!=null&&StatusTypeEnum.STATUS_ACTIVITY_YES.getValue().equals(roleResourcePermission.getStatus())){
             return true;
         }else{
             return false;

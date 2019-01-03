@@ -15,5 +15,5 @@
 	<import resource="classpath:spring/spring-email.xml"></import>
 
 	<!-- websocket -->
-	<import resource="classpath:spring/spring-websocket.xml"/>
+	<!--<import resource="classpath:spring/spring-websocket.xml"/>-->
 </beans>

@@ -32,7 +32,7 @@ public class StringUtil {
         if (str1==null){
              return true;
         }
-        if (str1==""||str1.equals("")){
+        if (str1==""||"".equals(str1)){
             return true;
         }
         return false;
@@ -72,6 +72,7 @@ public class StringUtil {
                 case 0:randomString.append(random.nextInt(10));break;
                 case 1:randomString.append(randomLowerCase());break;
                 case 2:randomString.append(randomUpperCase());break;
+                default: break;
             }
             length--;
         }

@@ -5,12 +5,16 @@
 <mapper namespace="com.lq.dao.SysFileDao">
     <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+    <sql id="column_list">
+        id,path,create_time,file_type,file_name,status
+    </sql>
+
     <select id="findOne" resultType="com.lq.entity.SysFile" parameterType="long">
-        SELECT * FROM  sys_file  WHERE id=#{id}
+        SELECT <include refid="column_list"/> FROM  sys_file  WHERE id=#{id}
     </select>
 
     <select id="findAll" resultType="com.lq.entity.SysFile">
-        SELECT * FROM  sys_file
+        SELECT <include refid="column_list"/> FROM  sys_file
     </select>
 
     <insert id="save" parameterType="com.lq.entity.SysFile" useGeneratedKeys="true" keyProperty="id">

@@ -5,8 +5,13 @@
 <mapper namespace="com.lq.dao.SysResourceDao">
     <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+
+    <sql id="column_list">
+        id,url_path,sort,parent_id,menu_ico,menu_name,create_time,update_time,user_id,status
+    </sql>
+
     <select id="findByParentId"  resultType="com.lq.entity.SysResource">
-        SELECT *
+        SELECT <include refid="column_list"/>
             FROM sys_resource
         WHERE
             parent_id=#{parentId} AND status= 1
@@ -14,18 +19,22 @@
     </select>
 
     <select id="findAll" resultType="com.lq.entity.SysResource">
-        SELECT *
+        SELECT <include refid="column_list"/>
           FROM sys_resource
         WHERE
             status = 1
     </select>
 
     <select id="findList" parameterType="com.lq.cms.vo.SysResourceVo" resultType="com.lq.entity.SysResource">
-        SELECT  * FROM sys_resource WHERE status =1
+        SELECT  <include refid="column_list"/>
+          FROM sys_resource
+        WHERE status =1
     </select>
 
     <select id="findOne" parameterType="Long" resultType="com.lq.entity.SysResource">
-        SELECT * FROM sys_resource WHERE id=#{id} AND status = 1
+        SELECT <include refid="column_list"/>
+          FROM sys_resource
+        WHERE id=#{id} AND status = 1
     </select>
 
     <select id="findListPage" parameterType="com.lq.cms.vo.SysResourceVo" resultType="com.lq.cms.vo.SysResourceVo">
@@ -39,7 +48,7 @@
 
 
     <select id="count" parameterType="com.lq.cms.vo.SysResourceVo" resultType="int">
-        SELECT COUNT(*) FROM sys_resource  WHERE status=1
+        SELECT COUNT(id) FROM sys_resource  WHERE status=1
     </select>
 
     <update id="update" parameterType="com.lq.entity.SysResource">
@@ -88,7 +97,7 @@
     </insert>
 
     <select id="findMenu" parameterType="map" resultType="com.lq.entity.SysResource">
-        SELECT *
+        SELECT <include refid="column_list"/>
         FROM sys_resource t1
           INNER JOIN (
             SELECT DISTINCT resource_id

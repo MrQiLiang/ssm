@@ -74,7 +74,7 @@ public class IndexController {
     public ModelAndView toCmsInfo(ModelAndView modelAndView,HttpServletRequest request){
         SysInfoVo vo = new SysInfoVo();
         ServletContext context = request.getServletContext();
-        String userIp = request.getRemoteAddr();
+        String userIp = NetUtil.getIP();
         context.getServerInfo();
         DbInfo dbInfo = JdbcUtils.getDBInfo();
         OsInfo osInfo = OsUtil.getInfo();

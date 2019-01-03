@@ -75,7 +75,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
                         String column = SqlUtil.caseToHump(f.getName());
                         String columnType = dataTypeMap.get(f.getGenericType().toString());
                         String lengthStr = "";
-                        if (columnType.equals("varchar") || columnType.equals("int")) {
+                        if ("varchar".equals(columnType) || "int".equals(columnType)) {
                             Length length = f.getAnnotation(Length.class);
                             if (length != null) {
                                 lengthStr = "(" + length.value() + ")";
@@ -117,7 +117,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
         for (Map<String,String> map:mapList){
             String dataTypeStr = dataTypeMap.get(map.get("fieldType"));
             sql.append(SqlUtil.caseToHump(map.get("fieldName"))+" "+dataTypeStr);
-            if (dataTypeStr.equals("varchar")||dataTypeStr.equals("int")){
+            if ("varchar".equals(dataTypeStr)||"int".equals(dataTypeStr)){
 
                 if (map.containsKey("fieldLength")) {
                     sql.append("("+map.get("fieldLength")+")");
