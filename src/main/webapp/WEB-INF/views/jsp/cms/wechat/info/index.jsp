@@ -45,7 +45,7 @@
                     handler: function(){openEdit('新增',null)}
                 }]
 
-            })
+            });
         });
         function openEdit(title,id) {
             var url='edit';
@@ -154,7 +154,7 @@
     </script>
 </head>
 <body>
-<table id="dataList"></table>
-<div id="editDate"></div>
+    <table id="dataList"></table>
+    <div id="editDate"></div>
 </body>
 </html>

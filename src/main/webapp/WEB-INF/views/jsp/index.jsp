@@ -18,14 +18,58 @@
 </head>
 
 <body>
-<script id="container" name="content" type="text/plain">
+<!--<script id="container" name="content" type="text/plain">
 
-</script>
+</script>-->
 
+<button id="openBtn">打开App</button>
 
 </body>
 <!-- 配置文件-->
 <script type="text/javascript">
-    window.um = UM.getEditor("container");
+   // window.um = UM.getEditor("container");
+   var ua = navigator.userAgent.toLowerCase();
+
+   var config = {
+       scheme_IOS: 'myscheme://myhost:1024/main',
+       scheme_Adr: 'myscheme://myhost:1024/main',
+       download_url: 'http://a.app.qq.com/o/simple.jsp?pkgname=aa.bbxxx',
+       timeout: 3000
+   }
+
+   $(function () {
+        plus
+        $("#openBtn").on("click",function(){
+            location.href="myscheme://myhost:1024/main";
+        });
+
+    });
+
+   function  openClient() {
+       var  startTime = Date.now();
+
+       var ifr = document.createElement('iframe');
+       ifr.src = ua.indexOf('OS')>0?config.scheme_IOS:config.scheme_Adr;
+       ifr.style.display='none';
+       document.body.appendChild(ifr);
+
+       var t = setTimeout(function(){
+           var endTime = Date.now();
+           if(!startTime||endTime-startTime<config.timeout+200){
+               window.location = config.download_url;
+           }else {
+
+           }
+       },config.timeout);
+
+       window.onblur = function () {
+           clearTimeout(t);
+       }
+   }
+
+   window.addEventListener("DOMContentLoaded",function () {
+
+   },false);
+
 </script>
 </html>

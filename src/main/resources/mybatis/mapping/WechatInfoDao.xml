@@ -72,4 +72,13 @@
         ORDER BY t1.create_time DESC
     </select>
 
+    <select id="getByWechatOpenId" resultType="com.lq.entity.WechatInfo" parameterType="string">
+      SELECT <include refid="column_list"/>
+        FROM wechat_info wi
+      WHERE
+        wechat_open_id = #{wechatOpenId}
+      AND
+        status = 1
+    </select>
+
 </mapper>

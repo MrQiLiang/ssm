@@ -226,7 +226,7 @@
     </dependency>
 
     <!-- JSTL标签类 -->
-    <!--
+
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
@@ -234,6 +234,12 @@
         <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <!--
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>jstl</artifactId>
@@ -485,6 +491,14 @@
       <scope>system</scope>
       <systemPath>${basedir}/lib/json.jar</systemPath>
     </dependency>
+
+    <!-- 自动产生测试数据框架-->
+    <dependency>
+      <groupId>com.github.jsonzou</groupId>
+      <artifactId>jmockdata</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+
 
   </dependencies>
 

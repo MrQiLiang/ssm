@@ -1,0 +1,59 @@
+package com.lq.code.util;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+import java.io.*;
+
+/**
+ * xml 工具类
+ */
+public class XmlUtil {
+
+    /**
+     *  object 转 xml 文档
+     * @param obj
+     * @return
+     */
+    public static String objToXml(Object obj){
+        XStream xstream = new XStream(new DomDriver("utf8"));
+        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
+        /*
+         // 以压缩的方式输出XML
+         StringWriter sw = new StringWriter();
+         xstream.marshal(obj, new CompactWriter(sw));
+         return sw.toString();
+         */
+        // 以格式化的方式输出XML
+        return xstream.toXML(obj);
+
+    }
+
+//    public static String objToXml(Writer writer,Object obj) throws UnsupportedEncodingException {
+//        XStream xstream = new XStream(new DomDriver("utf8"));
+//        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
+//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//
+//        writer = new OutputStreamWriter(outputStream, "UTF-8");
+//
+//        xstream.toXML(obj, writer);
+//        String xml = outputStream.toString("UTF-8");
+//        return xml;
+//    }
+
+    public static String objToXml(Object obj,String str) throws IOException {
+        XStream xstream = new XStream(new DomDriver("utf8"));
+        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        Writer writer = new OutputStreamWriter(outputStream, "UTF-8");
+        writer.write(str);
+        xstream.toXML(obj, writer);
+        String xml = outputStream.toString("UTF-8");
+        return xml;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+}

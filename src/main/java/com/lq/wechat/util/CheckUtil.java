@@ -2,13 +2,16 @@ package com.lq.wechat.util;
 
 import java.util.Arrays;
 
+/**
+ *  author qi
+ */
 public class CheckUtil {
 
-	private static final String token="qiLiang";
+	private static final String TOKEN="qiLiang";
 	
 	public static boolean checkSingatue(String signature,String timestamp,String nonce){
 	
-       String []arr=new String[]{token,timestamp,nonce};
+       String []arr=new String[]{TOKEN,timestamp,nonce};
        
        Arrays.sort(arr);
        

@@ -1,13 +1,21 @@
-package com.lq.code.util;
+package com.lq.code.util.mybatisPlus;
 
+import com.lq.code.util.FileUtil;
+import com.lq.code.util.XmlUtil;
+import com.lq.code.util.mybatisPlus.xml.MapperXmlDtl;
+import com.lq.code.util.mybatisPlus.xml.SelectMappserXmlDtl;
+import com.lq.code.util.mybatisPlus.xml.SqlMapperXmlDtl;
 import com.lq.code.util.sql.AbstractDbBuiler;
 import com.lq.code.util.sql.MysqlBuilder;
 import com.lq.code.util.sql.SqlUtil;
 import com.lq.dao.*;
 import com.lq.entity.*;
+import com.lq.wechat.util.MessageUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +24,7 @@ import java.util.Map;
 public class CreateMapperFileUtil {
 
     public static String createXML(String filePath,Class daoClazz,Class entityClazz,AbstractDbBuiler db){
-        String result=FileUtil.read(filePath);
+        String result= FileUtil.read(filePath);
         //dao类名
         result=result.replace("@DaoName",daoClazz.getName());
         //实体名
@@ -58,9 +66,11 @@ public class CreateMapperFileUtil {
 
     }
 
-    public static void main(String[] args) throws IOException {
-        createXml(WechatAccesstokenDao.class,WechatAccesstoken.class,new MysqlBuilder());
-    }
+//    public static void main(String[] args) throws IOException {
+//        createXml(WechatMessageDao.class,WechatMessage.class,new MysqlBuilder());
+//    }
+
+
 
 
 }

@@ -47,7 +47,7 @@
                         <td><input class="easyui-textbox" type="text" id="menuName" data-options="required:true" value="${sysResource.menuName}" ></input></td>
                     </tr>
 
-                    <tr>
+                    <tr id="tr_menuIco">
                         <td >目录图标:</td>
                         <td >
                             <select id="menuIco" class="easyui-combobox">
@@ -78,8 +78,10 @@
             onChange: function (newValue, oldValue) {
                 if(newValue==0){
                     $("#tr_urlPath").hide();
+                    $("#tr_menuIco").show();
                 }else{
                     $("#tr_urlPath").show();
+                    $("#tr_menuIco").hide();
                 }
             }
         });

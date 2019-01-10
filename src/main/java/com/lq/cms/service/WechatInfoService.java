@@ -14,4 +14,11 @@ public interface WechatInfoService extends BaseService<WechatInfo> {
     Integer count(WechatInfoVo vo);
 
     List<WechatInfoVo> findListPage(WechatInfoVo vo);
+
+    /**
+     *  通过公众号openId查找公众号详情
+     * @param wechatOpenId
+     * @return
+     */
+    WechatInfo getByOpenId(String wechatOpenId);
 }

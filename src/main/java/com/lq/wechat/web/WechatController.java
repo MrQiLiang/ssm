@@ -1,6 +1,8 @@
 package com.lq.wechat.web;
 
+import com.lq.cms.service.WechatInfoService;
 import com.lq.code.web.BaseController;
+import com.lq.entity.WechatInfo;
 import com.lq.wechat.mode.message.ItemMessage;
 import com.lq.wechat.mode.message.NewsMessage;
 import com.lq.wechat.mode.message.TextMessage;
@@ -8,6 +10,7 @@ import com.lq.wechat.util.CheckUtil;
 import com.lq.wechat.util.ConstantSet;
 import com.lq.wechat.util.MessageUtil;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +29,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/wechatApi")
 public class  WechatController extends BaseController {
+
+    @Autowired
+    private WechatInfoService wechatInfoService;
+
 
     private static Logger logger = Logger.getLogger(WechatController.class);
 
@@ -48,20 +55,26 @@ public class  WechatController extends BaseController {
         String message = null;
         try {
             Map<String, String> map = MessageUtil.xmlToMap(req);
-
+            //消息类型
             String msgType = map.get("MsgType");
+            //微信公众号openId
             String toUserName = map.get("ToUserName");
+            //接收方账号
             String fromUserName = map.get("FromUserName");
+            //微信公众号详情
+            WechatInfo wechatInfo = wechatInfoService.getByOpenId(toUserName);
 
             TextMessage text = new TextMessage();
             text.setFromUserName(toUserName);
             text.setToUserName(fromUserName);
             text.setMsgType(ConstantSet.MESSAGE_TYPE_TEXT);
 
-            text.setCreateTime(new Date().getTime());
+            text.setCreateTime(System.currentTimeMillis());
             switch (msgType) {
                 case ConstantSet.MESSAGE_TYPE_TEXT:
                     String content = map.get("Content");
+
+
                     if("1".equals(content)){
                         NewsMessage newsMessage=new NewsMessage();
                         List<ItemMessage> items=new ArrayList<>();
@@ -75,7 +88,7 @@ public class  WechatController extends BaseController {
                         items.add(item);
                         newsMessage.setArticles(items);
                         newsMessage.setArticleCount(1);
-                        newsMessage.setCreateTime(new Date().getTime());
+                        newsMessage.setCreateTime(System.currentTimeMillis());
                         newsMessage.setFromUserName(toUserName);
                         newsMessage.setMsgType(ConstantSet.MESSAGE_TYPE_NEW);
                         newsMessage.setToUserName(fromUserName);
@@ -114,8 +127,14 @@ public class  WechatController extends BaseController {
                     String event = map.get("Event");
                     switch (event) {
                         case ConstantSet.EVENT_TYPE_SUBSCRIBE:
-
-
+                            ;
+                            break;
+                        case ConstantSet.EVENT_TYPE_UNSUBSCRIBE:
+                            ;
+                            break;
+                        case ConstantSet.EVENT_TYPE_CLICK:
+                            ;
+                            break;
                         default:
                             break;
                     }

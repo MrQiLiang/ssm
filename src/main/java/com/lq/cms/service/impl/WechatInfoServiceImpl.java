@@ -34,4 +34,9 @@ public class WechatInfoServiceImpl extends BaseServiceImpl<WechatInfo> implement
     public List<WechatInfoVo> findListPage(WechatInfoVo vo) {
         return wechatInfoDao.findListPage(vo);
     }
+
+    @Override
+    public WechatInfo getByOpenId(String wechatOpenId) {
+        return null;
+    }
 }
