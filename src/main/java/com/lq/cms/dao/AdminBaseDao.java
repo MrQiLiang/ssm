@@ -10,4 +10,5 @@ public interface AdminBaseDao<T> extends BaseDao {
     List<AdminBaseVo> findLisatPage(AdminBaseVo vo);
 
     int count(AdminBaseVo vo);
+
 }

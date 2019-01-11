@@ -11,13 +11,13 @@ public enum  WechatInfoEncodingTypeEnum {
     BLEND("BLEND","混合"),
     ENCRYPT("ENCRYPT","加密")
     ;
-    private static Map<String,Object> map = new HashMap();
+    private static Map<String,String> enumMap = new HashMap();
 
     static {
 
         WechatInfoEncodingTypeEnum[] wechatInfoEncodingTypeEnumArray = WechatInfoEncodingTypeEnum.values();
         for (WechatInfoEncodingTypeEnum wechatInfoEncodingTypeEnum : wechatInfoEncodingTypeEnumArray) {
-            map.put(wechatInfoEncodingTypeEnum.getValue(), wechatInfoEncodingTypeEnum.getDesc());
+            enumMap.put(wechatInfoEncodingTypeEnum.value, wechatInfoEncodingTypeEnum.desc);
         }
     }
 
@@ -28,9 +28,19 @@ public enum  WechatInfoEncodingTypeEnum {
         this.value = value;
         this.desc = desc;
     }
+    //判断是否存在值
+    public static boolean hasValue(String value){
+
+        return enumMap.containsKey(value);
+    }
+
+    public static Map<String,String> getEnumMap(){
+
+        return enumMap;
+    }
 
     public static String getDesc(String value){
-            return (String) map.get(value);
+            return (String) enumMap.get(value);
     }
 
     public String getValue() {

@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class WechatMessageVo extends AdminBaseVo{
 
-    private Long id;
     //消息类型
     private String messageType;
     //消息标题
@@ -21,14 +20,6 @@ public class WechatMessageVo extends AdminBaseVo{
     private Date updateTime;
     //创建用户
     private Long userId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getMessageType() {
         return messageType;

@@ -83,14 +83,7 @@
             var url = 'save';
             var obj = new Object();
          //   obj.id = $("#id").val();
-            obj.wechatOpenId = $("#wechatOpenId").val();
-            obj.wechatName = $("#wechatName").val();
-            obj.appId = $("#appId").val();
-            obj.appSecpet = $("#appSecpet").val();
-            obj.url = $("#url").val();
-            obj.token = $("#token").val();
-            obj.encodingType = $("#encodingType").val();
-            obj.encodingAesKey = $("#encodingAesKey").val();
+            obj = attrObj(obj);
             post(url,obj);
         }
 
@@ -98,6 +91,11 @@
             var url = 'update';
             var obj = new Object();
             obj.id = $("#id").val();
+            obj = attrObj(obj);
+            post(url,obj);
+        }
+
+        function attrObj(obj) {
             obj.wechatOpenId = $("#wechatOpenId").val();
             obj.wechatName = $("#wechatName").val();
             obj.appId = $("#appId").val();
@@ -106,7 +104,7 @@
             obj.token = $("#token").val();
             obj.encodingType = $("#encodingType").val();
             obj.encodingAesKey = $("#encodingAesKey").val();
-            post(url,obj);
+            return obj;
         }
 
         function del(id) {

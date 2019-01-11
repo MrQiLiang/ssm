@@ -13,9 +13,9 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
 
-public abstract class AdminBaseServiceImpl<T> extends BaseServiceImpl implements AdminBaseService<T>{
+public abstract class AdminBaseServiceImpl<T> extends BaseServiceImpl<T> implements AdminBaseService<T>{
 
-    abstract AdminBaseDao getAdminBaseDao();
+    abstract AdminBaseDao<T> getAdminBaseDao();
 
     @Override
     public List<AdminBaseVo> findListPage(AdminBaseVo vo) {
@@ -48,7 +48,7 @@ public abstract class AdminBaseServiceImpl<T> extends BaseServiceImpl implements
     }
 
     @Override
-    public BaseDao getBaseDao() {
+    public BaseDao<T> getBaseDao() {
         return getAdminBaseDao();
     }
 

@@ -50,9 +50,9 @@
             <td>消息加密类型:</td>
             <td>
                 <select id="encodingType" >
-                    <option <c:if test="${wechatInfo.encodingType=='PLAINTEXT'}">selected</c:if> value="PLAINTEXT">明文模式</option>
-                    <option <c:if test="${wechatInfo.encodingType=='BLEND'}">selected</c:if> value="BLEND">混合模式</option>
-                    <option <c:if test="${wechatInfo.encodingType=='ENCRYPT'}">selected</c:if> value="ENCRYPT" >密文模式</option>
+                    <c:forEach items="${encodingTypeMap}" var="encoding">
+                        <option <c:if test="${wechatInfo.encodingType == encoding.key}">selected</c:if> value="${encoding.key}">${encoding.value}</option>
+                    </c:forEach>
                 </select>
             </td>
         </tr>

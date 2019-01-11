@@ -13,6 +13,7 @@ public class WechatMessageServiceImpl extends AdminBaseServiceImpl<WechatMessage
     @Autowired
     private WechatMessageDao wechatMessageDao;
 
+
     @Override
     AdminBaseDao getAdminBaseDao() {
 

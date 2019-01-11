@@ -46,5 +46,47 @@
 </script>
 <body>
     <table id="dataList"></table>
+    <div id="editDate"></div>
 </body>
+<script type="text/javascript">
+    function openEdit(title,id) {
+        var url='edit';
+        if(id!=null){
+            url=url+'?id='+id;
+        }
+        $("#editDate").dialog({
+            title:title,
+            width:400,
+            height:400,
+            closed:false,
+            cache:false,
+            href:url,
+            model:true,
+            buttons:[
+                {text:'保存',handler:function () {
+                        if (id==null){
+                            save();
+                        }else {
+                            update();
+                        }
+
+                    }},{
+                    text:'取消',handler:function () {
+                        $("#editDate").dialog('close');
+                    }
+                },
+            ]
+
+        });
+        $("#editDate").dialog('open').dialog('refresh',url);
+    }
+    function save() {
+        alert("提交保存");
+    }
+
+    function update() {
+        alert("提交更新");
+    }
+
+</script>
 </html>

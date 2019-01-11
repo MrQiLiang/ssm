@@ -5,7 +5,7 @@ import com.lq.code.service.BaseService;
 
 import java.util.List;
 
-public interface AdminBaseService<T> extends BaseService{
+public interface AdminBaseService<T> extends BaseService<T>{
 
     List<AdminBaseVo> findListPage(AdminBaseVo vo);
 

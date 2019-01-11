@@ -198,6 +198,7 @@ public class BeanUtil {
      * @return
      */
     public static Boolean isType(Object obj,Class clazzType){
+
         if (obj!=null) {
             Class clazz = obj.getClass();
             return clazz.getTypeName().equals(clazzType.getTypeName()) ? true : false;
