@@ -81,11 +81,43 @@
         $("#editDate").dialog('open').dialog('refresh',url);
     }
     function save() {
-        alert("提交保存");
+        var url = 'save';
+        var obj = new Object();
+        obj = attrObj(obj);
+        post(url,obj);
     }
 
     function update() {
-        alert("提交更新");
+        var url = 'update';
+        var obj = new Object();
+        obj.id = $("#id").val();
+        obj = attrObj(obj);
+        post(url,obj);
+    }
+
+    function attrObj(obj) {
+        obj.messageType = $("#messageType").val();
+        obj.title = $("#title").val();
+        obj.content = $("#content").val();
+        obj.imageUrl = $("#imageUrl").val();
+        obj.mediaId = $("#mediaId").val();
+        obj.toUrl = $("#toUrl").val();
+        return obj;
+    }
+
+    function post(url,obj) {
+        $.ajax({
+            url: url,
+            dataType:"json",
+            type:"post",
+            data:obj,
+            success: function(result){
+                if(result.success==true){
+                    $.messager.alert('提醒','提交成功','warning');
+                    $("#editDate").dialog('close');
+                    $('#dataList').datagrid('reload',{});
+                }
+            }});
     }
 
 </script>

@@ -35,7 +35,6 @@
                     {field:'imgUrl',title:'头像',width:100},
                     /* formatter 不能重复field,否则会失效**/
                     {field:'editId',title:'编辑',width:100,formatter:function (value,row,index) {
-                        console.log(row);
                         var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
                         html+="<a href='#' onclick='del("+row.id+")'>删除</a>";
                         return html;

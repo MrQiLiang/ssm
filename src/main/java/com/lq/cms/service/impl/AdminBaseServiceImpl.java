@@ -13,17 +13,17 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
 
-public abstract class AdminBaseServiceImpl<T> extends BaseServiceImpl<T> implements AdminBaseService<T>{
+public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo> extends BaseServiceImpl<T> implements AdminBaseService<T,V>{
 
-    abstract AdminBaseDao<T> getAdminBaseDao();
+    abstract AdminBaseDao<T,V> getAdminBaseDao();
 
     @Override
-    public List<AdminBaseVo> findListPage(AdminBaseVo vo) {
-        return this.getAdminBaseDao().findLisatPage(vo);
+    public List<V> findListPage(V vo) {
+        return this.getAdminBaseDao().findListPage(vo);
     }
 
     @Override
-    public int count(AdminBaseVo vo) {
+    public int count(V vo) {
         return this.getAdminBaseDao().count(vo);
     }
 

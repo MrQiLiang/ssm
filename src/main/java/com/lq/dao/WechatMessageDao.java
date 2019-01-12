@@ -7,7 +7,7 @@ import com.lq.entity.WechatMessage;
 
 import java.util.List;
 
-public interface WechatMessageDao extends AdminBaseDao<WechatMessage> {
+public interface WechatMessageDao extends AdminBaseDao<WechatMessage,WechatMessageVo> {
 
     List<WechatMessageVo> findListPage(WechatMessageVo vo);
 

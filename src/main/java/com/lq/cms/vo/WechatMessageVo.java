@@ -1,11 +1,15 @@
 package com.lq.cms.vo;
 
+import com.lq.cms.emun.WechatMessageTypeEnum;
+
 import java.util.Date;
 
 public class WechatMessageVo extends AdminBaseVo{
 
     //消息类型
     private String messageType;
+
+    private String messageTypeStr;
     //消息标题
     private String title;
     //消息内容
@@ -16,8 +20,6 @@ public class WechatMessageVo extends AdminBaseVo{
     private String mediaId;
     //跳转路径
     private String toUrl;
-    //更新时间
-    private Date updateTime;
     //创建用户
     private Long userId;
 
@@ -27,6 +29,17 @@ public class WechatMessageVo extends AdminBaseVo{
 
     public void setMessageType(String messageType) {
         this.messageType = messageType;
+        if (WechatMessageTypeEnum.hasValue(messageType)){
+            this.messageTypeStr = WechatMessageTypeEnum.getDesc(messageType);
+        }
+    }
+
+    public String getMessageTypeStr() {
+        return messageTypeStr;
+    }
+
+    public void setMessageTypeStr(String messageTypeStr) {
+        this.messageTypeStr = messageTypeStr;
     }
 
     public String getTitle() {
@@ -67,15 +80,6 @@ public class WechatMessageVo extends AdminBaseVo{
 
     public void setToUrl(String toUrl) {
         this.toUrl = toUrl;
-    }
-
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public Long getUserId() {

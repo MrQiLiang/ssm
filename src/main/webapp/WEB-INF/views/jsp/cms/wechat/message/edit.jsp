@@ -40,13 +40,19 @@
         </tr>
 
         <tr>
+            <td>图片路径:</td>
+            <td><input class="easyui-textbox" type="text" id="imageUrl" data-options="required:true" value="${wechatMessage.content}"/></td>
+        </tr>
+
+
+        <tr>
             <td>素材ID:</td>
-            <td><input class="easyui-textbox" type="text" id="imageUrl" data-options="required:true'" value="${wechatMessage.mediaId}"/></td>
+            <td><input class="easyui-textbox" type="text" id="mediaId" data-options="required:true'" value="${wechatMessage.mediaId}"/></td>
         </tr>
 
         <tr>
             <td>消息跳转链接:</td>
-            <td><input class="easyui-textbox" type="text" id="mediaId" data-options="required:true" value="${wechatMessage.toUrl}" /></td>
+            <td><input class="easyui-textbox" type="text" id="toUrl" data-options="required:true" value="${wechatMessage.toUrl}" /></td>
         </tr>
 
     </table>

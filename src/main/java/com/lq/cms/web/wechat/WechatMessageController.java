@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/cms/wechat/message")
-public class WechatMessageController extends AdminBaseController<WechatMessage> {
+public class WechatMessageController extends AdminBaseController<WechatMessage,WechatMessageVo> {
 
     @Autowired
     private WechatMessageService wechatMessageService;

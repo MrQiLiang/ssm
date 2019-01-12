@@ -5,13 +5,13 @@ import com.lq.code.service.BaseService;
 
 import java.util.List;
 
-public interface AdminBaseService<T> extends BaseService<T>{
+public interface AdminBaseService<T,V extends AdminBaseVo> extends BaseService<T>{
 
-    List<AdminBaseVo> findListPage(AdminBaseVo vo);
+    List<V> findListPage(V vo);
 
-    int count(AdminBaseVo vo);
+    int count(V vo);
 
-    T save(AdminBaseVo vo)throws IllegalAccessException, InstantiationException;
+    T save(V vo)throws IllegalAccessException, InstantiationException;
 
-    T update(AdminBaseVo vo);
+    T update(V vo);
 }

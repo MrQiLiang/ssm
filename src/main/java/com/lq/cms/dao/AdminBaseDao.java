@@ -5,10 +5,10 @@ import com.lq.code.dao.BaseDao;
 
 import java.util.List;
 
-public interface AdminBaseDao<T> extends BaseDao {
+public interface AdminBaseDao<T,V extends AdminBaseVo> extends BaseDao {
 
-    List<AdminBaseVo> findLisatPage(AdminBaseVo vo);
+    List<V> findListPage(V vo);
 
-    int count(AdminBaseVo vo);
+    int count(V vo);
 
 }
