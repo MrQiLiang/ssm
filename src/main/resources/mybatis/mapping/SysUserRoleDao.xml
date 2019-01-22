@@ -7,7 +7,7 @@
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
 
     <sql id="column_list">
-       user_id, role_id, create_time, update_time,status
+      id,user_id, role_id, create_time, update_time,status
     </sql>
 
     <select id="findByUserIdAndRoleId" parameterType="Map" resultType="com.lq.entity.SysUserRole">

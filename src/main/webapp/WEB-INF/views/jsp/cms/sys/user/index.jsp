@@ -26,15 +26,20 @@
                 pagination :"true",
                 columns:[[
                     {field:'id',title:'编号',width:100},
-                    {field:'loginName',title:'登陆名称',width:100},
-                    {field:'remarks',title:'备注',width:100},
-                    {field:'createTimeStr',title:'创建时间',width:100},
-                    {field:'updateTimeStr',title:'更新时间',width:100},
-                    {field:'lastLoginTimeStr',title:'最后登录时间',width:100},
-                    {field:'email',title:'电子邮件',width:100},
-                    {field:'imgUrl',title:'头像',width:100},
+                    {field:'loginName',title:'登陆名称',width:60},
+                    {field:'remarks',title:'备注',width:150},
+                    {field:'createTimeStr',title:'创建时间',width:150},
+                    {field:'updateTimeStr',title:'更新时间',width:150},
+                    {field:'lastLoginTimeStr',title:'最后登录时间',width:150},
+                    {field:'email',title:'电子邮件',width:150},
+                    {field:'imgUrl',title:'头像',width:50,formatter:function(value,row,index){
+                        return "<img src=\"${ctx}/loadFile/"+value+"\" style=\"width: 30px;height: 30px;border-radius:5px\">";
+                    }},
                     /* formatter 不能重复field,否则会失效**/
                     {field:'editId',title:'编辑',width:100,formatter:function (value,row,index) {
+                        if(row.loginName =='admin'){
+                            return "";
+                        }
                         var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
                         html+="<a href='#' onclick='del("+row.id+")'>删除</a>";
                         return html;
@@ -51,6 +56,7 @@
 <body>
 <table id="dataList"></table>
 <div id="editDate"></div>
+
 </body>
 <script type="text/javascript">
     function openEdit(title,id) {

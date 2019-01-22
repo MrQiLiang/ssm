@@ -1,5 +1,6 @@
 package com.lq.cms.web.sys;
 
+import com.lq.cms.emun.PermissionTyepEnum;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.service.SysRoleService;
 import com.lq.cms.service.SysUserRoleService;
@@ -35,13 +36,21 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Created by qi_liang on 2018/1/25.
+ * @author qi
+ *
  */
 @Controller
 @RequestMapping("/cms/user")
 public class UserController {
 
-    private static Logger logger = Logger.getLogger(UserController.class);
+    private final static Logger LOGGER = Logger.getLogger(UserController.class);
+
+    private final static String SHIRO_SCOPE="/cms/user/index:";
+
+    private final static String PERMISSION_SELECT="SELECT";
+
+    private final static String PERMISSION_UPDATE="INSERT";
+
 
 
     @Autowired
@@ -54,7 +63,7 @@ public class UserController {
     @Value("${file.upload}")
     private String FILE_LOAD_PATH;
 
-    @RequiresPermissions("/cms/user/index:SELECT")
+    @RequiresPermissions(SHIRO_SCOPE+PERMISSION_SELECT)
     @RequestMapping("/index")
     public ModelAndView  index(ModelAndView modelAndView){
 
@@ -62,7 +71,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequiresPermissions("/cms/user/index:SELECT")
+    @RequiresPermissions(SHIRO_SCOPE+PERMISSION_SELECT)
     @RequestMapping("/list")
     @ResponseBody
     public Object list(SysUserVo vo){
@@ -123,6 +132,8 @@ public class UserController {
 
         return  ajaxResult;
     }
+
+
 
     @RequiresPermissions("/cms/user/index:DELETE")
     @RequestMapping("/delete")
