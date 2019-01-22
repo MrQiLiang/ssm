@@ -22,6 +22,7 @@ public abstract class AdminBaseController<T,V extends AdminBaseVo> {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(AdminBaseController.class);
 
+
     /**
      *  获取service
      * @return
@@ -71,9 +72,9 @@ public abstract class AdminBaseController<T,V extends AdminBaseVo> {
         return ajaxResult;
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/delete")
     @ResponseBody
-    public AjaxResult delete(@PathVariable("id")Long id){
+    public AjaxResult delete(Long id){
         Subject subject = SecurityUtils.getSubject();
         subject.checkPermission(getIndexUrl()+":"+ PermissionTyepEnum.DELETE.getConstant());
         AjaxResult ajaxResult = new AjaxResult();

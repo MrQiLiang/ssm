@@ -29,7 +29,7 @@
 
     <bean id="sessionDAO" class="com.lq.code.cache.RedisSessionDao">
         <constructor-arg ref="redisTempale"/>
-        <constructor-arg value="300000"/>
+        <constructor-arg value="30000000"/>
     </bean>
 
     <!-- 配置需要向Cookie中保存数据的配置模版 -->
@@ -40,6 +40,8 @@
         <property name="httpOnly" value="true"/>
         <!-- 定义Cookie的过期时间，单位为秒，如果设置为-1表示浏览器关闭，则Cookie消失 -->
         <property name="maxAge" value="-1"/>
+
+
     </bean>
 
     <!-- 定义会话管理器的操作 -->
@@ -66,7 +68,7 @@
     <bean id="sessionValidationScheduler"
           class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
         <!-- 设置session的失效扫描间隔，单位为毫秒 -->
-        <property name="sessionValidationInterval" value="3600000"/>
+        <property name="sessionValidationInterval" value="36000000"/>
         <!-- 随后还需要定义有一个会话管理器的程序类的引用 -->
         <property name="sessionManager" ref="sessionManager"/>
     </bean>

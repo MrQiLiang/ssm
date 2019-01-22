@@ -23,7 +23,7 @@
             pagination :"true",
             columns:[[
                 {field:'id',title:'编号',width:35},
-                {field:'messageType',title:'消息类型',width:100},
+                {field:'messageTypeStr',title:'消息类型',width:100},
                 {field:'title',title:'消息标题',width:100},
                 {field:'content',title:'消息内容',width:100},
                 {field:'imageUrl',title:'图片路径',width:100},
@@ -56,7 +56,7 @@
         }
         $("#editDate").dialog({
             title:title,
-            width:400,
+            width:500,
             height:400,
             closed:false,
             cache:false,
@@ -103,6 +103,29 @@
         obj.mediaId = $("#mediaId").val();
         obj.toUrl = $("#toUrl").val();
         return obj;
+    }
+
+    function del(id) {
+        var url = 'delete';
+        var obj = new Object();
+        obj.id = id;
+        get(url,obj);
+    }
+
+    function get(url,obj) {
+        $.ajax({
+            url: url,
+            dataType:"json",
+            type:"get",
+            data:obj,
+            success: function(result){
+                if(result.success==true){
+                    $.messager.alert('提醒','提交成功','warning');
+                    $("#editDate").dialog('close');
+                    $('#dataList').datagrid('reload',{});
+                }
+            }});
+
     }
 
     function post(url,obj) {

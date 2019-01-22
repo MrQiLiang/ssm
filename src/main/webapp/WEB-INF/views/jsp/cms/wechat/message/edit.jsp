@@ -35,13 +35,24 @@
         </tr>
 
         <tr>
-            <td>消息内容:</td>
-            <td><input class="easyui-textbox" type="text" id="content" data-options="required:true" value="${wechatMessage.content}"/></td>
+            <td>文本内容:</td>
+            <td>
+                <textarea id="content">${wechatMessage.content}</textarea>
+               <!-- <input class="easyui-textbox" data-options="multiline:true" value="${wechatMessage.content}" style="width:300px;height:100px">-->
+                <!--<input class="easyui-textbox" type="text" id="content" data-options="required:true" value="${wechatMessage.content}"/>-->
+            </td>
         </tr>
 
         <tr>
-            <td>图片路径:</td>
-            <td><input class="easyui-textbox" type="text" id="imageUrl" data-options="required:true" value="${wechatMessage.content}"/></td>
+            <td>图片文件:</td>
+            <td><input class="easyui-textbox" type="file" id="imageUrl" data-options="required:true"/></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <img src="" id="cropedBigImg" style="display:none;width: 200px;height: 200px;">
+            </td>
+
         </tr>
 
 
@@ -58,4 +69,23 @@
     </table>
 </div>
 </body>
+<script type="text/javascript">
+    $(function () {
+        console.log("==========测试内容==========");
+        $('#imageUrl').on('change', function() {//当chooseImage的值改变时，执行此函数
+            var filePath = $(this).val(), //获取到input的value，里面是文件的路径
+                fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+                src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+
+            // 检查是否是图片
+            if(!fileFormat.match(/.png|.jpg|.jpeg/)) {
+                layer.msg('上传错误,文件格式必须为：png/jpg/jpeg');
+                return;
+            }else{
+                $('#cropedBigImg').css('display','block');
+                $('#cropedBigImg').attr('src', src);
+            }
+        });
+    });
+</script>
 </html>

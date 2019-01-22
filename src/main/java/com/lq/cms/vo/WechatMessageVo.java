@@ -1,6 +1,7 @@
 package com.lq.cms.vo;
 
 import com.lq.cms.emun.WechatMessageTypeEnum;
+import com.lq.code.util.DateUtil;
 
 import java.util.Date;
 
@@ -8,7 +9,7 @@ public class WechatMessageVo extends AdminBaseVo{
 
     //消息类型
     private String messageType;
-
+    //消息类型(中文描述)
     private String messageTypeStr;
     //消息标题
     private String title;
@@ -22,6 +23,8 @@ public class WechatMessageVo extends AdminBaseVo{
     private String toUrl;
     //创建用户
     private Long userId;
+    //创建时间
+    private String createTimeStr;
 
     public String getMessageType() {
         return messageType;
@@ -89,4 +92,18 @@ public class WechatMessageVo extends AdminBaseVo{
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
+    public String getCreateTimeStr() {
+        Date createTime = this.getCreateTime();
+        if (createTime!=null){
+            return DateUtil.getDateToStr(createTime);
+        }
+        return null;
+    }
+
+
+
+//    public void setCreateTimeStr(String createTimeStr) {
+//        this.createTimeStr = createTimeStr;
+//    }
 }

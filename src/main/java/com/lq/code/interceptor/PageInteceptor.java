@@ -59,7 +59,7 @@ public class PageInteceptor implements Interceptor {
                 if (dialect.equals("oracle")){
                      db = new OracleBuiler();
                 }
-                String countSql= db.countSql(sql);
+//                String countSql= db.countSql(sql);
                 String pageSql=db.concatPageSql(sql,pageInterface);
                 metaStatementHandler.setValue("delegate.boundSql.sql",pageSql);
 

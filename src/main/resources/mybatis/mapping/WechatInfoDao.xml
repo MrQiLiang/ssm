@@ -54,7 +54,7 @@
 
     <delete id="delete" parameterType="Long">
         DELETE
-           FROM wechat_info
+           wechat_info
         WHERE
             id=#{id}
         AND
