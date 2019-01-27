@@ -25,7 +25,7 @@
                 url:'list',
                 pagination :"true",
                 columns:[[
-                    {field:'id',title:'编号',width:100},
+                    {field:'id',title:'编号',width:50},
                     {field:'loginName',title:'登陆名称',width:60},
                     {field:'remarks',title:'备注',width:150},
                     {field:'createTimeStr',title:'创建时间',width:150},

@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/file")
-public class SysFileController {
+public class SysFileController  {
 
 
     @Value("${file.upload}")

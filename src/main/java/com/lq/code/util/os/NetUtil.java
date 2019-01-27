@@ -21,9 +21,4 @@ public class NetUtil {
         return  ip;
     }
 
-    public static void main(String[] args) {
-
-        String ip = getIP();
-        System.out.println(ip);
-    }
 }
