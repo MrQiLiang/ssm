@@ -33,7 +33,7 @@ public abstract class AdminBaseController<T,V extends AdminBaseVo> {
      *  管理后台url（用于权限控制）
      * @return
      */
-    public abstract String getIndexUrl();
+     public abstract String getIndexUrl();
 
     public Map<String,Object> setPageDate(V vo){
         Map<String,Object> map=new HashMap();

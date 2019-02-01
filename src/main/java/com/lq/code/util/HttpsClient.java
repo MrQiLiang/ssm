@@ -27,7 +27,9 @@ import org.apache.http.impl.client.HttpClients;
 import com.alibaba.fastjson.JSONObject;
 
 public class HttpsClient {
-	
+
+
+
 	public static String post(String url,Map<String, Object> params) throws IOException{
 		String boundary = getBoundaryStr();
 		CloseableHttpResponse reponse =null;
@@ -141,15 +143,16 @@ public class HttpsClient {
 	}
 	
 	private static SSLContext getTrustAllSSLContext() throws Exception {  
-	    SSLContext context = SSLContexts.custom().loadTrustMaterial(null, new TrustStrategy() {
-			
-			@Override
-			public boolean isTrusted(X509Certificate[] arg0, String arg1)
-					throws java.security.cert.CertificateException {
-				// 这一句就是信任任何的证书，当然你也可以去验证服务器的真实性 
-				return true;
-			}
-		}).build();  
+//	    SSLContext context = SSLContexts.custom().loadTrustMaterial(null, new TrustStrategy() {
+//
+//			@Override
+//			public boolean isTrusted(X509Certificate[] arg0, String arg1)
+//					throws java.security.cert.CertificateException {
+//				// 这一句就是信任任何的证书，当然你也可以去验证服务器的真实性
+//				return true;
+//			}
+//		}).build();
+		SSLContext context = SSLContext.getDefault();
 	    return context;  
 	}
 	

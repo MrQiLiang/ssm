@@ -49,7 +49,7 @@
                     iconCls: 'icon-add',
                     handler: function(){openEdit('新增',null)}
                 }]
-            })
+            });
         });
     </script>
 </head>
