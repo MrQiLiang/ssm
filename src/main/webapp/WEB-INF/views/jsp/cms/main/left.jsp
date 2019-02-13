@@ -55,7 +55,7 @@
                 <ul class="submenu">
                     <c:forEach var="menu" items="${menuItem.menus}">
                         <li>
-                            <a href="#" onclick="test('${menu.menuid}','${menu.menuname}','${menu.url}')">
+                            <a href="#" onclick="openTagWin('${menu.menuid}','${menu.menuname}','${menu.url}')">
                                 <i class="icon-double-angle-right"></i>
                                     ${menu.menuname}
                             </a>
@@ -77,7 +77,7 @@
         try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
     </script>
     <script type="text/javascript">
-        function test(id,menuName,url) {
+        function openTagWin(id,menuName,url) {
         //    alert(url);
             mainFrame.window.tabHandler(id,menuName,url);
         }
