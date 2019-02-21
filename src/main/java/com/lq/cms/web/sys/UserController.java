@@ -155,7 +155,6 @@ public class UserController {
             String fileType = FileUtil.fileFormat(multipartFile.getOriginalFilename());
             newFileName = "user/"+uuid.toString()+"."+fileType;
             File newFile = new File(FILE_LOAD_PATH +newFileName);
-
             if (!newFile.exists()){
                 newFile.mkdirs();
             }
@@ -165,7 +164,6 @@ public class UserController {
                 e.printStackTrace();
             }
         }
-
         return newFileName;
     }
 
