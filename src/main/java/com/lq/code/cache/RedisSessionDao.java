@@ -20,9 +20,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by qi_liang on 2018/9/11.
  */
-public class RedisSessionDao extends CachingSessionDAO {
+public class RedisSessionDao extends EnterpriseCacheSessionDAO {
 
-    private final static Logger log = LoggerFactory.getLogger(RedisSessionDao.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(RedisSessionDao.class);
 
     private RedisTemplate<String,Object> redisTemplate;
 
@@ -39,6 +39,10 @@ public class RedisSessionDao extends CachingSessionDAO {
     @Override
     protected void doUpdate(Session session) {
         //该方法交给父类去执行
+        super.doUpdate(session);
+        //更新reids中的session时间
+        redisTemplate.expire(session.toString(),this.defaultExpireTime, TimeUnit.SECONDS);
+
     }
 
     @Override
@@ -71,6 +75,7 @@ public class RedisSessionDao extends CachingSessionDAO {
 
     @Override
     protected Session doReadSession(Serializable serializable) {
+        LOGGER.warn("执行读取read session方法");
         //此方法不会执行,不用管
         return null;
     }

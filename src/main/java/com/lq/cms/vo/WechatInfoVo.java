@@ -1,6 +1,7 @@
 package com.lq.cms.vo;
 
 import com.lq.cms.emun.WechatInfoEncodingTypeEnum;
+import com.lq.cms.emun.WechatInfoTypeEnum;
 import com.lq.code.util.DateUtil;
 
 import java.text.SimpleDateFormat;
@@ -39,6 +40,10 @@ public class WechatInfoVo extends BasePageVo {
     private Date lastUpdateTime;
     //状态
     private Integer status;
+    //公众号类型
+    private Integer wechatInfoType;
+    //公众号类型（字符串）
+    private String wechatInfoTypeStr;
 
     public Long getId() {
         return id;
@@ -126,7 +131,6 @@ public class WechatInfoVo extends BasePageVo {
     }
 
     public void setCreateTime(Date createTime) {
-
         this.createTime = createTime;
         this.createTimeStr = DateUtil.getDateToStr(createTime);
     }
@@ -153,5 +157,22 @@ public class WechatInfoVo extends BasePageVo {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getWechatInfoType() {
+        return wechatInfoType;
+    }
+
+    public void setWechatInfoType(Integer wechatInfoType) {
+        this.wechatInfoType = wechatInfoType;
+        this.wechatInfoTypeStr = WechatInfoTypeEnum.getDesc(wechatInfoType);
+    }
+
+    public String getWechatInfoTypeStr() {
+        return wechatInfoTypeStr;
+    }
+
+    public void setWechatInfoTypeStr(String wechatInfoTypeStr) {
+        this.wechatInfoTypeStr = wechatInfoTypeStr;
     }
 }

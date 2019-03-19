@@ -8,22 +8,35 @@ import java.util.Date;
  * 微信公众号-获取accessToken
  * Created by qi_liang on 2018/5/24.
  */
-public class WechatAccesstoken extends IdEntity{
-
-    private String accessTokne;
-
+public class WechatAccessToken extends IdEntity{
+    /**
+     *  微信公众号access_token
+     */
+    private String accessToken;
+    /**
+     *  创建时间
+     */
     private Date createTime;
-
-    private Date lastUpdateTime;
-
+    /**
+     *  到期时间(单位：秒)
+     */
+    private Long expiresTime;
+    /**
+     * @Link WechatAccessTokenTypeEnum
+     * token 类型(常用，页面授权)
+     */
+    private Integer tokenType;
+    /**
+     *  关联的微信公众号ID
+     */
     private Long wechatInfoId;
 
-    public String getAccessTokne() {
-        return accessTokne;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setAccessTokne(String accessTokne) {
-        this.accessTokne = accessTokne;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public Date getCreateTime() {
@@ -34,12 +47,20 @@ public class WechatAccesstoken extends IdEntity{
         this.createTime = createTime;
     }
 
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
+    public Long getExpiresTime() {
+        return expiresTime;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setExpiresTime(Long expiresTime) {
+        this.expiresTime = expiresTime;
+    }
+
+    public Integer getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(Integer tokenType) {
+        this.tokenType = tokenType;
     }
 
     public Long getWechatInfoId() {
@@ -49,8 +70,5 @@ public class WechatAccesstoken extends IdEntity{
     public void setWechatInfoId(Long wechatInfoId) {
         this.wechatInfoId = wechatInfoId;
     }
-
-
-
 
 }

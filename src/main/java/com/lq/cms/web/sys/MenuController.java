@@ -33,7 +33,7 @@ import java.util.Map;
 @RequestMapping("/cms/menu")
 public class MenuController {
 
-    private static Logger logger = Logger.getLogger(MenuController.class);
+    private static Logger LOGGER = Logger.getLogger(MenuController.class);
 
     @Autowired
     private SysResourceService sysResourceService;

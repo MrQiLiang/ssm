@@ -155,6 +155,7 @@ public class UserController {
             String fileType = FileUtil.fileFormat(multipartFile.getOriginalFilename());
             newFileName = "user/"+uuid.toString()+"."+fileType;
             File newFile = new File(FILE_LOAD_PATH +newFileName);
+
             if (!newFile.exists()){
                 newFile.mkdirs();
             }
@@ -164,6 +165,7 @@ public class UserController {
                 e.printStackTrace();
             }
         }
+
         return newFileName;
     }
 
@@ -174,7 +176,6 @@ public class UserController {
         AjaxResult ajaxResult = new AjaxResult();
         Subject subject= SecurityUtils.getSubject();
         SysUser sysUser= (SysUser) subject.getPrincipal();
-    //    System.out.println(StringUtil.isNotNull(oldPass)&&StringUtil.isNotNull(newPass));
         if (StringUtil.isNotNull(oldPass)&&StringUtil.isNotNull(newPass)){
             String md5Pass = Md5Util.getMd5(oldPass);
             if (md5Pass.equals(sysUser.getPassword())){
@@ -192,9 +193,6 @@ public class UserController {
             ajaxResult.setSuccess(false);
             ajaxResult.setMsg("参数为空，请检查");
         }
-
-
-
         return ajaxResult;
     }
 

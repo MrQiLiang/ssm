@@ -9,10 +9,6 @@ import com.lq.entity.SysFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * 文件接口事务类
- * @author qi
- */
 @Service
 public class SysFileServiceImpl extends BaseServiceImpl<SysFile> implements SysFileService {
 

@@ -17,4 +17,6 @@ public interface WechatInfoDao extends BaseDao<WechatInfo> {
     List<WechatInfoVo> findListPage(WechatInfoVo vo);
 
     WechatInfo getByWechatOpenId(@Param("wechatOpenId") String wechatOpenId);
+
+    WechatInfo getByWechatName(@Param("wechatName") String wechatName);
 }

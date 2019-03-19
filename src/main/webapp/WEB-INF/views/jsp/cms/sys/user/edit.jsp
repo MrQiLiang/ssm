@@ -16,7 +16,6 @@
             });
 
             var userImageUrl = '${sysUser.imgUrl}';
-            console.log(userImageUrl);
             if (userImageUrl!=null&&userImageUrl!=''){
                 $("#imageShow").attr("src",'${ctx}/loadFile/'+userImageUrl);
                 $("#image_td").show();

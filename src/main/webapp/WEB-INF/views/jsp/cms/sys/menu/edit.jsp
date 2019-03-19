@@ -29,7 +29,7 @@
                             <select class="easyui-combobox" id="parentId" <c:if test="${sysResource.parentId==0}">disabled="disabled"</c:if>   >
                                 <option value="0"  <c:if test="${sysResource.parentId==0}">selected</c:if>   >顶级目录</option>
                                 <c:forEach var="menu" items="${menuList}">
-                                <option value="${menu.id}"  <c:if test="${menu.id==sysResource.parentId}">selected</c:if>  onclick="showUrlPath()" >${menu.menuName}</option>
+                                    <option value="${menu.id}"  <c:if test="${menu.id==sysResource.parentId}">selected</c:if>  onclick="showUrlPath()" >${menu.menuName}</option>
                                 </c:forEach>
                             </select>
                         </td>

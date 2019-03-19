@@ -9,36 +9,73 @@ import java.util.Date;
  * Created by qi_liang on 2018/5/24.
  */
 public class WechatUser extends IdEntity{
-
-    //用户openId
+    /**
+     * 用户openId
+     */
     private String openId;
-    //昵称
+    /**
+     * 昵称
+     */
     private String nickName;
-    //性别
+    /**
+     *  性别
+     */
     private Integer sex;
-    //语言
+    /**
+     * 语言
+     */
     private String language;
-    //城市
+    /**
+     * 城市
+     */
     private String city;
-    //省份
+    /**
+     * 省份
+     */
     private String province;
-    //国家
+    /**
+     * 国家
+     */
     private String country;
-    //头像地址
+    /**
+     * 头像地址
+     */
     private String headImgUrl;
-    //用户关注时间(多次关注，取最后一次时间)
+    /**
+     * 用户关注时间(多次关注，取最后一次时间)
+     */
     private Date subscribeTime;
-    //用户对应微信开放平台账号(只有绑定了开放平台账号，才出现该字段)
+    /**
+     * 用户对应微信开放平台账号(只有绑定了开放平台账号，才出现该字段)
+     */
     private String unionid;
-    //运营者对用户备注
+    /**
+     * 运营者对用户备注
+     */
     private String remark;
-    //用户对应分组
+    /**
+     * 用户对应分组
+     */
     private String groupid;
-    //用户对应的标签
+    /**
+     * 用户对应的标签
+     */
     private String tagidId;
-    //用户关注渠道
+    /**
+     * 用户关注渠道
+     */
     private String sybscribeScene;
-    //关联的微信ID
+    /**
+     * 二维码扫码场景（开发者自定义）
+     */
+    private String qrScene;
+    /**
+     * 二维码场景描述（开发者自定义）
+     */
+    private String qrSceneStr;
+    /**
+     * 关联的微信ID
+     */
     private Long wechatInfoId;
 
     public String getOpenId() {
@@ -151,6 +188,22 @@ public class WechatUser extends IdEntity{
 
     public void setSybscribeScene(String sybscribeScene) {
         this.sybscribeScene = sybscribeScene;
+    }
+
+    public String getQrScene() {
+        return qrScene;
+    }
+
+    public void setQrScene(String qrScene) {
+        this.qrScene = qrScene;
+    }
+
+    public String getQrSceneStr() {
+        return qrSceneStr;
+    }
+
+    public void setQrSceneStr(String qrSceneStr) {
+        this.qrSceneStr = qrSceneStr;
     }
 
     public Long getWechatInfoId() {

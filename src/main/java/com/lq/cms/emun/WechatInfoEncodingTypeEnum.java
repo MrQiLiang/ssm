@@ -11,7 +11,7 @@ public enum  WechatInfoEncodingTypeEnum {
     BLEND("BLEND","混合"),
     ENCRYPT("ENCRYPT","加密")
     ;
-    private static Map<String,String> enumMap = new HashMap();
+    private static Map<String,String> enumMap = new HashMap(WechatInfoEncodingTypeEnum.values().length);
 
     static {
 

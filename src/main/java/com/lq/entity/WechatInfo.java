@@ -10,26 +10,58 @@ import java.util.Date;
  */
 public class WechatInfo extends IdEntity {
 
-    //公众号opendId
+    /**
+     * 公众号opendId
+     */
     private String wechatOpenId;
-    //公众号名
+    /**
+     * 公众号名
+     */
     private String wechatName;
-    //公众号原始appid
+    /**
+     * 公众号appid
+     */
     private String appId;
-    //公众号appsecret
+    /**
+     * 公众号appsecret
+     */
     private String appSecpet;
-    //配置的url
+    /**
+     * 在微信公众号管理平台配置url
+     */
     private String url;
-    //token
+    /**
+     * 微信公众号加密token
+     */
     private String token;
-    //消息加密类型
+    /**
+     * 消息加密类型 @Link WechatInfoEncodingTypeEnum
+     */
     private String encodingType;
-    //消息加密密钥
+    /**
+     * 消息加密密钥
+     */
     private String encodingAesKey;
-    //创建时间
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    //最后更新时间
+    /**
+     * 最后更新时间
+     */
     private Date lastUpdateTime;
+    /**
+     *  创建用户ID
+     */
+    private Long createUserId;
+    /**
+     *  最后更新用户ID
+     */
+    private Long updateUserId;
+    /**
+     *  微信公众号类型:@Link WechatInfoTypeEnum
+     */
+    private Integer wechatInfoType;
 
     public String getWechatOpenId() {
         return wechatOpenId;
@@ -111,4 +143,27 @@ public class WechatInfo extends IdEntity {
         this.lastUpdateTime = lastUpdateTime;
     }
 
+    public Long getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(Long createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public Long getUpdateUserId() {
+        return updateUserId;
+    }
+
+    public void setUpdateUserId(Long updateUserId) {
+        this.updateUserId = updateUserId;
+    }
+
+    public Integer getWechatInfoType() {
+        return wechatInfoType;
+    }
+
+    public void setWechatInfoType(Integer wechatInfoType) {
+        this.wechatInfoType = wechatInfoType;
+    }
 }

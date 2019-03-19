@@ -14,7 +14,13 @@ MsgId	消息id，64位整型
  */
 @XStreamAlias("xml")
 public class ImageMessage extends BaseMessage {
+	/**
+	 *  图片链接
+	 */
 	private String PicUrl;
+	/**
+	 *  素材ID（通过微信公众号提供的素材接口获得）
+	 */
 	private String MediaId;
 	public String getPicUrl() {
 		return PicUrl;

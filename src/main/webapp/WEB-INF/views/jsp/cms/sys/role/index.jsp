@@ -95,7 +95,6 @@
     }
 
     function getData() {
-        var obj = new Object();
         var obj=new Object();
         obj.id=$("#id").val();
         obj.roleName=$("#roleName").val();

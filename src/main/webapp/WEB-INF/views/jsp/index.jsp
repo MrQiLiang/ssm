@@ -38,7 +38,6 @@
    }
 
    $(function () {
-        plus
         $("#openBtn").on("click",function(){
             location.href="myscheme://myhost:1024/main";
         });

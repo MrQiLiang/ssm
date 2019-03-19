@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum WechatMessageTypeEnum {
-    IMAGE("IMAGE","图片"),
     TEXT("TEXT","文本"),
+    IMAGE("IMAGE","图片"),
     IMAGE_TEXT("IMAGE_TEXT","图文混合")
     ;
 

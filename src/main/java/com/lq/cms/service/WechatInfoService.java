@@ -21,4 +21,8 @@ public interface WechatInfoService extends BaseService<WechatInfo> {
      * @return
      */
     WechatInfo getByOpenId(String wechatOpenId);
+    /**
+     * 通过公众号名称查找公众号详情
+     */
+    WechatInfo getByWechatName(String wechatName);
 }

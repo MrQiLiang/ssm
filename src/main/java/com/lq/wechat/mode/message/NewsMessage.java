@@ -23,8 +23,14 @@ Url	否	点击图文消息跳转链接
  */
 @XStreamAlias("xml")
 public class NewsMessage extends BaseMessage {
+	/**
+	 *  消息条数
+	 */
 	private Integer ArticleCount;
-    private List<ItemMessage> Articles;
+	/**
+	 * 多条图文消息
+	 */
+	private List<ItemMessage> Articles;
 	public Integer getArticleCount() {
 		return ArticleCount;
 	}

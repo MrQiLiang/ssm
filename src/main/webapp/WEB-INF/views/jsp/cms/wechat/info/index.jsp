@@ -22,23 +22,28 @@
                 url:'list',
                 pagination :"true",
                 columns:[[
+                    {field:'editId',title:'编辑',width:130,formatter:function (value,row,index) {
+                            var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
+                            html+="<a href='#' onclick='del("+row.id+")'>删除</a>&nbsp&nbsp";
+                            html+="<a href='#' onclick='openMenu("+row.id+")'>菜单</a>&nbsp&nbsp";
+                            html+="<a href='#' onclick='openRule("+row.id+")'>回复</a>&nbsp&nbsp";
+                            return html;
+                        }},
                     {field:'id',title:'编号',width:35},
                     {field:'wechatName',title:'微信名称',width:100},
                     {field:'wechatOpenId',title:'微信openId',width:100},
                     {field:'appId',title:'appId',width:100},
                     {field:'appSecpet',title:'开发者密码',width:100},
                     {field:'token',title:'令牌',width:100},
+                    {field:'wechatInfoTypeStr',title:'类型',width:80},
                     {field:'encodingTypeStr',title:'消息模式',width:100},
                     {field:'encodingAesKey',title:'消息加密key',width:100},
                     {field:'createTimeStr',title:'创建时间',width:150},
                     {field:'url',title:'对接url',width:300},
-                    {field:'editId',title:'编辑',width:200,formatter:function (value,row,index) {
-                        var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
-                        html+="<a href='#' onclick='del("+row.id+")'>删除</a>&nbsp&nbsp";
-                        html+="<a href='#' onclick='openMenu("+row.id+")'>菜单</a>&nbsp&nbsp";
-                        html+="<a href='#' onclick='openRule("+row.id+")'>回复</a>&nbsp&nbsp";
-                        return html;
-                    }}
+
+
+
+
                 ]],
                 toolbar: [{
                     iconCls: 'icon-add',
@@ -104,6 +109,7 @@
             obj.token = $("#token").val();
             obj.encodingType = $("#encodingType").val();
             obj.encodingAesKey = $("#encodingAesKey").val();
+            obj.wechatInfoType = $("#wechatInfoType").val();
             return obj;
         }
 

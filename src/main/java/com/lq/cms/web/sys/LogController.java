@@ -22,9 +22,9 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("cms/log")
-public class LogController {
+public class  LogController {
 
-    private static Logger logger = Logger.getLogger(LogController.class);
+    private static Logger LOGGER = Logger.getLogger(LogController.class);
 
 
     @Autowired

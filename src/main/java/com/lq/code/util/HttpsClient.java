@@ -25,9 +25,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import com.alibaba.fastjson.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HttpsClient {
 
+	private static final Logger LOGGER  = LoggerFactory.getLogger(HttpsClient.class);
 
 
 	public static String post(String url,Map<String, Object> params) throws IOException{

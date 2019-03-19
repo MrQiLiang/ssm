@@ -10,6 +10,8 @@ import java.io.*;
  */
 public class XmlUtil {
 
+    public static final String DEFAULT_ENCODING = "utf8";
+
     /**
      *  object 转 xml 文档
      * @param obj

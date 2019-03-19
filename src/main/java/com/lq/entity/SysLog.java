@@ -8,7 +8,9 @@ import java.util.Date;
  * Created by qi on 2017/7/27.
  */
 public class SysLog extends IdEntity {
-    //访问ip
+    /**
+     * 访问ip
+     */
     private  String userIp;
     //创建时间
     private Date createTime;

@@ -65,6 +65,17 @@
             <td><input class="easyui-textbox" type="text" id="url" data-options="required:true" value="${wechatInfo.url}" /></td>
         </tr>
 
+        <tr>
+            <td>公众号类型:</td>
+            <td>
+                <select id="wechatInfoType" >
+                    <c:forEach items="${wechatInfoTypeMap}" var="wechatInfoType">
+                        <option <c:if test="${wechatInfo.wechatInfoType == wechatInfoType.key}">selected</c:if> value="${wechatInfoType.key}">${wechatInfoType.value}</option>
+                    </c:forEach>
+                </select>
+            </td>
+        </tr>
+
     </table>
 </div>
 </body>

@@ -34,7 +34,7 @@
             </td>
         </tr>
 
-        <tr>
+        <tr id="tr_content">
             <td>文本内容:</td>
             <td>
                 <textarea id="content">${wechatMessage.content}</textarea>
@@ -43,12 +43,12 @@
             </td>
         </tr>
 
-        <tr>
+        <tr id="tr_imageUrl">
             <td>图片文件:</td>
             <td><input class="easyui-textbox" type="file" id="imageUrl" data-options="required:true"/></td>
         </tr>
 
-        <tr>
+        <tr id="tr_cropedBigImg">
             <td colspan="2" align="center">
                 <img src="" id="cropedBigImg" style="display:none;width: 200px;height: 200px;">
             </td>
@@ -71,7 +71,6 @@
 </body>
 <script type="text/javascript">
     $(function () {
-        console.log("==========测试内容==========");
         $('#imageUrl').on('change', function() {//当chooseImage的值改变时，执行此函数
             var filePath = $(this).val(), //获取到input的value，里面是文件的路径
                 fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
@@ -86,6 +85,40 @@
                 $('#cropedBigImg').attr('src', src);
             }
         });
+        var messageType = '${wechatMessage.messageType}';
+        if (messageType==null||messageType==''){
+            messageType = 'TEXT';
+            $("#messageType").val(messageType);
+        }
+        showMessageTypeInput(messageType);
+
+        $("#messageType").on("change",function () {
+            var messageType = $(this).val();
+            showMessageTypeInput(messageType);
+        })
+
+
     });
+
+    function showMessageTypeInput(messageType) {
+
+        switch (messageType){
+            case 'IMAGE':
+                $("#tr_imageUrl").show();
+                $("#tr_cropedBigImg").show();
+                $("#tr_content").hide();
+                ;break;
+            case 'TEXT':
+                $("#tr_imageUrl").hide();
+                $("#tr_content").show();
+                $("#tr_cropedBigImg").show();
+                ;break;
+            case 'IMAGE_TEXT':
+                $("#tr_imageUrl").show();
+                $("#tr_cropedBigImg").show();
+                $("#tr_content").show();
+                ;break;
+        }
+    }
 </script>
 </html>

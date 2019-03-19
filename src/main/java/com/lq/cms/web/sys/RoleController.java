@@ -33,7 +33,7 @@ import java.util.Map;
 @RequestMapping("/cms/role")
 public class RoleController  {
 
-    private static Logger logger = Logger.getLogger(RoleController.class);
+    private static Logger LOGGER = Logger.getLogger(RoleController.class);
 
 
     @Autowired

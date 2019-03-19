@@ -1,5 +1,8 @@
 package com.lq.wechat.util;
 
+/**
+ *  微信公众号相关常量
+ */
 public class ConstantSet {
 	
 	//消息类型:文本

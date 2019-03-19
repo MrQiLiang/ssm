@@ -1,51 +1,68 @@
 package com.lq.wechat.web;
 
 import com.lq.cms.service.WechatInfoService;
+import com.lq.cms.service.WechatUserService;
+import com.lq.code.util.StringUtil;
 import com.lq.code.web.BaseController;
 import com.lq.entity.WechatInfo;
+import com.lq.entity.WechatUser;
 import com.lq.wechat.mode.message.ItemMessage;
 import com.lq.wechat.mode.message.NewsMessage;
 import com.lq.wechat.mode.message.TextMessage;
 import com.lq.wechat.util.CheckUtil;
 import com.lq.wechat.util.ConstantSet;
 import com.lq.wechat.util.MessageUtil;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 /**
+ * @author qi
  * Created by qi on 2017/7/16.
  */
 @Controller
 @RequestMapping("/wechatApi")
 public class  WechatController extends BaseController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WechatController.class);
+    //消息类型
+    public static final String WECHAT_MESSAGE_TYPE_KEY = "MsgType";
+    //微信公众号openId
+    public static final String WECHAT_OPENID_KEY = "ToUserName";
+    //接收方账号
+    public static final String WECHAT_USER_OPENID_KEY = "FromUserName";
+    //用户-消息内容
+    public static final String WECHAT_CONTENT_KEY = "Content";
+
+
     @Autowired
     private WechatInfoService wechatInfoService;
-
-
-    private static Logger logger = Logger.getLogger(WechatController.class);
+    @Autowired
+    private WechatUserService wechatUserService;
 
     @RequestMapping(method = { RequestMethod.GET }, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String doget(String signature,String timestamp,String nonce,String echostr){
-
-
-        if (CheckUtil.checkSingatue(signature, timestamp, nonce)) {
-
-            return echostr;
+    public String doget(String signature,String timestamp,String nonce,String echostr,String wechatOpenId) throws UnsupportedEncodingException {
+        if (StringUtil.isNotNull(wechatOpenId)){
+            //通过微信公众号名称查找公众号资料
+            WechatInfo wechatInfo = wechatInfoService.getByOpenId(wechatOpenId);
+            if (wechatInfo!=null){
+                String token = wechatInfo.getToken();
+                if (CheckUtil.checkSingatue(signature, timestamp, nonce,token)) {
+                    return echostr;
+                }
+            }
         }
-
         return "Error Message";
     }
 
@@ -56,23 +73,23 @@ public class  WechatController extends BaseController {
         try {
             Map<String, String> map = MessageUtil.xmlToMap(req);
             //消息类型
-            String msgType = map.get("MsgType");
+            String msgType = map.get(WECHAT_MESSAGE_TYPE_KEY);
             //微信公众号openId
-            String toUserName = map.get("ToUserName");
+            String wechatOpenId = map.get(WECHAT_OPENID_KEY);
             //接收方账号
-            String fromUserName = map.get("FromUserName");
+            String openId = map.get(WECHAT_USER_OPENID_KEY);
             //微信公众号详情
-            WechatInfo wechatInfo = wechatInfoService.getByOpenId(toUserName);
+            WechatInfo wechatInfo = wechatInfoService.getByOpenId(wechatOpenId);
 
             TextMessage text = new TextMessage();
-            text.setFromUserName(toUserName);
-            text.setToUserName(fromUserName);
+            text.setFromUserName(wechatOpenId);
+            text.setToUserName(openId);
             text.setMsgType(ConstantSet.MESSAGE_TYPE_TEXT);
 
             text.setCreateTime(System.currentTimeMillis());
             switch (msgType) {
                 case ConstantSet.MESSAGE_TYPE_TEXT:
-                    String content = map.get("Content");
+                    String content = map.get(WECHAT_CONTENT_KEY);
 
 
                     if("1".equals(content)){
@@ -83,15 +100,15 @@ public class  WechatController extends BaseController {
                         item.setDescription("两个人在爱在距离面前是否禁受考验？");
                         String path = req.getContextPath();
                         String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+path+"/";
-                        item.setPicUrl(basePath+"/img/testImg.jpg");
+                        item.setPicUrl("https://img3.doubanio.com/view/photo/l/public/p2367455902.webp");
                         item.setUrl("http://www.iqiyi.com/v_19rr95j3vc.html?vfm=2008_aldbd");
                         items.add(item);
                         newsMessage.setArticles(items);
                         newsMessage.setArticleCount(1);
                         newsMessage.setCreateTime(System.currentTimeMillis());
-                        newsMessage.setFromUserName(toUserName);
+                        newsMessage.setFromUserName(wechatOpenId);
                         newsMessage.setMsgType(ConstantSet.MESSAGE_TYPE_NEW);
-                        newsMessage.setToUserName(fromUserName);
+                        newsMessage.setToUserName(openId);
                         message = MessageUtil.MessageToXml(newsMessage);
                     } else{
                         text.setContent("您发送的消息是：" + content);
@@ -127,6 +144,8 @@ public class  WechatController extends BaseController {
                     String event = map.get("Event");
                     switch (event) {
                         case ConstantSet.EVENT_TYPE_SUBSCRIBE:
+                            LOGGER.info("微信公众号关注事件："+wechatInfo.getWechatName());
+                            WechatUser wechatUser = wechatUserService.saveWechatUser(openId,wechatInfo);
                             ;
                             break;
                         case ConstantSet.EVENT_TYPE_UNSUBSCRIBE:
@@ -152,4 +171,5 @@ public class  WechatController extends BaseController {
         }
         return message;
     }
+
 }
