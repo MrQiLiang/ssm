@@ -4,6 +4,7 @@ package com.lq.webUtil.util;
 import java.io.*;
 
 /**
+ * @author qi
  * Created by qi on 2017/7/24.
  */
 public class ImgUtil {
