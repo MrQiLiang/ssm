@@ -10,11 +10,11 @@
         id,name,status
     </sql>
 
-    <select id="findAll" resultType="com.lq.entity.SysPermission">
+    <select id="findAll" resultType="SysPermission">
         SELECT <include refid="column_list"/> FROM sys_permission WHERE status = 1
     </select>
 
-    <insert id="save"  parameterType="com.lq.entity.SysPermission">
+    <insert id="save"  parameterType="SysPermission">
 
         <selectKey keyProperty="id" order="AFTER" resultType="long">
             SELECT LAST_INSERT_ID()

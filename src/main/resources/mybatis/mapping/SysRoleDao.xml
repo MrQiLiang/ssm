@@ -10,27 +10,27 @@
         id,role_name,create_time,update_time,status
     </sql>
     
-    <select id="findByUserId" resultType="com.lq.entity.SysRole">
+    <select id="findByUserId" resultType="SysRole">
       SELECT t1.* FROM sys_role t1
       LEFT JOIN sys_user_role t2 ON t1.id=t2.role_id
       WHERE t2.user_id=#{userId} AND t1.status=1 AND t2.status=1
     </select>
 
 
-    <select id="findOne" resultType="com.lq.entity.SysRole" parameterType="long">
+    <select id="findOne" resultType="SysRole" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM  sys_role
         WHERE id=#{id}
           AND status=1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.SysRole">
+    <select id="findAll" resultType="SysRole">
         SELECT <include refid="column_list"/>
           FROM  sys_role
         WHERE status=1
     </select>
 
-    <insert id="save" parameterType="com.lq.entity.SysRole" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="SysRole" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -46,7 +46,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.lq.entity.SysRole">
+    <update id="update" parameterType="SysRole">
         UPDATE
         sys_role
         SET
@@ -62,11 +62,11 @@
         UPDATE sys_role SET  status = 0 WHERE id=#{id}
     </update>
 
-    <select id="count" resultType="Int" parameterType="com.lq.cms.vo.SysRoleVo">
+    <select id="count" resultType="Int" parameterType="SysRoleVo">
         SELECT count(id)  FROM sys_role WHERE status=1
     </select>
 
-    <select id="findListPage" parameterType="com.lq.cms.vo.SysRoleVo" resultType="com.lq.cms.vo.SysRoleVo">
+    <select id="findListPage" parameterType="SysRoleVo" resultType="SysRoleVo">
         SELECT <include refid="column_list"/>
           FROM sys_role
         WHERE status=1

@@ -12,6 +12,11 @@
       
   </settings>
 
+   <typeAliases>
+       <package name="com.lq.entity"/>
+       <package name="com.lq.cms.vo"/>
+   </typeAliases>
+
 
     <plugins>
       <plugin interceptor="com.lq.code.interceptor.PageInteceptor">

@@ -10,7 +10,7 @@
         id,url_path,sort,parent_id,menu_ico,menu_name,create_time,update_time,user_id,status
     </sql>
 
-    <select id="findByParentId"  resultType="com.lq.entity.SysResource">
+    <select id="findByParentId"  resultType="SysResource">
         SELECT <include refid="column_list"/>
             FROM sys_resource
         WHERE
@@ -18,26 +18,26 @@
         ORDER BY sort ASC ,create_time DESC
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.SysResource">
+    <select id="findAll" resultType="SysResource">
         SELECT <include refid="column_list"/>
           FROM sys_resource
         WHERE
             status = 1
     </select>
 
-    <select id="findList" parameterType="com.lq.cms.vo.SysResourceVo" resultType="com.lq.entity.SysResource">
+    <select id="findList" parameterType="SysResourceVo" resultType="SysResource">
         SELECT  <include refid="column_list"/>
           FROM sys_resource
         WHERE status =1
     </select>
 
-    <select id="findOne" parameterType="Long" resultType="com.lq.entity.SysResource">
+    <select id="findOne" parameterType="Long" resultType="SysResource">
         SELECT <include refid="column_list"/>
           FROM sys_resource
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findListPage" parameterType="com.lq.cms.vo.SysResourceVo" resultType="com.lq.cms.vo.SysResourceVo">
+    <select id="findListPage" parameterType="SysResourceVo" resultType="SysResourceVo">
         SELECT t1.*,t2.login_name user_name,ifnull(t3.menu_name,'顶级目录') parent_menu_name
             FROM sys_resource t1
         LEFT JOIN sys_user t2 ON t1.user_id=t2.id
@@ -47,11 +47,11 @@
     </select>
 
 
-    <select id="count" parameterType="com.lq.cms.vo.SysResourceVo" resultType="int">
+    <select id="count" parameterType="SysResourceVo" resultType="int">
         SELECT COUNT(id) FROM sys_resource  WHERE status=1
     </select>
 
-    <update id="update" parameterType="com.lq.entity.SysResource">
+    <update id="update" parameterType="SysResource">
         UPDATE
           sys_resource
         <trim prefix="set" suffixOverrides=",">
@@ -76,7 +76,7 @@
     </update>
 
 
-    <insert id="save" parameterType="com.lq.entity.SysResource">
+    <insert id="save" parameterType="SysResource">
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -96,7 +96,7 @@
            )
     </insert>
 
-    <select id="findMenu" parameterType="map" resultType="com.lq.entity.SysResource">
+    <select id="findMenu" parameterType="map" resultType="SysResource">
         SELECT <include refid="column_list"/>
         FROM sys_resource t1
           INNER JOIN (

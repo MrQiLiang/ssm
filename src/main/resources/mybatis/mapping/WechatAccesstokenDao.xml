@@ -10,19 +10,19 @@
         id,create_time,wechat_info_id,access_tokne,last_update_time
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.WechatAccesstoken" parameterType="long">
+    <select id="findOne" resultType="WechatAccessToken" parameterType="long">
         SELECT <include refid="column_list"/>
         FROM  wechat_accesstoken
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.WechatAccesstoken">
+    <select id="findAll" resultType="WechatAccessToken">
         SELECT <include refid="column_list"/>
           FROM  wechat_accesstoken
         WHERE status = 1
     </select>
 
-    <insert id="save" parameterType="com.lq.entity.WechatAccesstoken" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="WechatAccessToken" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -36,7 +36,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.WechatAccesstoken">
+    <update id="update" parameterType="WechatAccessToken">
         UPDATE
             wechat_accesstoken
         <trim prefix="set" suffixOverrides=",">

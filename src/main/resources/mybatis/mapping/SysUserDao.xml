@@ -11,36 +11,36 @@
         id,login_name,password,create_time,update_time,last_login_time,email,img_url,remarks,status
     </sql>
 
-    <select id="findOne" parameterType="Long" resultType="com.lq.entity.SysUser">
+    <select id="findOne" parameterType="Long" resultType="SysUser">
       SELECT <include refid="column_list"/>
         FROM sys_user
       WHERE id=#{id}
         AND status = 1
     </select>
 
-    <select id="findByEmail" resultType="com.lq.entity.SysUser">
+    <select id="findByEmail" resultType="SysUser">
         SELECT <include refid="column_list"/>
           FROM sys_user
         where email = #{email} AND  status = 1
     </select>
 
-    <select id="findByLoginNameAndPassword" resultType="com.lq.entity.SysUser" >
+    <select id="findByLoginNameAndPassword" resultType="SysUser" >
         SELECT <include refid="column_list"/>
           FROM sys_user t
         WHERE t.login_name=#{loginName} AND t.password=#{password} AND t.status =1
     </select>
 
-    <select id="findListPage" resultType="com.lq.cms.vo.SysUserVo" parameterType="com.lq.cms.vo.SysUserVo">
+    <select id="findListPage" resultType="SysUserVo" parameterType="SysUserVo">
         SELECT <include refid="column_list"/>
           FROM sys_user
         WHERE status = 1
     </select>
 
-    <select id="count" parameterType="com.lq.cms.vo.SysUserVo" resultType="Int">
+    <select id="count" parameterType="SysUserVo" resultType="Int">
         SELECT  count(id) FROM sys_user WHERE status =1
     </select>
 
-    <insert id="save" parameterType="com.lq.entity.SysUser" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id">
         <selectKey keyProperty="id" order="AFTER" resultType="long">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -59,7 +59,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.lq.entity.SysUser">
+    <update id="update" parameterType="SysUser">
         UPDATE
         sys_user
         <trim prefix="set" suffixOverrides=",">

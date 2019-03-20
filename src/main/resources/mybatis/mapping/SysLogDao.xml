@@ -9,29 +9,29 @@
         id,user_ip,create_time,url,status
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.SysLog" parameterType="long">
+    <select id="findOne" resultType="SysLog" parameterType="long">
         SELECT <include refid="column_list"/>
         FROM  sys_log
         WHERE id=#{id} AND status = 1
     </select>
 
 
-    <select id="count" resultType="int" parameterType="com.lq.cms.vo.SysLogVo">
+    <select id="count" resultType="int" parameterType="SysLogVo">
         SELECT count(id) FROM sys_log WHERE status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.SysLog">
+    <select id="findAll" resultType="SysLog">
         SELECT <include refid="column_list"/>
         FROM  sys_log
     </select>
 
-    <select id="findListPage" resultType="com.lq.cms.vo.SysLogVo" parameterType="com.lq.cms.vo.SysLogVo">
+    <select id="findListPage" resultType="SysLogVo" parameterType="SysLogVo">
         SELECT <include refid="column_list"/>
         FROM sys_log
         ORDER BY create_time DESC
     </select>
 
-    <insert id="save" parameterType="com.lq.entity.SysLog">
+    <insert id="save" parameterType="SysLog">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -44,7 +44,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.lq.entity.SysLog">
+    <update id="update" parameterType="SysLog">
         UPDATE sys_log SET CREATE_TIME=#{createTime},USER_IP=#{userIp},URL=#{url} name= WHERE id=#{id}
     </update>
 
