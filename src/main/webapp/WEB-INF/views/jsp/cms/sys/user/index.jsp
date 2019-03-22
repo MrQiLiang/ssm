@@ -33,7 +33,8 @@
                     {field:'lastLoginTimeStr',title:'最后登录时间',width:150},
                     {field:'email',title:'电子邮件',width:150},
                     {field:'imgUrl',title:'头像',width:50,formatter:function(value,row,index){
-                        return "<img src=\"${ctx}/loadFile/"+value+"\" style=\"width: 30px;height: 30px;border-radius:5px\">";
+                        var html = '<a href="${ctx}/loadFile/'+value+'" target="_blank"><img src="${ctx}/loadFile/'+value+'" style="width: 30px;height: 30px;border-radius:5px"></a>';
+                        return html;
                     }},
                     /* formatter 不能重复field,否则会失效**/
                     {field:'editId',title:'编辑',width:100,formatter:function (value,row,index) {
@@ -50,6 +51,7 @@
                     handler: function(){openEdit('新增',null)}
                 }]
             });
+
         });
     </script>
 </head>
@@ -59,6 +61,7 @@
 
 </body>
 <script type="text/javascript">
+
     function openEdit(title,id) {
         var url='edit';
         if(id!=null){

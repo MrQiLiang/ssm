@@ -43,7 +43,7 @@ import java.util.HashMap;
 @RequestMapping("/cms")
 public class IndexController {
 
-    private static Logger logger = Logger.getLogger(IndexController.class);
+    private static Logger LOGGER = Logger.getLogger(IndexController.class);
 
     @Autowired
     private SysResourceService sysResourceService;
@@ -53,6 +53,10 @@ public class IndexController {
     @RequestMapping(value = {"/index",""})
     public ModelAndView toCmsIndix(ModelAndView modelAndView, HttpServletRequest request){
         Subject subject=SecurityUtils.getSubject();
+        Session session = subject.getSession();
+LOGGER.info("===================");
+LOGGER.info("sessionID:"+session.getId());
+LOGGER.info("sessionTimeOut:"+session.getTimeout());
         SysUser sysUser=(SysUser) subject.getPrincipal();
         List<MenusComposite> list = null;
         if (subject.hasRole("admin")) {
