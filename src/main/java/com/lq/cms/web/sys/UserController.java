@@ -8,10 +8,7 @@ import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysUserRoleVo;
 import com.lq.cms.vo.SysUserVo;
 import com.lq.code.entity.AjaxResult;
-import com.lq.code.util.BeanUtil;
-import com.lq.code.util.FileUtil;
-import com.lq.code.util.Md5Util;
-import com.lq.code.util.StringUtil;
+import com.lq.code.util.*;
 import com.lq.entity.SysUser;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
@@ -45,7 +42,7 @@ public class UserController {
 
     private final static Logger LOGGER = Logger.getLogger(UserController.class);
 
-    private final static String SHIRO_SCOPE="/cms/user/index:";
+    private final static String INDEX_URL="/cms/user/index";
 
     private final static String PERMISSION_SELECT="SELECT";
 
@@ -63,7 +60,6 @@ public class UserController {
     @Value("${file.upload}")
     private String FILE_LOAD_PATH;
 
-    @RequiresPermissions(SHIRO_SCOPE+PERMISSION_SELECT)
     @RequestMapping("/index")
     public ModelAndView  index(ModelAndView modelAndView){
 
@@ -71,7 +67,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequiresPermissions(SHIRO_SCOPE+PERMISSION_SELECT)
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     @RequestMapping("/list")
     @ResponseBody
     public Object list(SysUserVo vo){
@@ -92,7 +88,7 @@ public class UserController {
     }
 
 
-    @RequiresPermissions("/cms/user/index:INSERT")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
     @ResponseBody
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Object save(SysUserVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
@@ -111,7 +107,7 @@ public class UserController {
         return ajaxResult;
     }
 
-    @RequiresPermissions("/cms/user/index:UPDATE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @ResponseBody
     @RequestMapping("/update")
     public Object update(SysUserVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
@@ -135,7 +131,7 @@ public class UserController {
 
 
 
-    @RequiresPermissions("/cms/user/index:DELETE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)
     @RequestMapping("/delete")
     @ResponseBody
     public Object delte(SysUser sysUser){

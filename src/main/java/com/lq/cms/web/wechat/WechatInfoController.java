@@ -6,6 +6,7 @@ import com.lq.cms.emun.WechatInfoTypeEnum;
 import com.lq.cms.service.WechatInfoService;
 import com.lq.cms.vo.WechatInfoVo;
 import com.lq.code.entity.AjaxResult;
+import com.lq.code.util.Constant;
 import com.lq.entity.WechatInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.BeanUtils;
@@ -25,6 +26,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/cms/wechat/info")
 public class WechatInfoController {
+
+    private static final String INDEX_URL = "/cms/wechat/info/index";
+
 
     @Autowired
     private WechatInfoService wechatInfoService;
@@ -51,7 +55,7 @@ public class WechatInfoController {
         return modelAndView;
     }
 
-    @RequiresPermissions("/cms/wechat/info/index:SELECT")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     @ResponseBody
     @RequestMapping("/list")
     public Object list(WechatInfoVo vo){
@@ -61,7 +65,7 @@ public class WechatInfoController {
         return map;
     }
 
-    @RequiresPermissions("/cms/wechat/info/index:INSERT")
+    @RequiresPermissions(INDEX_URL+Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
     @ResponseBody
     @RequestMapping("/save")
     public Object save(WechatInfoVo vo){
@@ -75,7 +79,7 @@ public class WechatInfoController {
         return  ajaxResult;
     }
 
-    @RequiresPermissions("/cms/wechat/info/index:UPDATE")
+    @RequiresPermissions(INDEX_URL+Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @ResponseBody
     @RequestMapping("/update")
     public Object update(WechatInfoVo vo){
@@ -86,7 +90,7 @@ public class WechatInfoController {
         return  ajaxResult;
     }
 
-    @RequiresPermissions("/cms/wechat/info/index:DELETE")
+    @RequiresPermissions(INDEX_URL+Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)
     @ResponseBody
     @RequestMapping("/delete")
     public Object delete(WechatInfoVo vo){

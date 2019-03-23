@@ -9,6 +9,7 @@ import com.lq.cms.vo.SysRoleResourcePermissionVo;
 import com.lq.cms.vo.SysRoleVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.BeanUtil;
+import com.lq.code.util.Constant;
 import com.lq.entity.SysRole;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.Logical;
@@ -35,6 +36,7 @@ public class RoleController  {
 
     private static Logger LOGGER = Logger.getLogger(RoleController.class);
 
+    public static final String INDEX_URL = "/cms/role/index";
 
     @Autowired
     private SysRoleService sysRoleService;
@@ -42,7 +44,6 @@ public class RoleController  {
     private SysRoleResourcePermissionService sysRoleResourcePermissionService;
 
 
-    @RequiresPermissions("/cms/role/index:SELECT")
     @RequestMapping("/index")
     public ModelAndView index(ModelAndView modelAndView){
 
@@ -50,7 +51,7 @@ public class RoleController  {
         return modelAndView;
     }
 
-    @RequiresPermissions("/cms/role/index:SELECT")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     @RequestMapping("/list")
     @ResponseBody
     public Object list(SysRoleVo vo){
@@ -61,7 +62,7 @@ public class RoleController  {
         return map;
     }
 
-    @RequiresPermissions(value={"/cms/role/index:INSERT","/cms/role/index:UPDATE"},logical = Logical.OR)
+  //  @RequiresPermissions(value={"/cms/role/index:INSERT","/cms/role/index:UPDATE"},logical = Logical.OR)
     @RequestMapping("/edit")
     public ModelAndView edit(ModelAndView modelAndView,Long id){
         if (id!=null) {
@@ -72,7 +73,6 @@ public class RoleController  {
         return modelAndView;
     }
 
-    @RequiresPermissions("/cms/role/index:UPDATE")
     @RequestMapping("/permissionEdit")
     public ModelAndView permission(ModelAndView modelAndView,Long roleId){
         List<ZtreeComposite> list=sysRoleResourcePermissionService.findZtree(roleId);
@@ -82,7 +82,7 @@ public class RoleController  {
         return modelAndView;
     }
 
-    @RequiresPermissions("/cms/role/index:UPDATE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @RequestMapping("/updatePermission")
     @ResponseBody
     public Object updatePermission(@RequestBody List<SysRoleResourcePermissionVo> list){
@@ -91,7 +91,7 @@ public class RoleController  {
         return ajaxResult;
     }
 
-    @RequiresPermissions("/cms/role/index:UPDATE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
     @RequestMapping("/save")
     @ResponseBody
     public Object save(SysRole sysRole){
@@ -109,7 +109,7 @@ public class RoleController  {
         return ajaxResult;
     }
 
-    @RequiresPermissions("/cms/role/index:UPDATE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @RequestMapping("/update")
     @ResponseBody
     public Object update(SysRole sysRole){
@@ -126,7 +126,7 @@ public class RoleController  {
         return ajaxResult;
     }
 
-    @RequiresPermissions("/cms/role/index:DELETE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)
     @RequestMapping("/delete")
     @ResponseBody
     public Object delte(SysRole sysRole){

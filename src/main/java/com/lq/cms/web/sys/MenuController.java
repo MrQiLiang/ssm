@@ -4,6 +4,7 @@ import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.service.SysResourceService;
 import com.lq.cms.vo.SysResourceVo;
 import com.lq.code.entity.AjaxResult;
+import com.lq.code.util.Constant;
 import com.lq.code.web.BaseController;
 import com.lq.entity.SysResource;
 import com.lq.entity.SysUser;
@@ -35,10 +36,12 @@ public class MenuController {
 
     private static Logger LOGGER = Logger.getLogger(MenuController.class);
 
+    public static final String INDEX_URL = "/cms/menu/index";
+
+
     @Autowired
     private SysResourceService sysResourceService;
 
-    @RequiresPermissions("/cms/menu/index:SELECT")
     @RequestMapping("/index")
     public ModelAndView index(ModelAndView modelAndView){
 
@@ -48,7 +51,7 @@ public class MenuController {
 
     @RequestMapping("/list")
     @ResponseBody
-    @RequiresPermissions("/cms/menu/index:SELECT")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysResourceVo vo){
         Map<String,Object> map=new HashMap();
         map.put("total",sysResourceService.count(vo));
@@ -57,7 +60,6 @@ public class MenuController {
     }
 
     @RequestMapping("/edit")
-    @RequiresPermissions(value={"/cms/menu/index:INSERT","/cms/menu/index:UPDATE"},logical = Logical.OR)
     public ModelAndView edit(ModelAndView modelAndView,Long id){
         //查询可选择的上级目录
         List<SysResource> list=sysResourceService.findByParentId(0L);
@@ -68,7 +70,7 @@ public class MenuController {
         return modelAndView;
     }
 
-    @RequiresPermissions("/cms/menu/index:INSERT")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
     @ResponseBody
     @RequestMapping("save")
     public Object save(SysResourceVo vo){
@@ -94,7 +96,7 @@ public class MenuController {
         return ajaxResult;
     }
 
-    @RequiresPermissions("/cms/menu/index:UPDATE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @ResponseBody
     @RequestMapping("update")
     public Object update(SysResourceVo vo){
@@ -111,7 +113,7 @@ public class MenuController {
         return ajaxResult;
     }
 
-    @RequiresPermissions("/cms/menu/index:DELETE")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)
     @RequestMapping("/delete")
     @ResponseBody
     public Object delte(SysResource sysResource){

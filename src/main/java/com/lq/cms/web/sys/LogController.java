@@ -6,6 +6,7 @@ package com.lq.cms.web.sys;
 
 import com.lq.cms.service.SysLogService;
 import com.lq.cms.vo.SysLogVo;
+import com.lq.code.util.Constant;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,12 @@ public class  LogController {
 
     private static Logger LOGGER = Logger.getLogger(LogController.class);
 
+    public static final String INDEX_URL = "/cms/log/index";
 
     @Autowired
     private SysLogService sysLogService;
 
     @RequestMapping("/index")
-    @RequiresPermissions("/cms/log/index:SELECT")
     public ModelAndView index(ModelAndView modelAndView){
         modelAndView.setViewName("cms/sys/log/index");
         return modelAndView;
@@ -39,7 +40,7 @@ public class  LogController {
 
     @ResponseBody
     @RequestMapping("/list")
-    @RequiresPermissions("/cms/log/index:SELECT")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysLogVo vo){
         Map<String,Object> map=new HashMap();
         map.put("total",sysLogService.count(vo));
