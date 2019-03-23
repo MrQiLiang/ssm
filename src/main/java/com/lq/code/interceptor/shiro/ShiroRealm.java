@@ -4,6 +4,7 @@ import com.lq.cms.service.SysRoleResourcePermissionService;
 import com.lq.cms.service.SysRoleService;
 import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.PermissionVo;
+import com.lq.code.util.Constant;
 import com.lq.code.util.StringUtil;
 import com.lq.entity.SysRole;
 import com.lq.entity.SysUser;
@@ -22,6 +23,7 @@ import java.util.List;
  * Created by qi on 2017-12-5.
  */
 public class ShiroRealm extends AuthorizingRealm {
+
 
     @Autowired
     private SysUserService sysUserService;
@@ -50,16 +52,16 @@ public class ShiroRealm extends AuthorizingRealm {
                 info.addRole(sysRoleName);
                 List<PermissionVo> list = null;
                 //admin默认获取全部权限
-                if (StringUtil.isNotNull(sysRoleName)&&"admin".equals(sysRoleName)){
+                if (StringUtil.isNotNull(sysRoleName)&& Constant.ROLE_ADMIN.equals(sysRoleName)){
                     list = sysRoleResourcePermissionService.findAllPermissonVo();
                 }else {
                     list = sysRoleResourcePermissionService.findByRoleId(sysRole.getId());
                 }
                 //每个角色拥有的权限
                 for (PermissionVo vo:list){
-                    info.addStringPermission(vo.getMenuUrl()+":"+vo.getPermissionName());
+                    info.addStringPermission(vo.getMenuUrl()+Constant.PERSSION_MARK+vo.getPermissionName());
                 }
-                if ("admin".equals(sysRoleName)){
+                if (Constant.ROLE_ADMIN.equals(sysRoleName)){
                     break;
                 }
 
