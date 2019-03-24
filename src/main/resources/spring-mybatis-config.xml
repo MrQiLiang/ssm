@@ -13,7 +13,7 @@
     <!-- 自动扫描 -->  
     <context:component-scan base-package="com.lq.dao" />
     <context:component-scan base-package="com.lq.*.service" />
-
+    <context:component-scan base-package="com.lq.wechat.util"/>
     <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true" />
     <!-- 扫描实体类，并创建表-->
     <bean class="com.lq.code.executor.processor.InstantiationTracingBeanPostProcessor">

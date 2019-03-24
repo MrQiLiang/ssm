@@ -44,7 +44,6 @@ public class  WechatController extends BaseController {
     //用户-消息内容
     public static final String WECHAT_CONTENT_KEY = "Content";
 
-
     @Autowired
     private WechatInfoService wechatInfoService;
     @Autowired

@@ -2,6 +2,7 @@ package com.lq.wechat.util.accessToken;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lq.code.util.HttpKit;
+import com.lq.code.util.StringUtil;
 import com.lq.dao.WechatAccesstokenDao;
 import com.lq.entity.WechatAccessToken;
 import com.lq.entity.WechatInfo;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by qi_liang on 2018/5/31.
@@ -28,9 +30,13 @@ public class AccessTokenUtil {
     public final static String APPID ="wx76ca7130852c4baa";
 
     public final static String APPSECRET = "d87125562b8e60618bc7b3120dfe3583";
+    /**
+     *  微信公众号access_token在reids的生命周期时间(单位：秒)
+     */
+    public final static long DEFAULT_TIME = 7000L;
 
     @Autowired
-    private RedisTemplate<String,Object> redisTemplate;
+    private RedisTemplate<String,String> redisTemplate;
 
     public static String getAccessToken(String appid,String appsecret){
         String url = ACCESS_TOKEN_URL.replace("APPID",appid).replace("APPSECRET",appsecret);
@@ -38,19 +44,16 @@ public class AccessTokenUtil {
         return resultStr;
     }
 
-    public static AccessToken getAccessToken(WechatInfo wechatInfo){
-        AccessToken accessToken = null;
-        if (wechatInfo!=null){
+    public String getAccessToken(WechatInfo wechatInfo){
+
+        String accessTokenStr = redisTemplate.opsForValue().get(wechatInfo.getWechatOpenId());
+        if (wechatInfo!=null&& StringUtil.isNull(accessTokenStr)){
             String result = getAccessToken(wechatInfo.getAppId(),wechatInfo.getAppSecpet());
-            accessToken = JSONObject.parseObject(result,AccessToken.class);
+            AccessToken accessToken = JSONObject.parseObject(result,AccessToken.class);
+            accessTokenStr = accessToken.getAccess_token();
+            redisTemplate.opsForValue().set(wechatInfo.getWechatOpenId(),accessTokenStr,DEFAULT_TIME, TimeUnit.SECONDS);
         }
-        return accessToken;
-    }
-
-    public static WechatAccessToken accessTokenToWechatAccessToken(WechatInfo wechatInfo,AccessTokenAdapter accessTokenAdapter){
-
-        AccessToken accessToken = getAccessToken(wechatInfo);
-        return accessTokenAdapter.adapter(accessToken);
+        return accessTokenStr;
     }
 
     public static void main(String[] args) {

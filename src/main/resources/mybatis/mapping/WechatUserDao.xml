@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.WechatUserDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+
+    <sql id="column_list">
+        country,unionid,sybscribe_scene,qr_scene,qr_scene_str,subscribe_time,city,tagid_id,open_id,nick_name,sex,groupid,language,remark,province,head_img_url,wechat_info_id,id,status
+    </sql>
+
+    <select id="findOne" resultType="com.lq.entity.WechatUser" parameterType="long">
+        SELECT <include refid="column_list"/>
+          FROM  wechat_user
+        WHERE id=#{id} AND status = 1
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.WechatUser">
+        SELECT <include refid="column_list"/>
+          FROM  wechat_user
+        WHERE status = 1
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(id)
+          FROM wechat_user
+        WHERE status = 1
+    </select>
+
+    <insert id="save"  parameterType="com.lq.entity.WechatUser" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+            wechat_user(country,unionid,sybscribe_scene,qr_scene,qr_scene_str,subscribe_time,city,tagid_id,open_id,nick_name,sex,groupid,language,remark,province,head_img_url,wechat_info_id,id,status)
+        VALUES
+            (
+              #{country},#{unionid},#{sybscribeScene},#{qrScene},#{qrSceneStr},#{subscribeTime},#{city},#{tagidId},#{openId},#{nickName},#{sex},#{groupid},#{language},#{remark},#{province},#{headImgUrl},#{wechatInfoId},#{id},#{status}
+            )
+    </insert>
+
+
+    <update id="update" parameterType="com.lq.entity.WechatUser">
+        UPDATE
+            wechat_user
+        <trim prefix="set" suffixOverrides=",">
+            
+ <if test="country!=null">country=#{country},</if>
+ <if test="unionid!=null">unionid=#{unionid},</if>
+ <if test="sybscribeScene!=null">sybscribe_scene=#{sybscribeScene},</if>
+ <if test="qrScene!=null">qr_scene=#{qrScene},</if>
+ <if test="qrSceneStr!=null">qr_scene_str=#{qrSceneStr},</if>
+ <if test="subscribeTime!=null">subscribe_time=#{subscribeTime},</if>
+ <if test="city!=null">city=#{city},</if>
+ <if test="tagidId!=null">tagid_id=#{tagidId},</if>
+ <if test="openId!=null">open_id=#{openId},</if>
+ <if test="nickName!=null">nick_name=#{nickName},</if>
+ <if test="sex!=null">sex=#{sex},</if>
+ <if test="groupid!=null">groupid=#{groupid},</if>
+ <if test="language!=null">language=#{language},</if>
+ <if test="remark!=null">remark=#{remark},</if>
+ <if test="province!=null">province=#{province},</if>
+ <if test="headImgUrl!=null">head_img_url=#{headImgUrl},</if>
+ <if test="wechatInfoId!=null">wechat_info_id=#{wechatInfoId},</if>
+ <if test="id!=null">id=#{id},</if>
+ <if test="status!=null">status=#{status},</if>
+        </trim>
+        WHERE
+            id=#{id}
+    </update>
+
+    <update id="delete" parameterType="Long">
+        UPDATE
+           FROM wechat_user
+        SET
+           status = 0
+        WHERE
+            id=#{id}
+    </update>
+    
+    <select id="getByOpenId" resultType="WechatUser">
+        select  <include refid="column_list"/>
+        FROM wechat_user
+        where
+          status = 1
+        and
+        open_id = #{openId}
+    </select>
+
+</mapper>
