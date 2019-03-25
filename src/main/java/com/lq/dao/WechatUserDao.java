@@ -4,6 +4,7 @@ import com.lq.cms.dao.AdminBaseDao;
 import com.lq.cms.vo.AdminBaseVo;
 import com.lq.code.dao.BaseDao;
 import com.lq.entity.WechatUser;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author: qi
@@ -12,5 +13,5 @@ import com.lq.entity.WechatUser;
  */
 public interface WechatUserDao extends BaseDao<WechatUser>{
 
-    WechatUser getByOpenId(String openId);
+    WechatUser getByOpenId(@Param("openId") String openId);
 }

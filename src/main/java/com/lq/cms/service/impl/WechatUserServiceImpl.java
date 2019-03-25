@@ -12,6 +12,7 @@ import com.lq.dao.WechatUserDao;
 import com.lq.entity.WechatAccessToken;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatUser;
+import com.lq.wechat.util.accessToken.AccessTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,15 +29,17 @@ public class WechatUserServiceImpl extends BaseServiceImpl<WechatUser> implement
     @Autowired
     private WechatUserDao wechatUserDao;
     @Autowired
-    private WechatAccesstokenDao wechatAccesstokenDao;
+    private AccessTokenUtil accessTokenUtil;
 
     @Override
     public WechatUser saveWechatUser(String openId, WechatInfo wechatInfo) {
         WechatUser wechatUser = wechatUserDao.getByOpenId(openId);
         if (wechatUser==null){
             wechatUser = new WechatUser();
-            WechatAccessToken wechatAccessToken = wechatAccesstokenDao.getByWechatInfoIdAndTokenType(wechatInfo.getId(), WechatAccessTokenTypeEnum.CURRENCY.getValue());
-
+        //    WechatAccessToken wechatAccessToken = wechatAccesstokenDao.getByWechatInfoIdAndTokenType(wechatInfo.getId(), WechatAccessTokenTypeEnum.CURRENCY.getValue());
+            String accessToken = accessTokenUtil.getAccessToken(wechatInfo);
+            wechatUser.setWechatInfoId(wechatInfo.getId());
+            wechatUserDao.save(wechatUser);
         }
 
         return wechatUser;
