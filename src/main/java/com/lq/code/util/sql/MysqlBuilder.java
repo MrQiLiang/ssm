@@ -18,7 +18,6 @@ public class MysqlBuilder extends AbstractDbBuiler {
     private static Map<String,String> dataTypeMap=new HashMap<>();
 
     static {
-
         dataTypeMap.put("class java.lang.String","varchar");
         dataTypeMap.put("class java.util.Date","date");
         dataTypeMap.put("class java.lang.Integer","int");
@@ -129,7 +128,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
             sql.append(",");
         }
         sql.append("primary key(id)");
-        sql.append(")ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+        sql.append(")ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
         return sql.toString();
     }
