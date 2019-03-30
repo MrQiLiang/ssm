@@ -38,15 +38,17 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
 
     @Override
     protected void doUpdate(Session session) {
+        LOGGER.warn("update shiro sesisonID:"+session.getId().toString());
         //该方法交给父类去执行
-        super.doUpdate(session);
+     //   super.doUpdate(session);
         //更新reids中的session时间
-        redisTemplate.expire(session.toString(),this.defaultExpireTime, TimeUnit.SECONDS);
+        redisTemplate.expire(session.getId().toString(),this.defaultExpireTime, TimeUnit.SECONDS);
 
     }
 
     @Override
     protected void doDelete(Session session) {
+        LOGGER.warn("delete shiro sessionID:"+session.getId().toString());
         Serializable sessionId = session.getId();
         cm = CacheManager.create();
         if (cm == null){
@@ -68,16 +70,17 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
         Ehcache ehcache = cm.getCache("sessioncache");
         assignSessionId(session,sessionId);
         redisTemplate.opsForValue().set(sessionId.toString(),session);
-        redisTemplate.expire(session.toString(),this.defaultExpireTime, TimeUnit.SECONDS);
+        redisTemplate.expire(session.getId().toString(),this.defaultExpireTime, TimeUnit.SECONDS);
         ehcache.put(new Element(sessionId.toString(),session));
+        LOGGER.info("create shiro sesisonId:"+sessionId.toString());
         return sessionId;
     }
 
     @Override
     protected Session doReadSession(Serializable serializable) {
-        LOGGER.warn("执行读取read session方法");
+        LOGGER.info("Read shiro sessionID:"+serializable.toString());
         //此方法不会执行,不用管
-        return null;
+        return  (Session)redisTemplate.opsForValue().get(serializable.toString());
     }
 
     protected InputStream getCacheMangerConfigFileImputStream(){
