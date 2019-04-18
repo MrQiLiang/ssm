@@ -1,6 +1,7 @@
 package com.lq.code.dao.impl;
 
 import com.lq.code.dao.BaseDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,14 +18,7 @@ import java.util.List;
  */
 public class BaseDaoImpl<T> implements BaseDao<T> {
 
-    public final static String SQL_TYPE_INSERT="INSERT";
-
-    public final static String SQL_TYPE_UPDATE="UPDATE";
-
-    public final static String SQL_TYPE_DELETE="DELETE";
-
-
-    @Resource
+    @Autowired(required = false)
     private JdbcTemplate jdbcTemplate;
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;

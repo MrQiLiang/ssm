@@ -10,7 +10,7 @@ import java.util.List;
  * Created by qi_liang on 2018/6/21.
  */
 public abstract  class BaseServiceImpl<T> implements BaseService<T>{
-
+    @Override
     public abstract BaseDao<T> getBaseDao();
 
     @Override

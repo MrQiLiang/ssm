@@ -32,4 +32,9 @@ public class WechatUserUtil {
         WechatUser wechatUser = JSONObject.parseObject(result,WechatUser.class);
         return wechatUser;
     }
+
+    public static void main(String[] args) {
+
+
+    }
 }

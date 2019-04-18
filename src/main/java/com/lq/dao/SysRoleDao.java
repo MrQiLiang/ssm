@@ -14,7 +14,7 @@ import java.util.Map;
 public interface SysRoleDao extends BaseDao<SysRole> {
 
     List<SysRole> findByUserId(@Param("userId") Long userId);
-
+    @Override
     List<SysRole> findAll();
 
     Integer count(SysRoleVo vo);

@@ -7,7 +7,7 @@
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
 
     <sql id="column_list">
-        id,wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status
+        id,wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status,wechat_info_type
     </sql>
     <select id="findOne" resultType="com.lq.entity.WechatInfo" parameterType="long">
         SELECT <include refid="column_list"/> FROM  wechat_info  WHERE id=#{id} AND status = 1
@@ -23,10 +23,10 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO
-            wechat_info(wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status)
+            wechat_info(wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status,wechat_info_type)
         VALUES
             (
-              #{wechatOpenId},#{appSecpet},#{createTime},#{appId},#{encodingType},#{wechatName},#{url},#{token},#{encodingAesKey},#{lastUpdateTime},#{status}
+              #{wechatOpenId},#{appSecpet},#{createTime},#{appId},#{encodingType},#{wechatName},#{url},#{token},#{encodingAesKey},#{lastUpdateTime},#{status},#{wechatInfoType}
             )
     </insert>
 
@@ -47,6 +47,7 @@
             <if test="encodingAesKey!=null">encoding_aes_key=#{encodingAesKey},</if>
             <if test="lastUpdateTime!=null">last_update_time=#{lastUpdateTime},</if>
             <if test="status!=null">status=#{status},</if>
+            <if test="wechatInfoType!=null">wechat_info_type=#{wechatInfoType}</if>
         </trim>
         WHERE
             id=#{id}

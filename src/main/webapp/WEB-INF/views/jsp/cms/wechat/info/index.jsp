@@ -25,7 +25,9 @@
                     {field:'editId',title:'编辑',width:130,formatter:function (value,row,index) {
                             var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
                             html+="<a href='#' onclick='del("+row.id+")'>删除</a>&nbsp&nbsp";
-                            html+="<a href='#' onclick='openMenu("+row.id+")'>菜单</a>&nbsp&nbsp";
+                            if (row.wechatInfoType!=1){
+                                html+="<a href='#' onclick='openMenu("+row.id+")'>菜单</a>&nbsp&nbsp";
+                            }
                             html+="<a href='#' onclick='openRule("+row.id+")'>回复</a>&nbsp&nbsp";
                             return html;
                         }},
@@ -40,10 +42,6 @@
                     {field:'encodingAesKey',title:'消息加密key',width:100},
                     {field:'createTimeStr',title:'创建时间',width:150},
                     {field:'url',title:'对接url',width:300},
-
-
-
-
                 ]],
                 toolbar: [{
                     iconCls: 'icon-add',
