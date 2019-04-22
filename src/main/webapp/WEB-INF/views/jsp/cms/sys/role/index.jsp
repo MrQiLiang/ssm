@@ -18,8 +18,8 @@
                 columns:[[
                     {field:'id',title:'编号',width:100},
                     {field:'roleName',title:'角色名称',width:100},
-                    {field:'createTimeStr',title:'创建时间',width:100},
-                    {field:'updateTimeStr',title:'更新时间',width:100},
+                    {field:'createTimeStr',title:'创建时间',width:150},
+                    {field:'updateTimeStr',title:'更新时间',width:150},
                     /* formatter 不能重复field,否则会失效**/
                     {field:'editId',title:'编辑',width:100,formatter:function (value,row,index) {
                         var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
