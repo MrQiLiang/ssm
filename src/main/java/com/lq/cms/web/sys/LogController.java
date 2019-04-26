@@ -42,6 +42,7 @@ public class  LogController {
     @RequestMapping("/list")
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysLogVo vo){
+
         Map<String,Object> map=new HashMap();
         map.put("total",sysLogService.count(vo));
         map.put("rows",sysLogService.findListPage(vo));

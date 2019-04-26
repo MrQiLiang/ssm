@@ -6,6 +6,7 @@ import com.lq.cms.service.SysResourceService;
 import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysInfoVo;
 import com.lq.code.entity.AjaxResult;
+import com.lq.code.util.Constant;
 import com.lq.code.util.DateUtil;
 import com.lq.code.util.Md5Util;
 import com.lq.code.util.jdbc.JdbcUtils;
@@ -54,21 +55,14 @@ public class IndexController {
     public ModelAndView toCmsIndix(ModelAndView modelAndView, HttpServletRequest request){
         Subject subject=SecurityUtils.getSubject();
         Session session = subject.getSession();
-LOGGER.info("===================");
-LOGGER.info("sessionID:"+session.getId());
-LOGGER.info("sessionTimeOut:"+session.getTimeout());
         SysUser sysUser=(SysUser) subject.getPrincipal();
         List<MenusComposite> list = null;
-        if (subject.hasRole("admin")) {
+        if (subject.hasRole(Constant.ROLE_ADMIN)) {
             list = sysResourceService.findAllMenusList(request);
         }else{
             list = sysResourceService.findMenusListBySysUserId(sysUser.getId(), request);
 
         }
-//        Map<String,Object> map=new HashMap<String,Object>();
-//        map.put("menus",list);
-//        String jsonStr=JSON.toJSONString(map);
-//        modelAndView.addObject("menusStr",jsonStr);
         modelAndView.addObject("menusList",list);
         modelAndView.setViewName("cms/main/index");
         return  modelAndView;

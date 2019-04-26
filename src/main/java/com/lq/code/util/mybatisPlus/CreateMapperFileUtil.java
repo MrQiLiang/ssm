@@ -67,7 +67,7 @@ public class CreateMapperFileUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        createXml(WechatUserDao.class,WechatUser.class,new MysqlBuilder());
+        createXml(WechatMessageDao.class,WechatMessage.class,new MysqlBuilder());
     }
 
 

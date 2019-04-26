@@ -23,6 +23,7 @@
                 pagination :"true",
                 columns:[[
                     {field:'editId',title:'编辑',width:130,formatter:function (value,row,index) {
+                           console.log(row);
                             var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
                             html+="<a href='#' onclick='del("+row.id+")'>删除</a>&nbsp&nbsp";
                             if (row.wechatInfoType!=1){

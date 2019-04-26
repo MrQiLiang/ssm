@@ -56,7 +56,6 @@ public class RoleController  {
     @ResponseBody
     public Object list(SysRoleVo vo){
         Map<String,Object> map=new HashMap();
-
         map.put("total",sysRoleService.count(vo));
         map.put("rows",sysRoleService.findListPage(vo));
         return map;
@@ -88,6 +87,10 @@ public class RoleController  {
     public Object updatePermission(@RequestBody List<SysRoleResourcePermissionVo> list){
         AjaxResult ajaxResult=new AjaxResult();
         boolean result=sysRoleResourcePermissionService.updateRolePermission(list);
+        ajaxResult.setSuccess(result);
+        if (!result){
+            ajaxResult.setMsg("更新失败!");
+        }
         return ajaxResult;
     }
 
