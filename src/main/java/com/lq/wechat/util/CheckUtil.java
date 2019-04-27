@@ -8,14 +8,22 @@ import java.util.Arrays;
 public class CheckUtil {
 
 	private static final String TOKEN="qiLiang";
-	
+
+    /**
+     *   已废弃
+     * @param signature
+     * @param timestamp
+     * @param nonce
+     * @return
+     */
+	@Deprecated
 	public static boolean checkSingatue(String signature,String timestamp,String nonce){
 	
 
        return checkSingatue(signature,timestamp,nonce,TOKEN);
 	}
 
-	public static boolean checkSingatue(String signature,String timestamp,String nonce,String token){
+	public static boolean   checkSingatue(String signature,String timestamp,String nonce,String token){
 
         String []arr=new String[]{token,timestamp,nonce};
 

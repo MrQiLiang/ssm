@@ -35,7 +35,8 @@ public class WechatInfo extends IdEntity {
      */
     private String token;
     /**
-     * 消息加密类型 @Link WechatInfoEncodingTypeEnum
+     * 消息加密类型
+     * @Link WechatInfoEncodingTypeEnum
      */
     private String encodingType;
     /**
@@ -59,9 +60,16 @@ public class WechatInfo extends IdEntity {
      */
     private Long updateUserId;
     /**
-     *  微信公众号类型:@Link WechatInfoTypeEnum
+     *  微信公众号类型
+     *  @Link WechatInfoTypeEnum
      */
     private Integer wechatInfoType;
+    /**
+     * 认证状态
+     * 微信公众号在未认证状态下，有需求功能接口受限。
+     * @Link WechatInfoCertificationTypeEnum
+     */
+    private Integer certification;
 
     public String getWechatOpenId() {
         return wechatOpenId;
