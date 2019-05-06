@@ -17,6 +17,7 @@ import java.util.Map;
 
 /**
  * 管理后台 父类
+ * 强封装，缺少扩展，不建议采用
  */
 public abstract class AdminBaseController<T,V extends AdminBaseVo> {
 

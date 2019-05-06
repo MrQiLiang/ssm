@@ -3,6 +3,7 @@ package com.lq.wechat.mode.template;
 import java.util.Map;
 
 /**
+ * 微信公众号模版消息构造器
  * Created by qi_liang on 2018/6/27.
  */
 public interface WechatTemplateBuilder {

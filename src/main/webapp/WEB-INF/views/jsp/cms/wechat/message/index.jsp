@@ -28,8 +28,8 @@
                 {field:'content',title:'消息内容',width:100},
                 {field:'imageUrl',title:'图片路径',width:100},
                 {field:'mediaId',title:'素材ID',width:100},
-                {field:'toUrl',title:'跳转路径',width:100},
-                {field:'createTimeStr',title:'创建时间',width:150},
+                {field:'toUrl',title:'跳转路径',width:150},
+                {field:'createTimeStr',title:'创建时间',width:120},
                 {field:'editId',title:'编辑',width:200,formatter:function (value,row,index) {
                         var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
                         html+="<a href='#' onclick='del("+row.id+")'>删除</a>&nbsp&nbsp";

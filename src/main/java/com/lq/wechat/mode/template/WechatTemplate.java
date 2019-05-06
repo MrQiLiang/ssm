@@ -17,15 +17,27 @@ import java.util.Map;
  color	否	模板内容字体颜色，不填默认为黑色
  */
 public class WechatTemplate {
-
+    /**
+     * 发送用户openId
+     */
     private String touser;
-
+    /**
+     * 模版ID
+     */
     private String template_id;
-
+    /**
+     * 模版跳转链接
+     */
     private String url;
-
+    /**
+     *  跳转小程序所需数据对象，无需跳转小程序则不用传该数据
+     */
     private WechatTemplateMiniprogram miniprogram;
-
+    /**
+     * 模版数据
+     * key:
+     * value:
+     */
     private Map<String,Object> data;
 
 

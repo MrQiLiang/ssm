@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 构造器默认实现类
  * Created by qi_liang on 2018/6/27.
  */
 public class WechatTemplateConcreteBuilder implements WechatTemplateBuilder {
@@ -82,7 +83,7 @@ public class WechatTemplateConcreteBuilder implements WechatTemplateBuilder {
     @Override
     public WechatTemplateBuilder appendKeyWord(String value) {
         appendKeyWord(value,DEFAULT_COLORD);
-        return null;
+        return this;
     }
 
     @Override

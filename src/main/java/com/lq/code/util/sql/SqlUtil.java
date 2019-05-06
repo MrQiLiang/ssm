@@ -27,7 +27,7 @@ public class SqlUtil {
                 continue;
             }
             if (Character.isUpperCase(charArray[i])){
-                strBuffer.append("_"+charArray[i]);
+                strBuffer.append(SqlConstant.SQL_SYMBOL+charArray[i]);
             }else {
                 strBuffer.append(charArray[i]);
             }

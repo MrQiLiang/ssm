@@ -33,8 +33,6 @@ public class WechatInfoController {
     @Autowired
     private WechatInfoService wechatInfoService;
 
-
-
     @RequestMapping("/index")
     public String index(){
 

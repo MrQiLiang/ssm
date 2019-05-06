@@ -66,7 +66,7 @@ public class WechatInfo extends IdEntity {
     private Integer wechatInfoType;
     /**
      * 认证状态
-     * 微信公众号在未认证状态下，有需求功能接口受限。
+     * 微信公众号在未认证状态下，有部分功能接口受限。
      * @Link WechatInfoCertificationTypeEnum
      */
     private Integer certification;
@@ -173,5 +173,13 @@ public class WechatInfo extends IdEntity {
 
     public void setWechatInfoType(Integer wechatInfoType) {
         this.wechatInfoType = wechatInfoType;
+    }
+
+    public Integer getCertification() {
+        return certification;
+    }
+
+    public void setCertification(Integer certification) {
+        this.certification = certification;
     }
 }

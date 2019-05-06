@@ -1,7 +1,7 @@
 package com.lq.wechat.mode.template;
 
 /**
- *
+ * 消息模版内容
  * Created by qi_liang on 2018/6/27.
  */
 public class WechatTemplateData {
