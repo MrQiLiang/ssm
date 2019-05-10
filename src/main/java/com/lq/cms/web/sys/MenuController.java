@@ -1,6 +1,7 @@
 package com.lq.cms.web.sys;
 
 import com.lq.cms.emun.StatusTypeEnum;
+import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.SysResourceService;
 import com.lq.cms.vo.SysResourceVo;
 import com.lq.code.entity.AjaxResult;
@@ -53,10 +54,10 @@ public class MenuController {
     @ResponseBody
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysResourceVo vo){
-        Map<String,Object> map=new HashMap();
-        map.put("total",sysResourceService.count(vo));
-        map.put("rows",sysResourceService.findListpages(vo));
-        return map;
+        AdminDataGridParam<SysResourceVo> adminDataGridParam = new AdminDataGridParam<>();
+        adminDataGridParam.setRows(sysResourceService.findListpages(vo));
+        adminDataGridParam.setTotal(sysResourceService.count(vo));
+        return adminDataGridParam;
     }
 
     @RequestMapping("/edit")

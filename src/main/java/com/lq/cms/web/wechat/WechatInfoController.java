@@ -4,6 +4,7 @@ import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.emun.WechatInfoCertificationTypeEnum;
 import com.lq.cms.emun.WechatInfoEncodingTypeEnum;
 import com.lq.cms.emun.WechatInfoTypeEnum;
+import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.WechatInfoService;
 import com.lq.cms.vo.WechatInfoVo;
 import com.lq.code.entity.AjaxResult;
@@ -60,10 +61,10 @@ public class WechatInfoController {
     @ResponseBody
     @RequestMapping("/list")
     public Object list(WechatInfoVo vo){
-        Map<String,Object> map=new HashMap();
-        map.put("total",wechatInfoService.count(vo));
-        map.put("rows",wechatInfoService.findListPage(vo));
-        return map;
+        AdminDataGridParam<WechatInfoVo> adminDataGridParam = new AdminDataGridParam();
+        adminDataGridParam.setTotal(wechatInfoService.count(vo));
+        adminDataGridParam.setRows(wechatInfoService.findListPage(vo));
+        return adminDataGridParam;
     }
 
     @RequiresPermissions(INDEX_URL+Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)

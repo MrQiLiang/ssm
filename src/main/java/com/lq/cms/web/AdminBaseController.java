@@ -2,6 +2,7 @@ package com.lq.cms.web;
 
 import com.lq.cms.emun.DatagridParamEnum;
 import com.lq.cms.emun.PermissionTyepEnum;
+import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.AdminBaseService;
 import com.lq.cms.vo.AdminBaseVo;
 import com.lq.code.entity.AjaxResult;
@@ -36,20 +37,20 @@ public abstract class AdminBaseController<T,V extends AdminBaseVo> {
      */
      public abstract String getIndexUrl();
 
-    public Map<String,Object> setPageDate(V vo){
-        Map<String,Object> map=new HashMap();
-        map.put(DatagridParamEnum.ROWS.getValue(),getBaseService().findListPage(vo));
-        map.put(DatagridParamEnum.TOTAL.getValue(),getBaseService().count(vo));
-        return map;
+    public AdminDataGridParam<V> setPageDate(V vo){
+        AdminDataGridParam<V> adminDataGridParam = new AdminDataGridParam<>();
+        adminDataGridParam.setRows(getBaseService().findListPage(vo));
+        adminDataGridParam.setTotal(getBaseService().count(vo));
+        return adminDataGridParam;
     }
 
     @RequestMapping("/list")
     @ResponseBody
-    public Map<String,Object> list(V vo){
+    public AdminDataGridParam<V> list(V vo){
         Subject subject = SecurityUtils.getSubject();
         subject.checkPermission(getIndexUrl()+":"+ PermissionTyepEnum.SELECT.getConstant());
-        Map<String,Object> resultMap = setPageDate(vo);
-        return resultMap;
+        AdminDataGridParam<V> adminDataGridParam = setPageDate(vo);
+        return adminDataGridParam;
     }
 
     @PostMapping("/save")

@@ -2,6 +2,7 @@ package com.lq.cms.web.sys;
 
 import com.alibaba.fastjson.JSON;
 import com.lq.cms.emun.StatusTypeEnum;
+import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.mode.ZtreeComposite;
 import com.lq.cms.service.SysRoleResourcePermissionService;
 import com.lq.cms.service.SysRoleService;
@@ -55,10 +56,10 @@ public class RoleController  {
     @RequestMapping("/list")
     @ResponseBody
     public Object list(SysRoleVo vo){
-        Map<String,Object> map=new HashMap();
-        map.put("total",sysRoleService.count(vo));
-        map.put("rows",sysRoleService.findListPage(vo));
-        return map;
+        AdminDataGridParam<SysRoleVo> adminDataGridParam = new AdminDataGridParam<>();
+        adminDataGridParam.setTotal(sysRoleService.count(vo));
+        adminDataGridParam.setRows(sysRoleService.findListPage(vo));
+        return adminDataGridParam;
     }
 
   //  @RequiresPermissions(value={"/cms/role/index:INSERT","/cms/role/index:UPDATE"},logical = Logical.OR)

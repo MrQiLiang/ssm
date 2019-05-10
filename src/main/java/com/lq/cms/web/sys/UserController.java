@@ -2,6 +2,7 @@ package com.lq.cms.web.sys;
 
 import com.lq.cms.emun.PermissionTyepEnum;
 import com.lq.cms.emun.StatusTypeEnum;
+import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.SysRoleService;
 import com.lq.cms.service.SysUserRoleService;
 import com.lq.cms.service.SysUserService;
@@ -71,10 +72,10 @@ public class UserController {
     @RequestMapping("/list")
     @ResponseBody
     public Object list(SysUserVo vo){
-        Map<String,Object> map=new HashMap();
-        map.put("total",sysUserService.count(vo));
-        map.put("rows",sysUserService.findListPage(vo));
-        return map;
+        AdminDataGridParam<SysUserVo> adminDataGridParam = new AdminDataGridParam<>();
+        adminDataGridParam.setTotal(sysUserService.count(vo));
+        adminDataGridParam.setRows(sysUserService.findListPage(vo));
+        return adminDataGridParam;
     }
 
     @RequestMapping("/edit")

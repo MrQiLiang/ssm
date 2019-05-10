@@ -4,6 +4,7 @@ package com.lq.cms.web.sys;
  * Created by qi_liang on 2018/2/24.
  */
 
+import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.SysLogService;
 import com.lq.cms.vo.SysLogVo;
 import com.lq.code.util.Constant;
@@ -42,10 +43,9 @@ public class  LogController {
     @RequestMapping("/list")
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysLogVo vo){
-
-        Map<String,Object> map=new HashMap();
-        map.put("total",sysLogService.count(vo));
-        map.put("rows",sysLogService.findListPage(vo));
-        return map;
+        AdminDataGridParam<SysLogVo> adminDataGridParam = new AdminDataGridParam<>();
+        adminDataGridParam.setTotal(sysLogService.count(vo));
+        adminDataGridParam.setRows(sysLogService.findListPage(vo));
+        return adminDataGridParam;
     }
 }

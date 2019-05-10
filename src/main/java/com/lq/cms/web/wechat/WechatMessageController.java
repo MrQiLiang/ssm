@@ -44,6 +44,7 @@ public class WechatMessageController extends AdminBaseController<WechatMessage,W
     }
 
 
+
     @Override
     public AdminBaseService getBaseService() {
 
