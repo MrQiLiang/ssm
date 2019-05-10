@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.WechatMessageDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+
+    <sql id="column_list">
+        to_url,message_type,create_time,image_url,update_time,id,title,media_id,user_id,content,status
+    </sql>
+
+    <select id="findOne" resultType="com.lq.entity.WechatMessage" parameterType="long">
+        SELECT <include refid="column_list"/>
+          FROM  wechat_message
+        WHERE id=#{id} AND status = 1
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.WechatMessage">
+        SELECT <include refid="column_list"/>
+          FROM  wechat_message
+        WHERE status = 1
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(id)
+          FROM wechat_message
+        WHERE status = 1
+    </select>
+
+    <insert id="save"  parameterType="com.lq.entity.WechatMessage" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+            wechat_message(to_url,message_type,create_time,image_url,update_time,id,title,media_id,user_id,content,status)
+        VALUES
+            (
+              #{toUrl},#{messageType},#{createTime},#{imageUrl},#{updateTime},#{id},#{title},#{mediaId},#{userId},#{content},#{status}
+            )
+    </insert>
+
+
+    <update id="update" parameterType="com.lq.entity.WechatMessage">
+        UPDATE
+            wechat_message
+        <trim prefix="set" suffixOverrides=",">
+            
+ <if test="toUrl!=null">to_url=#{toUrl},</if>
+ <if test="messageType!=null">message_type=#{messageType},</if>
+ <if test="createTime!=null">create_time=#{createTime},</if>
+ <if test="imageUrl!=null">image_url=#{imageUrl},</if>
+ <if test="updateTime!=null">update_time=#{updateTime},</if>
+ <if test="id!=null">id=#{id},</if>
+ <if test="title!=null">title=#{title},</if>
+ <if test="mediaId!=null">media_id=#{mediaId},</if>
+ <if test="userId!=null">user_id=#{userId},</if>
+ <if test="content!=null">content=#{content},</if>
+ <if test="status!=null">status=#{status},</if>
+        </trim>
+        WHERE
+            id=#{id}
+    </update>
+
+    <update id="delete" parameterType="Long">
+        UPDATE
+           FROM wechat_message
+        SET
+           status = 0
+        WHERE
+            id=#{id}
+    </update>
+
+    <select id="findListPage" parameterType="WechatMessageVo" resultType="WechatMessageVo">
+        SELECT <include refid="column_list"/>
+          FROM wechat_message
+        WHERE
+          status = 1
+    </select>
+
+
+</mapper>
