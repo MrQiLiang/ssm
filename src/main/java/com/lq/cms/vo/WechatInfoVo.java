@@ -1,5 +1,6 @@
 package com.lq.cms.vo;
 
+import com.lq.cms.emun.WechatInfoCertificationTypeEnum;
 import com.lq.cms.emun.WechatInfoEncodingTypeEnum;
 import com.lq.cms.emun.WechatInfoTypeEnum;
 import com.lq.code.util.DateUtil;
@@ -44,6 +45,10 @@ public class WechatInfoVo extends BasePageVo {
     private Integer wechatInfoType;
     //公众号类型（字符串）
     private String wechatInfoTypeStr;
+    //公众号认证状态
+    private Integer certification;
+    //公众号认证状态(字符串)
+    private String certificationStr;
 
     public Long getId() {
         return id;
@@ -132,7 +137,9 @@ public class WechatInfoVo extends BasePageVo {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-        this.createTimeStr = DateUtil.getDateToStr(createTime);
+        if (createTime!=null) {
+            this.createTimeStr = DateUtil.getDateToStr(createTime);
+        }
     }
 
     public String getCreateTimeStr() {
@@ -165,7 +172,9 @@ public class WechatInfoVo extends BasePageVo {
 
     public void setWechatInfoType(Integer wechatInfoType) {
         this.wechatInfoType = wechatInfoType;
-        this.wechatInfoTypeStr = WechatInfoTypeEnum.getDesc(wechatInfoType);
+        if (wechatInfoType!=null) {
+            this.wechatInfoTypeStr = WechatInfoTypeEnum.getDesc(wechatInfoType);
+        }
     }
 
     public String getWechatInfoTypeStr() {
@@ -174,5 +183,24 @@ public class WechatInfoVo extends BasePageVo {
 
     public void setWechatInfoTypeStr(String wechatInfoTypeStr) {
         this.wechatInfoTypeStr = wechatInfoTypeStr;
+    }
+
+    public Integer getCertification() {
+        return certification;
+    }
+
+    public void setCertification(Integer certification) {
+        this.certification = certification;
+        if (certification!=null){
+            this.certificationStr = WechatInfoCertificationTypeEnum.getDesc(certification);
+        }
+    }
+
+    public String getCertificationStr() {
+        return certificationStr;
+    }
+
+    public void setCertificationStr(String certificationStr) {
+        this.certificationStr = certificationStr;
     }
 }

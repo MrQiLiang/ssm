@@ -1,5 +1,6 @@
 package com.lq.wechat.web;
 
+import com.lq.cms.emun.WechatInfoCertificationTypeEnum;
 import com.lq.cms.service.WechatInfoService;
 import com.lq.cms.service.WechatUserService;
 import com.lq.code.util.StringUtil;
@@ -144,8 +145,11 @@ public class  WechatController extends BaseController {
                     switch (event) {
                         case ConstantSet.EVENT_TYPE_SUBSCRIBE:
                             LOGGER.info("微信公众号关注事件："+wechatInfo.getWechatName());
-                            WechatUser wechatUser = wechatUserService.saveWechatUser(openId,wechatInfo);
-                            ;
+                            //公众号在认证的情况下才可以获取用户信息
+                            if (WechatInfoCertificationTypeEnum.CERTIFICATION_YES.getValue().equals(wechatInfo.getCertification())) {
+                                WechatUser wechatUser = wechatUserService.saveWechatUser(openId, wechatInfo);
+                            }
+
                             break;
                         case ConstantSet.EVENT_TYPE_UNSUBSCRIBE:
                             ;

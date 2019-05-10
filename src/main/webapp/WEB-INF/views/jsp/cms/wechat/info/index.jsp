@@ -42,6 +42,7 @@
                     {field:'encodingTypeStr',title:'消息模式',width:100},
                     {field:'encodingAesKey',title:'消息加密key',width:100},
                     {field:'createTimeStr',title:'创建时间',width:130},
+                    {field:'certificationStr',title:'认证状态',width:50},
                     {field:'url',title:'对接url',width:300},
                 ]],
                 toolbar: [{
@@ -109,6 +110,7 @@
             obj.encodingType = $("#encodingType").val();
             obj.encodingAesKey = $("#encodingAesKey").val();
             obj.wechatInfoType = $("#wechatInfoType").val();
+            obj.certification = $("#certification").val();
             return obj;
         }
 

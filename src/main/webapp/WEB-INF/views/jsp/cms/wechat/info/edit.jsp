@@ -57,6 +57,17 @@
             </td>
         </tr>
         <tr>
+            <td>认证状态:</td>
+            <td>
+                <select id="certification" >
+                    <c:forEach items="${wechatInfoCertificationTypeMap}" var="certification">
+                        <option <c:if test="${wechatInfo.certification == certification.key}">selected</c:if> value="${certification.key}">${certification.value}</option>
+                    </c:forEach>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
             <td>消息加密key:</td>
             <td><input class="easyui-textbox" type="text" id="encodingAesKey" data-options="required:true" value="${wechatInfo.encodingAesKey}" /></td>
         </tr>

@@ -14,7 +14,6 @@ public enum  WechatInfoEncodingTypeEnum {
     private static Map<String,String> enumMap = new HashMap(WechatInfoEncodingTypeEnum.values().length);
 
     static {
-
         WechatInfoEncodingTypeEnum[] wechatInfoEncodingTypeEnumArray = WechatInfoEncodingTypeEnum.values();
         for (WechatInfoEncodingTypeEnum wechatInfoEncodingTypeEnum : wechatInfoEncodingTypeEnumArray) {
             enumMap.put(wechatInfoEncodingTypeEnum.value, wechatInfoEncodingTypeEnum.desc);
@@ -59,6 +58,10 @@ public enum  WechatInfoEncodingTypeEnum {
         this.desc = desc;
     }
 
+    public static String getDesc(int value){
+
+        return enumMap.get(value);
+    }
 
 
 }

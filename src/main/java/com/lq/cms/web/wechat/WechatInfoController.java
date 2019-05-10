@@ -1,6 +1,7 @@
 package com.lq.cms.web.wechat;
 
 import com.lq.cms.emun.StatusTypeEnum;
+import com.lq.cms.emun.WechatInfoCertificationTypeEnum;
 import com.lq.cms.emun.WechatInfoEncodingTypeEnum;
 import com.lq.cms.emun.WechatInfoTypeEnum;
 import com.lq.cms.service.WechatInfoService;
@@ -49,6 +50,8 @@ public class WechatInfoController {
         modelAndView.addObject("encodingTypeMap",encodingTypeMap);
         Map<Integer,String> wechatInfoTypeMap = WechatInfoTypeEnum.getEnumMap();
         modelAndView.addObject("wechatInfoTypeMap",wechatInfoTypeMap);
+        Map<Integer,String> wechatInfoCertificationTypeMap = WechatInfoCertificationTypeEnum.getEnumMap();
+        modelAndView.addObject("wechatInfoCertificationTypeMap",wechatInfoCertificationTypeMap);
         modelAndView.setViewName("cms/wechat/info/edit");
         return modelAndView;
     }
