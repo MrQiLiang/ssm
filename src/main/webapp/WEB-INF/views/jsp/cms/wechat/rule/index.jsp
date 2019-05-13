@@ -1,271 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: qi_liang
-  Date: 2018/5/30
-  Time: 下午9:53
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ include file="../../../common/import-tag.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>微信回复管理</title>
-
-    <!-- 引入 WeUI -->
-
+    <title>消息回复</title>
+    <link href="${ctx}/resources/cms/wechat/rule/css/index.css" rel="stylesheet" type="text/css">
 </head>
-<style>
-    body{margin:50px}
-    .head{
-        background-color:#FFFFFF;
-    }
-    .button{
-        background-color:	#FFFFFF;
-        height: 35px;
-        border-radius:5px;
-        color:#9E9E9E;
-        margin:20px 60px 40px 60px; /** 上 右 下 左**/
-
-    }
-    .click{
-
-        background-color:#1E90FF;
-        color:#FFFFFF;
-        outline: none;
-    }
-    .weixin-checkbox{
-        background-color:#C9C9C9;
-        border-radius:20px;
-        width: 50px;
-        height: 30px;
-        float:left;
-        margin-left: 10px;
-
-    }
-    .weixin-checkbox-Check{
-        background-color:#1AAD19;
-
-
-    }
-    .checkBox-div{
-        background-color:#FFFFFF;
-        border-radius:20px;
-        width: 30px;
-        height: 30px;
-
-    }
-
-    .checkBox-div-Check{
-
-        margin-left: 20px;
-
-    }
-    .hr1{     margin-top: 24px;
-        border-top: 1px solid #E4E8EB;
-    }
-
-    .addhead{
-        float:right;
-        height: 70px;
-    }
-    .addhead button{
-        background-color:#1AAD19;
-        color:#FFFFFF;
-        border-radius:9px;
-        width: 80px;
-        height: 50px;
-        margin:10px 0px 10px 0px; /** 上 右 下 左**/
-        outline:none
-    }
-    .content1{
-        background-color:#FFFFFF;
-        width: 100%;
-        height: 400px;
-
-    }
-    .content2{
-        background-color:#DB7093;
-        width: 100%;
-        height: 400px;
-
-    }
-    .content3{
-        background-color:#FFFFFF;
-        width: 100%;
-        height: 400px;
-
-    }
-    .weui-desktop-msg-sender {
-        border: 1px solid #E4E8EB;
-        background-color: #FFFFFF;
-    }
-    .weui-desktop-msg-sender__tabs{
-        padding-left: 0;
-        list-style-type: none;
-        line-height: 38px;
-        background-color: #FFFFFF;
-    }
-    table{
-        width: 100%;
-    }
-    .table_the{
-        background-color: #F6F8F9;
-        color: #9A9A9A;
-        width: 100%;
-    }
-    .row{
-        margin: 30px 0px 10px 0px; /** 上 右 下 左**/
-    }
-    .lable_title{
-        margin: 0px 50px 0px 50px; /** 上 右 下 左**/
-    }
-    .rule-input{
-        width: 60%;
-        height:33px ;
-        border-radius:4px;
-    }
-    .keyword-select{
-        margin-left: 13px;
-        width: 37%;
-        height:33px ;
-        border-radius:4px;
-
-    }
-    .keyword-input{
-        margin-left: 5px;
-        width: 37%;
-        height:30px ;
-        border-radius:4px;
-
-    }
-    .keyword-add{
-        width: 20px;
-        height: 20px;
-        background-color: #FFFFFF;
-        border-radius: 20px;
-        border:2px solid #E4E8EB;
-        text-align:center;
-
-
-    }
-    .keyword-del{
-        width: 20px;
-        height: 20px;
-        background-color: #FFFFFF;
-        border-radius: 20px;
-        border:2px solid #E4E8EB;
-        text-align:center;
-
-    }
-    .keyword-add-title{
-        margin: 0px 0px 0px -5px; /** 上 右 下 左**/
-        text-decoration:none;
-        color: black;
-    }
-
-    .keyword-del-title{
-        margin: 0px 0px 0px -5px; /** 上 右 下 左**/
-        text-decoration:none;
-        color: black;
-    }
-
-    .rule-save{
-        margin: 0px 0px 0px 350px;
-        background-color: #1AAD19;
-        width: 140px;
-        height: 40px;
-        color: #ffff;
-        border-radius: 7px;
-    }
-
-    .rule-canle{
-        margin: 0px 0px 0px 5px;
-        background-color: #ffffff;
-        width: 140px;
-        height: 40px;
-        color: #353535;
-        border-radius: 7px;
-    }
-
-    .keyword-content{
-        width:80%;
-        float:left;
-    }
-    .keyword-cotent-title{
-        float:left;
-    }
-    .content2{
-        background-color:#FFFFFF;
-        width: 100%;
-        height: 400px;
-
-    }
-    .li{
-        display: inline;
-        margin-left: 20px;
-    }
-
-    .li:hover{
-        color:#44B549;
-    }
-
-    .li-title{
-        margin:0px 0px -5px 3px; /** 上 右 下 左**/
-    }
-    .text-input{
-        position: relative;
-        border: 1px solid #E4E8EB;
-        height: 250px;
-
-    }
-    .text-arce{
-        width: 100%;
-        height: 100%;
-    }
-    .imager-input{
-        position: relative;
-        border: 1px solid #E4E8EB;
-        height: 250px;
-        display:none;
-    }
-    .editor_tip {
-        float: right;
-        color: #9A9A9A;
-    }
-    .receive_message-save{
-        margin: 61px 0px 0px 350px;
-        background-color: #1AAD19;
-        width: 140px;
-        height: 40px;
-        color: #ffff;
-        border-radius: 7px;
-
-    }
-    .receive_message-del{
-        margin: 61px 0px 0px 5px;
-        background-color: #ffffff;
-        width: 140px;
-        height: 40px;
-        color: #353535;
-        border-radius: 7px;
-
-    }
-    .li-click{
-        color:#44B549;
-    }
-    .receive_message_content{
-        border: 1px solid #E4E8EB;
-        width: 100%;
-        height: 350px;
-        margin-top: 50px;
-
-
-    }
-    /** 更新      end**/
-
-</style>
 <body>
 
 <div class="head">
@@ -289,7 +31,7 @@
         <tr>
             <th style="width: 25%;">规则名称</th>
             <th style="width: 25%;">关键词</th>
-            <th style="width: 25%;">回复内容</th>
+            <!-- 	 <th style="width: 25%;">回复内容</th> -->
             <th style="width: 25%;">操作</th>
         </tr>
         </thead>
@@ -302,8 +44,8 @@
                         ${keywordList.keyword}
                     </c:forEach>
                 </th>
-                <th style="width: 25%;">回复内容</th>
-                <th style="width: 25%;">操作</th>
+                <!-- 	<th style="width: 25%;">回复内容</th> -->
+                <th style="width: 25%;"> <a href="javascript:showeditRule('${vo.id}')">编辑</a>  <a href="javascript:delRule('${vo.id}')">删除</a> </th>
             </tr>
             </thead>
 
@@ -317,18 +59,20 @@
     <div class="receive_message_content">
         <ul class="weui-desktop-msg-sender__tabs">
             <li class="li li-click" onclick="showTextOrImager('text',this)" ><a class="li-title">文字</a></li>
-            <li class="li" onclick="showTextOrImager('imager',this)" > <a class="li-title">图片</a></li>
+            <!-- <li class="li" onclick="showTextOrImager('imager',this)" > <a class="li-title">图片</a></li>	-->
         </ul>
         <!-- 文字 输入div -->
         <div class="text-input">
             <div class="text-arce" id="text-arce" contenteditable="true">${defaultMessage.content}</div>
-
         </div>
 
         <!-- 图片上传 div -->
         <div class="imager-input">
             <div class="imager-upload"></div>
-
+        </div>
+        <div class="tip-text" >
+            <p class = "tip-text-message" id ="tip-text-message">还可以输入<a class="text-num">500</a>个字</p>
+            <p class = "tip-error-message" id ="tip-error-message">超出字数限制</p>
         </div>
         <button class="receive_message-save" id="message-save">保存</button>
         <button class="receive_message-del" id="message-del">删除回复</button>
@@ -340,19 +84,22 @@
     <input type="hidden" id = "subscribeMessageId" value="${subscribeMessage.id}" >
     <div class="receive_message_content">
         <ul class="weui-desktop-msg-sender__tabs">
-            <li class="li li-click" onclick="showTextOrImager('text',this)" ><a class="li-title">文字</a></li>
-            <li class="li" onclick="showTextOrImager('imager',this)" > <a class="li-title">图片</a></li>
+            <li class="li contetn3-li-click" onclick="subscribeShow('text',this)" ><a class="li-title">文字</a></li>
+            <!--  <li class="li" onclick="subscribeShow('imager',this)" > <a class="li-title">图片</a></li>	-->
         </ul>
         <!-- 文字 输入div -->
-        <div class="text-input">
+        <div class="text-input" id="subscribeTextInput">
             <div class="text-arce" id="subscribe-arce" contenteditable="true">${subscribeMessage.content}</div>
 
         </div>
 
         <!-- 图片上传 div -->
-        <div class="imager-input">
+        <div class="imager-input" id="subscribeImageInput">
             <div class="imager-upload"></div>
-
+        </div>
+        <div class="tip-text" >
+            <p class = "tip-text-message" id ="receive-text-message">还可以输入<a class="text-num">500</a>个字</p>
+            <p class = "tip-error-message" id ="receive-error-message">超出字数限制</p>
         </div>
         <button class="receive_message-save" id="subscribe-save">保存</button>
         <button class="receive_message-del" id="subscribe-del">删除回复</button>
@@ -361,6 +108,7 @@
 
 </div>
 <div class="content4" id="content4" >
+    <input type="hidden" id = "ruleId">
     <div class="row">
         <label class="lable_title">规则名称</label><input class="rule-input" id="ruleName" type="text" placeholder="请输入规则名称" />
     </div>
@@ -369,7 +117,7 @@
         <label class="lable_title keyword-cotent-title">关键词</label>
         <div class="keyword-content" id="keyword">
             <div class="keyword-content-row">
-                <select class="keyword-select"><option value="completely">全匹配</option><option value="contain">半匹配</option></select><input type="text" class="keyword-input" placeholder="请输入关键字" />
+                <select class="keyword-select"><option value="COMPLETELY">全匹配</option><option value="CONTAIN">半匹配</option></select><input type="text" class="keyword-input" placeholder="请输入关键字" />
                 <button class="keyword-add" onclick="addkeyword()"><a href="#" class="keyword-add-title" >十</a></button>
                 <button class="keyword-del" onclick="delkeyword(this)"><a href="#" class="keyword-del-title">一</a></button>
             </div>
@@ -379,13 +127,12 @@
     <div  style="clear:both"></div>
     <div class="row">
         <label class="lable_title">回复内容</label>
-        <button class="keyword-add"><a href="#" class="keyword-add-title">十</a></button>
-        <button class="keyword-del"><a href="#" class="keyword-del-title">一</a></button>
+        <!--  <img src="${ctx}/wechat/imager/wx/u1217.png" class="add-icon" id="addIcon" />--> <a id="addIcon" class="add-button-textImage">图文</a> <a id="addText" class="add-button-text">文字</a>
     </div>
 
     <div class="row">
         <label class="lable_title">回复方式</label>
-        <input type="radio" id="replyType" name="replyType" value="whole" />全回复 <input id="replyType" type="radio" name="replyType" value="random" checked="checked" /> 随机回复
+        <input type="radio"  name="replyType" value="WHOLE" />全回复 <input  type="radio" name="replyType" value="RANDOM" checked="checked" /> 随机回复
     </div>
 
     <div class="row">
@@ -393,17 +140,26 @@
         <button class="rule-canle">取消</button>
     </div>
 
-
-
 </div>
+
 </body>
 <script type="text/javascript" src="${ctx}/resources/code/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
 <script type="text/javascript">
-    var isCheck = true;
+    var isCheck = ${wechatInfo.openReply==1};
     var addkeywordRowHtml = $("#keyword").html();
-    var wechatInfoId = '${weChatInfo.id}';
+    var wechatInfoId = '${wechatInfo.id}';
+    var maxInputNum = $(".text-num").html();
+    var messageText = '' ;
+    var index ;
+    var bufferSet = new Set();
+    var messageSet = new Set();
+    var selectctMessageIdList ;
     $(function(){
+        //初始化输入内容字数
+        showTextNum("#text-arce","#tip-text-message","#tip-error-message");
+        showTextNum("#subscribe-arce","#receive-text-message","#receive-error-message");
+
         if(isCheck){
             $("#weixincheckBoxId").addClass("weixin-checkbox-Check");
             $(".checkBox-div").addClass("checkBox-div-Check");
@@ -427,35 +183,26 @@
                 isCheck=false;
             }
 
-            var data =new Object();
+            var param =new Object();
             if(isCheck==true){
-                data.isReply = 0;
+                param.openReply = 1;
             }else{
-                data.isReply = 1;
+                param.openReply = 0;
             }
-            data.wechatInfoId = wechatInfoId;
+            param.wechatInfoId = wechatInfoId;
             $.ajax({
                 type:"post",
-                url:"${ctx}/admin/wechat/updateIsReply.htm",
-                data:data,
+                url:"${ctx}/cms/wechat/info/updateOpenReply",
+                data:param,
                 dataType:"json",
                 success:function(result){
 
-                }
+                },
             });
-
 
         });
 
-        /** 显示div**/
-        function showContent(index){
-            $("#content1").hide();
-            $("#content2").hide();
-            $("#content3").hide();
-            $("#content4").hide();
-            $("#content"+index).show();
 
-        }
 
         function showButton(obj){
             $(".click").removeClass("click");
@@ -469,20 +216,20 @@
                 showContent(1);
             }
 
+            messageSet.clear();
+
 
         });
         $("#button2").click(function(){
             showButton(this);
             if(isCheck){
                 showContent(2);
-
             }
         });
         $("#button3").click(function(){
             showButton(this);
             if(isCheck){
                 showContent(3);
-
             }
         });
         $("#button4").click(function(){
@@ -493,19 +240,47 @@
 
         $(".rule-save").click(function(){
             var data = new Object();
-            data.ruleName = $("#ruleName").val();
+            data.id = $("#ruleId").val();
+            var ruleName = $("#ruleName").val();
+            if(ruleName.length==0||ruleName==''){
+                layer.msg('规则名不能为空');
+                return ;
+            }
+            data.ruleName = ruleName;
+
             var keywordList = $(".keyword-content-row");
             var keywordObjeList =new Array();
+            var isNull = false;
             keywordList.each(function(index,obj){
                 var matchinType = $(obj).find('.keyword-select').val();
                 var keywordContent = $(obj).find('.keyword-input').val();
                 var wechatKeyWord = new Object();
+                if(keywordContent.length==0||keywordContent==''){
+
+                    isNull = true;
+                    return ;
+                }
                 wechatKeyWord.keyword =  keywordContent;
+
                 wechatKeyWord.matchinType = matchinType;
                 keywordObjeList.push(wechatKeyWord);
             });
+            if(isNull){
+                layer.msg('关键字不能为空');
+                return ;
+            }
+
+            var messageList = new Array();
+            messageSet.forEach(function (element, sameElement, set) {
+                messageList.push(element);
+                //	messageList.push(e);
+            });
+
+            messageSet.clear();
+            data.messaegListStr = JSON.stringify(messageList);
             data.keywordListStr = JSON.stringify(keywordObjeList);
-            data.replyType = $("#replyType").val();
+            data.replyType =  $("input[name='replyType']:checked").val();
+            data.messageText =  messageText;
             data.wechatInfoId = wechatInfoId;
             $.ajax({
                 type:"post",
@@ -517,6 +292,8 @@
                     if(result.success==true){
                         $("#button1").trigger("click");
                         location.reload();
+                        clearEdit();
+
                     }else{
                         alert("添加失败");
                     }
@@ -527,9 +304,9 @@
 
         $(".rule-canle").click(function(){
             $("#button1").trigger("click");
-            $("#keyword").html('');
+            messageSet.clear();
+            clearEdit();
             $("#keyword").append(addkeywordRowHtml);
-            $("#ruleName").val('');
         });
 
         $("#message-save").click(function(){
@@ -538,8 +315,18 @@
             data.content = messageContent;
             data.wechatInfoId = wechatInfoId;
             data.status = 0;
+            data.messageType = 'text';
             data.purpose = 'defaultRule';
             data.id = $("#defaultMessageId").val();
+            if(messageContent.length==0){
+                layer.msg('回复内容不能为空');
+                return ;
+
+            }
+            if(messageContent.length>maxInputNum){
+                layer.msg('字数超出限制,不能提交');
+                return ;
+            }
             createOrUpdateMessage(data);
         });
 
@@ -553,7 +340,128 @@
             createOrUpdateMessage(data);
 
         });
+
+        $("#subscribe-save").click(function(){
+
+            var data = new Object();
+            var messageContent = $("#subscribe-arce").html();
+            data.content = messageContent;
+            data.status = 0;
+            data.messageType = 'text';
+            data.purpose = 'subscribe';
+            data.wechatInfoId = wechatInfoId;
+            data.id = $("#subscribeMessageId").val();
+            if(messageContent.length==0){
+                layer.msg('回复内容不能为空');
+                return ;
+
+            }
+            if(messageContent.length>maxInputNum){
+                layer.msg('字数超出限制,不能提交');
+                return ;
+            }
+            createOrUpdateMessage(data);
+        });
+
+        $("#subscribe-del").click(function(){
+            $("#subscribe-arce").html("");
+            var data = new Object();
+            data.status = 1;
+            data.purpose = 'subscribe';
+            data.wechatInfoId = wechatInfoId;
+
+            data.id = $("#subscribeMessageId").val();
+            createOrUpdateMessage(data);
+
+        });
+
+        $("#text-arce").keyup(function(){
+            showTextNum("#text-arce","#tip-text-message","#tip-error-message");
+        });
+
+        $("#subscribe-arce").keyup(function(){
+            showTextNum("#subscribe-arce","#receive-text-message","#receive-error-message");
+
+        });
+
+        $("#addIcon").click(function(){
+            var data = new Object();
+            data.messageType = 'text-image';
+            $.ajax({
+                type:"post",
+                url:"${ctx}/admin/wechat/getMessageDataList.htm",
+                traditional:true,
+                data:data,
+                async:false,
+                dataType:"json",
+                success:function(result){
+                    if(result.success==true){
+
+                        index = layer.open({
+                            type: 1,
+                            btn:['确定','取消'],
+                            btn1:function(index,layero){
+                                messageSet = bufferSet;
+                                layer.close(index);
+
+                            },
+
+
+                            skin: 'layui-layer-rim', //加上边框
+                            area: ['90%', '80%'], //宽高
+                            btnAlign: 'c',
+                            content: appendAlertHtml(result.data),
+                        });
+
+                    }else{
+                        layer.msg('数据加载失败');
+                    }
+                },
+                error:function(){
+
+                },
+            });
+
+            //页面层
+
+
+
+        });
+
+        //添加文字回复
+        $("#addText").click(function(){
+            index = layer.open({
+                type: 1,
+                btn:['确定','取消'],
+                btn1:function(index,layero){
+                    messageText = $("#input-text").val();
+                    layer.close(index);
+                },
+
+                skin: 'layui-layer-rim', //加上边框
+                area: ['300px', '500px'], //宽高
+                btnAlign: 'c',
+                content:showeditText(),
+            });
+        });
+
     });
+
+
+
+    //字数显示
+    function showTextNum(textArceId,textMessageId,textErrorId){
+        var str = $(textArceId).html();
+        if(maxInputNum>=str.length){
+            $(textMessageId+" .text-num").html(maxInputNum -str.length);
+            $(textMessageId).show();
+            $(textErrorId).hide();
+        }else{
+            $(textMessageId).hide();
+            $(textErrorId).show();
+        };
+
+    }
 
 
     function addkeyword(){
@@ -580,6 +488,23 @@
             $(".imager-input").show();
 
         }
+
+    }
+
+    function subscribeShow(type,obj){
+        $(".contetn3-li-click").removeClass("contetn3-li-click");
+        $(obj).addClass("contetn3-li-click");
+        $("#subscribeTextInput").hide();
+        $("#subscribeImageInput").hide();
+
+        if(type == 'text'){
+            $("#subscribeTextInput").show();
+        }
+        if(type == 'imager'){
+            alert("待开发功能");
+            $("#subscribeImageInput").show();
+
+        }
     }
 
     function createOrUpdateMessage(data){
@@ -595,9 +520,175 @@
                 }else{
                     layer.msg('保存失败');
                 }
-            }
+            },
+            error:function(){
+
+            },
         });
+    };
+
+    function showeditRule(wechatRuleId) {
+        clearEdit();
+        var data = new Object();
+        data.wechatRuleId = wechatRuleId;
+        $.ajax({
+            type:"post",
+            url:"${ctx}/admin/wechat/getWechatRuleInfo.htm",
+            traditional:true,
+            data:data,
+            dataType:"json",
+            success:function(result){
+                if(result.success==true){
+                    var ruleData = result.data ;
+                    $("#ruleId").val(ruleData.id);
+                    $("#ruleName").val(ruleData.ruleName);
+                    var keywordList = ruleData.keywordList;
+                    keywordList.forEach(function(value,index,array){
+                        appendHtml(value.matchinType,value.keyword);
+                    });
+                    var replyType = ruleData.replyType;
+                    if(replyType=="WHOLE"){
+                        $("input[name='replyType']:eq(0)").prop("checked",'checked');
+                    }
+                    if(replyType=="RANDOM"){
+                        $("input[name='replyType']:eq(1)").prop("checked",'checked');
+                    }
+                    var messageIdList = ruleData.messageIdList;
+                    for(var i = 0;i<messageIdList.length;i++){
+
+                        messageSet.add(messageIdList[i]);
+                    }
+                    messageText = ruleData.messageText;
+                }
+            },
+            error:function(){
+
+            },
+        });
+        showContent(4);
+
     }
+
+    function appendHtml(selectVal,inputVal) {
+        var completelyStr = 'selected' ;
+        var containStr = 'selected';
+        if(selectVal=='COMPLETELY'){
+            containStr = ''
+        }else {
+            completelyStr = '';
+        }
+
+        var html = '<div class="keyword-content-row">'+
+            '<select class="keyword-select">' +
+            '<option value="completely" '+completelyStr+' >全匹配</option>' +
+            '<option value="contain" '+containStr+'>半匹配</option><' +
+            '/select>' +
+            '<input type="text" class="keyword-input" placeholder="请输入关键字"  value="'+inputVal+'" />' +
+            ' <button class="keyword-add" onclick="addkeyword()"><a href="#" class="keyword-add-title" >十</a></button> ' +
+            '<button class="keyword-del" onclick="delkeyword(this)"><a href="#" class="keyword-del-title">一</a></button>' +
+            '</div>';
+
+        $("#keyword").append(html);
+
+
+    };
+    /** 显示div**/
+    function showContent(index){
+        $("#content1").hide();
+        $("#content2").hide();
+        $("#content3").hide();
+        $("#content4").hide();
+        $("#content"+index).show();
+
+    };
+
+    /**  清空已编辑内容**/
+    function clearEdit(){
+        $("#ruleId").val('');
+        $("#keyword").html('');
+        $("#ruleName").val('');
+        $("input[name='replyType']:eq(1)").attr("checked",'checked');
+        messageText = '';
+
+    }
+
+    function delRule(ruleId){
+        var data = new Object();
+        data.id = ruleId;
+
+        $.ajax({
+            type:"post",
+            url:"${ctx}/admin/wechat/delWechatRule.htm",
+            traditional:true,
+            data:data,
+            dataType:"json",
+            success:function(result){
+                if(result.success==true){
+
+                    location.reload();
+                }
+            },
+            error:function(){
+
+            },
+        });
+
+    }
+
+    function appendAlertHtml(data){
+        var isShow ;
+
+        var wechatMessageList = data.wechatMessagList;
+        var html = '<div class="alert"><div class="left-navigation"><p>图文('+data.wechatMessageCount+')</p></div>';
+        html += ' <div class="alert-content">';
+        for(var i = 0 ;i < wechatMessageList.length;i++){
+            var wechatMessage = wechatMessageList[i];
+            var content = wechatMessage.content;
+            if(content.length>=12){
+                content = content.substring(0,8);
+            }
+            if(messageSet.has(wechatMessage.id)){
+                bufferSet.add(wechatMessage.id);
+                isShow = 'classShow';
+            }else{
+                isShow = 'classhide';
+            }
+
+            html += ' <div class="message-row" onclick="onMessaegRow(this)">';
+            html += '<input type="hidden" value="'+wechatMessage.id+'" />';
+            html +='<div class="message-title">'+wechatMessage.title+'</div>';
+            html +='<img class="message-image" src="'+wechatMessage.imagerUrl+'" width="50" height="60">';
+            html +='<div class="message-content">'+content +'</div>';
+            html +='<div class="message-createTime">更新于 '+wechatMessage.updateTime+' </div>';
+            html +='<div class="chekc-Div '+isShow+'" > <img class ="check-image" src="${ctx}/wechat/imager/wx/u710.png"></div>';
+            html += '</div>';
+        }
+        html += '</div></div>';
+        return html;
+    }
+
+    function showeditText(){
+
+        var html = '<div  class="input-text-div"><textarea id = "input-text">'+messageText+'</textarea></div>';
+        return html;
+    }
+
+    function onMessaegRow(obj){
+        var messageid = parseInt($(obj).find('input').val());
+        console.log(messageid);
+        if ($(obj).find('.chekc-Div').css('display') == 'none') {
+            $(obj).find('.chekc-Div').show();
+            //  messageSet.add(messageid);
+            bufferSet.add(messageid);
+        }else{
+            $(obj).find('.chekc-Div').hide();
+            // var resultFul = messageSet.delete(messageid);
+            bufferSet.delete(messageid);
+        }
+
+    }
+
 
 </script>
 </html>
+

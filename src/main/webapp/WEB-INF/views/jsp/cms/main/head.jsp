@@ -256,7 +256,7 @@
                     </li>
 
                     <li>
-                        <a href="javascript:void">
+                        <a href="javascript:setUserData()">
                             <i class="icon-user"></i>
                             个人资料
                         </a>
@@ -348,7 +348,7 @@
 
    //设置用户资料
    function setUserData() {
-       
+       alert("开发中.....");
    }
     
 </script> 

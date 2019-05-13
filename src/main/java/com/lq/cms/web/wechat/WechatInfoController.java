@@ -9,8 +9,11 @@ import com.lq.cms.service.WechatInfoService;
 import com.lq.cms.vo.WechatInfoVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
+import com.lq.entity.SysUser;
 import com.lq.entity.WechatInfo;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,10 +89,35 @@ public class WechatInfoController {
     @RequestMapping("/update")
     public Object update(WechatInfoVo vo){
         AjaxResult ajaxResult = new AjaxResult();
-        WechatInfo wechatInfo = wechatInfoService.findOne(1L);
+        Subject subject= SecurityUtils.getSubject();
+        SysUser loginUser=(SysUser) subject.getPrincipal();
+        WechatInfo wechatInfo = wechatInfoService.findOne(vo.getId());
         BeanUtils.copyProperties(vo,wechatInfo);
+        wechatInfo.setLastUpdateTime(new Date());
+        wechatInfo.setUpdateUserId(loginUser.getId());
         wechatInfoService.update(wechatInfo);
         return  ajaxResult;
+    }
+
+    @RequiresPermissions(INDEX_URL+Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
+    @ResponseBody
+    @RequestMapping("/updateOpenReply")
+    public Object updateOpenReply(Long wechatInfoId,Integer openReply){
+        AjaxResult ajaxResult = new AjaxResult();
+        Subject subject= SecurityUtils.getSubject();
+        SysUser loginUser=(SysUser) subject.getPrincipal();
+        WechatInfo wechatInfo = wechatInfoService.findOne(wechatInfoId);
+
+        if (wechatInfo!=null){
+            wechatInfo.setLastUpdateTime(new Date());
+            wechatInfo.setUpdateUserId(loginUser.getId());
+            wechatInfo.setOpenReply(openReply);
+            wechatInfoService.update(wechatInfo);
+        }else {
+            ajaxResult.setSuccess(false);
+            ajaxResult.setMsg("更新失败！");
+        }
+        return ajaxResult;
     }
 
     @RequiresPermissions(INDEX_URL+Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)

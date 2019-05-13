@@ -37,6 +37,7 @@ public class WechatInfoServiceImpl extends BaseServiceImpl<WechatInfo> implement
 
     @Override
     public WechatInfo getByOpenId(String wechatOpenId) {
+
         return wechatInfoDao.getByWechatOpenId(wechatOpenId);
     }
 

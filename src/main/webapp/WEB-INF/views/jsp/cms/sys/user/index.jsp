@@ -58,7 +58,6 @@
 <body>
 <table id="dataList"></table>
 <div id="editDate"></div>
-
 </body>
 <script type="text/javascript">
 

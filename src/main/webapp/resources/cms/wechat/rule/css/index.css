@@ -1,0 +1,391 @@
+body{margin:50px}
+.head{
+    background-color:#FFFFFF;
+}
+.button{
+    background-color:	#FFFFFF;
+    height: 35px;
+    border-radius:5px;
+    color:#9E9E9E;
+    margin:20px 60px 40px 60px; /** 上 右 下 左**/
+
+}
+.click{
+
+    background-color:#1E90FF;
+    color:#FFFFFF;
+    outline: none;
+}
+.weixin-checkbox{
+    background-color:#C9C9C9;
+    border-radius:20px;
+    width: 50px;
+    height: 30px;
+    float:left;
+    margin-left: 10px;
+
+}
+.weixin-checkbox-Check{
+    background-color:#1AAD19;
+
+
+}
+.checkBox-div{
+    background-color:#FFFFFF;
+    border-radius:20px;
+    width: 30px;
+    height: 30px;
+
+}
+
+.checkBox-div-Check{
+
+    margin-left: 20px;
+
+}
+.hr1{     margin-top: 24px;
+    border-top: 1px solid #E4E8EB;
+}
+
+.addhead{
+    float:right;
+    height: 70px;
+}
+.addhead button{
+    background-color:#1AAD19;
+    color:#FFFFFF;
+    border-radius:9px;
+    width: 80px;
+    height: 50px;
+    margin:10px 0px 10px 0px; /** 上 右 下 左**/
+    outline:none
+}
+.content1{
+    background-color:#FFFFFF;
+    width: 100%;
+    height: 400px;
+
+}
+.content2{
+    background-color:#DB7093;
+    width: 100%;
+    height: 400px;
+
+}
+.content3{
+    background-color:#FFFFFF;
+    width: 100%;
+    height: 400px;
+
+}
+.weui-desktop-msg-sender {
+    border: 1px solid #E4E8EB;
+    background-color: #FFFFFF;
+}
+.weui-desktop-msg-sender__tabs{
+    padding-left: 0;
+    list-style-type: none;
+    line-height: 38px;
+    background-color: #FFFFFF;
+}
+table{
+    width: 100%;
+}
+.table_the{
+    background-color: #F6F8F9;
+    color: #9A9A9A;
+    width: 100%;
+}
+.row{
+    margin: 30px 0px 10px 0px; /** 上 右 下 左**/
+}
+.lable_title{
+    margin: 0px 50px 0px 50px; /** 上 右 下 左**/
+}
+.rule-input{
+    width: 60%;
+    height:33px ;
+    border-radius:4px;
+}
+.keyword-select{
+    margin-left: 13px;
+    width: 37%;
+    height:33px ;
+    border-radius:4px;
+
+}
+.keyword-input{
+    margin-left: 5px;
+    width: 37%;
+    height:30px ;
+    border-radius:4px;
+
+}
+.keyword-add{
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border:2px solid #E4E8EB;
+    text-align:center;
+
+
+}
+.keyword-del{
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border:2px solid #E4E8EB;
+    text-align:center;
+
+}
+.keyword-add-title{
+    margin: 0px 0px 0px -5px; /** 上 右 下 左**/
+    text-decoration:none;
+    color: black;
+}
+
+.keyword-del-title{
+    margin: 0px 0px 0px -5px; /** 上 右 下 左**/
+    text-decoration:none;
+    color: black;
+}
+
+.rule-save{
+    margin: 0px 0px 0px 350px;
+    background-color: #1AAD19;
+    width: 140px;
+    height: 40px;
+    color: #ffff;
+    border-radius: 7px;
+}
+
+.rule-canle{
+    margin: 0px 0px 0px 5px;
+    background-color: #ffffff;
+    width: 140px;
+    height: 40px;
+    color: #353535;
+    border-radius: 7px;
+}
+
+.keyword-content{
+    width:80%;
+    float:left;
+}
+.keyword-cotent-title{
+    float:left;
+}
+.content2{
+    background-color:#FFFFFF;
+    width: 100%;
+    height: 400px;
+
+}
+.li{
+    display: inline;
+    margin-left: 20px;
+}
+
+.li:hover{
+    color:#44B549;
+}
+
+.li-title{
+    margin:0px 0px -5px 3px; /** 上 右 下 左**/
+}
+.text-input{
+    position: relative;
+    border: 1px solid #E4E8EB;
+    height: 250px;
+
+}
+.text-arce{
+    width: 100%;
+    height: 100%;
+}
+.imager-input{
+    position: relative;
+    border: 1px solid #E4E8EB;
+    height: 250px;
+    display:none;
+}
+.editor_tip {
+    float: right;
+    color: #9A9A9A;
+}
+.receive_message-save{
+    margin: 40px 0px 0px 350px;
+    background-color: #1AAD19;
+    width: 140px;
+    height: 40px;
+    color: #ffff;
+    border-radius: 7px;
+
+}
+.receive_message-del{
+    margin: 40px 0px 0px 5px;
+    background-color: #ffffff;
+    width: 140px;
+    height: 40px;
+    color: #353535;
+    border-radius: 7px;
+
+}
+.li-click{
+    color:#44B549;
+}
+.receive_message_content{
+    border: 1px solid #E4E8EB;
+    width: 100%;
+    height: 366px;
+    margin-top: 50px;
+
+
+}
+.contetn3-li-click{
+    color:#44B549;
+}
+.tip-text{
+    width: 100%;
+    text-align: right;
+}
+.tip-text-message{
+    color:#9A9A9A;
+    margin-right: 10px;
+}
+.tip-error-message{
+    color:red;
+    margin-right: 10px;
+    display: none;
+
+}
+.add-icon{
+    margin-top:10px
+}
+.reply-content{
+    width: 120px;
+    height:20px;
+    background-color:#9A9A9A;
+    float:left;
+
+}
+
+/*** update start **/
+.aler-Div{
+    display: none;
+}
+.alert{
+
+    width: 100%;
+    height: 100%;
+
+}
+.left-navigation{
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-color: #ffffff;
+    border-right: solid 3px #9A9A9A;
+}
+.left-navigation p{
+    margin-left: 10px;
+
+
+}
+.alert-content{
+    overflow:hidden;
+    float: left;
+    width: 88%;
+    height: 100%;
+    border: 1px solid #c9c9c9;
+    background-color: #f7f6e8;
+
+}
+.message-row{
+    float: left;
+    width: 182px;
+    height: 195px;
+    border: 1px solid #00F7DE;
+    background-color: #FFFFFF;
+    position: relative;
+    margin: 5px 0px 0px 10px;
+
+}
+.message-title{
+    width: 100px;
+    height: 20%;
+    color: #0C0C0C;
+    margin: 5px 10px 2px 10px;
+    font-size: 10px;
+
+
+}
+.message-image{
+    margin: 0px 10px 0px 10px;
+    width: 152px;
+    height: 100px;
+
+}
+.message-content{
+    color: #9A9A9A;
+    font-size: 10px;
+    margin: 5px 10px 2px 10px;
+
+}
+.message-createTime{
+    color: #9A9A9A;
+    font-size: 10px;
+    margin: 5px 10px 2px 10px;
+
+}
+.chekc-Div{
+    position: absolute;
+    width: 182px;
+    height: 195px;
+    background-color: black;
+    -moz-opacity: 0.3;
+    opacity: .30;
+    top: 0px;
+
+}
+.classhide{
+    display: none;
+}
+.classShow{
+    display: block;
+
+}
+
+.check-image{
+    margin: 50px 39px 51px 64px;
+}
+.add-button-textImage{
+    color: #9E9E9E;
+}
+.add-button-textImage:hover{
+    color: #1AAD19;
+}
+
+.add-button-text{
+    color: #9E9E9E;
+    margin-left: 22px;
+}
+
+.add-button-text:hover{
+    color: #1AAD19;
+}
+
+.input-text-div{
+    width: 300px;
+    height: 400px;
+}
+.input-text-div textarea{
+    width: 280px;
+    height: 380px;
+    margin: 10px 10px 10px 10px;
+}
+
+
+    	

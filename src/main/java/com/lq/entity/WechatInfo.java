@@ -70,6 +70,10 @@ public class WechatInfo extends IdEntity {
      * @Link WechatInfoCertificationTypeEnum
      */
     private Integer certification;
+    /**
+     * 是否回复
+     */
+    private Integer openReply;
 
     public String getWechatOpenId() {
         return wechatOpenId;
@@ -181,5 +185,13 @@ public class WechatInfo extends IdEntity {
 
     public void setCertification(Integer certification) {
         this.certification = certification;
+    }
+
+    public Integer getOpenReply() {
+        return openReply;
+    }
+
+    public void setOpenReply(Integer openReply) {
+        this.openReply = openReply;
     }
 }

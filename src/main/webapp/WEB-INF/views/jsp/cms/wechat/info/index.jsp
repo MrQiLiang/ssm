@@ -147,7 +147,7 @@
                 shadeClose: true,
                 shade: 0.9,
                 area: ['90%', '90%'],
-                content: '${ctx}/cms/wechat/rule/index' //iframe的url
+                content: '${ctx}/cms/wechat/rule/index?wechatInfoId='+id //iframe的url
             });
         }
         /**

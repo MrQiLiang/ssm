@@ -2,6 +2,7 @@ package com.lq.wechat.web;
 
 import com.lq.cms.emun.WechatInfoCertificationTypeEnum;
 import com.lq.cms.service.WechatInfoService;
+import com.lq.cms.service.WechatRuleService;
 import com.lq.cms.service.WechatUserService;
 import com.lq.code.util.StringUtil;
 import com.lq.code.web.BaseController;
@@ -49,6 +50,8 @@ public class  WechatController extends BaseController {
     private WechatInfoService wechatInfoService;
     @Autowired
     private WechatUserService wechatUserService;
+    @Autowired
+    private WechatRuleService wechatRuleService;
 
     @RequestMapping(method = { RequestMethod.GET }, produces = "application/json;charset=UTF-8")
     @ResponseBody
@@ -90,8 +93,7 @@ public class  WechatController extends BaseController {
             switch (msgType) {
                 case ConstantSet.MESSAGE_TYPE_TEXT:
                     String content = map.get(WECHAT_CONTENT_KEY);
-
-
+                    message = MessageUtil.MessageToXml(wechatRuleService.getByKeyworkdAndWechatInfoId(content,wechatInfo));
                     if("1".equals(content)){
                         NewsMessage newsMessage=new NewsMessage();
                         List<ItemMessage> items=new ArrayList<>();
