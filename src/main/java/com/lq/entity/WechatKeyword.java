@@ -15,8 +15,9 @@ public class WechatKeyword extends IdEntity {
     private String keyword;
     /**
      * 匹配类型
+     * @Link WechatKeywordMatchinTypeEnum
      */
-    private String matchinType;
+    private Integer matchinType;
     /**
      * 创建时间
      */
@@ -38,11 +39,11 @@ public class WechatKeyword extends IdEntity {
         this.keyword = keyword;
     }
 
-    public String getMatchinType() {
+    public Integer getMatchinType() {
         return matchinType;
     }
 
-    public void setMatchinType(String matchinType) {
+    public void setMatchinType(Integer matchinType) {
         this.matchinType = matchinType;
     }
 

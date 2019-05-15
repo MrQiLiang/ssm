@@ -48,7 +48,6 @@ public class LoginController extends BaseController{
 
     @RequestMapping(value = {"/index",""})
     public String toLogin(){
-
         return "cms/login";
     }
 

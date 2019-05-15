@@ -85,7 +85,8 @@
     <div class="receive_message_content">
         <ul class="weui-desktop-msg-sender__tabs">
             <li class="li contetn3-li-click" onclick="subscribeShow('text',this)" ><a class="li-title">文字</a></li>
-            <!--  <li class="li" onclick="subscribeShow('imager',this)" > <a class="li-title">图片</a></li>	-->
+            <li class="li" onclick="subscribeShow('imager',this)" > <a class="li-title">图片</a></li>
+            <li class="li" onclick="subscribeShow('imager',this)" > <a class="li-title">图文</a></li>
         </ul>
         <!-- 文字 输入div -->
         <div class="text-input" id="subscribeTextInput">
@@ -117,7 +118,12 @@
         <label class="lable_title keyword-cotent-title">关键词</label>
         <div class="keyword-content" id="keyword">
             <div class="keyword-content-row">
-                <select class="keyword-select"><option value="COMPLETELY">全匹配</option><option value="CONTAIN">半匹配</option></select><input type="text" class="keyword-input" placeholder="请输入关键字" />
+                <select class="keyword-select">
+                    <c:forEach var="wechatKeywordMatchinType" items="${wechatKeywordMatchinTypeMap}" >
+                        <option value="${wechatKeywordMatchinType.key}">${wechatKeywordMatchinType.value}</option>
+                    </c:forEach>
+                </select>
+                <input type="text" class="keyword-input" placeholder="请输入关键字" />
                 <button class="keyword-add" onclick="addkeyword()"><a href="#" class="keyword-add-title" >十</a></button>
                 <button class="keyword-del" onclick="delkeyword(this)"><a href="#" class="keyword-del-title">一</a></button>
             </div>
@@ -202,8 +208,6 @@
 
         });
 
-
-
         function showButton(obj){
             $(".click").removeClass("click");
             $(obj).addClass("click");
@@ -215,9 +219,7 @@
             if(isCheck){
                 showContent(1);
             }
-
             messageSet.clear();
-
 
         });
         $("#button2").click(function(){
@@ -256,7 +258,6 @@
                 var keywordContent = $(obj).find('.keyword-input').val();
                 var wechatKeyWord = new Object();
                 if(keywordContent.length==0||keywordContent==''){
-
                     isNull = true;
                     return ;
                 }
@@ -284,7 +285,7 @@
             data.wechatInfoId = wechatInfoId;
             $.ajax({
                 type:"post",
-                url:"${ctx}/admin/wechat/saveWechatRule.htm",
+                url:"${ctx}/cms/wechat/rule/save",
                 traditional:true,
                 data:data,
                 dataType:"json",
@@ -403,9 +404,7 @@
                             btn1:function(index,layero){
                                 messageSet = bufferSet;
                                 layer.close(index);
-
                             },
-
 
                             skin: 'layui-layer-rim', //加上边框
                             area: ['90%', '80%'], //宽高
@@ -421,11 +420,7 @@
 
                 },
             });
-
             //页面层
-
-
-
         });
 
         //添加文字回复

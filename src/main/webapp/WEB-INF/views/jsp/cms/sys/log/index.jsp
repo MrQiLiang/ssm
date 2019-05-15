@@ -11,7 +11,6 @@
     <script type="text/javascript" src="${ctx}/resources/code/easyui/jquery.easyui.min.1.2.2.js"></script>
     <script type="text/javascript">
         $(function() {// 初始化内容
-
             $("#dataList").datagrid({
                 url:'list',
                 pagination :"true",

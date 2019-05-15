@@ -1,9 +1,6 @@
 package com.lq.cms.web.wechat;
 
-import com.lq.cms.emun.StatusTypeEnum;
-import com.lq.cms.emun.WechatInfoCertificationTypeEnum;
-import com.lq.cms.emun.WechatInfoEncodingTypeEnum;
-import com.lq.cms.emun.WechatInfoTypeEnum;
+import com.lq.cms.emun.*;
 import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.WechatInfoService;
 import com.lq.cms.vo.WechatInfoVo;
@@ -75,10 +72,15 @@ public class WechatInfoController {
     @RequestMapping("/save")
     public Object save(WechatInfoVo vo){
         Date nowTime = new Date();
+        Subject subject= SecurityUtils.getSubject();
+        SysUser loginUser=(SysUser) subject.getPrincipal();
         AjaxResult ajaxResult = new AjaxResult();
         WechatInfo wechatInfo = new WechatInfo();
         BeanUtils.copyProperties(vo,wechatInfo);
         wechatInfo.setCreateTime(nowTime);
+        wechatInfo.setCreateUserId(loginUser.getId());
+        //公众号新增默认关闭回复
+        wechatInfo.setOpenReply(WechatInfoOpenReplyTypeEnum.OPEN_ON.getValue());
         wechatInfo.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         wechatInfoService.save(wechatInfo);
         return  ajaxResult;

@@ -12,7 +12,6 @@ public class ZtreeItem extends ZtreeComposite{
     public List<ZtreeComposite> children=new ArrayList<>();
     private String iconCls;
     private String state;
-    private Map<String,Object> attributes;
 
     public String getIconCls() {
         return iconCls;
@@ -31,13 +30,6 @@ public class ZtreeItem extends ZtreeComposite{
     }
 
 
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Map<String, Object> attributes) {
-        this.attributes = attributes;
-    }
 
     public List<ZtreeComposite> getChildren() {
         return children;

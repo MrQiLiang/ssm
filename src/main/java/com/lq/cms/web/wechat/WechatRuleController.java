@@ -1,11 +1,22 @@
 package com.lq.cms.web.wechat;
 
+import com.alibaba.fastjson.JSON;
+import com.lq.cms.emun.WechatKeywordMatchinTypeEnum;
 import com.lq.cms.service.WechatInfoService;
+import com.lq.cms.vo.WechatRuleVo;
+import com.lq.code.entity.AjaxResult;
+import com.lq.code.util.BeanUtil;
 import com.lq.entity.WechatInfo;
+import com.lq.entity.WechatKeyword;
+import com.lq.entity.WechatRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  *  微信公众号消息回复
@@ -24,9 +35,29 @@ public class WechatRuleController {
             WechatInfo wechatInfo = wechatInfoService.findOne(wechatInfoId);
             modelAndView.addObject("wechatInfo",wechatInfo);
         }
-
+        Map<Integer,String> wechatKeywordMatchinTypeMap = WechatKeywordMatchinTypeEnum.getEnumMap();
+        modelAndView.addObject("wechatKeywordMatchinTypeMap",wechatKeywordMatchinTypeMap);
         modelAndView.setViewName("cms/wechat/rule/index");
         return modelAndView;
+    }
+
+    /**
+     *  保存消息回复规则
+     * @param vo
+     * @param keywordListStr 关键字集合（json字符串）
+     * @param messageListStr 消息集合（json字符串）
+     * @param wechatInfoId 微信公众号详情ID
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/save")
+    public Object save(WechatRuleVo vo,String keywordListStr,String messageListStr,Long wechatInfoId){
+        AjaxResult ajaxResult = new AjaxResult();
+        WechatRule wechatRule = new WechatRule();
+        List<WechatKeyword> wechatKeywordList = JSON.parseArray(keywordListStr,WechatKeyword.class);
+        BeanUtil.copyNotNull(wechatRule,vo);
+
+        return ajaxResult;
     }
 
 

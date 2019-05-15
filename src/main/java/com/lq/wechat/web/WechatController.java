@@ -90,6 +90,7 @@ public class  WechatController extends BaseController {
             text.setMsgType(ConstantSet.MESSAGE_TYPE_TEXT);
 
             text.setCreateTime(System.currentTimeMillis());
+
             switch (msgType) {
                 case ConstantSet.MESSAGE_TYPE_TEXT:
                     String content = map.get(WECHAT_CONTENT_KEY);

@@ -12,7 +12,6 @@ import java.util.Map;
  */
 public interface SysUserRoleDao extends BaseDao<SysUserRole> {
 
-    Long save(SysUserRole sysUserRole);
 
     List<SysUserRole> findByUserIdAndRoleId(Map<String, Object> params);
 

@@ -9,7 +9,4 @@ import java.util.List;
 
 public interface WechatMessageDao extends AdminBaseDao<WechatMessage,WechatMessageVo> {
 
-    List<WechatMessageVo> findListPage(WechatMessageVo vo);
-
-    int count(WechatMessageVo vo);
 }
