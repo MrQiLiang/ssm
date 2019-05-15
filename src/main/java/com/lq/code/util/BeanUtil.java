@@ -19,6 +19,8 @@ public class BeanUtil {
 
     private static Logger LOGGER = LoggerFactory.getLogger(BeanUtil.class);
 
+    public static final String FILE_SYMBOL = "/";
+
     /**
      *  获取类属性，包括父类属性
      * @param clazz
@@ -165,7 +167,7 @@ public class BeanUtil {
         Set<Class> set = new HashSet<>();
         String separator = File.separator;
         String filePath = packagePath.replace(".",separator);
-        String classPath = BeanUtil.class.getResource(separator).getPath()+filePath;
+        String classPath = BeanUtil.class.getResource(FILE_SYMBOL).getPath()+filePath;
         File file = new File(classPath);
         if (file.exists()){
             File[] files = file.listFiles();
