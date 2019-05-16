@@ -138,7 +138,9 @@
 
     <div class="row">
         <label class="lable_title">回复方式</label>
-        <input type="radio"  name="replyType" value="WHOLE" />全回复 <input  type="radio" name="replyType" value="RANDOM" checked="checked" /> 随机回复
+        <c:forEach items="${wehcatRuleReplyTypeMap}" var="wehcatRuleReplyType">
+            <input type="radio"  name="replyType" value="${wehcatRuleReplyType.key}" />${wehcatRuleReplyType.value}
+        </c:forEach>
     </div>
 
     <div class="row">

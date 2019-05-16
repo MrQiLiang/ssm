@@ -2,6 +2,7 @@ package com.lq.cms.web.wechat;
 
 import com.alibaba.fastjson.JSON;
 import com.lq.cms.emun.WechatKeywordMatchinTypeEnum;
+import com.lq.cms.emun.WechatRuleReplyTypeEnum;
 import com.lq.cms.service.WechatInfoService;
 import com.lq.cms.vo.WechatRuleVo;
 import com.lq.code.entity.AjaxResult;
@@ -37,6 +38,8 @@ public class WechatRuleController {
         }
         Map<Integer,String> wechatKeywordMatchinTypeMap = WechatKeywordMatchinTypeEnum.getEnumMap();
         modelAndView.addObject("wechatKeywordMatchinTypeMap",wechatKeywordMatchinTypeMap);
+        Map<Integer,String> wehcatRuleReplyTypeMap = WechatRuleReplyTypeEnum.getEnumMap();
+        modelAndView.addObject("wehcatRuleReplyTypeMap",wehcatRuleReplyTypeMap);
         modelAndView.setViewName("cms/wechat/rule/index");
         return modelAndView;
     }
