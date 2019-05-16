@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.lq.cms.emun.WechatKeywordMatchinTypeEnum;
 import com.lq.cms.emun.WechatRuleReplyTypeEnum;
 import com.lq.cms.service.WechatInfoService;
+import com.lq.cms.service.WechatRuleService;
 import com.lq.cms.vo.WechatRuleVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.BeanUtil;
@@ -29,6 +30,9 @@ public class WechatRuleController {
 
     @Autowired
     private WechatInfoService wechatInfoService;
+    @Autowired
+    private WechatRuleService wechatRuleService;
+
 
     @RequestMapping("/index")
     public ModelAndView index(ModelAndView modelAndView,Long wechatInfoId){

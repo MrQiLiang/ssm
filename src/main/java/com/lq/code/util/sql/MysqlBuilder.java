@@ -15,6 +15,9 @@ import java.util.*;
  */
 public class MysqlBuilder extends AbstractDbBuiler {
 
+    /**
+     *  数据库类型和java类型转换Map
+     */
     private static Map<String,String> dataTypeMap=new HashMap<>();
 
     static {
