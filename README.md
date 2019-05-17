@@ -1,7 +1,7 @@
 # ssm
 
 ssm 介绍
-一个基于sping mvc+mybatis的框架。页面是采用aceAdmin+easyui.(ps:作者是一个很懒的人，不经常更新的人)
+一个基于sping mvc+mybatis的框架。页面是采用aceAdmin+easyui.
 
 ssm 软件架构
 软件架构说明
