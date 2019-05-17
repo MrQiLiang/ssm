@@ -1,6 +1,8 @@
 package com.lq.cms.service;
 
+import com.lq.code.service.BaseService;
 import com.lq.entity.WechatInfo;
+import com.lq.entity.WechatRule;
 import com.lq.wechat.mode.message.BaseMessage;
 
 /**
@@ -8,7 +10,7 @@ import com.lq.wechat.mode.message.BaseMessage;
  * @Description: 规则事务类
  * @Date: Create in 5:53 AM 2019/5/11
  */
-public interface WechatRuleService {
+public interface WechatRuleService extends BaseService<WechatRule> {
 
     /**
      *  通过关键字和微信公众号信息返回回复内容

@@ -6,7 +6,6 @@ import com.lq.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by qi on 2017-11-29.

@@ -2,7 +2,10 @@ package com.lq.code.util;
 
 import com.lq.cms.emun.FileTypeEnum;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Created by qi on 2018-1-20.

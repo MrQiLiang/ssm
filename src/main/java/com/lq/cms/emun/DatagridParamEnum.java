@@ -1,8 +1,5 @@
 package com.lq.cms.emun;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 管理后台数据
  */

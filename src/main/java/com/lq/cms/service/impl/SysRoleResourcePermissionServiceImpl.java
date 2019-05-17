@@ -15,7 +15,6 @@ import com.lq.dao.SysResourceDao;
 import com.lq.dao.SysRoleResourcePermissionDao;
 import com.lq.entity.SysPermission;
 import com.lq.entity.SysResource;
-import com.lq.entity.SysRole;
 import com.lq.entity.SysRoleResourcePermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

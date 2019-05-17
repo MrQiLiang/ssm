@@ -2,7 +2,6 @@ package com.lq.wechat.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lq.code.util.HttpKit;
-import com.lq.code.util.HttpsClient;
 import com.lq.entity.WechatUser;
 
 /**

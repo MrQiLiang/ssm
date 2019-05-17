@@ -1,11 +1,8 @@
 package com.lq.cms.service;
 
-import com.lq.cms.vo.WechatUserVo;
 import com.lq.code.service.BaseService;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatUser;
-
-import java.util.Map;
 
 /**
  * @Author: qi

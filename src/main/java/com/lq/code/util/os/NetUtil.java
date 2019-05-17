@@ -1,7 +1,6 @@
 package com.lq.code.util.os;
 
 import java.net.InetAddress;
-import java.net.InterfaceAddress;
 import java.net.UnknownHostException;
 
 /** 获取计算机网络信息

@@ -1,7 +1,5 @@
 package com.lq.dao;
 
-import com.lq.cms.dao.AdminBaseDao;
-import com.lq.cms.vo.AdminBaseVo;
 import com.lq.code.dao.BaseDao;
 import com.lq.entity.WechatUser;
 import org.apache.ibatis.annotations.Param;

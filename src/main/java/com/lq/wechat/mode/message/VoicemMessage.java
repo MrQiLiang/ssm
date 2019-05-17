@@ -1,6 +1,5 @@
 package com.lq.wechat.mode.message;
 
-import com.lq.wechat.mode.message.BaseMessage;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**

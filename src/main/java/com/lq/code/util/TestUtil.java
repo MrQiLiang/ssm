@@ -1,17 +1,5 @@
 package com.lq.code.util;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 /**
  * Created by qi_liang on 2018/5/27.
  */

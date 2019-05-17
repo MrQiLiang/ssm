@@ -2,7 +2,6 @@ package com.lq.cms.vo;
 
 import com.lq.code.util.DateUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**

@@ -1,10 +1,5 @@
 package com.lq.code.util.email;
 
-import org.springframework.core.env.Environment;
-import org.springframework.jndi.JndiObjectFactoryBean;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 

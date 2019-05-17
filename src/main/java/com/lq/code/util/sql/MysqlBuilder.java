@@ -1,6 +1,5 @@
 package com.lq.code.util.sql;
 
-import com.lq.cms.vo.BasePageVo;
 import com.lq.code.annotation.Length;
 import com.lq.code.util.BeanUtil;
 import com.lq.code.util.jdbc.JdbcUtils;

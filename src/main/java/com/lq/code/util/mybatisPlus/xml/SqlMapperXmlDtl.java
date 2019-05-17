@@ -1,7 +1,8 @@
 package com.lq.code.util.mybatisPlus.xml;
 
 import com.lq.code.util.mybatisPlus.xml.converter.SqlMapperXmlDtlConverter;
-import com.thoughtworks.xstream.annotations.*;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 @XStreamAlias("sql")
 @XStreamConverter(SqlMapperXmlDtlConverter.class)

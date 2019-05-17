@@ -1,7 +1,5 @@
 package com.lq.code.util.sql;
 
-import com.lq.cms.vo.BasePageVo;
-
 import java.util.Set;
 
 /**

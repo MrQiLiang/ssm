@@ -1,6 +1,5 @@
 package com.lq.code.util;
 
-import com.lq.code.annotation.Length;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

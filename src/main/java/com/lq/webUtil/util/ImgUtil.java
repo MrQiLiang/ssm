@@ -1,7 +1,7 @@
 package com.lq.webUtil.util;
 
 
-import java.io.*;
+import java.io.IOException;
 
 /**
  * @author qi

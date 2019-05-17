@@ -1,6 +1,5 @@
 package com.lq.cms.web.sys;
 
-import com.lq.cms.emun.PermissionTyepEnum;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.SysRoleService;
@@ -14,11 +13,7 @@ import com.lq.entity.SysUser;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.mgt.RealmSecurityManager;
-import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -31,7 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * @author qi

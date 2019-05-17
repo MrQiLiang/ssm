@@ -6,7 +6,6 @@ import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatRule;
 import com.lq.wechat.mode.message.BaseMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

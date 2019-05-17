@@ -1,8 +1,6 @@
 package com.lq.code.util.jdbc;
 
-import java.lang.reflect.Field;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
 

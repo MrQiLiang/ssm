@@ -7,11 +7,7 @@ import com.lq.code.util.sql.MysqlBuilder;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Created by qi_liang on 2018/6/1.

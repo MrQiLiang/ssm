@@ -1,7 +1,7 @@
 package com.lq.dao;
 
-import com.lq.code.dao.BaseDao;
 import com.lq.cms.vo.PermissionVo;
+import com.lq.code.dao.BaseDao;
 import com.lq.entity.SysRoleResourcePermission;
 import org.apache.ibatis.annotations.Param;
 

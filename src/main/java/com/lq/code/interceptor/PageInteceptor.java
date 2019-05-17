@@ -1,6 +1,5 @@
 package com.lq.code.interceptor;
 
-import com.lq.cms.vo.BasePageVo;
 import com.lq.code.util.StringUtil;
 import com.lq.code.util.sql.AbstractDbBuiler;
 import com.lq.code.util.sql.MysqlBuilder;

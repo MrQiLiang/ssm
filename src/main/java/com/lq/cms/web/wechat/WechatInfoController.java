@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 /**微信公众号详情

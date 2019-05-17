@@ -4,7 +4,6 @@ import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.DateUtil;
 import com.lq.code.web.BaseController;
 import com.lq.entity.SysFile;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -1,7 +1,7 @@
 package com.lq.api.web;
 
-import com.lq.code.util.FileUtil;
 import com.lq.api.vo.UeditorVo;
+import com.lq.code.util.FileUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 

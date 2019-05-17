@@ -1,21 +1,14 @@
 package com.lq.code.util.mybatisPlus;
 
 import com.lq.code.util.FileUtil;
-import com.lq.code.util.XmlUtil;
-import com.lq.code.util.mybatisPlus.xml.MapperXmlDtl;
-import com.lq.code.util.mybatisPlus.xml.SelectMappserXmlDtl;
-import com.lq.code.util.mybatisPlus.xml.SqlMapperXmlDtl;
 import com.lq.code.util.sql.AbstractDbBuiler;
 import com.lq.code.util.sql.MysqlBuilder;
 import com.lq.code.util.sql.SqlUtil;
-import com.lq.dao.*;
-import com.lq.entity.*;
-import com.lq.wechat.util.MessageUtil;
+import com.lq.dao.WechatRuleDao;
+import com.lq.entity.WechatRule;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**

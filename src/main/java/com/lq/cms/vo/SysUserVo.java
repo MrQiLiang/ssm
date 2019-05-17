@@ -1,7 +1,6 @@
 package com.lq.cms.vo;
 
 import com.lq.code.util.DateUtil;
-import com.lq.entity.SysUser;
 
 import java.util.Date;
 import java.util.List;

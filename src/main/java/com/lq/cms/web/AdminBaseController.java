@@ -1,6 +1,5 @@
 package com.lq.cms.web;
 
-import com.lq.cms.emun.DatagridParamEnum;
 import com.lq.cms.emun.PermissionTyepEnum;
 import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.AdminBaseService;
@@ -10,11 +9,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 管理后台 父类

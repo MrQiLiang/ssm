@@ -1,8 +1,5 @@
 package com.lq.code.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * 转型操作工具
  */

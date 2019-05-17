@@ -1,5 +1,5 @@
 package com.lq.cms.aspectJ;
-import com.lq.cms.vo.SysUserVo;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;

@@ -4,10 +4,6 @@ import com.lq.code.entity.AjaxResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Logger;
-
 /**
  * Created by qi on 2017/7/16.
  */

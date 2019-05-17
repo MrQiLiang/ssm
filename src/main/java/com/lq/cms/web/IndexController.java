@@ -1,13 +1,11 @@
 package com.lq.cms.web;
 
-import com.alibaba.fastjson.JSON;
 import com.lq.cms.mode.MenusComposite;
 import com.lq.cms.service.SysResourceService;
 import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysInfoVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
-import com.lq.code.util.DateUtil;
 import com.lq.code.util.Md5Util;
 import com.lq.code.util.jdbc.JdbcUtils;
 import com.lq.code.util.jdbc.mode.DbInfo;
@@ -17,15 +15,12 @@ import com.lq.code.util.os.OsUtil;
 import com.lq.code.util.os.mode.JvmInfo;
 import com.lq.code.util.os.mode.OsInfo;
 import com.lq.entity.SysUser;
-import javafx.beans.property.adapter.ReadOnlyJavaBeanBooleanProperty;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,8 +29,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 /** 首页控制类
  * Created by qi on 2017/8/20.

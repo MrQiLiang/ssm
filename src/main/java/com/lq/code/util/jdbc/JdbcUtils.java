@@ -6,12 +6,9 @@ import com.lq.code.util.jdbc.mode.Column;
 import com.lq.code.util.jdbc.mode.DbInfo;
 import com.lq.code.util.jdbc.mode.Table;
 
-import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.WeakHashMap;
 
 public class JdbcUtils {
 

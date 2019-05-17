@@ -1,13 +1,10 @@
 package com.lq.api.web;
 
 import com.lq.api.service.SysFileService;
-import com.lq.api.vo.SysFileVo;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.code.entity.AjaxResult;
-import com.lq.code.util.BeanUtil;
 import com.lq.code.util.FileUtil;
 import com.lq.entity.SysFile;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -25,7 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/file")

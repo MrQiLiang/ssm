@@ -1,6 +1,5 @@
 package com.lq.cms.service;
 
-import com.lq.code.dao.BaseDao;
 import com.lq.code.service.BaseService;
 import com.lq.entity.SysUserRole;
 

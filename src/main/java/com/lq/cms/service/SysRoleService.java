@@ -4,7 +4,6 @@ import com.lq.cms.vo.SysRoleVo;
 import com.lq.cms.vo.SysUserRoleVo;
 import com.lq.code.service.BaseService;
 import com.lq.entity.SysRole;
-import org.apache.bcel.verifier.statics.LONG_Upper;
 
 import java.util.List;
 

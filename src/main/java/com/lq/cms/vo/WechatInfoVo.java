@@ -5,7 +5,6 @@ import com.lq.cms.emun.WechatInfoEncodingTypeEnum;
 import com.lq.cms.emun.WechatInfoTypeEnum;
 import com.lq.code.util.DateUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**

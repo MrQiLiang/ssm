@@ -7,7 +7,6 @@ import com.lq.cms.vo.AdminBaseVo;
 import com.lq.code.dao.BaseDao;
 import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.BeanUtil;
-import com.lq.entity.WechatMessage;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Date;

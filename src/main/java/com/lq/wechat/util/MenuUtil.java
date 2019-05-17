@@ -2,15 +2,8 @@ package com.lq.wechat.util;
 
 import com.alibaba.fastjson.JSON;
 import com.lq.code.util.HttpKit;
-import com.lq.wechat.mode.menu.WechatButton;
 import com.lq.wechat.mode.menu.WechatMenu;
 import com.lq.wechat.mode.menu.WechatMenuCofig;
-
-import javax.json.Json;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by qi_liang on 2018/6/1.

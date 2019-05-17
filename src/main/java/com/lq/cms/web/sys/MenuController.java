@@ -6,13 +6,10 @@ import com.lq.cms.service.SysResourceService;
 import com.lq.cms.vo.SysResourceVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
-import com.lq.code.web.BaseController;
 import com.lq.entity.SysResource;
 import com.lq.entity.SysUser;
-import javafx.beans.property.adapter.ReadOnlyJavaBeanBooleanProperty;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
@@ -23,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /** 菜单控制类

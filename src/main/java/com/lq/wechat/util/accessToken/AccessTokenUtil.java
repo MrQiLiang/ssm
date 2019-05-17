@@ -3,17 +3,12 @@ package com.lq.wechat.util.accessToken;
 import com.alibaba.fastjson.JSONObject;
 import com.lq.code.util.HttpKit;
 import com.lq.code.util.StringUtil;
-import com.lq.dao.WechatAccesstokenDao;
-import com.lq.entity.WechatAccessToken;
 import com.lq.entity.WechatInfo;
 import com.lq.wechat.mode.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**

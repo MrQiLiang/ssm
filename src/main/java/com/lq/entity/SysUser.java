@@ -1,6 +1,5 @@
 package com.lq.entity;
 
-import com.lq.code.annotation.Length;
 import com.lq.code.entity.IdEntity;
 
 import java.util.Date;

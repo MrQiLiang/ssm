@@ -1,10 +1,8 @@
 package com.lq.wechat.mode.message;
 
-import java.util.List;
-
-import com.lq.wechat.mode.message.BaseMessage;
-import com.lq.wechat.mode.message.ItemMessage;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+import java.util.List;
 
 
 /**
