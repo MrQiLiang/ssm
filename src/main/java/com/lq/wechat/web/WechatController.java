@@ -158,6 +158,9 @@ public class  WechatController extends BaseController {
                             ;
                             break;
                         case ConstantSet.EVENT_TYPE_CLICK:
+                            //自定义菜单点击事件KEY值
+                            String eventKey = map.get(ConstantSet.EVENT_CLICK_KEY);
+
                             ;
                             break;
                         default:

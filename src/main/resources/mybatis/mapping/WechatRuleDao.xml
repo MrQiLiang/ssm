@@ -19,6 +19,7 @@
         SELECT <include refid="column_list"/>
           FROM  wechat_rule
         WHERE status = 1
+        ORDER BY create_time DESC
     </select>
 
     <select id="count" resultType="int">
@@ -68,5 +69,15 @@
         WHERE
             id=#{id}
     </update>
+
+    <select id="findByWechatInfoIdAndStatus" resultType="com.lq.entity.WechatRule" >
+      SELECT  <include refid="column_list"/>
+        FROM wechat_rule
+      WHERE
+        wechat_info_id = #{wechatInfoId}
+      AND
+        status = #{status}
+      ORDER BY create_time DESC
+    </select>
 
 </mapper>

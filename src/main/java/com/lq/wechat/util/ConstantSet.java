@@ -40,6 +40,8 @@ public class ConstantSet {
   public final static String EVENT_TYPE_LOCATION="LOCATION";
   //事件类型:自定义菜单事件
   public final static String EVENT_TYPE_CLICK="CLICK";
+  //自定义菜单key
+  public final static String EVENT_CLICK_KEY = "EventKey";
 
   //自定义菜单类型：网页类型
   public final static String MENU_TYPE_VIEW = "view";

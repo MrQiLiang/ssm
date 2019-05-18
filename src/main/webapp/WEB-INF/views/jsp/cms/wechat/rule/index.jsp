@@ -35,12 +35,12 @@
             <th style="width: 25%;">操作</th>
         </tr>
         </thead>
-        <c:forEach var="vo" items="${adminWechatRuleVoList}">
+        <c:forEach var="vo" items="${wechatRules}">
             <thead >
             <tr>
                 <th style="width: 25%;">${vo.ruleName}</th>
                 <th style="width: 25%;">
-                    <c:forEach var="keywordList" items="${vo.keywordList}">
+                    <c:forEach var="keywordList" items="${vo.wechatKeywordList}">
                         ${keywordList.keyword}
                     </c:forEach>
                 </th>
@@ -119,8 +119,9 @@
         <div class="keyword-content" id="keyword">
             <div class="keyword-content-row">
                 <select class="keyword-select">
-                    <c:forEach var="wechatKeywordMatchinType" items="${wechatKeywordMatchinTypeMap}" >
-                        <option value="${wechatKeywordMatchinType.key}">${wechatKeywordMatchinType.value}</option>
+
+                    <c:forEach var="wechatKeywordMatchinType" items="${wechatKeywordMatchinTypeMap}"  >
+                    <option value="${wechatKeywordMatchinType.key}" >${wechatKeywordMatchinType.value}</option>
                     </c:forEach>
                 </select>
                 <input type="text" class="keyword-input" placeholder="请输入关键字" />
@@ -138,8 +139,8 @@
 
     <div class="row">
         <label class="lable_title">回复方式</label>
-        <c:forEach items="${wehcatRuleReplyTypeMap}" var="wehcatRuleReplyType">
-            <input type="radio"  name="replyType" value="${wehcatRuleReplyType.key}" />${wehcatRuleReplyType.value}
+        <c:forEach items="${wehcatRuleReplyTypeMap}" var="wehcatRuleReplyType" begin="0" varStatus="s">
+            <input type="radio"  name="replyType" value="${wehcatRuleReplyType.key}" <c:if test="${s.last}">checked</c:if> />${wehcatRuleReplyType.value}
         </c:forEach>
     </div>
 
@@ -529,8 +530,8 @@
         var data = new Object();
         data.wechatRuleId = wechatRuleId;
         $.ajax({
-            type:"post",
-            url:"${ctx}/admin/wechat/getWechatRuleInfo.htm",
+            type:"get",
+            url:"${ctx}/cms/wechat/rule/getWechatRuleById",
             traditional:true,
             data:data,
             dataType:"json",
@@ -539,23 +540,24 @@
                     var ruleData = result.data ;
                     $("#ruleId").val(ruleData.id);
                     $("#ruleName").val(ruleData.ruleName);
-                    var keywordList = ruleData.keywordList;
+                    var keywordList = ruleData.wechatKeywordList;
                     keywordList.forEach(function(value,index,array){
                         appendHtml(value.matchinType,value.keyword);
                     });
                     var replyType = ruleData.replyType;
-                    if(replyType=="WHOLE"){
+                    if(replyType=="1"){
                         $("input[name='replyType']:eq(0)").prop("checked",'checked');
                     }
-                    if(replyType=="RANDOM"){
+                    if(replyType=="2"){
                         $("input[name='replyType']:eq(1)").prop("checked",'checked');
                     }
-                    var messageIdList = ruleData.messageIdList;
+                    var messageIdList = ruleData.messageIds;
+                    console.log(ruleData);
                     for(var i = 0;i<messageIdList.length;i++){
 
                         messageSet.add(messageIdList[i]);
                     }
-                    messageText = ruleData.messageText;
+                  //  messageText = ruleData.messageText;
                 }
             },
             error:function(){

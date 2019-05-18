@@ -2,6 +2,9 @@ package com.lq.dao;
 
 import com.lq.code.dao.BaseDao;
 import com.lq.entity.WechatRule;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author: qi
@@ -10,5 +13,5 @@ import com.lq.entity.WechatRule;
  */
 public interface WechatRuleDao extends BaseDao<WechatRule>{
 
-
+    List<WechatRule> findByWechatInfoIdAndStatus(@Param("wechatInfoId") Long wechatInfoId,@Param("status") Integer status);
 }

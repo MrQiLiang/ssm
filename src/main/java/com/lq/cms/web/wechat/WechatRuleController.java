@@ -40,6 +40,8 @@ public class WechatRuleController {
             WechatInfo wechatInfo = wechatInfoService.findOne(wechatInfoId);
             modelAndView.addObject("wechatInfo",wechatInfo);
         }
+        List<WechatRuleVo> wechatRules = wechatRuleService.findByWechatInfoId(wechatInfoId);
+        modelAndView.addObject("wechatRules",wechatRules);
         Map<Integer,String> wechatKeywordMatchinTypeMap = WechatKeywordMatchinTypeEnum.getEnumMap();
         modelAndView.addObject("wechatKeywordMatchinTypeMap",wechatKeywordMatchinTypeMap);
         Map<Integer,String> wehcatRuleReplyTypeMap = WechatRuleReplyTypeEnum.getEnumMap();
@@ -63,7 +65,16 @@ public class WechatRuleController {
         WechatRule wechatRule = new WechatRule();
         List<WechatKeyword> wechatKeywordList = JSON.parseArray(keywordListStr,WechatKeyword.class);
         BeanUtil.copyNotNull(wechatRule,vo);
+        wechatRuleService.saveRuleAndkeyword(wechatRule,wechatKeywordList);
+        return ajaxResult;
+    }
 
+    @ResponseBody
+    @RequestMapping("/getWechatRuleById")
+    public Object getWechatRuleById(Long wechatRuleId){
+        AjaxResult ajaxResult = new AjaxResult();
+        WechatRuleVo wechatRuleVo = wechatRuleService.getWechatRuleVoById(wechatRuleId);
+        ajaxResult.setData(wechatRuleVo);
         return ajaxResult;
     }
 
