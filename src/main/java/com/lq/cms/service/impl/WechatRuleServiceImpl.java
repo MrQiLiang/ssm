@@ -51,6 +51,7 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
         SysUser loginUser=(SysUser) subject.getPrincipal();
         wechatRule.setCreateUserId(loginUser.getId());
         wechatRule.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+        wechatRule.setCreateTime(new Date());
         wechatRuleDao.save(wechatRule);
         wechatKeywordList.forEach(wechatKeyword -> {
             wechatKeyword.setCreateTime(new Date());
@@ -58,9 +59,31 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
             wechatKeyword.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
             wechatKeywordDao.save(wechatKeyword);
         });
-        wechatRule.setCreateTime(new Date());
         return wechatRule;
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public WechatRule saveRule(WechatRuleVo wechatRuleVo) {
+        Subject subject= SecurityUtils.getSubject();
+        SysUser loginUser=(SysUser) subject.getPrincipal();
+        WechatRule wechatRule = new WechatRule();
+        BeanUtil.copyNotNull(wechatRule,wechatRuleVo);
+        wechatRule.setCreateUserId(loginUser.getId());
+        wechatRule.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+        wechatRule.setCreateTime(new Date());
+        wechatRuleDao.save(wechatRule);
+        List<WechatKeyword> wechatKeywordList = wechatRuleVo.getWechatKeywordList();
+        wechatKeywordList.forEach(wechatKeyword -> {
+            wechatKeyword.setCreateTime(new Date());
+            wechatKeyword.setWechatRuleId(wechatRule.getId());
+            wechatKeyword.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+            wechatKeywordDao.save(wechatKeyword);
+        });
+
+        return wechatRule;
+    }
+
 
     @Override
     public List<WechatRuleVo> findByWechatInfoId(Long wechatInfoId) {

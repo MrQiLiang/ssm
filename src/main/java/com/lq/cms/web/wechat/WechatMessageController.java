@@ -5,12 +5,15 @@ import com.lq.cms.service.AdminBaseService;
 import com.lq.cms.service.WechatMessageService;
 import com.lq.cms.vo.WechatMessageVo;
 import com.lq.cms.web.AdminBaseController;
+import com.lq.code.entity.AjaxResult;
 import com.lq.entity.WechatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,7 +43,14 @@ public class WechatMessageController extends AdminBaseController<WechatMessage,W
         return "cms/wechat/message/edit";
     }
 
-
+    @RequestMapping("/findMessageDataList")
+    @ResponseBody
+    public Object findAll(){
+       List<WechatMessageVo> wechatMessageVoList = wechatMessageService.findAllWechatMessageVo();
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.setData(wechatMessageVoList);
+       return ajaxResult;
+    }
 
     @Override
     public AdminBaseService getBaseService() {

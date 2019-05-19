@@ -27,6 +27,10 @@ public interface WechatRuleService extends BaseService<WechatRule> {
      * 保存规则和规则对应的关键字
      */
     WechatRule saveRuleAndkeyword(WechatRule wechatRule, List<WechatKeyword> wechatKeywordList);
+    /**
+     * 保存规则和规则对应的关键字
+     */
+    WechatRule saveRule(WechatRuleVo wechatRuleVo);
 
     /**
      * 通过微信公众号详情ID查找关联规则

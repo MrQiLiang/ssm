@@ -265,7 +265,6 @@
                     return ;
                 }
                 wechatKeyWord.keyword =  keywordContent;
-
                 wechatKeyWord.matchinType = matchinType;
                 keywordObjeList.push(wechatKeyWord);
             });
@@ -277,7 +276,6 @@
             var messageList = new Array();
             messageSet.forEach(function (element, sameElement, set) {
                 messageList.push(element);
-                //	messageList.push(e);
             });
 
             messageSet.clear();
@@ -393,7 +391,7 @@
             data.messageType = 'text-image';
             $.ajax({
                 type:"post",
-                url:"${ctx}/admin/wechat/getMessageDataList.htm",
+                url:"${ctx}/cms/wechat/message/findMessageDataList",
                 traditional:true,
                 data:data,
                 async:false,
@@ -637,7 +635,7 @@
     function appendAlertHtml(data){
         var isShow ;
 
-        var wechatMessageList = data.wechatMessagList;
+        var wechatMessageList = data;
         var html = '<div class="alert"><div class="left-navigation"><p>图文('+data.wechatMessageCount+')</p></div>';
         html += ' <div class="alert-content">';
         for(var i = 0 ;i < wechatMessageList.length;i++){
