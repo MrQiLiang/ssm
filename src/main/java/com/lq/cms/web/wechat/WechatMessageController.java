@@ -3,6 +3,7 @@ package com.lq.cms.web.wechat;
 import com.lq.cms.emun.WechatMessageTypeEnum;
 import com.lq.cms.service.AdminBaseService;
 import com.lq.cms.service.WechatMessageService;
+import com.lq.cms.vo.WechatMessageBo;
 import com.lq.cms.vo.WechatMessageVo;
 import com.lq.cms.web.AdminBaseController;
 import com.lq.code.entity.AjaxResult;
@@ -46,9 +47,12 @@ public class WechatMessageController extends AdminBaseController<WechatMessage,W
     @RequestMapping("/findMessageDataList")
     @ResponseBody
     public Object findAll(){
-       List<WechatMessageVo> wechatMessageVoList = wechatMessageService.findAllWechatMessageVo();
+        List<WechatMessageVo> wechatMessageVoList = wechatMessageService.findAllWechatMessageVo();
+        WechatMessageBo wechatMessageBo = new WechatMessageBo();
+        wechatMessageBo.setWechatMessageVoList(wechatMessageVoList);
+        wechatMessageBo.setWechatMessageCount(wechatMessageVoList.size());
         AjaxResult ajaxResult = new AjaxResult();
-        ajaxResult.setData(wechatMessageVoList);
+        ajaxResult.setData(wechatMessageBo);
        return ajaxResult;
     }
 

@@ -443,8 +443,6 @@
 
     });
 
-
-
     //字数显示
     function showTextNum(textArceId,textMessageId,textErrorId){
         var str = $(textArceId).html();
@@ -635,7 +633,7 @@
     function appendAlertHtml(data){
         var isShow ;
 
-        var wechatMessageList = data;
+        var wechatMessageList = data.wechatMessageVoList;
         var html = '<div class="alert"><div class="left-navigation"><p>图文('+data.wechatMessageCount+')</p></div>';
         html += ' <div class="alert-content">';
         for(var i = 0 ;i < wechatMessageList.length;i++){
