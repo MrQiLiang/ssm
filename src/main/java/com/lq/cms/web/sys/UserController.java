@@ -42,10 +42,6 @@ public class UserController {
 
     private final static String INDEX_URL="/cms/user/index";
 
-    private final static String PERMISSION_SELECT="SELECT";
-
-    private final static String PERMISSION_UPDATE="INSERT";
-
 
 
     @Autowired
