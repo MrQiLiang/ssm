@@ -8,7 +8,10 @@ import com.lq.code.entity.IdEntity;
  */
 public class SysPermission extends IdEntity{
 
-    //权限名称
+    /**
+     * 权限名称
+     */
+
     @Length(value = 80)
     private String name;
 

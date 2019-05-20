@@ -9,21 +9,43 @@ import java.util.Date;
  */
 public class SysUser extends IdEntity {
 
-    //登陆名称
+    /**
+     * 登陆名称
+     */
+
     private String loginName;
-    //密码
+    /**
+     * 密码
+     */
+
     private String password;
-    //创建时间
+    /**
+     * 创建时间
+     */
+
     private Date createTime;
-    //更新时间
+    /**
+     *  更新时间
+     */
+
     private Date updateTime;
-    //最后登陆时间
+    /**
+     * 最后登陆时间
+     */
     private Date lastLoginTime;
-    //备注
+    /**
+     * 备注
+     */
+
     private String remarks;
-    //头像
+    /**
+     * 头像
+     */
+
     private String imgUrl;
-    //电子邮件
+    /**
+     * 电子邮件
+     */
     private String email;
 
     public SysUser() {

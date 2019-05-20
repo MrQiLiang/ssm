@@ -9,21 +9,40 @@ import java.util.Date;
  */
 public class SysResource extends IdEntity {
 
-    //跳转路径
+    /**
+     * 跳转路径
+     */
+
     private  String urlPath;
-    //序号
+    /**
+     * 序号
+     */
     private Integer sort;
-    //上级目录id;
+    /**
+     * 上级目录id
+     */
     private Long parentId;
-    //创建该目录用户id
+    /**
+     * 创建该目录用户id
+     */
+
     private Long userId;
-    //创建时间
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    //更新时间
+    /**
+     * 更新时间
+     */
+
     private Date updateTime;
-    //目录名称
+    /**
+     * 目录名称
+     */
     private String menuName;
-    //目录logo
+    /**
+     * 目录logo
+     */
     private String menuIco;
 
     public String getUrlPath() {

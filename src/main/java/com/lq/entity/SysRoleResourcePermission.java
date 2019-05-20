@@ -9,13 +9,25 @@ import java.util.Date;
  */
 public class SysRoleResourcePermission extends IdEntity {
 
-    //关联权限id
+    /**
+     * 关联权限id
+     */
+
     private Long permissionId;
-    //关联资源id
+    /**
+     * 关联资源id
+     */
+
     private Long resourceId;
-    //关联用户id
+    /**
+     *  关联用户id
+     */
+
     private Long roleId;
-    //创建时间
+    /**
+     * 创建时间
+     */
+
     private Date createTime;
 
     public Long getPermissionId() {

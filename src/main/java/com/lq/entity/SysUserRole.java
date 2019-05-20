@@ -9,13 +9,21 @@ import java.util.Date;
  */
 public class SysUserRole extends IdEntity {
 
-    //关联用户id
+    /**
+     * 关联用户id
+     */
     private  Long userId;
-    //管理角色id
+    /**
+     * 管理角色id
+     */
     private Long roleId;
-    //创建时间
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    //更新时间
+    /**
+     *  更新时间
+     */
     private Date updateTime;
 
 

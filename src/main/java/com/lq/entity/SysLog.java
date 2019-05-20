@@ -12,9 +12,13 @@ public class SysLog extends IdEntity {
      * 访问ip
      */
     private  String userIp;
-    //创建时间
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    //访问url
+    /**
+     * 访问url
+     */
     private  String url;
 
     public String getUserIp() {

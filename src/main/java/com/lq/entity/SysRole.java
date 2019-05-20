@@ -9,11 +9,19 @@ import java.util.Date;
  */
 public class SysRole extends IdEntity {
 
-    //角色名称
+    /**
+     *  角色名称
+     */
+
     private String roleName;
-    //创建时间
+    /**
+     * 创建时间
+     */
+
     private Date createTime;
-    //更新时间
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
     public String getRoleName() {
