@@ -12,13 +12,11 @@ public class SysFile extends IdEntity {
     /**
      * 文件名
      */
-
     private String fileName;
 
     /**
      * 文件路径(相对路径)
      */
-
     private String path;
     /**
      * 上传时间

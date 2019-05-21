@@ -27,6 +27,10 @@ import java.util.*;
 @Service
 public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRoleResourcePermission> implements SysRoleResourcePermissionService {
 
+    public static final String RESOURCE_SYMBOL = "_";
+
+    public static final String PERMISSIONID_KEY = "id_permissionId";
+
     @Autowired
     private SysRoleResourcePermissionDao sysRoleResourcePermissionDao;
 
@@ -54,7 +58,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
             ztreeItem.setChecked(isCheck(sysResource.getId(), PermissionTyepEnum.SELECT.getValue(),roleId));
             ztreeItem.setState("close");
             Map<String,Object> map=new HashMap<String,Object>();
-            map.put("id_permissionId",sysResource.getId()+"_"+PermissionTyepEnum.SELECT.getValue());
+            map.put(PERMISSIONID_KEY,sysResource.getId()+RESOURCE_SYMBOL+PermissionTyepEnum.SELECT.getValue());
             ztreeItem.setAttributes(getAttributes(sysResource.getId(), Long.valueOf(PermissionTyepEnum.SELECT.getValue())));
             List<SysResource> menuItmeList=sysResourceDao.findByParentId(sysResource.getId());
             for (SysResource resource:menuItmeList){
@@ -153,7 +157,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
     //内部方法，拼接资源和权限ID
     private Map<String,Object> getAttributes(Long resourceId,Long permissionId){
         Map<String,Object> map=new HashMap<>();
-        map.put("id_permissionId",resourceId+"_"+permissionId);
+        map.put(PERMISSIONID_KEY,resourceId+RESOURCE_SYMBOL+permissionId);
         return map;
     }
 }

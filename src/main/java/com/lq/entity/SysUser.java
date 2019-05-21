@@ -17,17 +17,14 @@ public class SysUser extends IdEntity {
     /**
      * 密码
      */
-
     private String password;
     /**
      * 创建时间
      */
-
     private Date createTime;
     /**
      *  更新时间
      */
-
     private Date updateTime;
     /**
      * 最后登陆时间
@@ -36,12 +33,10 @@ public class SysUser extends IdEntity {
     /**
      * 备注
      */
-
     private String remarks;
     /**
      * 头像
      */
-
     private String imgUrl;
     /**
      * 电子邮件

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Created by qi_liang on 2018/6/21.
@@ -83,6 +84,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
         List<SysResource> sysResourceList = sysResourceDao.findByParentId(0L);
         Iterator<SysResource> sysResourceIterator = sysResourceList.iterator();
         List<MenusComposite> list=new ArrayList<>();
+        Stream<SysResource> resourceStream = sysResourceList.stream();
         while (sysResourceIterator.hasNext()){
             SysResource sysResource = sysResourceIterator.next();
             MenusItem menusItem=new MenusItem();
