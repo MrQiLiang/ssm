@@ -87,7 +87,7 @@
       <param-value>true</param-value>
     </init-param>
     <!-- 用户名-->
-    <init-param>
+  <!--  <init-param>
       <param-name>loginUsername</param-name>
       <param-value>admin</param-value>
     </init-param>
@@ -95,6 +95,7 @@
       <param-name>loginPassword</param-name>
       <param-value>admin</param-value>
     </init-param>
+    -->
   </servlet>
   <servlet-mapping>
     <servlet-name>DruidStatView</servlet-name>

@@ -112,6 +112,7 @@
             /cms/login/** = anon
             /cms/index = authc
             /cms/** =  authc
+            /druid/** = perms["/druid:SELECT"]
             </value>
         </property>
     </bean>
