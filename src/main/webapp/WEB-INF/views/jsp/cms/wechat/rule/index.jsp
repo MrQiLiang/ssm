@@ -655,7 +655,7 @@
             html +='<img class="message-image" src="'+wechatMessage.imagerUrl+'" width="50" height="60">';
             html +='<div class="message-content">'+content +'</div>';
             html +='<div class="message-createTime">更新于 '+wechatMessage.updateTime+' </div>';
-            html +='<div class="chekc-Div '+isShow+'" > <img class ="check-image" src="${ctx}/wechat/imager/wx/u710.png"></div>';
+            html +='<div class="chekc-Div '+isShow+'" > <img class ="check-image" src="${ctx}/resources/cms/wechat/rule/image/u710.png"></div>';
             html += '</div>';
         }
         html += '</div></div>';
