@@ -1,5 +1,6 @@
 package com.lq.code.util;
 
+import com.lq.code.util.mybatisPlus.xml.SqlMapperXmlDtl;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -58,6 +59,13 @@ public class XmlUtil {
     }
 
     public static void main(String[] args) {
+
+        SqlMapperXmlDtl sqlMapperXmlDtl = new SqlMapperXmlDtl();
+        sqlMapperXmlDtl.setId("findOne");
+        sqlMapperXmlDtl.setVale("select * from sys_id ");
+
+        String xmlStr= objToXml(sqlMapperXmlDtl);
+        System.out.println(xmlStr);
 
     }
 

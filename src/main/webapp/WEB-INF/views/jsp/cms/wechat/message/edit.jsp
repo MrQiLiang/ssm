@@ -87,13 +87,15 @@
         });
         var messageType = '${wechatMessage.messageType}';
         if (messageType==null||messageType==''){
-            messageType = 'TEXT';
+            messageType = '1';
             $("#messageType").val(messageType);
         }
         showMessageTypeInput(messageType);
 
         $("#messageType").on("change",function () {
+            console.log("================");
             var messageType = $(this).val();
+            console.log(messageType);
             showMessageTypeInput(messageType);
         })
 
@@ -101,19 +103,19 @@
     });
 
     function showMessageTypeInput(messageType) {
-
+        console.log(messageType);
         switch (messageType){
-            case 'IMAGE':
+            case '2':
                 $("#tr_imageUrl").show();
                 $("#tr_cropedBigImg").show();
                 $("#tr_content").hide();
                 ;break;
-            case 'TEXT':
+            case '1':
                 $("#tr_imageUrl").hide();
                 $("#tr_content").show();
                 $("#tr_cropedBigImg").show();
                 ;break;
-            case 'IMAGE_TEXT':
+            case '3':
                 $("#tr_imageUrl").show();
                 $("#tr_cropedBigImg").show();
                 $("#tr_content").show();

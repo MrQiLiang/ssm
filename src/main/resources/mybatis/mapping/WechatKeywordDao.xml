@@ -45,14 +45,13 @@
         UPDATE
             wechat_keyword
         <trim prefix="set" suffixOverrides=",">
-            
- <if test="matchinType!=null">matchin_type=#{matchinType},</if>
- <if test="createTime!=null">create_time=#{createTime},</if>
- <if test="updateTime!=null">update_time=#{updateTime},</if>
- <if test="wechatRuleId!=null">wechat_rule_id=#{wechatRuleId},</if>
- <if test="id!=null">id=#{id},</if>
- <if test="keyword!=null">keyword=#{keyword},</if>
- <if test="status!=null">status=#{status},</if>
+        <if test="matchinType!=null">matchin_type=#{matchinType},</if>
+        <if test="createTime!=null">create_time=#{createTime},</if>
+        <if test="updateTime!=null">update_time=#{updateTime},</if>
+        <if test="wechatRuleId!=null">wechat_rule_id=#{wechatRuleId},</if>
+        <if test="id!=null">id=#{id},</if>
+        <if test="keyword!=null">keyword=#{keyword},</if>
+        <if test="status!=null">status=#{status},</if>
         </trim>
         WHERE
             id=#{id}

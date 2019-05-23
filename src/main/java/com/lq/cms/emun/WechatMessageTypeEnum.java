@@ -4,25 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum WechatMessageTypeEnum {
-    TEXT("TEXT","文本"),
-    IMAGE("IMAGE","图片"),
-    IMAGE_TEXT("IMAGE_TEXT","图文混合")
+    TEXT(1,"文本"),
+    IMAGE(2,"图片"),
+    IMAGE_TEXT(3,"图文混合")
     ;
 
-    WechatMessageTypeEnum(String value, String desc) {
+    WechatMessageTypeEnum(Integer value, String desc) {
         this.value = value;
         this.desc = desc;
     }
 
-    private String value;
+    private Integer value;
 
     private String desc;
 
-    public String getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 
@@ -34,7 +34,7 @@ public enum WechatMessageTypeEnum {
         this.desc = desc;
     }
 
-    private static Map<String,String> enumMap = new HashMap();
+    private static Map<Integer,String> enumMap = new HashMap();
 
     static {
        WechatMessageTypeEnum[] wechantMessageTypeEnums =  WechatMessageTypeEnum.values();
@@ -44,17 +44,17 @@ public enum WechatMessageTypeEnum {
     }
 
     //判断是否存在值
-    public static boolean hasValue(String value){
+    public static boolean hasValue(Integer value){
 
         return enumMap.containsKey(value);
     }
 
-    public static String getDesc(String value){
+    public static String getDesc(Integer value){
 
         return enumMap.get(value);
     }
 
-    public static Map<String,String> getEnumMap(){
+    public static Map<Integer,String> getEnumMap(){
 
         return enumMap;
     }

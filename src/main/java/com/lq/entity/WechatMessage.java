@@ -17,7 +17,7 @@ public class WechatMessage extends IdEntity{
     /**
      * 消息类型
      */
-    private String messageType;
+    private Integer messageType;
     /**
      * 消息标题
      */
@@ -51,11 +51,11 @@ public class WechatMessage extends IdEntity{
      */
     private Long userId;
 
-    public String getMessageType() {
+    public Integer getMessageType() {
         return messageType;
     }
 
-    public void setMessageType(String messageType) {
+    public void setMessageType(Integer messageType) {
         this.messageType = messageType;
     }
 

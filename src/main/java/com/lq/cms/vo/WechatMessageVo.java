@@ -8,7 +8,7 @@ import java.util.Date;
 public class WechatMessageVo extends AdminBaseVo{
 
     //消息类型
-    private String messageType;
+    private Integer messageType;
     //消息类型(中文描述)
     private String messageTypeStr;
     //消息标题
@@ -26,11 +26,11 @@ public class WechatMessageVo extends AdminBaseVo{
     //创建时间
     private String createTimeStr;
 
-    public String getMessageType() {
+    public Integer getMessageType() {
         return messageType;
     }
 
-    public void setMessageType(String messageType) {
+    public void setMessageType(Integer messageType) {
         this.messageType = messageType;
         if (WechatMessageTypeEnum.hasValue(messageType)){
             this.messageTypeStr = WechatMessageTypeEnum.getDesc(messageType);

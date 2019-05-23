@@ -18,8 +18,6 @@ public class MapperXmlDtl {
     @XStreamImplicit
     private List<SelectMappserXmlDtl> selectMappserXmlDtlList;
 
-
-
     public String getNamespace() {
         return namespace;
     }

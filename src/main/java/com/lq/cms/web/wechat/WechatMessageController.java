@@ -39,7 +39,7 @@ public class WechatMessageController extends AdminBaseController<WechatMessage,W
             WechatMessage wechatMessage = wechatMessageService.findOne(id);
             model.addAttribute("wechatMessage",wechatMessage);
         }
-        Map<String,String> emunMap = WechatMessageTypeEnum.getEnumMap();
+        Map<Integer,String> emunMap = WechatMessageTypeEnum.getEnumMap();
         model.addAttribute("wechatMessageTypeMap",emunMap);
         return "cms/wechat/message/edit";
     }
