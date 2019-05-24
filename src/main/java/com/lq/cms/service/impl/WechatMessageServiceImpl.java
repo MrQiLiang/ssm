@@ -26,13 +26,14 @@ public class WechatMessageServiceImpl extends AdminBaseServiceImpl<WechatMessage
     }
 
     @Override
-    public List<WechatMessageVo> findAllWechatMessageVo() {
+    public List<WechatMessageVo> findAllWechatMessageVo(WechatMessageVo wechatMessageVo) {
         List<WechatMessageVo> wechatMessageVoList = new ArrayList<>();
-        List<WechatMessage> wechatMessageList = wechatMessageDao.findAll();
+        List<WechatMessage> wechatMessageList = wechatMessageDao.findAllByWechatMessageVo(wechatMessageVo);
+
         wechatMessageList.forEach(wechatMessage -> {
-            WechatMessageVo wechatMessageVo = new WechatMessageVo();
-            BeanUtil.copyNotNull(wechatMessageVo,wechatMessage);
-            wechatMessageVoList.add(wechatMessageVo);
+            WechatMessageVo wechatMessageVo1 = new WechatMessageVo();
+            BeanUtil.copyNotNull(wechatMessageVo1,wechatMessage);
+            wechatMessageVoList.add(wechatMessageVo1);
         });
 
         return wechatMessageVoList;

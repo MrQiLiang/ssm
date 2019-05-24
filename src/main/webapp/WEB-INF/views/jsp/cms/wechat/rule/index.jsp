@@ -154,6 +154,7 @@
 </body>
 <script type="text/javascript" src="${ctx}/resources/code/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
+<script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"></script>
 <script type="text/javascript">
     var isCheck = ${wechatInfo.openReply==1};
     var addkeywordRowHtml = $("#keyword").html();
@@ -388,7 +389,7 @@
 
         $("#addIcon").click(function(){
             var data = new Object();
-            data.messageType = 'text-image';
+            data.messageType = 3;
             $.ajax({
                 type:"post",
                 url:"${ctx}/cms/wechat/message/findMessageDataList",

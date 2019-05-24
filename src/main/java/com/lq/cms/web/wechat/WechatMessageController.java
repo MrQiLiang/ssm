@@ -46,8 +46,8 @@ public class WechatMessageController extends AdminBaseController<WechatMessage,W
 
     @RequestMapping("/findMessageDataList")
     @ResponseBody
-    public Object findAll(){
-        List<WechatMessageVo> wechatMessageVoList = wechatMessageService.findAllWechatMessageVo();
+    public Object findAll(WechatMessageVo wechatMessageVo){
+        List<WechatMessageVo> wechatMessageVoList = wechatMessageService.findAllWechatMessageVo(wechatMessageVo);
         WechatMessageBo wechatMessageBo = new WechatMessageBo();
         wechatMessageBo.setWechatMessageVoList(wechatMessageVoList);
         wechatMessageBo.setWechatMessageCount(wechatMessageVoList.size());

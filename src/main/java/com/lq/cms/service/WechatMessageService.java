@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface WechatMessageService extends AdminBaseService<WechatMessage,WechatMessageVo> {
 
-    List<WechatMessageVo> findAllWechatMessageVo();
+    List<WechatMessageVo> findAllWechatMessageVo(WechatMessageVo wechatMessageVo);
 }

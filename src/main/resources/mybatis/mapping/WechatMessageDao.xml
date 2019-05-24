@@ -78,5 +78,16 @@
           status = 1
     </select>
 
+    <select id="findAllByWechatMessageVo" resultType="com.lq.entity.WechatMessage" parameterType="WechatMessageVo">
+        SELECT <include refid="column_list"/>
+          FROM wechat_message
+        WHERE
+          status = 1
+        <if test="messageType!=null">
+            AND message_type=#{messageType}
+        </if>
+
+    </select>
+
 
 </mapper>

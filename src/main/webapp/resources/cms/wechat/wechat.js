@@ -1,0 +1,6 @@
+//微信公众号消息类型-图片
+var WECHAT_MESSAGE_MESSAGE_TYPE_IMAGE ='2';
+//微信公众号消息类型-文字
+var WECHAT_MESSAGE_MESSAGE_TYPE_TEXT = '1';
+//微信公众号消息类型-图文混合
+var WECHAT_MESSAGE_MESSAGE_TYPE_IMAGE_TEXT = '3';

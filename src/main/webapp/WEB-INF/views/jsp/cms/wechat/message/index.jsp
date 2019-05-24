@@ -15,6 +15,8 @@
     <script type="text/javascript" src="${ctx}/resources/code/js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="${ctx}/resources/code/easyui/jquery.easyui.min.1.2.2.js"></script>
     <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
+    <script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"></script>
+
 </head>
 <script type="text/javascript">
     $(function () {

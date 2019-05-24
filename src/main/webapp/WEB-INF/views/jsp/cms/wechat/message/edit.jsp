@@ -21,7 +21,7 @@
             <td>
                 <select id="messageType" >
                     <c:forEach items="${wechatMessageTypeMap}" var="wechatMessageType">
-                        <option <c:if test="${wechatMessage.messageType == wechatMessageType.key}">selected</c:if> value="${wechatMessageType.key}">${wechatMessageType.value}</option>
+                        <option <c:if test="${wechatMessage.messageType == wechatMessageType.key}">selected</c:if> value=${wechatMessageType.key} >${wechatMessageType.value}</option>
                     </c:forEach>
                 </select>
              </td>
@@ -69,6 +69,7 @@
     </table>
 </div>
 </body>
+<script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"/>
 <script type="text/javascript">
     $(function () {
         $('#imageUrl').on('change', function() {//当chooseImage的值改变时，执行此函数
@@ -93,9 +94,7 @@
         showMessageTypeInput(messageType);
 
         $("#messageType").on("change",function () {
-            console.log("================");
             var messageType = $(this).val();
-            console.log(messageType);
             showMessageTypeInput(messageType);
         })
 
@@ -103,7 +102,6 @@
     });
 
     function showMessageTypeInput(messageType) {
-        console.log(messageType);
         switch (messageType){
             case '2':
                 $("#tr_imageUrl").show();
