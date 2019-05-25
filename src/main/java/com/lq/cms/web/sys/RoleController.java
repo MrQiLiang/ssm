@@ -58,7 +58,6 @@ public class RoleController  {
         return adminDataGridParam;
     }
 
-  //  @RequiresPermissions(value={"/cms/role/index:INSERT","/cms/role/index:UPDATE"},logical = Logical.OR)
     @RequestMapping("/edit")
     public ModelAndView edit(ModelAndView modelAndView,Long id){
         if (id!=null) {

@@ -28,8 +28,7 @@ import java.util.Map;
 @RequestMapping("/cms/wechat/info")
 public class WechatInfoController {
 
-    private static final String INDEX_URL = "/cms/wechat/info/index";
-
+    public static final String INDEX_URL = "/cms/wechat/info/index";
 
     @Autowired
     private WechatInfoService wechatInfoService;

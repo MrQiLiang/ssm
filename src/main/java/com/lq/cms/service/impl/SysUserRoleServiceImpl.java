@@ -8,6 +8,7 @@ import com.lq.dao.SysUserRoleDao;
 import com.lq.entity.SysUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRole> impleme
         return sysUserRoleDao;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateUserRole(Long id, List<Long> roleList) {
         Date nowTime=new Date();
