@@ -2,6 +2,7 @@
 
 ssm 介绍
 一个基于sping mvc+mybatis的框架。页面是采用aceAdmin+easyui.
+使用shiro作为安全框架，做权限控制
 
 ssm 软件架构
 软件架构说明
