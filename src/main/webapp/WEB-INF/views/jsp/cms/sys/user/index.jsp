@@ -20,7 +20,6 @@
     <script type="text/javascript" src="${ctx}/resources/code/js/ajaxfileupload.js"></script>
     <script type="text/javascript">
         $(function() {// 初始化内容
-
             $("#dataList").datagrid({
                 url:'list',
                 pagination :"true",
@@ -154,14 +153,10 @@
                         }else{
                             $.messager.alert('操作失败','删除失败','error');
                         }
-
-
                     }});
             }
         })
-
     }
-
     function getRoleArray() {
         var roleList=new Array();
         $("input[name='roleIds']").each(function() {

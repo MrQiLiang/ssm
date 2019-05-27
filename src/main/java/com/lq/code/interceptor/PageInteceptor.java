@@ -1,10 +1,7 @@
 package com.lq.code.interceptor;
 
 import com.lq.code.util.StringUtil;
-import com.lq.code.util.sql.AbstractDbBuiler;
-import com.lq.code.util.sql.MysqlBuilder;
-import com.lq.code.util.sql.OracleBuiler;
-import com.lq.code.util.sql.PageInterface;
+import com.lq.code.util.sql.*;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -52,13 +49,12 @@ public class PageInteceptor implements Interceptor {
                 String sql=boundSql.getSql();
                 PageInterface pageInterface=(PageInterface)boundSql.getParameterObject();
                 AbstractDbBuiler db = null;
-                if (dialect.equals("mysql")){
+                if (SqlConstant.DB_TYPE_MYSQL.equals(dialect)){
                        db = new MysqlBuilder();
                 }
-                if (dialect.equals("oracle")){
-                     db = new OracleBuiler();
+                if (SqlConstant.DB_TYPE_ORACLE.equals(dialect)){
+                       db = new OracleBuiler();
                 }
-//                String countSql= db.countSql(sql);
                 String pageSql=db.concatPageSql(sql,pageInterface);
                 metaStatementHandler.setValue("delegate.boundSql.sql",pageSql);
 

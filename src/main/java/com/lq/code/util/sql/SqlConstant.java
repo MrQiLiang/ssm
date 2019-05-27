@@ -8,4 +8,9 @@ package com.lq.code.util.sql;
 public class SqlConstant {
 
     public static final String SQL_SYMBOL = "_";
+
+    public static final String DB_TYPE_MYSQL = "mysql";
+
+    public static final String DB_TYPE_ORACLE = "oracle";
+
 }
