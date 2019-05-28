@@ -12,9 +12,10 @@
     <title>微信公众号管理后台-消息</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/resources/code/easyui/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="${ctx}/resources/code/easyui/themes/icon.css" />
-    <script type="text/javascript" src="${ctx}/resources/code/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="${ctx}/resources/code/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/resources/code/easyui/jquery.easyui.min.1.2.2.js"></script>
     <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
+    <script type="text/javascript" src="${ctx}/resources/code/js/ajaxfileupload.js"></script>
     <script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"></script>
 
 </head>
@@ -101,7 +102,7 @@
         obj.messageType = $("#messageType").val();
         obj.title = $("#title").val();
         obj.content = $("#content").val();
-        obj.imageUrl = $("#imageUrl").val();
+ //       obj.imageUrl = $("#imageUrl").val();
         obj.mediaId = $("#mediaId").val();
         obj.toUrl = $("#toUrl").val();
         return obj;
@@ -131,10 +132,11 @@
     }
 
     function post(url,obj) {
-        $.ajax({
+        $.ajaxFileUpload({
             url: url,
             dataType:"json",
             type:"post",
+            fileElementId:"file",
             data:obj,
             success: function(result){
                 if(result.success==true){

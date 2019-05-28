@@ -45,7 +45,7 @@
 
         <tr id="tr_imageUrl">
             <td>图片文件:</td>
-            <td><input class="easyui-textbox" type="file" id="imageUrl" data-options="required:true"/></td>
+            <td><input class="easyui-textbox"  type="file" name="file" id="file" data-options="required:true"/></td>
         </tr>
 
         <tr id="tr_cropedBigImg">
@@ -72,7 +72,7 @@
 <script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"/>
 <script type="text/javascript">
     $(function () {
-        $('#imageUrl').on('change', function() {//当chooseImage的值改变时，执行此函数
+        $('#file').on('change', function() {//当chooseImage的值改变时，执行此函数
             var filePath = $(this).val(), //获取到input的value，里面是文件的路径
                 fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
                 src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式

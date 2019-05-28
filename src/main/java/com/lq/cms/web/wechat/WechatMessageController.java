@@ -9,6 +9,7 @@ import com.lq.cms.vo.WechatMessageVo;
 import com.lq.cms.web.AdminBaseController;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
+import com.lq.code.util.FileUtil;
 import com.lq.entity.SysUser;
 import com.lq.entity.WechatMessage;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -21,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  *   微信公众号消息管理后台控制类
@@ -72,6 +76,8 @@ public class WechatMessageController {
     public Object save(WechatMessageVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
         AjaxResult ajaxResult = new AjaxResult();
         try {
+            String filePath = upLoadFile(file);
+            vo.setImageUrl(filePath);
             wechatMessageService.save(vo);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -86,6 +92,8 @@ public class WechatMessageController {
     @ResponseBody
     public Object update(WechatMessageVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
         AjaxResult ajaxResult = new AjaxResult();
+        String filePath = upLoadFile(file);
+        vo.setImageUrl(filePath);
         wechatMessageService.update(vo);
         return ajaxResult;
     }
@@ -111,6 +119,27 @@ public class WechatMessageController {
         AjaxResult ajaxResult = new AjaxResult();
         ajaxResult.setData(wechatMessageBo);
        return ajaxResult;
+    }
+
+    //内部方法 ，上传文件，并返回文件路径
+    private String upLoadFile(MultipartFile multipartFile){
+        String newFileName = null;
+        if (multipartFile!=null && multipartFile.getSize()>0){
+            UUID uuid = UUID.randomUUID();
+            String fileType = FileUtil.fileFormat(multipartFile.getOriginalFilename());
+            newFileName = "wechat/"+uuid.toString()+"."+fileType;
+            File newFile = new File(FILE_LOAD_PATH +newFileName);
+
+            if (!newFile.exists()){
+                newFile.mkdirs();
+            }
+            try {
+                multipartFile.transferTo(newFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return newFileName;
     }
 
 }
