@@ -139,6 +139,8 @@
             fileElementId:"file",
             data:obj,
             success: function(result){
+
+                console.log(result);
                 if(result.success==true){
                     $.messager.alert('提醒','提交成功','warning');
                     $("#editDate").dialog('close');

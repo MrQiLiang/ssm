@@ -119,7 +119,6 @@
         <div class="keyword-content" id="keyword">
             <div class="keyword-content-row">
                 <select class="keyword-select">
-
                     <c:forEach var="wechatKeywordMatchinType" items="${wechatKeywordMatchinTypeMap}"  >
                     <option value="${wechatKeywordMatchinType.key}" >${wechatKeywordMatchinType.value}</option>
                     </c:forEach>
@@ -653,7 +652,7 @@
             html += ' <div class="message-row" onclick="onMessaegRow(this)">';
             html += '<input type="hidden" value="'+wechatMessage.id+'" />';
             html +='<div class="message-title">'+wechatMessage.title+'</div>';
-            html +='<img class="message-image" src="'+wechatMessage.imagerUrl+'" width="50" height="60">';
+            html +='<img class="message-image" src="${ctx}/loadFile/'+wechatMessage.imageUrl+'" width="50" height="60">';
             html +='<div class="message-content">'+content +'</div>';
             html +='<div class="message-createTime">更新于 '+wechatMessage.updateTime+' </div>';
             html +='<div class="chekc-Div '+isShow+'" > <img class ="check-image" src="${ctx}/resources/cms/wechat/rule/image/u710.png"></div>';
