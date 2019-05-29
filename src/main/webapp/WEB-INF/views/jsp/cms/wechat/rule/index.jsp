@@ -680,10 +680,7 @@
             // var resultFul = messageSet.delete(messageid);
             bufferSet.delete(messageid);
         }
-
     }
-
-
 </script>
 </html>
 

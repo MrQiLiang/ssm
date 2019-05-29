@@ -12,7 +12,7 @@
     <title>微信公众号管理后台-消息</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/resources/code/easyui/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="${ctx}/resources/code/easyui/themes/icon.css" />
-    <script type="text/javascript" src="${ctx}/resources/code/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="${ctx}/resources/code/js/jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="${ctx}/resources/code/easyui/jquery.easyui.min.1.2.2.js"></script>
     <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
     <script type="text/javascript" src="${ctx}/resources/code/js/ajaxfileupload.js"></script>
@@ -109,10 +109,12 @@
     }
 
     function del(id) {
-        var url = 'delete';
-        var obj = new Object();
-        obj.id = id;
-        get(url,obj);
+        $.messager.confirm('消息提醒','确定是否删除该项数据？',function (result) {
+            var url = 'delete';
+            var obj = new Object();
+            obj.id = id;
+            get(url,obj);
+        });
     }
 
     function get(url,obj) {
@@ -138,15 +140,15 @@
             type:"post",
             fileElementId:"file",
             data:obj,
-            success: function(result){
-
+            success:function(result){
                 console.log(result);
                 if(result.success==true){
                     $.messager.alert('提醒','提交成功','warning');
                     $("#editDate").dialog('close');
                     $('#dataList').datagrid('reload',{});
                 }
-            }});
+            }
+        });
     }
 
 </script>

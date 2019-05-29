@@ -1,5 +1,7 @@
 package com.lq.code.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public interface BaseDao<T> {
      *  删除一条数据
      * @param id
      */
-     void delete(Long id);
+     void delete(@Param("id") Long id);
 
     /**
      *  批量保存数据

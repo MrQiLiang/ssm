@@ -69,10 +69,10 @@
     </table>
 </div>
 </body>
-<script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"/>
 <script type="text/javascript">
     $(function () {
-        $('#file').on('change', function() {//当chooseImage的值改变时，执行此函数
+
+        $('#file').bind('change', function() {//当chooseImage的值改变时，执行此函数
             var filePath = $(this).val(), //获取到input的value，里面是文件的路径
                 fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
                 src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
@@ -92,8 +92,12 @@
             $("#messageType").val(messageType);
         }
         showMessageTypeInput(messageType);
+        if (messageType=='2'||messageType=='3'){
+            $('#cropedBigImg').css('display','block');
+            $('#cropedBigImg').attr('src', '${ctx}/loadFile/${wechatMessage.imageUrl}');
+        }
 
-        $("#messageType").on("change",function () {
+        $("#messageType").bind("change",function () {
             var messageType = $(this).val();
             showMessageTypeInput(messageType);
         })

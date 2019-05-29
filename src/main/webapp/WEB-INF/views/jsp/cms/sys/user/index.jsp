@@ -155,7 +155,7 @@
                         }
                     }});
             }
-        })
+        });
     }
     function getRoleArray() {
         var roleList=new Array();

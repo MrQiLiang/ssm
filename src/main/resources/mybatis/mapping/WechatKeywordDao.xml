@@ -59,7 +59,7 @@
 
     <update id="delete" parameterType="Long">
         UPDATE
-           FROM wechat_keyword
+            wechat_keyword
         SET
            status = 0
         WHERE

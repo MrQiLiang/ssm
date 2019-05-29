@@ -53,7 +53,7 @@
 
     <update id="delete" parameterType="Long">
         UPDATE
-           FROM @tableName
+            @tableName
         SET
            status = 0
         WHERE
