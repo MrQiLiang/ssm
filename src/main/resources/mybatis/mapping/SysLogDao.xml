@@ -49,8 +49,10 @@
     </update>
 
     <delete id="delete" parameterType="Long">
-        DELETE
-          FROM sys_log
+        UPDATE
+           sys_log
+        SET
+          status = 0
         WHERE id=#{id}
 
     </delete>

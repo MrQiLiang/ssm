@@ -56,12 +56,13 @@
     </update>
 
     <delete id="delete" parameterType="Long">
-        DELETE
+        UPDATE
            wechat_info
+        SET
+            status = 0
         WHERE
             id=#{id}
-        AND
-            status = 1
+
     </delete>
 
     <select id="count" resultType="int" parameterType="com.lq.cms.vo.WechatInfoVo">

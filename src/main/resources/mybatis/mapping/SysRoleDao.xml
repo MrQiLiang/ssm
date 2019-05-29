@@ -59,7 +59,12 @@
     </update>
 
     <update id="delete" parameterType="Long">
-        UPDATE sys_role SET  status = 0 WHERE id=#{id}
+        UPDATE
+          sys_role
+        SET
+          status = 0
+        WHERE
+          id=#{id}
     </update>
 
     <select id="count" resultType="Int" parameterType="SysRoleVo">

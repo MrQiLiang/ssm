@@ -10,6 +10,7 @@ import com.lq.cms.web.AdminBaseController;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
 import com.lq.code.util.FileUtil;
+import com.lq.code.util.StringUtil;
 import com.lq.entity.SysUser;
 import com.lq.entity.WechatMessage;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -77,7 +79,10 @@ public class WechatMessageController {
         AjaxResult ajaxResult = new AjaxResult();
         try {
             String filePath = upLoadFile(file);
-            vo.setImageUrl(filePath);
+            if(StringUtil.isNotNull(filePath)) {
+                vo.setImageUrl(filePath);
+            }
+            vo.setUpdateTime(new Date());
             wechatMessageService.save(vo);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -93,7 +98,10 @@ public class WechatMessageController {
     public Object update(WechatMessageVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
         AjaxResult ajaxResult = new AjaxResult();
         String filePath = upLoadFile(file);
-        vo.setImageUrl(filePath);
+        if (StringUtil.isNotNull(filePath)) {
+            vo.setImageUrl(filePath);
+        }
+        vo.setUpdateTime(new Date());
         wechatMessageService.update(vo);
         return ajaxResult;
     }

@@ -63,7 +63,7 @@
 
     <update id="delete" parameterType="Long">
         UPDATE
-           FROM wechat_rule
+            wechat_rule
         SET
            status = 0
         WHERE

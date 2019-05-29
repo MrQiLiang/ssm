@@ -51,8 +51,10 @@
     </update>
 
     <delete id="delete" parameterType="Long">
-        DELETE
-            wechat_accesstoken
+        UPDATE
+          wechat_accesstoken
+        SET
+          status = 0
         WHERE
             id=#{id}
     </delete>
