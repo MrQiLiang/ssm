@@ -110,6 +110,20 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
         return wechatRuleVo;
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deleteWechatRuleById(Long id) {
+        WechatRule wechatRule = wechatRuleDao.findOne(id);
+        if (wechatRule!=null){
+            List<WechatKeyword> wechatKeywordList = wechatKeywordDao.findByWechatRuleIdAndStatus(id,StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+            wechatKeywordList.forEach(wechatKeyword -> {
+                wechatKeywordDao.delete(wechatKeyword.getId());
+            });
+            wechatRuleDao.delete(id);
+        }
+
+    }
+
     @Override
     public BaseDao<WechatRule> getBaseDao() {
         return wechatRuleDao;

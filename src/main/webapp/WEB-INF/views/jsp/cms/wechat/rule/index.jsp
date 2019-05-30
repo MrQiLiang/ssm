@@ -609,10 +609,9 @@
     function delRule(ruleId){
         var data = new Object();
         data.id = ruleId;
-
         $.ajax({
             type:"post",
-            url:"${ctx}/admin/wechat/delWechatRule.htm",
+            url:"${ctx}/cms/wechat/rule/delete.htm",
             traditional:true,
             data:data,
             dataType:"json",
@@ -647,13 +646,16 @@
             }else{
                 isShow = 'classhide';
             }
-
+            var updateStr = '';
+            if (wechatMessage.updateTime!=null||wechatMessage.updateTime!=""||wechatMessage.updateTime!=undefined){
+                updateStr = wechatMessage.updateTime.substring(0,10);
+            }
             html += ' <div class="message-row" onclick="onMessaegRow(this)">';
             html += '<input type="hidden" value="'+wechatMessage.id+'" />';
             html +='<div class="message-title">'+wechatMessage.title+'</div>';
             html +='<img class="message-image" src="${ctx}/loadFile/'+wechatMessage.imageUrl+'" width="50" height="60">';
             html +='<div class="message-content">'+content +'</div>';
-            html +='<div class="message-createTime">更新于 '+wechatMessage.updateTime+' </div>';
+            html +='<div class="message-createTime">更新于 '+updateStr+' </div>';
             html +='<div class="chekc-Div '+isShow+'" > <img class ="check-image" src="${ctx}/resources/cms/wechat/rule/image/u710.png"></div>';
             html += '</div>';
         }

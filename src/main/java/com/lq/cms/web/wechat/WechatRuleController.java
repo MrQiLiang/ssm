@@ -70,6 +70,14 @@ public class WechatRuleController {
     }
 
     @ResponseBody
+    @RequestMapping("/delete")
+    public AjaxResult delete(Long id){
+        AjaxResult ajaxResult = new AjaxResult();
+        wechatRuleService.deleteWechatRuleById(id);
+        return ajaxResult;
+    }
+
+    @ResponseBody
     @RequestMapping("/getWechatRuleById")
     public Object getWechatRuleById(Long wechatRuleId){
         AjaxResult ajaxResult = new AjaxResult();

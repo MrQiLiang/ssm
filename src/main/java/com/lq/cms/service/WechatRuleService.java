@@ -42,4 +42,8 @@ public interface WechatRuleService extends BaseService<WechatRule> {
      * 通过规则ID查找规则详情
      */
     WechatRuleVo getWechatRuleVoById(Long wechatRuleId);
+    /**
+     * 通过规则ID删除规则
+     */
+    void deleteWechatRuleById(Long id);
 }
