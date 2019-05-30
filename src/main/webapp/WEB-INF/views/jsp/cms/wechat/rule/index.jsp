@@ -553,7 +553,6 @@
 
                         messageSet.add(messageIdList[i]);
                     }
-                  //  messageText = ruleData.messageText;
                 }
             },
             error:function(){
@@ -670,14 +669,11 @@
 
     function onMessaegRow(obj){
         var messageid = parseInt($(obj).find('input').val());
-        console.log(messageid);
         if ($(obj).find('.chekc-Div').css('display') == 'none') {
             $(obj).find('.chekc-Div').show();
-            //  messageSet.add(messageid);
             bufferSet.add(messageid);
         }else{
             $(obj).find('.chekc-Div').hide();
-            // var resultFul = messageSet.delete(messageid);
             bufferSet.delete(messageid);
         }
     }
