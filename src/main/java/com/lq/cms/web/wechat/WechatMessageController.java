@@ -41,6 +41,7 @@ public class WechatMessageController {
 
     @Autowired
     private WechatMessageService wechatMessageService;
+
     @Value("${file.upload}")
     private String FILE_LOAD_PATH;
 

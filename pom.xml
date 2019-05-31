@@ -623,14 +623,14 @@
         <filtering>false</filtering>
       </resource>
 
-      <!-- <resource>
+       <resource>
          <directory>src/main/java</directory>
          <includes>
            <include>**/*.properties</include>
          </includes>
          <filtering>false</filtering>
        </resource>
-       -->
+
     </resources>
 
   </build>

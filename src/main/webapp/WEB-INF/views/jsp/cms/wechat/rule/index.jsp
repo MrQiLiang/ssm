@@ -120,7 +120,7 @@
             <div class="keyword-content-row">
                 <select class="keyword-select">
                     <c:forEach var="wechatKeywordMatchinType" items="${wechatKeywordMatchinTypeMap}"  >
-                    <option value="${wechatKeywordMatchinType.key}" >${wechatKeywordMatchinType.value}</option>
+                        <option value="${wechatKeywordMatchinType.key}" >${wechatKeywordMatchinType.value}</option>
                     </c:forEach>
                 </select>
                 <input type="text" class="keyword-input" placeholder="请输入关键字" />
@@ -464,7 +464,10 @@
 
     function delkeyword(obj){
         var lastId = $(obj).parent();
-        $(lastId).remove();
+        var rowList = $(".keyword-content-row");
+        if(rowList.length>1) {
+            $(lastId).remove();
+        }
     }
 
     function showTextOrImager(type,obj){
@@ -574,8 +577,8 @@
 
         var html = '<div class="keyword-content-row">'+
             '<select class="keyword-select">' +
-            '<option value="completely" '+completelyStr+' >全匹配</option>' +
-            '<option value="contain" '+containStr+'>半匹配</option><' +
+            '<option value="1" '+completelyStr+' >全匹配</option>' +
+            '<option value="2" '+containStr+'>半匹配</option><' +
             '/select>' +
             '<input type="text" class="keyword-input" placeholder="请输入关键字"  value="'+inputVal+'" />' +
             ' <button class="keyword-add" onclick="addkeyword()"><a href="#" class="keyword-add-title" >十</a></button> ' +
@@ -617,7 +620,6 @@
             dataType:"json",
             success:function(result){
                 if(result.success==true){
-
                     location.reload();
                 }
             },
@@ -630,7 +632,6 @@
 
     function appendAlertHtml(data){
         var isShow ;
-
         var wechatMessageList = data.wechatMessageVoList;
         var html = '<div class="alert"><div class="left-navigation"><p>图文('+data.wechatMessageCount+')</p></div>';
         html += ' <div class="alert-content">';

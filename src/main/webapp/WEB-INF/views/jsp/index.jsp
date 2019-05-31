@@ -7,68 +7,45 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="common/import-tag.jsp" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>堂吉诃德网</title>
-    <link href="${ctx}/resources/plugins/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="${ctx}/resources/plugins/umeditor/third-party/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${ctx}/resources/plugins/umeditor/umeditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${ctx}/resources/plugins/umeditor/umeditor.min.js"></script>
-    <script type="text/javascript" src="${ctx}/resources/plugins/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+ <!--   <link rel="stylesheet" href="https://test.com/index.css" />-->
 </head>
-
 <body>
-<!--<script id="container" name="content" type="text/plain">
-
-</script>-->
-
-<button id="openBtn">打开App</button>
-
-</body>
-<!-- 配置文件-->
-<script type="text/javascript">
-   // window.um = UM.getEditor("container");
-   var ua = navigator.userAgent.toLowerCase();
-
-   var config = {
-       scheme_IOS: 'myscheme://myhost:1024/main',
-       scheme_Adr: 'myscheme://myhost:1024/main',
-       download_url: 'http://a.app.qq.com/o/simple.jsp?pkgname=aa.bbxxx',
-       timeout: 3000
-   }
-
-   $(function () {
-        $("#openBtn").on("click",function(){
-            location.href="myscheme://myhost:1024/main";
-        });
+<div class="app">
+    <h1>webview-wechat-detail</h1>
+    <p>
+        detail
+    </p>
+    <button type="button" id="btn">返回小程序</button>
+</div>
+<script src="${ctx}/resources/code/js/jquery-2.2.4.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
+<script>
+    /* eslint-disable */
+    $(function(){
+    //    doucument.cookie = 'bb=bbbbbb';
+        $("#btn").click(function () {
+            alert("测试!");
+            wx.miniProgram.getEnv(function (res) {
+                if (res.miniprogram) {
+                    //如果当前是小程序环境
+                    wx.miniProgram.postMessage({
+                        data:  {
+                            name: 'name',
+                            age: 12
+                        }
+                    })
+                }
+            });
+        })
 
     });
-
-   function  openClient() {
-       var  startTime = Date.now();
-
-       var ifr = document.createElement('iframe');
-       ifr.src = ua.indexOf('OS')>0?config.scheme_IOS:config.scheme_Adr;
-       ifr.style.display='none';
-       document.body.appendChild(ifr);
-
-       var t = setTimeout(function(){
-           var endTime = Date.now();
-           if(!startTime||endTime-startTime<config.timeout+200){
-               window.location = config.download_url;
-           }else {
-
-           }
-       },config.timeout);
-
-       window.onblur = function () {
-           clearTimeout(t);
-       }
-   }
-
-   window.addEventListener("DOMContentLoaded",function () {
-
-   },false);
-
 </script>
+</body>
 </html>
