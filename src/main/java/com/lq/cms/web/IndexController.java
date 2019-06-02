@@ -49,11 +49,12 @@ public class IndexController {
         Subject subject=SecurityUtils.getSubject();
         Session session = subject.getSession();
         SysUser sysUser=(SysUser) subject.getPrincipal();
-        List<MenusComposite> list = null;
+        List<MenusComposite> list ;
+        String contextPath = request.getContextPath();
         if (subject.hasRole(Constant.ROLE_ADMIN)) {
-            list = sysResourceService.findAllMenusList(request);
+            list = sysResourceService.findAllMenusList(contextPath);
         }else{
-            list = sysResourceService.findMenusListBySysUserId(sysUser.getId(), request);
+            list = sysResourceService.findMenusListBySysUserId(sysUser.getId(), contextPath);
 
         }
         modelAndView.addObject("menusList",list);

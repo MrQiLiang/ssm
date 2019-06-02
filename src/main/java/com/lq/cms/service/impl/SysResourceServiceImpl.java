@@ -14,7 +14,6 @@ import com.lq.entity.SysResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -51,7 +50,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
     }
 
     @Override
-    public List<MenusComposite> findMenusListBySysUserId(Long sysUserId, HttpServletRequest request) {
+    public List<MenusComposite> findMenusListBySysUserId(Long sysUserId, String contextPath) {
         Map<String,Object> map=new HashMap();
         map.put("userId",sysUserId);
         map.put("parentId",0L);
@@ -71,7 +70,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
                 menus.setMenuid(sysResource1.getId());
                 menus.setIcon(sysResource1.getMenuIco());
                 menus.setMenuname(sysResource1.getMenuName());
-                menus.setUrl(request.getContextPath()+sysResource1.getUrlPath());
+                menus.setUrl(contextPath+sysResource1.getUrlPath());
                 menusItem.add(menus);
             }
             list.add(menusItem);
@@ -80,11 +79,10 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
     }
 
     @Override
-    public List<MenusComposite> findAllMenusList(HttpServletRequest request) {
+    public List<MenusComposite> findAllMenusList(String contextPath) {
         List<SysResource> sysResourceList = sysResourceDao.findByParentId(0L);
         Iterator<SysResource> sysResourceIterator = sysResourceList.iterator();
         List<MenusComposite> list=new ArrayList<>();
-        Stream<SysResource> resourceStream = sysResourceList.stream();
         while (sysResourceIterator.hasNext()){
             SysResource sysResource = sysResourceIterator.next();
             MenusItem menusItem=new MenusItem();
@@ -99,7 +97,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
                 menus.setMenuid(nextSysResource.getId());
                 menus.setIcon(nextSysResource.getMenuIco());
                 menus.setMenuname(nextSysResource.getMenuName());
-                menus.setUrl(request.getContextPath()+nextSysResource.getUrlPath());
+                menus.setUrl(contextPath+nextSysResource.getUrlPath());
                 menusItem.add(menus);
             }
             list.add(menusItem);
