@@ -4,8 +4,6 @@ import com.lq.cms.mode.MenusComposite;
 import com.lq.cms.vo.SysResourceVo;
 import com.lq.code.service.BaseService;
 import com.lq.entity.SysResource;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -18,9 +16,9 @@ public interface SysResourceService extends BaseService<SysResource> {
 
     List<SysResource> findByParentId(long parenId);
     //通过用户查找相关的菜单
-    List<MenusComposite> findMenusListBySysUserId(Long sysUserId, HttpServletRequest request);
+    List<MenusComposite> findMenusListBySysUserId(Long sysUserId,String contextPath);
     //用户拥有admin权限查询全部菜单
-    List<MenusComposite> findAllMenusList(HttpServletRequest request);
+    List<MenusComposite> findAllMenusList(String contextPath);
 
 
 }

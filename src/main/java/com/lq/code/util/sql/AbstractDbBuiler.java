@@ -1,5 +1,7 @@
 package com.lq.code.util.sql;
 
+import com.lq.code.dto.QueueDto;
+
 import java.util.Set;
 
 /**
@@ -9,6 +11,8 @@ public abstract class AbstractDbBuiler {
 
 
     abstract public String automaticUpdateDb(Set<Class> classSet);
+
+    abstract public String automaticUpdateDbNew(QueueDto<Class> classQueueDto);
 
     /**
      *   构建分页sql语句

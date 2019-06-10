@@ -41,10 +41,13 @@ public class InstantiationTracingBeanPostProcessor implements ApplicationListene
             //需要执行的逻辑代码，当spring容器初始化完成后就会执行该方法。
             //扫描实体类
             if (isUpdateDB) {
-                Set<Class> set = BeanUtil.getClassList(packagePath);
+                long startTime = System.currentTimeMillis();
+                Set<Class> set = BeanUtil.getClassSet(packagePath);
                 AbstractDbBuiler dbBuiler = new MysqlBuilder();
                 String sql = dbBuiler.automaticUpdateDb(set);
-                JdbcUtils.createTable(sql);
+          //      JdbcUtils.createTable(sql);
+                System.out.println("=========实体同步数据结构===========");
+                System.out.println(System.currentTimeMillis()-startTime);
             }
         }
     }

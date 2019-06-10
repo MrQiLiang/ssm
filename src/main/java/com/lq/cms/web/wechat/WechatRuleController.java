@@ -54,18 +54,18 @@ public class WechatRuleController {
      * @param vo
      * @param keywordListStr 关键字集合（json字符串）
      * @param messageListStr 消息集合（json字符串）
-     * @param wechatInfoId 微信公众号详情ID
      * @return
      */
     @ResponseBody
     @RequestMapping("/save")
-    public Object save(WechatRuleVo vo,String keywordListStr,String messageListStr,Long wechatInfoId){
+    public Object save(WechatRuleVo vo,String keywordListStr,String messageListStr){
         AjaxResult ajaxResult = new AjaxResult();
         if (StringUtil.isNotNull(keywordListStr)) {
             List<WechatKeyword> wechatKeywordList = JSON.parseArray(keywordListStr, WechatKeyword.class);
             vo.setWechatKeywordList(wechatKeywordList);
         }
         wechatRuleService.saveRule(vo);
+
         return ajaxResult;
     }
 

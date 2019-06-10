@@ -64,6 +64,10 @@
     p:poolConfig-ref="jedisConfig"
     />
 
+    <!-- 添加RedisHttpSessionConfiguration用于session共享 -->
+   <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/>
+
+    
 
     <bean id="redisTempale" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="jedisConnectionFactory"></property>

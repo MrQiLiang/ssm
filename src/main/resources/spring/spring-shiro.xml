@@ -18,20 +18,11 @@
     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" />
 
     <!-- 配置Session DAO的操作处理 -->
-    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
-        <!-- 设置session缓存的名字，这个名字可以任意 -->
-        <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
-        <!-- 定义该Session DAO操作中所使用的ID生成器 -->
-        <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
-        <!-- session缓冲管理-->
-        <property name="cacheManager" ref="shiroCacheManager"/>
-    </bean>
-
-   <!-- <bean id="sessionDAO" class="com.lq.code.cache.RedisSessionDao">
+    <bean id="sessionDAO" class="com.lq.code.cache.RedisSessionDao">
         <constructor-arg ref="redisTempale"/>
         <constructor-arg value="7200"/>
     </bean>
-    -->
+
     <!-- 配置需要向Cookie中保存数据的配置模版 -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <!-- 在Tomcat运行下默认使用的Cookie的名字为JSESSIONID -->
@@ -40,9 +31,9 @@
         <property name="httpOnly" value="true"/>
         <!-- 定义Cookie的过期时间，单位为秒，如果设置为-1表示浏览器关闭，则Cookie消失 -->
         <property name="maxAge" value="-1"/>
-
-
     </bean>
+
+
 
     <!-- 定义会话管理器的操作 -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
@@ -138,10 +129,17 @@
         <property name="configLocation" value="classpath:ehcache/ehcache-shiro.xml"/>
     </bean>
     -->
-    <!-- shiro 缓存管理器-->
-    <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml"/>
+
+    <bean id="shiroCache" class="com.lq.code.cache.RedisShiroCache">
     </bean>
+
+    <bean id="shiroCacheManager" class="com.lq.code.cache.RedisShiroManager">
+    </bean>
+
+    <!-- shiro 缓存管理器-->
+   <!-- <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>-->
 
     <!--配置bean 后置处理器：会自动的调用和spring 整合后的各个组件的生命周期方法 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

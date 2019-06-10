@@ -1,5 +1,7 @@
 package com.lq.code.util.sql;
 
+import com.lq.code.dto.QueueDto;
+
 import java.util.Set;
 
 /**
@@ -10,6 +12,11 @@ public class OracleBuiler extends AbstractDbBuiler {
 
     @Override
     public String automaticUpdateDb(Set<Class> classSet) {
+        return null;
+    }
+
+    @Override
+    public String automaticUpdateDbNew(QueueDto<Class> classQueueDto) {
         return null;
     }
 

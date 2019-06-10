@@ -32,6 +32,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+
   <!-- 字符编码设置 -->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
@@ -66,6 +67,21 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <!-- 配置 shiro 的Filter end-->
+
+  <!-- redis共享session -->
+  <filter>
+    <filter-name>springSessionRepositoryFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>exclusions</param-name>
+      <param-value>/public/*,*.js,*.css,*.jsp,*.swf</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSessionRepositoryFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
 
   <!-- spring mvc 核心分发器 -->
   <servlet>

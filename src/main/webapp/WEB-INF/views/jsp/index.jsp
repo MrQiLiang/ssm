@@ -32,16 +32,18 @@
     //    doucument.cookie = 'bb=bbbbbb';
         $("#btn").click(function () {
             alert("测试!");
-            wx.miniProgram.getEnv(function (res) {
-                if (res.miniprogram) {
-                    //如果当前是小程序环境
-                    wx.miniProgram.postMessage({
-                        data:  {
-                            name: 'name',
-                            age: 12
-                        }
-                    })
+            wx.miniProgram.navigateTo({
+                url:'/pages/test/test',
+                success: function(){
+                    console.log('success')
+                },
+                fail: function(){
+                    console.log('fail');
+                },
+                complete:function(){
+                    console.log('complete');
                 }
+
             });
         })
 

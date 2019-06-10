@@ -1,5 +1,6 @@
 package com.lq.code.util;
 
+import com.lq.code.dto.QueueDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -161,7 +162,7 @@ public class BeanUtil {
      * @param packagePath
      * @return
      */
-    public static Set<Class> getClassList(String packagePath){
+    public static Set<Class> getClassSet(String packagePath){
 
         Set<Class> set = new HashSet<>();
         String separator = File.separator;
@@ -183,6 +184,28 @@ public class BeanUtil {
             }
         }
         return set;
+    }
+
+    public static QueueDto<Class> getQueueDto(String packagePath){
+        QueueDto<Class> classQueueDto = new QueueDto<>();
+        String separator = File.separator;
+        String filePath = packagePath.replace(".",separator);
+        String classPath = BeanUtil.class.getResource(FILE_SYMBOL).getPath()+filePath;
+        File file = new File(classPath);
+        if (file.exists()){
+            File[] files = file.listFiles();
+            try {
+                for (File classFile:files){
+                    String className = classFile.getName().split("\\.")[0];
+                    Class clazz =Class.forName(packagePath+"."+className);
+                    classQueueDto.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+
+            }
+        }
+            return classQueueDto;
     }
 
     public static String getEntityName(Class entityClazz){
