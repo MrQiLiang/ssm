@@ -47,14 +47,14 @@ public class HttpsClient {
         	
         	Class clazz = params.get(key).getClass();
         	String objectType = clazz.getName();
-        	if(objectType.equals("java.io.File")){
+        	if("java.io.File".equals(objectType)){
         		 // 这里就是我要上传到服务器的多媒体图片  
                File file =(File)params.get(key);
                mBuilder.addBinaryBody(key,file,  
         	                ContentType.APPLICATION_OCTET_STREAM,file 
         	                        .getName());  
         	}
-        	if(objectType.equals("java.lang.String")){
+        	if("java.lang.String".equals(objectType)){
         		 String value =(String)params.get(key);
         		 mBuilder.addTextBody(key, value);
         	}
