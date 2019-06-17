@@ -15,7 +15,14 @@ public interface SysRoleResourcePermissionDao extends BaseDao<SysRoleResourcePer
 
     List<PermissionVo> findByRoleId(@Param("roleId") Long roleId);
 
-    SysRoleResourcePermission findByResourceIdAndPermissionIdAndRoleId(@Param("resourceId") Long resourceId, @Param("permissonId") Long permissonId, @Param("roleId") Long roleId);
+    /**
+     *  通过资源ID，权限ID和角色ID查找3者关联表
+     * @param resourceId(角色ID)
+     * @param permissonId
+     * @param roleId
+     * @return
+     */
+    SysRoleResourcePermission getByResourceIdAndPermissionIdAndRoleId(@Param("resourceId") Long resourceId, @Param("permissonId") Long permissonId, @Param("roleId") Long roleId);
 
     void updateByRoleIdAndStatus(Map<String, Object> param);
 

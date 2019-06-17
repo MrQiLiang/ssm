@@ -18,6 +18,7 @@ public class QueueDto<T> {
 
     private int index;
 
+
     public QueueDto() {
         this.list = new ArrayList<>();
     }
@@ -28,13 +29,13 @@ public class QueueDto<T> {
 
     public void add(T t){
         list.add(t);
-        index++;
+        index ++;
     }
 
     public synchronized T pop(){
         T t = null;
-        index--;
         if (hasNext()) {
+            index--;
             t = list.get(index);
         }
         return t;
@@ -44,12 +45,17 @@ public class QueueDto<T> {
      *  判断是否还有元素存在
      * @return
      */
-    public boolean hasNext(){
+    public synchronized boolean hasNext(){
         boolean result = true;
         if (index==0){
             result = false;
         }
         return result;
+    }
+
+    public int getIndex(){
+
+        return this.index;
     }
 
 }

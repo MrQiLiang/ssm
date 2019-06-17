@@ -75,6 +75,7 @@
         SELECT <include refid="column_list"/>
           FROM sys_role
         WHERE status=1
+        ORDER BY create_time DESC ,update_time DESC
     </select>
 
 

@@ -49,7 +49,7 @@
         id=#{id}
     </update>
 
-    <select id="findByResourceIdAndPermissionIdAndRoleId" resultType="SysRoleResourcePermission">
+    <select id="getByResourceIdAndPermissionIdAndRoleId" resultType="SysRoleResourcePermission">
           SELECT <include refid="column_list"/>
             FROM sys_role_resource_permission
           WHERE 1=1

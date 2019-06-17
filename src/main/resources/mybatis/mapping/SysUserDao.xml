@@ -34,7 +34,7 @@
         SELECT <include refid="column_list"/>
           FROM sys_user
         WHERE status = 1
-        ORDER BY update_time,create_time ASC
+        ORDER BY create_time DESC ,update_time DESC
     </select>
 
     <select id="count" parameterType="SysUserVo" resultType="Int">

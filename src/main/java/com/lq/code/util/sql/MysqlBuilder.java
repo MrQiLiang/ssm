@@ -150,6 +150,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
                 }
             });
         }
+        executorService.shutdown();
         return sql.toString();
     }
 

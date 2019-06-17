@@ -1,5 +1,6 @@
 package com.lq.code.executor.processor;
 
+import com.lq.code.dto.QueueDto;
 import com.lq.code.util.BeanUtil;
 import com.lq.code.util.jdbc.JdbcUtils;
 import com.lq.code.util.sql.AbstractDbBuiler;
@@ -43,7 +44,9 @@ public class InstantiationTracingBeanPostProcessor implements ApplicationListene
             if (isUpdateDB) {
                 long startTime = System.currentTimeMillis();
                 Set<Class> set = BeanUtil.getClassSet(packagePath);
+                QueueDto<Class> queueDto = BeanUtil.getQueueDto(packagePath);
                 AbstractDbBuiler dbBuiler = new MysqlBuilder();
+//                String sql = dbBuiler.automaticUpdateDbNew(queueDto);
                 String sql = dbBuiler.automaticUpdateDb(set);
           //      JdbcUtils.createTable(sql);
                 System.out.println("=========实体同步数据结构===========");

@@ -18,6 +18,7 @@ import com.lq.entity.SysResource;
 import com.lq.entity.SysRoleResourcePermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -47,6 +48,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
 
     @Override
     public List<ZtreeComposite> findZtree(Long roleId) {
+        Long startTime = System.currentTimeMillis();
         List<ZtreeComposite> ztreeList=new ArrayList<>();
         List<SysResource> resourceList=sysResourceDao.findByParentId(0L);
         List<SysPermission> permissionList=sysPermissionDao.findAll();
@@ -84,9 +86,11 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
 
             ztreeList.add(ztreeItem);
         }
+        System.out.println("耗时："+(System.currentTimeMillis()-startTime)+"（毫秒）");
         return ztreeList;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean updateRolePermission(List<SysRoleResourcePermissionVo> list) {
         //角色id
@@ -97,7 +101,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
         sysRoleResourcePermissionDao.updateByRoleIdAndStatus(map);
 
         for (SysRoleResourcePermissionVo vo:list){
-            SysRoleResourcePermission sysRoleResourcePermission=sysRoleResourcePermissionDao.findByResourceIdAndPermissionIdAndRoleId(vo.getResourceId(),vo.getPermissionId(),vo.getRoleId());
+            SysRoleResourcePermission sysRoleResourcePermission=sysRoleResourcePermissionDao.getByResourceIdAndPermissionIdAndRoleId(vo.getResourceId(),vo.getPermissionId(),vo.getRoleId());
             if (sysRoleResourcePermission==null){
                 sysRoleResourcePermission=new SysRoleResourcePermission();
                 sysRoleResourcePermission.setCreateTime(new Date());
@@ -113,7 +117,8 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
 
         }
 
-        return true;}
+        return true;
+    }
 
     @Override
     public List<PermissionVo> findByRoleId(Long roleId) {
@@ -144,9 +149,11 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
         return list;
     }
 
-    //内部方法，用于判断角色是否有权限
+    /**
+     *内部方法，用于判断角色是否有权限
+     */
     private boolean isCheck(Long resourceId,Long permissionId,Long roleId){
-        SysRoleResourcePermission roleResourcePermission=sysRoleResourcePermissionDao.findByResourceIdAndPermissionIdAndRoleId(resourceId,permissionId,roleId);
+        SysRoleResourcePermission roleResourcePermission=sysRoleResourcePermissionDao.getByResourceIdAndPermissionIdAndRoleId(resourceId,permissionId,roleId);
         if (roleResourcePermission!=null&&StatusTypeEnum.STATUS_ACTIVITY_YES.getValue().equals(roleResourcePermission.getStatus())){
             return true;
         }else{
@@ -154,7 +161,9 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
         }
     }
 
-    //内部方法，拼接资源和权限ID
+    /**
+     *内部方法，拼接资源和权限ID
+     */
     private Map<String,Object> getAttributes(Long resourceId,Long permissionId){
         Map<String,Object> map=new HashMap<>();
         map.put(PERMISSIONID_KEY,resourceId+RESOURCE_SYMBOL+permissionId);
