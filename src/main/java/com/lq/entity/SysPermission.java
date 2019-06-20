@@ -15,7 +15,7 @@ public class SysPermission extends IdEntity{
      *  权限类型
      */
     private int permissionType;
-    /**
+    /**·
      *  权限键值
      */
     private String permissionKey;
