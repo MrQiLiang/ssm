@@ -7,6 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../../common/import-tag.jsp" %>
+<script type="text/javascript">
+    function userImageError(imager) {
+            //  imager.style.display = 'none';
+            imager.setAttribute("src", "${ctx}/resources/aceAdmin/assets/avatars/user.jpg");
+            //  imager.style.display = 'block';
+            }
+
+</script>
 <div class="navbar navbar-default" id="navbar">
     <script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -288,12 +296,7 @@
 <script type="text/javascript" src="${ctx}/resources/code/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
 <script type="text/javascript">
-    function userImageError(imager) {
-      //  imager.style.display = 'none';
-        imager.setAttribute("src", "${ctx}/resources/aceAdmin/assets/avatars/user.jpg");
-      //  imager.style.display = 'block';
-   }
-   
+
    // 修改账号密码
    function setPass() {
        var html = '<div ><table><tr><td>旧密码:</td><td><input type="password" id="oldPass"></td></tr><tr><td>新密码:</td><td><input type="password" id="newPass"></td>'
