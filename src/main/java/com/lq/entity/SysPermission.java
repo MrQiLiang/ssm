@@ -1,6 +1,5 @@
 package com.lq.entity;
 
-import com.lq.code.annotation.Length;
 import com.lq.code.entity.IdEntity;
 
 /** 权限表
@@ -11,9 +10,16 @@ public class SysPermission extends IdEntity{
     /**
      * 权限名称
      */
-
-    @Length(value = 80)
     private String name;
+    /**
+     *  权限类型
+     */
+    private int permissionType;
+    /**·
+     *  权限键值
+     */
+    private String permissionKey;
+
 
     public String getName() {
         return name;
@@ -23,4 +29,19 @@ public class SysPermission extends IdEntity{
         this.name = name;
     }
 
+    public int getPermissionType() {
+        return permissionType;
+    }
+
+    public void setPermissionType(int permissionType) {
+        this.permissionType = permissionType;
+    }
+
+    public String getPermissionKey() {
+        return permissionKey;
+    }
+
+    public void setPermissionKey(String permissionKey) {
+        this.permissionKey = permissionKey;
+    }
 }
