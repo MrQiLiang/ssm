@@ -9,6 +9,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.io.IOException;
@@ -19,18 +20,19 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by qi_liang on 2018/9/11.
  */
-public class RedisSessionDao extends EnterpriseCacheSessionDAO {
+public class RedisSessionDao<K,V> extends EnterpriseCacheSessionDAO {
+
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RedisSessionDao.class);
 
-    private RedisTemplate<String,Object> redisTemplate;
+    @Autowired
+    private RedisTemplate<K,V> redisTemplate;
 
     private int defaultExpireTime ;
 
     private CacheManager cm = null;
 
-    public RedisSessionDao(RedisTemplate<String,Object> redisTemplate,int defaultExpireTime){
-        this.redisTemplate = redisTemplate;
+    public RedisSessionDao(int defaultExpireTime){
         this.defaultExpireTime = defaultExpireTime;
     }
 
@@ -41,7 +43,7 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
         //该方法交给父类去执行
      //   super.doUpdate(session);
         //更新reids中的session时间
-        redisTemplate.expire(session.getId().toString(),this.defaultExpireTime, TimeUnit.SECONDS);
+        redisTemplate.expire((K)session.getId(),this.defaultExpireTime, TimeUnit.SECONDS);
 
     }
 
@@ -54,7 +56,7 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
             cm = new CacheManager(getCacheMangerConfigFileImputStream());
         }
         Ehcache ehcache = cm.getCache("sessioncache");
-        redisTemplate.delete(sessionId.toString());
+        redisTemplate.delete((K) sessionId);
         ehcache.remove(sessionId.toString());
     }
 
@@ -68,8 +70,8 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
 
         Ehcache ehcache = cm.getCache("sessioncache");
         assignSessionId(session,sessionId);
-        redisTemplate.opsForValue().set(sessionId.toString(),session);
-        redisTemplate.expire(session.getId().toString(),this.defaultExpireTime, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set((K) sessionId,(V) session);
+        redisTemplate.expire((K) sessionId,this.defaultExpireTime, TimeUnit.SECONDS);
         ehcache.put(new Element(sessionId.toString(),session));
         LOGGER.info("create shiro sesisonId:"+sessionId.toString());
         return sessionId;
@@ -79,7 +81,8 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
     protected Session doReadSession(Serializable serializable) {
         LOGGER.info("Read shiro sessionID:"+serializable.toString());
         //此方法不会执行,不用管
-        return  (Session)redisTemplate.opsForValue().get(serializable.toString());
+        Session session = (Session)redisTemplate.opsForValue().get((K) serializable);
+        return  session;
     }
 
     protected InputStream getCacheMangerConfigFileImputStream(){
@@ -91,4 +94,6 @@ public class RedisSessionDao extends EnterpriseCacheSessionDAO {
             throw new ConfigurationException("Unable to obtain input stram for cacheMangerConfigFile["+configFile+"]",e);
         }
     }
+
+
 }

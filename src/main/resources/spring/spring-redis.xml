@@ -82,7 +82,7 @@
         </property>
 
         <!--开启事务-->
-        <property name="enableTransactionSupport" value="true"/>
+        <property name="enableTransactionSupport" value="false"/>
     </bean>
 
 

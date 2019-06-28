@@ -19,7 +19,6 @@
 
     <!-- 配置Session DAO的操作处理 -->
     <bean id="sessionDAO" class="com.lq.code.cache.RedisSessionDao">
-        <constructor-arg ref="redisTempale"/>
         <constructor-arg value="7200"/>
     </bean>
 

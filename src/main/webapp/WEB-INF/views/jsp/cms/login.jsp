@@ -303,6 +303,8 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript" src="${ctx}/resources/code/js/jquery.tips.js"></script>
 <script type="text/javascript">
+    var mediator = new Object();
+
     function show_box(id) {
         jQuery('.widget-box.visible').removeClass('visible');
         jQuery('#'+id).addClass('visible');

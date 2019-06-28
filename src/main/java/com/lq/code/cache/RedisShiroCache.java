@@ -18,18 +18,11 @@ public class RedisShiroCache<K,V> implements Cache<K,V>{
     @Autowired
     private RedisTemplate<K,V> redisTemplate;
 
-    public RedisTemplate<K, V> getRedisTemplate() {
-        return redisTemplate;
-    }
-
-    public void setRedisTemplate(RedisTemplate<K, V> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
 
     @Override
     public V get(K k) throws CacheException {
-
-        return redisTemplate.opsForValue().get(k);
+        V v = redisTemplate.opsForValue().get(k);
+        return  v;
     }
 
     @Override

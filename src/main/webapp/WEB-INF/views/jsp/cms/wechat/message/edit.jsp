@@ -108,16 +108,22 @@
     function showMessageTypeInput(messageType) {
         switch (messageType){
             case '2':
+                $("#cropedBigImg").show();
+                $("#tr_cropedBigImg").show();
                 $("#tr_imageUrl").show();
                 $("#tr_cropedBigImg").show();
                 $("#tr_content").hide();
                 ;break;
             case '1':
+                $("#cropedBigImg").hide();
+                $("#tr_cropedBigImg").hide();
                 $("#tr_imageUrl").hide();
                 $("#tr_content").show();
                 $("#tr_cropedBigImg").show();
                 ;break;
             case '3':
+                $("#cropedBigImg").show();
+                $("#tr_cropedBigImg").show();
                 $("#tr_imageUrl").show();
                 $("#tr_cropedBigImg").show();
                 $("#tr_content").show();
