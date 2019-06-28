@@ -10,6 +10,7 @@ import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.StringUtil;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatKeyword;
+import com.lq.entity.WechatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +64,10 @@ public class WechatRuleController {
         if (StringUtil.isNotNull(keywordListStr)) {
             List<WechatKeyword> wechatKeywordList = JSON.parseArray(keywordListStr, WechatKeyword.class);
             vo.setWechatKeywordList(wechatKeywordList);
+        }
+        if (StringUtil.isNotNull(messageListStr)){
+            List<Long> messageIds = JSON.parseArray(messageListStr, Long.class);
+            vo.setMessageIds(messageIds);
         }
         wechatRuleService.saveRule(vo);
 

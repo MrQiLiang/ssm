@@ -35,7 +35,6 @@
             return url ;
         }
     </script>
-
 </head>
 <body>
     <div style="margin:20px 0;"></div>
@@ -53,8 +52,6 @@
                         <td><input class="easyui-textbox" type="password" id="password" data-options="required:true" value="${sysUser.password}"></input></td>
                     </tr>
                    </c:if>
-
-
                     <tr>
                         <td>电子邮箱:</td>
                         <td><input class="easyui-textbox" type="text" id="email" data-options="multiline:true,required:true" value="${sysUser.email}" ></input></td>

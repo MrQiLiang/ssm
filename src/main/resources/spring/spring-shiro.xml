@@ -26,11 +26,13 @@
     <!-- 配置需要向Cookie中保存数据的配置模版 -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <!-- 在Tomcat运行下默认使用的Cookie的名字为JSESSIONID -->
-        <constructor-arg name="name" value="mldn-session-id"/>
+        <constructor-arg name="name" value="shiro.session"/>
         <!-- 保证该系统不会受到跨域的脚本操作供给 -->
         <property name="httpOnly" value="true"/>
         <!-- 定义Cookie的过期时间，单位为秒，如果设置为-1表示浏览器关闭，则Cookie消失 -->
         <property name="maxAge" value="-1"/>
+
+        <property name="path" value="/"/>
     </bean>
 
 

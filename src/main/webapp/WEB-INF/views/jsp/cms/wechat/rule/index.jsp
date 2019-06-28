@@ -344,7 +344,6 @@
         });
 
         $("#subscribe-save").click(function(){
-
             var data = new Object();
             var messageContent = $("#subscribe-arce").html();
             data.content = messageContent;
@@ -356,7 +355,6 @@
             if(messageContent.length==0){
                 layer.msg('回复内容不能为空');
                 return ;
-
             }
             if(messageContent.length>maxInputNum){
                 layer.msg('字数超出限制,不能提交');
@@ -398,7 +396,6 @@
                 dataType:"json",
                 success:function(result){
                     if(result.success==true){
-
                         index = layer.open({
                             type: 1,
                             btn:['确定','取消'],
@@ -665,7 +662,6 @@
     }
 
     function showeditText(){
-
         var html = '<div  class="input-text-div"><textarea id = "input-text">'+messageText+'</textarea></div>';
         return html;
     }

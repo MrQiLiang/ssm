@@ -1,17 +1,17 @@
 package com.lq.cms.service.impl;
 
 import com.lq.cms.emun.StatusTypeEnum;
+import com.lq.cms.emun.WechatKeywordMatchinTypeEnum;
 import com.lq.cms.service.WechatRuleService;
 import com.lq.cms.vo.WechatRuleVo;
 import com.lq.code.dao.BaseDao;
 import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.BeanUtil;
 import com.lq.dao.WechatKeywordDao;
+import com.lq.dao.WechatMessageDao;
 import com.lq.dao.WechatRuleDao;
-import com.lq.entity.SysUser;
-import com.lq.entity.WechatInfo;
-import com.lq.entity.WechatKeyword;
-import com.lq.entity.WechatRule;
+import com.lq.dao.WechatRuleMessageDao;
+import com.lq.entity.*;
 import com.lq.wechat.mode.message.BaseMessage;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -35,10 +35,26 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
     private WechatRuleDao wechatRuleDao;
     @Autowired
     private WechatKeywordDao wechatKeywordDao;
+    @Autowired
+    private WechatRuleMessageDao wechatRuleMessageDao;
 
 
     @Override
     public BaseMessage getByKeyworkdAndWechatInfoId(String keyworkd, WechatInfo wechatInfo) {
+        List<WechatRule> wechatRuleList = wechatRuleDao.findByWechatInfoIdAndStatus(wechatInfo.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+        wechatRuleList.forEach((wechatRule)->{
+            List<WechatKeyword> wechatKeywordList = wechatKeywordDao.findByWechatRuleIdAndStatus(wechatRule.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+            wechatKeywordList.forEach((wechatKeyword)->{
+                if (WechatKeywordMatchinTypeEnum.KEYWORD_ALL.getValue().equals(wechatKeyword.getMatchinType())){
+                    if (keyworkd.equals(wechatKeyword.getKeyword())){
+                        List<WechatMessage> wechatMessageList = null;
+                    }
+                }else {
+
+                }
+
+            });
+        });
         BaseMessage baseMessage = null;
 
         return baseMessage;

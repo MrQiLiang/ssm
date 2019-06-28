@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lq.dao.WechatRuleMessageDao">
+    <!-- namespace命名空间，作用是对sql进行分类化管理，理解sql隔离 -->
+    <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
+
+    <sql id="column_list">
+        wechat_rule_id,id,wechat_message_id,status
+    </sql>
+
+    <select id="findOne" resultType="com.lq.entity.WechatRuleMessage" parameterType="long">
+        SELECT <include refid="column_list"/>
+          FROM  wechat_rule_message
+        WHERE id=#{id} AND status = 1
+    </select>
+
+    <select id="findAll" resultType="com.lq.entity.WechatRuleMessage">
+        SELECT <include refid="column_list"/>
+          FROM  wechat_rule_message
+        WHERE status = 1
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(id)
+          FROM wechat_rule_message
+        WHERE status = 1
+    </select>
+
+    <insert id="save"  parameterType="com.lq.entity.WechatRuleMessage" useGeneratedKeys="true" keyProperty="id">
+
+        <selectKey keyProperty="id" order="AFTER" resultType="Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+            wechat_rule_message(wechat_rule_id,id,wechat_message_id,status)
+        VALUES
+            (
+              #{wechatRuleId},#{id},#{wechatMessageId},#{status}
+            )
+    </insert>
+
+
+    <update id="update" parameterType="com.lq.entity.WechatRuleMessage">
+        UPDATE
+            wechat_rule_message
+        <trim prefix="set" suffixOverrides=",">
+            
+ <if test="wechatRuleId!=null">wechat_rule_id=#{wechatRuleId},</if>
+ <if test="id!=null">id=#{id},</if>
+ <if test="wechatMessageId!=null">wechat_message_id=#{wechatMessageId},</if>
+ <if test="status!=null">status=#{status},</if>
+        </trim>
+        WHERE
+            id=#{id}
+    </update>
+
+    <update id="delete" parameterType="Long">
+        UPDATE
+            wechat_rule_message
+        SET
+           status = 0
+        WHERE
+            id=#{id}
+    </update>
+
+</mapper>

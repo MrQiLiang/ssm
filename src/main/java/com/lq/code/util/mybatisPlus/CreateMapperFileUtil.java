@@ -5,7 +5,9 @@ import com.lq.code.util.sql.AbstractDbBuiler;
 import com.lq.code.util.sql.MysqlBuilder;
 import com.lq.code.util.sql.SqlUtil;
 import com.lq.dao.WechatKeywordDao;
+import com.lq.dao.WechatRuleMessageDao;
 import com.lq.entity.WechatKeyword;
+import com.lq.entity.WechatRuleMessage;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,7 +62,8 @@ public class CreateMapperFileUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        createXml(WechatKeywordDao.class,WechatKeyword.class,new MysqlBuilder());
+        AbstractDbBuiler abstractDbBuiler = new MysqlBuilder();
+        createXml(WechatRuleMessageDao.class, WechatRuleMessage.class,abstractDbBuiler);
     }
 
 

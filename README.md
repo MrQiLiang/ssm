@@ -21,5 +21,11 @@ ssm 使用说明
 3. 自定义实体同步数据库表结构插件(com.lq.code.executor.processor.InstantiationTracingBeanPostProcessor)
 4. AdminBaseDao,AdminBaseServer,AdminBaseController.三层类结构的继承。可以实现简单模块基本管理功能。
 
+三层架构理念：
+1.数据库表与mapping.xml一一对应。
+2.dao层代码密度低，dao层代码尽量通用，以工具类形式使用。便于代码重用
+3.service层代码密度高 通过组合复用dao层工具类,实现业务逻辑
+4.controller层代码密度低 只负责简单的数据接受和转发。以及页面跳转的控制
+
 1. 项目案例：http://106.12.122.216/ssm/cms/
 2. 默认账号/密码：admin/123
