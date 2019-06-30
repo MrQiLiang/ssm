@@ -6,7 +6,7 @@
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
 
     <sql id="column_list">
-        wechat_rule_id,id,wechat_message_id,status
+        wechat_rule_id,id,wechat_message_id,status,create_time
     </sql>
 
     <select id="findOne" resultType="com.lq.entity.WechatRuleMessage" parameterType="long">
@@ -33,10 +33,10 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO
-            wechat_rule_message(wechat_rule_id,id,wechat_message_id,status)
+            wechat_rule_message(wechat_rule_id,id,wechat_message_id,status,create_time)
         VALUES
             (
-              #{wechatRuleId},#{id},#{wechatMessageId},#{status}
+              #{wechatRuleId},#{id},#{wechatMessageId},#{status},#{createTime}
             )
     </insert>
 
@@ -45,11 +45,11 @@
         UPDATE
             wechat_rule_message
         <trim prefix="set" suffixOverrides=",">
-            
- <if test="wechatRuleId!=null">wechat_rule_id=#{wechatRuleId},</if>
- <if test="id!=null">id=#{id},</if>
- <if test="wechatMessageId!=null">wechat_message_id=#{wechatMessageId},</if>
- <if test="status!=null">status=#{status},</if>
+          <if test="wechatRuleId!=null">wechat_rule_id=#{wechatRuleId},</if>
+          <if test="id!=null">id=#{id},</if>
+          <if test="wechatMessageId!=null">wechat_message_id=#{wechatMessageId},</if>
+          <if test="status!=null">status=#{status},</if>
+          <if test="createTime!=null">createTime=#{create_time}</if>
         </trim>
         WHERE
             id=#{id}
@@ -63,5 +63,21 @@
         WHERE
             id=#{id}
     </update>
+    
+    <select id="getByRuleIdAndMessageId" resultType="com.lq.entity.WechatRuleMessage" parameterType="Long">
+        SELECT <include refid="column_list"/>
+          FROM wechat_rule_message
+        WHERE status = 1
+          AND wechat_message_id = #{messageId}
+          AND wechat_rule_id = #{ruleId}
+    </select>
+
+    <select id="findByWechatRuleId" resultType="com.lq.entity.WechatRuleMessage" parameterType="Long">
+        SELECT <include refid="column_list"/>
+          FROM wechat_rule_message
+        WHERE status = 1
+          AND wechat_rule_id = #{wechatRuleId}
+
+    </select>
 
 </mapper>

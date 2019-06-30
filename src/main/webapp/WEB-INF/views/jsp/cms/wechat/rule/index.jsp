@@ -275,11 +275,12 @@
 
             var messageList = new Array();
             messageSet.forEach(function (element, sameElement, set) {
+                console.log(element);
                 messageList.push(element);
             });
 
             messageSet.clear();
-            data.messaegListStr = JSON.stringify(messageList);
+            data.messageListStr = JSON.stringify(messageList);
             data.keywordListStr = JSON.stringify(keywordObjeList);
             data.replyType =  $("input[name='replyType']:checked").val();
             data.messageText =  messageText;
@@ -395,21 +396,21 @@
                 async:false,
                 dataType:"json",
                 success:function(result){
+                 console.log(result);
                     if(result.success==true){
                         index = layer.open({
                             type: 1,
                             btn:['确定','取消'],
                             btn1:function(index,layero){
                                 messageSet = bufferSet;
+                                console.log(messageSet);
                                 layer.close(index);
                             },
-
                             skin: 'layui-layer-rim', //加上边框
                             area: ['90%', '80%'], //宽高
                             btnAlign: 'c',
                             content: appendAlertHtml(result.data),
                         });
-
                     }else{
                         layer.msg('数据加载失败');
                     }
@@ -628,6 +629,7 @@
     }
 
     function appendAlertHtml(data){
+     console.log(data);
         var isShow ;
         var wechatMessageList = data.wechatMessageVoList;
         var html = '<div class="alert"><div class="left-navigation"><p>图文('+data.wechatMessageCount+')</p></div>';
@@ -668,6 +670,7 @@
 
     function onMessaegRow(obj){
         var messageid = parseInt($(obj).find('input').val());
+console.log(messageid);
         if ($(obj).find('.chekc-Div').css('display') == 'none') {
             $(obj).find('.chekc-Div').show();
             bufferSet.add(messageid);
@@ -675,6 +678,7 @@
             $(obj).find('.chekc-Div').hide();
             bufferSet.delete(messageid);
         }
+console.log(bufferSet);
     }
 </script>
 </html>

@@ -24,7 +24,6 @@ import java.util.List;
  */
 public class ShiroRealm extends AuthorizingRealm {
 
-
     @Autowired
     private SysUserService sysUserService;
     @Autowired

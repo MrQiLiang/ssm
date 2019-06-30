@@ -13,7 +13,7 @@ public class BaseController {
     @ResponseBody
     public AjaxResult handleException(Exception e) {
         e.printStackTrace();
-       AjaxResult ajaxResult= getAjaxResult();
+        AjaxResult ajaxResult= getAjaxResult();
         ajaxResult.setSuccess(false);
         ajaxResult.setMsg(e.getMessage());
         return ajaxResult;

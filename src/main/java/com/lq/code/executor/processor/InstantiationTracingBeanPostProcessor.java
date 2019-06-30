@@ -48,7 +48,7 @@ public class InstantiationTracingBeanPostProcessor implements ApplicationListene
                 AbstractDbBuiler dbBuiler = new MysqlBuilder();
 //                String sql = dbBuiler.automaticUpdateDbNew(queueDto);
                 String sql = dbBuiler.automaticUpdateDb(set);
-          //      JdbcUtils.createTable(sql);
+                JdbcUtils.createTable(sql);
                 System.out.println("=========实体同步数据结构===========");
                 System.out.println(System.currentTimeMillis()-startTime);
             }
