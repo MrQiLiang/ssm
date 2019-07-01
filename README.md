@@ -1,6 +1,7 @@
 # ssm
 
 ssm 介绍
+
 一个基于sping mvc+mybatis的框架。页面是采用aceAdmin+easyui.
 使用shiro作为安全框架，做权限控制
 
@@ -9,10 +10,9 @@ ssm 软件架构
 
 
 ssm 安装教程
-
 1. jdk1.8
 2. maven3
-3. mysql5.1
+3. mysql5.6
 4. redis
 
 ssm 使用说明

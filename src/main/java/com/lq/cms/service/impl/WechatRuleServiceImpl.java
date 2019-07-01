@@ -97,6 +97,19 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
             wechatKeywordDao.save(wechatKeyword);
         });
 
+        List<Long> messageIds = wechatRuleVo.getMessageIds();
+        messageIds.forEach((messageId)->{
+            WechatRuleMessage wechatRuleMessage = wechatRuleMessageDao.getByRuleIdAndMessageId(wechatRule.getId(),messageId);
+            if (wechatRuleMessage==null){
+                wechatRuleMessage = new WechatRuleMessage();
+                wechatRuleMessage.setCreateTime(new Date());
+                wechatRuleMessage.setWechatMessageId(messageId);
+                wechatRuleMessage.setWechatRuleId(wechatRule.getId());
+                wechatRuleMessage.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+                wechatRuleMessageDao.save(wechatRuleMessage);
+            }
+        });
+
         return wechatRule;
     }
 
@@ -122,6 +135,14 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
         WechatRuleVo wechatRuleVo = new WechatRuleVo();
         BeanUtil.copyNotNull(wechatRuleVo,wechatRule);
         List<WechatKeyword> wechatKeywordList = wechatKeywordDao.findByWechatRuleIdAndStatus(wechatRule.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+        List<WechatRuleMessage> wechatRuleMessageList = wechatRuleMessageDao.findByWechatRuleId(wechatRuleId);
+        if (wechatRuleMessageList!=null&&wechatRuleMessageList.size()>0){
+            List<Long> wechatMessageIds = new ArrayList<>();
+            wechatRuleMessageList.forEach((wechatRuleMessage)->{
+                wechatMessageIds.add(wechatRuleMessage.getWechatMessageId());
+            });
+            wechatRuleVo.setMessageIds(wechatMessageIds);
+        }
         wechatRuleVo.setWechatKeywordList(wechatKeywordList);
         return wechatRuleVo;
     }
