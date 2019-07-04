@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,14 +56,20 @@ public class  WechatController extends BaseController {
 
     @RequestMapping(method = { RequestMethod.GET }, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String doget(String signature,String timestamp,String nonce,String echostr,String wechatOpenId) throws UnsupportedEncodingException {
+    public String doget(String signature, String timestamp, String nonce, String echostr, String wechatOpenId, HttpServletResponse response) throws UnsupportedEncodingException {
         if (StringUtil.isNotNull(wechatOpenId)){
             //通过微信公众号名称查找公众号资料
             WechatInfo wechatInfo = wechatInfoService.getByOpenId(wechatOpenId);
             if (wechatInfo!=null){
                 String token = wechatInfo.getToken();
                 if (CheckUtil.checkSingatue(signature, timestamp, nonce,token)) {
-                    return echostr;
+                    try {
+                        response.getWriter().write(echostr);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                    return null;
                 }
             }
         }
