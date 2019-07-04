@@ -70,10 +70,6 @@ public class LoginController extends BaseController{
         }
 
         Subject subject=SecurityUtils.getSubject();
-        System.out.println("=====================");
-        System.out.println(subject.getSession(false));
-        System.out.println(subject.isAuthenticated());
-
         UsernamePasswordToken token=new UsernamePasswordToken(loginName,password.toCharArray());
 //        UsernamePasswordToken token=new UsernamePasswordToken(loginName,password,false);
         try {
