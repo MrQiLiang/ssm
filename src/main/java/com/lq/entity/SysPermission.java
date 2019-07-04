@@ -8,6 +8,10 @@ import com.lq.code.entity.IdEntity;
 public class SysPermission extends IdEntity{
 
     /**
+     * 关联资源ID
+     */
+    private Long sysResourceId;
+    /**
      * 权限名称
      */
     private String name;
@@ -15,11 +19,18 @@ public class SysPermission extends IdEntity{
      *  权限类型
      */
     private Integer permissionType;
-    /**·
+    /**
      *  权限键值
      */
     private String permissionKey;
 
+    public Long getSysResourceId() {
+        return sysResourceId;
+    }
+
+    public void setSysResourceId(Long sysResourceId) {
+        this.sysResourceId = sysResourceId;
+    }
 
     public String getName() {
         return name;

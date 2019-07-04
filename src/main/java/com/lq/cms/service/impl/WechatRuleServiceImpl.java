@@ -2,6 +2,7 @@ package com.lq.cms.service.impl;
 
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.emun.WechatKeywordMatchinTypeEnum;
+import com.lq.cms.emun.WechatRuleReplyTypeEnum;
 import com.lq.cms.service.WechatRuleService;
 import com.lq.cms.vo.WechatRuleVo;
 import com.lq.code.dao.BaseDao;
@@ -22,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @Author: qi
@@ -37,20 +39,58 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
     private WechatKeywordDao wechatKeywordDao;
     @Autowired
     private WechatRuleMessageDao wechatRuleMessageDao;
+    @Autowired
+    private WechatMessageDao wechatMessageDao;
 
 
     @Override
     public BaseMessage getByKeyworkdAndWechatInfoId(String keyworkd, WechatInfo wechatInfo) {
+
+        List<WechatMessage> wechatMessageList = new ArrayList<>();
+        //公众号相关回复规则
         List<WechatRule> wechatRuleList = wechatRuleDao.findByWechatInfoIdAndStatus(wechatInfo.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         wechatRuleList.forEach((wechatRule)->{
+            //规则相关关键词
             List<WechatKeyword> wechatKeywordList = wechatKeywordDao.findByWechatRuleIdAndStatus(wechatRule.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
             wechatKeywordList.forEach((wechatKeyword)->{
                 if (WechatKeywordMatchinTypeEnum.KEYWORD_ALL.getValue().equals(wechatKeyword.getMatchinType())){
                     if (keyworkd.equals(wechatKeyword.getKeyword())){
-                        List<WechatMessage> wechatMessageList = null;
+                       List<WechatRuleMessage> wechatRuleMessageList = wechatRuleMessageDao.findByWechatRuleId(wechatRule.getId());
+                       if (WechatRuleReplyTypeEnum.REPLY_ALL.getValue().equals(wechatRule.getReplyType())) {
+                           wechatRuleMessageList.forEach((wechatRuleMessage) -> {
+                               WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
+                               if (wechatMessage != null) {
+                                   wechatMessageList.add(wechatMessage);
+                               }
+                           });
+                       }
+                       if (WechatRuleReplyTypeEnum.REPLY_RANDOM.getValue().equals(wechatRule.getReplyType())){
+                           ThreadLocalRandom threadLocalRandom=ThreadLocalRandom.current();
+                           int index = ThreadLocalRandom.current().nextInt(wechatRuleMessageList.size());
+                           WechatRuleMessage wechatRuleMessage = wechatRuleMessageList.get(index);
+                           WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
+                           wechatMessageList.add(wechatMessage);
+                       }
                     }
                 }else {
-
+                    if (keyworkd.indexOf(wechatKeyword.getKeyword())!=-1){
+                        List<WechatRuleMessage> wechatRuleMessageList = wechatRuleMessageDao.findByWechatRuleId(wechatRule.getId());
+                        if (WechatRuleReplyTypeEnum.REPLY_ALL.getValue().equals(wechatRule.getReplyType())) {
+                            wechatRuleMessageList.forEach((wechatRuleMessage) -> {
+                                WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
+                                if (wechatMessage != null) {
+                                    wechatMessageList.add(wechatMessage);
+                                }
+                            });
+                        }
+                        if (WechatRuleReplyTypeEnum.REPLY_RANDOM.getValue().equals(wechatRule.getReplyType())){
+                            ThreadLocalRandom threadLocalRandom=ThreadLocalRandom.current();
+                            int index = ThreadLocalRandom.current().nextInt(wechatRuleMessageList.size());
+                            WechatRuleMessage wechatRuleMessage = wechatRuleMessageList.get(index);
+                            WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
+                            wechatMessageList.add(wechatMessage);
+                        }
+                    }
                 }
 
             });
