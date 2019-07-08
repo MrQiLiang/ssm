@@ -3,6 +3,7 @@ package com.lq.code.util.jdbc.mode;
 import java.util.List;
 
 /**
+ * 数据库表
  * Created by qi_liang on 2018/6/2.
  */
 public class Table {

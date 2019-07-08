@@ -1,6 +1,7 @@
 package com.lq.code.util.jdbc.mode;
 
 /**
+ * 列
  * Created by qi_liang on 2018/6/2.
  */
 public class Column {
