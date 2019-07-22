@@ -20,7 +20,13 @@
         WHERE status = 1
     </select>
 
-    <select id="count" resultType="int">
+    <select id="findListPage" resultType="SysPermissionVo" parameterType="SysPermissionVo">
+        SELECT <include refid="column_list"/>
+          FROM  sys_permission
+        WHERE status = 1
+    </select>
+
+    <select id="count" resultType="int" parameterType="SysPermissionVo">
         SELECT count(id)
           FROM sys_permission
         WHERE status = 1

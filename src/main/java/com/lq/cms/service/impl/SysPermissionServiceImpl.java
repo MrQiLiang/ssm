@@ -24,12 +24,12 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
 
     @Override
     public List<SysPermissionVo> findListPage(SysPermissionVo vo) {
-        return null;
+        return sysPermissionDao.findListPage(vo);
     }
 
     @Override
     public int count(SysPermissionVo vo) {
-        return 0;
+        return sysPermissionDao.count(vo);
     }
 
     @Override
