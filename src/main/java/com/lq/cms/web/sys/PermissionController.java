@@ -53,14 +53,14 @@ public class PermissionController {
     @ResponseBody
     public Object update(SysPermissionVo vo){
 
-        return new AdminDataGridParam<SysPermissionVo>();
+        return new AjaxResult();
     }
 
     @RequestMapping("/delete")
     @ResponseBody
     public Object delete(SysPermissionVo vo){
 
-        return new AdminDataGridParam<SysPermissionVo>();
+        return new AjaxResult();
     }
 
 }
