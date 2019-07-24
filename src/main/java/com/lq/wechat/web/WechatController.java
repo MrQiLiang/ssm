@@ -8,6 +8,7 @@ import com.lq.code.util.StringUtil;
 import com.lq.code.web.BaseController;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatUser;
+import com.lq.wechat.mode.message.BaseMessage;
 import com.lq.wechat.mode.message.ItemMessage;
 import com.lq.wechat.mode.message.NewsMessage;
 import com.lq.wechat.mode.message.TextMessage;
@@ -101,29 +102,33 @@ public class  WechatController extends BaseController {
             switch (msgType) {
                 case ConstantSet.MESSAGE_TYPE_TEXT:
                     String content = map.get(WECHAT_CONTENT_KEY);
-                    message = MessageUtil.MessageToXml(wechatRuleService.getByKeyworkdAndWechatInfoId(content,wechatInfo));
-                    if("1".equals(content)){
-                        NewsMessage newsMessage=new NewsMessage();
-                        List<ItemMessage> items=new ArrayList<>();
-                        ItemMessage item=new ItemMessage();
-                        item.setTitle("六弄咖啡馆");
-                        item.setDescription("两个人在爱在距离面前是否禁受考验？");
-                        String path = req.getContextPath();
-                        String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+path+"/";
-                        item.setPicUrl("https://img3.doubanio.com/view/photo/l/public/p2367455902.webp");
-                        item.setUrl("http://www.iqiyi.com/v_19rr95j3vc.html?vfm=2008_aldbd");
-                        items.add(item);
-                        newsMessage.setArticles(items);
-                        newsMessage.setArticleCount(1);
-                        newsMessage.setCreateTime(System.currentTimeMillis());
-                        newsMessage.setFromUserName(wechatOpenId);
-                        newsMessage.setMsgType(ConstantSet.MESSAGE_TYPE_NEW);
-                        newsMessage.setToUserName(openId);
-                        message = MessageUtil.MessageToXml(newsMessage);
-                    } else{
-                        text.setContent("您发送的消息是：" + content);
-                        message = MessageUtil.MessageToXml(text);
-                    }
+                    BaseMessage baseMessage = wechatRuleService.getByKeyworkdAndWechatInfoId(content,wechatInfo);
+                    baseMessage.setCreateTime(System.currentTimeMillis());
+                    baseMessage.setFromUserName(wechatOpenId);
+                    baseMessage.setToUserName(openId);
+                    message = MessageUtil.MessageToXml(baseMessage);
+//                    if("1".equals(content)){
+//                        NewsMessage newsMessage=new NewsMessage();
+//                        List<ItemMessage> items=new ArrayList<>();
+//                        ItemMessage item=new ItemMessage();
+//                        item.setTitle("六弄咖啡馆");
+//                        item.setDescription("两个人在爱在距离面前是否禁受考验？");
+//                        String path = req.getContextPath();
+//                        String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+path+"/";
+//                        item.setPicUrl("https://img3.doubanio.com/view/photo/l/public/p2367455902.webp");
+//                        item.setUrl("http://www.iqiyi.com/v_19rr95j3vc.html?vfm=2008_aldbd");
+//                        items.add(item);
+//                        newsMessage.setArticles(items);
+//                        newsMessage.setArticleCount(1);
+//                        newsMessage.setCreateTime(System.currentTimeMillis());
+//                        newsMessage.setFromUserName(wechatOpenId);
+//                        newsMessage.setMsgType(ConstantSet.MESSAGE_TYPE_NEW);
+//                        newsMessage.setToUserName(openId);
+//                        message = MessageUtil.MessageToXml(newsMessage);
+//                    } else{
+//                        text.setContent("您发送的消息是：" + content);
+//                        message = MessageUtil.MessageToXml(text);
+//                    }
                     break;
                 case ConstantSet.MESSAGE_TYPE_IMAGE:
 

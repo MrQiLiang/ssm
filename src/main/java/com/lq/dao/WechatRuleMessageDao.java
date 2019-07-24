@@ -13,4 +13,6 @@ public interface WechatRuleMessageDao extends BaseDao<WechatRuleMessage> {
 
     List<WechatRuleMessage> findByWechatRuleId(@Param("wechatRuleId")Long wechatRuleId);
 
+    List<WechatRuleMessage> findByWechatRuleIds(@Param("wechatRuleIds")List<Long> wechatRuleIds);
+
 }

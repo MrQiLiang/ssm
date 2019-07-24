@@ -12,7 +12,6 @@ public class SysUser extends IdEntity {
     /**
      * 登陆名称
      */
-
     private String loginName;
     /**
      * 密码
