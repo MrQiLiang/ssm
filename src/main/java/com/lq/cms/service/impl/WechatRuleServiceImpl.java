@@ -2,7 +2,7 @@ package com.lq.cms.service.impl;
 
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.emun.WechatKeywordMatchinTypeEnum;
-import com.lq.cms.emun.WechatRuleReplyTypeEnum;
+import com.lq.cms.emun.WechatMessageTypeEnum;
 import com.lq.cms.service.WechatRuleService;
 import com.lq.cms.vo.WechatRuleVo;
 import com.lq.code.dao.BaseDao;
@@ -14,6 +14,10 @@ import com.lq.dao.WechatRuleDao;
 import com.lq.dao.WechatRuleMessageDao;
 import com.lq.entity.*;
 import com.lq.wechat.mode.message.BaseMessage;
+import com.lq.wechat.mode.message.ImageMessage;
+import com.lq.wechat.mode.message.NewsMessage;
+import com.lq.wechat.mode.message.TextMessage;
+import com.lq.wechat.util.ConstantSet;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @Author: qi
@@ -44,58 +48,41 @@ public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implement
 
 
     @Override
-    public BaseMessage getByKeyworkdAndWechatInfoId(String keyworkd, WechatInfo wechatInfo) {
-
-        List<WechatMessage> wechatMessageList = new ArrayList<>();
-        //公众号相关回复规则
+    public BaseMessage getByKeyworkdAndWechatInfoId(String keyWord, WechatInfo wechatInfo) {
+        AtomicReference<WechatMessage> wechatMessageAtomicReference = new AtomicReference<>();
         List<WechatRule> wechatRuleList = wechatRuleDao.findByWechatInfoIdAndStatus(wechatInfo.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         wechatRuleList.forEach((wechatRule)->{
-            //规则相关关键词
             List<WechatKeyword> wechatKeywordList = wechatKeywordDao.findByWechatRuleIdAndStatus(wechatRule.getId(),StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
-            wechatKeywordList.forEach((wechatKeyword)->{
-                if (WechatKeywordMatchinTypeEnum.KEYWORD_ALL.getValue().equals(wechatKeyword.getMatchinType())){
-                    if (keyworkd.equals(wechatKeyword.getKeyword())){
-                       List<WechatRuleMessage> wechatRuleMessageList = wechatRuleMessageDao.findByWechatRuleId(wechatRule.getId());
-                       if (WechatRuleReplyTypeEnum.REPLY_ALL.getValue().equals(wechatRule.getReplyType())) {
-                           wechatRuleMessageList.forEach((wechatRuleMessage) -> {
-                               WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
-                               if (wechatMessage != null) {
-                                   wechatMessageList.add(wechatMessage);
-                               }
-                           });
-                       }
-                       if (WechatRuleReplyTypeEnum.REPLY_RANDOM.getValue().equals(wechatRule.getReplyType())){
-                           ThreadLocalRandom threadLocalRandom=ThreadLocalRandom.current();
-                           int index = ThreadLocalRandom.current().nextInt(wechatRuleMessageList.size());
-                           WechatRuleMessage wechatRuleMessage = wechatRuleMessageList.get(index);
-                           WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
-                           wechatMessageList.add(wechatMessage);
-                       }
-                    }
-                }else {
-                    if (keyworkd.indexOf(wechatKeyword.getKeyword())!=-1){
-                        List<WechatRuleMessage> wechatRuleMessageList = wechatRuleMessageDao.findByWechatRuleId(wechatRule.getId());
-                        if (WechatRuleReplyTypeEnum.REPLY_ALL.getValue().equals(wechatRule.getReplyType())) {
-                            wechatRuleMessageList.forEach((wechatRuleMessage) -> {
-                                WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
-                                if (wechatMessage != null) {
-                                    wechatMessageList.add(wechatMessage);
-                                }
-                            });
-                        }
-                        if (WechatRuleReplyTypeEnum.REPLY_RANDOM.getValue().equals(wechatRule.getReplyType())){
-                            ThreadLocalRandom threadLocalRandom=ThreadLocalRandom.current();
-                            int index = ThreadLocalRandom.current().nextInt(wechatRuleMessageList.size());
-                            WechatRuleMessage wechatRuleMessage = wechatRuleMessageList.get(index);
-                            WechatMessage wechatMessage = wechatMessageDao.findOne(wechatRuleMessage.getId());
-                            wechatMessageList.add(wechatMessage);
-                        }
+            wechatKeywordList.forEach(wechatKeyword -> {
+                if (WechatKeywordMatchinTypeEnum.KEYWORD_ALL.getValue().equals( wechatKeyword.getMatchinType())){
+                    if (wechatKeyword.getKeyword().equals(keyWord)){
+
                     }
                 }
-
             });
+            List<WechatRuleMessage> wechatRuleMessageList = wechatRuleMessageDao.findByWechatRuleId(wechatRule.getId());
+            if (wechatRuleMessageList!=null&&wechatRuleMessageList.size()>0) {
+                wechatMessageAtomicReference.set(wechatMessageDao.findOne(wechatRuleMessageList.get(0).getWechatMessageId()));
+            }
         });
+        WechatMessage wechatMessage = wechatMessageAtomicReference.get();
         BaseMessage baseMessage = null;
+        if (WechatMessageTypeEnum.TEXT.getValue().equals(wechatMessage.getMessageType())){
+            TextMessage textMessags = new TextMessage();
+            textMessags.setMsgType(ConstantSet.MESSAGE_TYPE_TEXT);
+            textMessags.setContent(wechatMessage.getContent());
+            baseMessage = textMessags;
+        }
+        if (WechatMessageTypeEnum.IMAGE.getValue().equals(wechatMessage.getMessageType())){
+            ImageMessage imageMessage = new ImageMessage();
+            imageMessage.setPicUrl(wechatMessage.getImageUrl());
+            baseMessage = imageMessage;
+        }
+        if (WechatMessageTypeEnum.IMAGE_TEXT.getValue().equals(wechatMessage.getMessageType())){
+            NewsMessage newsMessage = new NewsMessage();
+
+        }
+
 
         return baseMessage;
     }

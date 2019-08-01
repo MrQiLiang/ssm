@@ -1,5 +1,6 @@
 package com.lq.code.interceptor;
 
+import com.lq.code.util.CusAccessObjectUtil;
 import com.lq.dao.SysLogDao;
 import com.lq.entity.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class SpringmvcInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 
         SysLog log=new SysLog();
-        log.setUserIp(request.getRemoteAddr());
+        String ip = CusAccessObjectUtil.getIpAddress(request);
+        log.setUserIp(ip);
         log.setUrl(request.getRequestURI());
         log.setCreateTime(new Date());
         sysLogDao.save(log);

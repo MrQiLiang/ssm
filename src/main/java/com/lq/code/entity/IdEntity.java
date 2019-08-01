@@ -8,9 +8,13 @@ import java.lang.reflect.Field;
  */
 public class IdEntity implements Serializable {
 
-    //数据id
+    /**
+     *  数据id
+     */
     protected Long id;
-    //数据状态（与业务逻辑无关）
+    /**
+     * 数据状态（与业务逻辑无关）
+     */
     protected Integer status;
 
     public Long getId() {

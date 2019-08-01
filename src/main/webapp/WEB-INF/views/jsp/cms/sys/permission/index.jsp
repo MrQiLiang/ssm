@@ -25,9 +25,9 @@
                 pagination :"true",
                 columns:[[
                     {field:'id',title:'编号',width:50},
-                    {field:'urlPath',title:'路径',width:200},
-                    {field:'sort',title:'排序',width:45},
-                    {field:'parentMenuName',title:'上级目录名称',width:120},
+                    {field:'name',title:'权限名称',width:200},
+                    {field:'permissionType',title:'权限类型',width:45},
+                    {field:'permissionKey',title:'权限键值',width:120},
                     {field:'menuName',title:'目录名称',editor:'text',width:120},
                     {field:'userName',title:'创建用户',width:100},
                     {field:'createTimeStr',title:'创建时间',width:150},

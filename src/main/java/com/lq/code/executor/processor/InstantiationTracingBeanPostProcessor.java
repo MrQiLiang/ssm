@@ -50,7 +50,7 @@ public class InstantiationTracingBeanPostProcessor implements ApplicationListene
                 String sql = dbBuiler.automaticUpdateDb(set);
                 JdbcUtils.createTable(sql);
                 System.out.println("=========实体同步数据结构===========");
-                System.out.println(System.currentTimeMillis()-startTime);
+                System.out.println(System.currentTimeMillis()-startTime+"毫秒");
             }
         }
     }

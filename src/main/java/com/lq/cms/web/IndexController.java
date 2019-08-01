@@ -6,6 +6,7 @@ import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysInfoVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
+import com.lq.code.util.CusAccessObjectUtil;
 import com.lq.code.util.Md5Util;
 import com.lq.code.util.jdbc.JdbcUtils;
 import com.lq.code.util.jdbc.mode.DbInfo;
@@ -66,7 +67,7 @@ public class IndexController {
     public ModelAndView toCmsInfo(ModelAndView modelAndView,HttpServletRequest request){
         SysInfoVo vo = new SysInfoVo();
         ServletContext context = request.getServletContext();
-        String userIp = NetUtil.getIP();
+        String userIp = CusAccessObjectUtil.getIpAddress(request);
         context.getServerInfo();
         DbInfo dbInfo = JdbcUtils.getDBInfo();
         OsInfo osInfo = OsUtil.getInfo();

@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  *  微信公众号-消息工具类
  */
-public class MessageUtil {
+public class  MessageUtil {
 	
 
 	
@@ -34,8 +34,6 @@ public class MessageUtil {
 		SAXReader reader=new SAXReader();
 		InputStream ins=req.getInputStream();
 		String resultString=IoUtil.convertStreamToString(ins);
-		System.out.println(resultString);
-	//	Document doc=reader.read(ins);
 		Document doc=DocumentHelper.parseText(resultString);
 		Element root=doc.getRootElement();
 		List<Element> list=root.elements();
