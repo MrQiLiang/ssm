@@ -28,7 +28,7 @@
                     {field:'name',title:'权限名称',width:200},
                     {field:'permissionType',title:'权限类型',width:45},
                     {field:'permissionKey',title:'权限键值',width:120},
-                    {field:'menuName',title:'目录名称',editor:'text',width:120},
+                    {field:'sysResourceName',title:'目录名称',editor:'text',width:120},
                     {field:'userName',title:'创建用户',width:100},
                     {field:'createTimeStr',title:'创建时间',width:150},
                     {field:'updateTimeStr',title:'更新时间',width:150},
@@ -103,15 +103,7 @@
     }
 
     function post(url,data) {
-
-        var obj=new Object();
-        obj.id=$("#id").val();
-        obj.urlPath=$("#urlPath").val();
-        obj.parentId=$("#parentId").combobox("getValue");
-        obj.sort=$("#sort").val();
-        obj.menuName=$("#menuName").val();
-        obj.menuIco=$("#menuIco").combobox("getValue");
-        $.ajax({
+    $.ajax({
             url: url,
             dataType:"json",
             type:"post",
@@ -132,11 +124,11 @@
         if (id != null&& id != '' ){
             data.id= id;
         }
-        data.urlPath=$("#urlPath").val();
-        data.parentId=$("#parentId").combobox("getValue");
-        data.sort=$("#sort").val();
+        data.sysResourceId=$("#sysResourceId").combobox("getValue");
+        data.name=$("#name").val();
+        data.permissionKey=$("#permissionKey").val();
         data.menuName=$("#menuName").val();
-        data.menuIco=$("#menuIco").combobox("getValue");
+        data.permissionType=$("#permissionType").combobox("getValue");
         return data;
     }
 

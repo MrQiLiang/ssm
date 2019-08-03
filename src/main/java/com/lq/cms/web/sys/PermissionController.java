@@ -1,13 +1,26 @@
 package com.lq.cms.web.sys;
 
+import com.lq.cms.emun.SysPermissionTypeEnum;
 import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.SysPermissionService;
+import com.lq.cms.service.SysResourceService;
 import com.lq.cms.vo.SysPermissionVo;
 import com.lq.code.entity.AjaxResult;
+import com.lq.code.util.Constant;
+import com.lq.code.web.BaseController;
+import com.lq.dao.SysResourceDao;
+import com.lq.entity.SysPermission;
+import com.lq.entity.SysResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: qi
@@ -16,10 +29,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/cms/permission")
-public class PermissionController {
+public class PermissionController extends BaseController{
+
+    private static Logger LOGGER = LoggerFactory.getLogger(PermissionController.class);
+
+    private static final String INDEX_URL = "/cms/permission/index";
 
     @Autowired
     private SysPermissionService sysPermissionService;
+    @Autowired
+    private SysResourceService sysResourceService;
 
     @RequestMapping("/index")
     public String index(){
@@ -28,8 +47,15 @@ public class PermissionController {
     }
 
     @RequestMapping("/edit")
-    public String edit(){
-
+    public String edit(Long id, Model model){
+        if (id != null) {
+            SysPermission sysPermission = sysPermissionService.findOne(id);
+            model.addAttribute("sysPermission",sysPermission);
+        }
+        List<SysResource> sysResourceList=sysResourceService.findAll();
+        model.addAttribute("menuList",sysResourceList);
+        Map<String,String> permissionTypeMap = SysPermissionTypeEnum.getEnumMap();
+        model.addAttribute("permissionTypeMap",permissionTypeMap);
         return "cms/sys/permission/edit";
     }
 
@@ -45,15 +71,19 @@ public class PermissionController {
     @RequestMapping("/save")
     @ResponseBody
     public Object save(SysPermissionVo vo){
-
-        return new AjaxResult();
+        AjaxResult ajaxResult = this.getAjaxResult();
+        SysPermission sysPermission = sysPermissionService.save(vo);
+        ajaxResult.setData(sysPermission);
+        return ajaxResult;
     }
 
     @RequestMapping("/update")
     @ResponseBody
     public Object update(SysPermissionVo vo){
-
-        return new AjaxResult();
+        AjaxResult ajaxResult = this.getAjaxResult();   
+        SysPermission sysPermission = sysPermissionService.update(vo);
+        ajaxResult.setData(sysPermission);
+        return ajaxResult;
     }
 
     @RequestMapping("/delete")

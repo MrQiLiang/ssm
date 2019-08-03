@@ -7,17 +7,37 @@ import com.lq.entity.SysResource;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ *  菜单事务类
+ *  @author qi
  */
 public interface SysResourceService extends BaseService<SysResource> {
+    /**
+     *  统计
+     * @param vo
+     * @return
+     */
     Integer count(SysResourceVo vo);
 
-    List<SysResourceVo> findListpages(SysResourceVo vo);
+    /**
+     *  带分页功能查询
+     * @param vo
+     * @return
+     */
+    List<SysResourceVo> findListPages(SysResourceVo vo);
 
+    /**
+     * 通过父级菜单查找子菜单集合
+     * @param parenId
+     * @return
+     */
     List<SysResource> findByParentId(long parenId);
-    //通过用户查找相关的菜单
+    /**
+     *  通过用户查找相关的菜单
+     */
     List<MenusComposite> findMenusListBySysUserId(Long sysUserId,String contextPath);
-    //用户拥有admin权限查询全部菜单
+    /**
+     * 用户拥有admin权限查询全部菜单
+     */
     List<MenusComposite> findAllMenusList(String contextPath);
 
 

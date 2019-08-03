@@ -50,7 +50,7 @@ public class MenuController {
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysResourceVo vo){
         AdminDataGridParam<SysResourceVo> adminDataGridParam = new AdminDataGridParam<>();
-        adminDataGridParam.setRows(sysResourceService.findListpages(vo));
+        adminDataGridParam.setRows(sysResourceService.findListPages(vo));
         adminDataGridParam.setTotal(sysResourceService.count(vo));
         return adminDataGridParam;
     }
@@ -58,7 +58,7 @@ public class MenuController {
     @RequestMapping("/edit")
     public ModelAndView edit(ModelAndView modelAndView,Long id){
         //查询可选择的上级目录
-        List<SysResource> list=sysResourceService.findByParentId(0L);
+        List<SysResource> list=sysResourceService.findByParentId(Constant.TOP_PARENT_ID);
         SysResource sysResource=sysResourceService.findOne(id);
         modelAndView.addObject("menuList",list);
         modelAndView.addObject("sysResource",sysResource);

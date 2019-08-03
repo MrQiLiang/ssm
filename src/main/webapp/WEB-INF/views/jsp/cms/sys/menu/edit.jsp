@@ -53,11 +53,7 @@
                             <select id="menuIco" class="easyui-combobox">
 
                             </select>
-                           <!--
-                            <div id="menuIco">
 
-                            </div>
-                            -->
                         </td>
                     </tr>
 
@@ -113,7 +109,6 @@
                 isSelect = '';
             }
            html+= '<option value="'+valArray[i]+'" '+isSelect+'>'+valArray[i]+'</option>';
-            // html+= '<i class='+valArray[i]+'></i>';
         }
         $("#menuIco").append(html);
     }

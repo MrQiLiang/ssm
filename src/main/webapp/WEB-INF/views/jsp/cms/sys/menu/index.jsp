@@ -104,14 +104,7 @@
 
     function post(url,data) {
 
-        var obj=new Object();
-        obj.id=$("#id").val();
-        obj.urlPath=$("#urlPath").val();
-        obj.parentId=$("#parentId").combobox("getValue");
-        obj.sort=$("#sort").val();
-        obj.menuName=$("#menuName").val();
-        obj.menuIco=$("#menuIco").combobox("getValue");
-        $.ajax({
+     $.ajax({
             url: url,
             dataType:"json",
             type:"post",

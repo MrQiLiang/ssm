@@ -15,11 +15,11 @@ public enum StatusTypeEnum {
     STATUS_ACTIVITY_NO(0,"无效")
     ;
 
-    public static Map<Integer,String> map=new HashMap<>();
+    public static Map<Integer,String> enumMap=new HashMap<>();
 
     static{
         for (StatusTypeEnum statusTypeEnum : StatusTypeEnum.values()){
-            map.put(statusTypeEnum.getValue(), statusTypeEnum.getDesc());
+            enumMap.put(statusTypeEnum.getValue(), statusTypeEnum.getDesc());
         }
     }
 
@@ -50,7 +50,7 @@ public enum StatusTypeEnum {
 
     public String getDesc(Integer value){
 
-        return map.get(value);
+        return enumMap.get(value);
     }
 
 

@@ -12,7 +12,11 @@ import java.util.Map;
  * Created by qi on 2017-11-29.
  */
 public interface SysResourceDao extends BaseDao<SysResource> {
-
+     /**
+      * 通过父级菜单ID查找下级菜单集合
+      * @param parentId（父级菜单ID）
+      * @return
+      */
      List<SysResource> findByParentId(@Param("parentId") Long parentId);
 
      List<SysResource> findList(SysResourceVo vo);

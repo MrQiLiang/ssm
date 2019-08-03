@@ -32,5 +32,9 @@ public interface Constant {
      * 超级管理员
      */
     String ROLE_ADMIN = "admin";
+    /**
+     * 顶级菜单ID
+     */
+    long TOP_PARENT_ID = 0L;
 
 }

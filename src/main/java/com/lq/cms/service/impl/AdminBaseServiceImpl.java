@@ -27,14 +27,19 @@ public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo> extends Base
     }
 
     @Override
-    public T save(AdminBaseVo vo) throws IllegalAccessException, InstantiationException {
+    public T save(AdminBaseVo vo)  {
         ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
         Class<T> clazz = (Class<T>) parameterizedType.getActualTypeArguments()[0];
-        T t = clazz.newInstance();
-        vo.setCreateTime(new Date());
-        vo.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
-        BeanUtil.copyNotNull(t,vo);
-        getBaseDao().save(t);
+        T t = null;
+        try {
+            t = clazz.newInstance();
+            vo.setCreateTime(new Date());
+            vo.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+            BeanUtil.copyNotNull(t,vo);
+            getBaseDao().save(t);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return t;
     }
 

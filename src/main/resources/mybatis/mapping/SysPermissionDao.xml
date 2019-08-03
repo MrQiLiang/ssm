@@ -5,7 +5,7 @@
     <!-- 注意：使用mapper代理方法开发 ,namespace有着特殊作用-->
 
     <sql id="column_list">
-        permission_type,permission_key,name,sys_resource_id,id,status
+        permission_type,permission_key,name,sys_resource_id,id,status,create_time,create_user_id,update_time,update_user_id
     </sql>
 
     <select id="findOne" resultType="com.lq.entity.SysPermission" parameterType="long">
@@ -38,10 +38,10 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO
-            sys_permission(permission_type,permission_key,name,sys_resource_id,id,status)
+            sys_permission(permission_type,permission_key,name,sys_resource_id,id,status,create_time,create_user_id,update_time,update_user_id)
         VALUES
             (
-              #{permissionType},#{permissionKey},#{name},#{sysResourceId},#{id},#{status}
+              #{permissionType},#{permissionKey},#{name},#{sysResourceId},#{id},#{status},#{createTime},#{createUserId},#{updateTime},#{updateUserId}
             )
     </insert>
 
@@ -50,13 +50,17 @@
         UPDATE
             sys_permission
         <trim prefix="set" suffixOverrides=",">
-            
- <if test="permissionType!=null">permission_type=#{permissionType},</if>
- <if test="permissionKey!=null">permission_key=#{permissionKey},</if>
- <if test="name!=null">name=#{name},</if>
- <if test="sysResourceId!=null">sys_resource_id=#{sysResourceId},</if>
- <if test="id!=null">id=#{id},</if>
- <if test="status!=null">status=#{status},</if>
+          <if test="permissionType!=null">permission_type=#{permissionType},</if>
+          <if test="permissionKey!=null">permission_key=#{permissionKey},</if>
+          <if test="name!=null">name=#{name},</if>
+          <if test="sysResourceId!=null">sys_resource_id=#{sysResourceId},</if>
+          <if test="id!=null">id=#{id},</if>
+          <if test="status!=null">status=#{status},</if>
+          <if test="createTime!=null">create_time=#{createTime},</if>
+          <if test="createUserId!=null">create_user_id=#{createUserId},</if>
+          <if test="updateTime!=null">update_time=#{updateTime},</if>
+          <if test="updateUserId!=null">update_user_id=#{updateUserId},</if>
+
         </trim>
         WHERE
             id=#{id}

@@ -8,7 +8,8 @@ import com.lq.entity.SysRole;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ * @author qi
+ * 角色事务类
  */
 public interface SysRoleService extends BaseService<SysRole> {
 

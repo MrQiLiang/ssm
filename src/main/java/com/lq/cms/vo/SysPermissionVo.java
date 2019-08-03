@@ -22,7 +22,7 @@ public class SysPermissionVo extends AdminBaseVo {
     /**
      *  权限类型
      */
-    private Integer permissionType;
+    private String permissionType;
     /**
      *  权限键值
      */
@@ -36,6 +36,14 @@ public class SysPermissionVo extends AdminBaseVo {
         this.sysResourceId = sysResourceId;
     }
 
+    public String getSysResourceName() {
+        return sysResourceName;
+    }
+
+    public void setSysResourceName(String sysResourceName) {
+        this.sysResourceName = sysResourceName;
+    }
+
     public String getName() {
         return name;
     }
@@ -44,11 +52,11 @@ public class SysPermissionVo extends AdminBaseVo {
         this.name = name;
     }
 
-    public Integer getPermissionType() {
+    public String getPermissionType() {
         return permissionType;
     }
 
-    public void setPermissionType(Integer permissionType) {
+    public void setPermissionType(String permissionType) {
         this.permissionType = permissionType;
     }
 

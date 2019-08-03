@@ -9,6 +9,7 @@ import com.lq.cms.service.SysResourceService;
 import com.lq.cms.vo.SysResourceVo;
 import com.lq.code.dao.BaseDao;
 import com.lq.code.service.impl.BaseServiceImpl;
+import com.lq.code.util.Constant;
 import com.lq.dao.SysResourceDao;
 import com.lq.entity.SysResource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
     }
 
     @Override
-    public List<SysResourceVo> findListpages(SysResourceVo vo) {
+    public List<SysResourceVo> findListPages(SysResourceVo vo) {
 
         vo.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         return sysResourceDao.findListPage(vo);
@@ -53,7 +54,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
     public List<MenusComposite> findMenusListBySysUserId(Long sysUserId, String contextPath) {
         Map<String,Object> map=new HashMap();
         map.put("userId",sysUserId);
-        map.put("parentId",0L);
+        map.put("parentId", Constant.TOP_PARENT_ID);
         map.put("permissionId", PermissionTyepEnum.SELECT.getValue());
         List<SysResource> menusItmeList=sysResourceDao.findMenu(map);
         List<MenusComposite> list=new ArrayList<>();
@@ -62,7 +63,6 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
             menusItem.setMenuname(sysResource.getMenuName());
             menusItem.setIcon(sysResource.getMenuIco());
             menusItem.setMenuid(sysResource.getId());
-            //       List<SysResource> menusList=sysResourceDao.findByParentIdAndStatus(sysResource.getId(), StatusTypeEnum.STATE_ACTIVITY_YES.getValue());
             map.put("parentId",sysResource.getId());
             List<SysResource> menusList=sysResourceDao.findMenu(map);
             for (SysResource sysResource1: menusList){

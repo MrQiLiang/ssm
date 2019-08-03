@@ -88,7 +88,7 @@
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
+                                                      	<span class="block input-icon input-icon-right" style="white-space:nowrap">
 															<input type="text"  id="authCode" placeholder="验证码" />
 															<img src="${ctx}/cms/login/authCode"  id="codeImage" width="90"  height="28">
 														</span>

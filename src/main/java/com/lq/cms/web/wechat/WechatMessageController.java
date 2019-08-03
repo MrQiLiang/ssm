@@ -78,18 +78,12 @@ public class WechatMessageController {
     @ResponseBody
     public Object save(WechatMessageVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
         AjaxResult ajaxResult = new AjaxResult();
-        try {
             String filePath = upLoadFile(file);
             if(StringUtil.isNotNull(filePath)) {
                 vo.setImageUrl(filePath);
             }
             vo.setUpdateTime(new Date());
             wechatMessageService.save(vo);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
         return ajaxResult;
     }
 

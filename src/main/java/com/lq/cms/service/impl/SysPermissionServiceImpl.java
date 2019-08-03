@@ -4,11 +4,18 @@ import com.lq.cms.service.SysPermissionService;
 import com.lq.cms.vo.SysPermissionVo;
 import com.lq.code.dao.BaseDao;
 import com.lq.code.service.impl.BaseServiceImpl;
+import com.lq.code.util.BeanUtil;
 import com.lq.dao.SysPermissionDao;
+import com.lq.dao.SysResourceDao;
 import com.lq.entity.SysPermission;
+import com.lq.entity.SysResource;
+import com.lq.entity.SysUser;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,10 +28,19 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
 
     @Autowired
     private SysPermissionDao sysPermissionDao;
+    @Autowired
+    private SysResourceDao sysResourceDao;
 
     @Override
     public List<SysPermissionVo> findListPage(SysPermissionVo vo) {
-        return sysPermissionDao.findListPage(vo);
+        List<SysPermissionVo> sysPermissionVos = sysPermissionDao.findListPage(vo);
+        sysPermissionVos.forEach(sysPermissionVo1->{
+            if (sysPermissionVo1.getSysResourceId()!=null) {
+                SysResource sysResource = sysResourceDao.findOne(sysPermissionVo1.getSysResourceId());
+                sysPermissionVo1.setSysResourceName(sysResource.getMenuName());
+            }
+        });
+        return sysPermissionVos;
     }
 
     @Override
@@ -33,13 +49,29 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
     }
 
     @Override
-    public SysPermission save(SysPermissionVo vo) throws IllegalAccessException, InstantiationException {
-        return null;
+    public SysPermission save(SysPermissionVo vo){
+        Subject subject= SecurityUtils.getSubject();
+        SysUser sysUser=(SysUser) subject.getPrincipal();
+        SysPermission sysPermission = new SysPermission();
+        BeanUtil.copyNotNull(sysPermission,vo);
+        sysPermission.setCreateTime(new Date());
+        sysPermission.setCreateUserId(sysUser.getId());
+        sysPermission.setUpdateTime(new Date());
+        sysPermission.setUpdateUserId(sysUser.getId());
+        sysPermissionDao.save(sysPermission);
+        return sysPermission;
     }
 
     @Override
     public SysPermission update(SysPermissionVo vo) {
-        return null;
+        Subject subject= SecurityUtils.getSubject();
+        SysUser sysUser=(SysUser) subject.getPrincipal();
+        SysPermission sysPermission = sysPermissionDao.findOne(vo.getId());
+        BeanUtil.copyNotNull(sysPermission,vo);
+        sysPermission.setUpdateUserId(sysUser.getId());
+        sysPermission.setUpdateTime(new Date());
+        sysPermissionDao.update(sysPermission);
+        return sysPermission;
     }
 
     @Override
