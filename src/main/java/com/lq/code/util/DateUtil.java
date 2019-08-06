@@ -7,29 +7,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by qi_liang on 2018/1/26.
+ * @author qi
+ * 日期辅佐工具类
  */
 public class DateUtil {
 
+    /**
+     * 默认转换日期格式
+     */
     public static final String DEFAULT_PATTERN="yyyy-MM-dd HH:mm:ss";
 
     /**
-     *  返回日期 的字符串 默认格式:yyy-MM-dd HH:mm:ss
+     *  返回日期 的字符串 默认格式:yyyy-MM-dd HH:mm:ss
      * @param date
      * @return
      */
     public static String getDateToStr(Date date){
-        if (date==null){
-            throw new NullPointerException("========date 对象为空null======");
-        }
 
         return getDateToStr(date,DEFAULT_PATTERN);
-        }
+    }
 
     /**
      *  返回日期的字符串
       * @param date     日期
-     * @param pattern   格式 default:yyy-MM-dd HH:mm:ss
+     * @param pattern   格式 default:yyyy-MM-dd HH:mm:ss
      * @return
      */
     public static String getDateToStr(Date date,String pattern){
@@ -37,15 +38,33 @@ public class DateUtil {
         if (StringUtil.isNull(pattern)){
             pattern = DEFAULT_PATTERN;
         }
-        SimpleDateFormat sdf=new SimpleDateFormat(pattern);
-        if (date == null){
-            throw new NullPointerException("====== date 对象为空 null======");
+        if (date != null){
+            SimpleDateFormat sdf=new SimpleDateFormat(pattern);
+            str=sdf.format(date);
         }
-        str=sdf.format(date);
+
         return str;
     }
 
+    /**
+     * 日期字符串(String)转换日期对象(Date)
+     * @param strDate 日期字符串(默认格式为：yyyy-MM-dd HH:mm:ss)
+     * @return 日期对象
+     * @throws ParseException
+     */
+    public static Date strToDate(String strDate) throws ParseException {
 
+        return strToDate(strDate,DEFAULT_PATTERN);
+    }
+
+
+    /**
+     *  日期字符串(String)转换日期对象(Date)
+     * @param strDate 日期字符串
+     * @param pattern 日期格式 (default:yyyy-MM-dd HH:mm:ss)
+     * @return  日期对象
+     * @throws ParseException
+     */
     public static Date strToDate(String strDate,String pattern) throws ParseException {
         if (StringUtil.isNull(pattern)){
                 pattern = DEFAULT_PATTERN;
@@ -56,11 +75,22 @@ public class DateUtil {
         return sdf.parse(strDate);
     }
 
-    public static  int disparityDay(Date startDate,Date endDate){
+    /**
+     *  计算出两个date对象相差多少日
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return  相差日（int）
+     */
+    public static int disparityDay(Date startDate,Date endDate){
         int day = (int)(endDate.getTime()-startDate.getTime())/(24*60*60*1000);
         return day;
     }
 
+    /**
+     *  毫秒数转日期字符串
+     * @param timeLong 毫秒数
+     * @return 日期字符串
+     */
     public static String dataFormat(Long timeLong){
         Long secondLong = timeLong/1000;
         Long  millisecond = timeLong%1000;
