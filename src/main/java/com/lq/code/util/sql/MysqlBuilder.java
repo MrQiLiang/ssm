@@ -25,7 +25,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
         dataTypeMap.put("class java.lang.String","varchar");
         dataTypeMap.put("class java.util.Date","datetime");
         dataTypeMap.put("class java.lang.Integer","int");
-        dataTypeMap.put("class java.lang.Long","int");
+        dataTypeMap.put("class java.lang.Long","bigint");
     }
 
 

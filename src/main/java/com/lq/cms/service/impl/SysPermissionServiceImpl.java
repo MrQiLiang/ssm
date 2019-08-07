@@ -1,5 +1,6 @@
 package com.lq.cms.service.impl;
 
+import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.service.SysPermissionService;
 import com.lq.cms.vo.SysPermissionVo;
 import com.lq.code.dao.BaseDao;
@@ -7,6 +8,7 @@ import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.BeanUtil;
 import com.lq.dao.SysPermissionDao;
 import com.lq.dao.SysResourceDao;
+import com.lq.dao.SysUserDao;
 import com.lq.entity.SysPermission;
 import com.lq.entity.SysResource;
 import com.lq.entity.SysUser;
@@ -30,6 +32,8 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
     private SysPermissionDao sysPermissionDao;
     @Autowired
     private SysResourceDao sysResourceDao;
+    @Autowired
+    private SysUserDao sysUserDao;
 
     @Override
     public List<SysPermissionVo> findListPage(SysPermissionVo vo) {
@@ -37,8 +41,23 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
         sysPermissionVos.forEach(sysPermissionVo1->{
             if (sysPermissionVo1.getSysResourceId()!=null) {
                 SysResource sysResource = sysResourceDao.findOne(sysPermissionVo1.getSysResourceId());
-                sysPermissionVo1.setSysResourceName(sysResource.getMenuName());
+                if (sysResource!=null) {
+                    sysPermissionVo1.setSysResourceName(sysResource.getMenuName());
+                }
             }
+            if (sysPermissionVo1.getCreateUserId()!=null) {
+                SysUser createUser = sysUserDao.findOne(sysPermissionVo1.getCreateUserId());
+                if (createUser!=null) {
+                    sysPermissionVo1.setCreateUserName(createUser.getLoginName());
+                }
+            }
+            if (sysPermissionVo1.getUpdateUserId()!=null) {
+                SysUser updateUser = sysUserDao.findOne(sysPermissionVo1.getUpdateUserId());
+                if (updateUser!=null) {
+                    sysPermissionVo1.setUpdateUserName(updateUser.getLoginName());
+                }
+            }
+
         });
         return sysPermissionVos;
     }
@@ -58,6 +77,7 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
         sysPermission.setCreateUserId(sysUser.getId());
         sysPermission.setUpdateTime(new Date());
         sysPermission.setUpdateUserId(sysUser.getId());
+        sysPermission.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         sysPermissionDao.save(sysPermission);
         return sysPermission;
     }

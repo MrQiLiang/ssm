@@ -1,5 +1,10 @@
 package com.lq.cms.vo;
 
+import com.lq.code.util.DateUtil;
+import com.lq.code.util.StringUtil;
+
+import java.util.Date;
+
 /**
  * @Author: qi
  * @Description:
@@ -27,6 +32,30 @@ public class SysPermissionVo extends AdminBaseVo {
      *  权限键值
      */
     private String permissionKey;
+    /**
+     * 创建时间（字符串）
+     */
+    private String createTimeStr;
+    /**
+     * 创建用户ID
+     */
+    private Long createUserId;
+    /**
+     * 创建用户名称
+     */
+    private String createUserName;
+    /**
+     * 更新时间（字符串）
+     */
+    private String updateTimeStr;
+    /**
+     * 更新用户ID
+     */
+    private Long updateUserId;
+    /**
+     * 更新用户名称
+     */
+    private String updateUserName;
 
     public Long getSysResourceId() {
         return sysResourceId;
@@ -66,5 +95,62 @@ public class SysPermissionVo extends AdminBaseVo {
 
     public void setPermissionKey(String permissionKey) {
         this.permissionKey = permissionKey;
+    }
+
+    public String getCreateTimeStr() {
+        if (StringUtil.isNotNull(createTimeStr)){
+            return createTimeStr;
+        }else{
+            return DateUtil.getDateToStr(getCreateTime());
+        }
+
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
+    }
+
+    public Long getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(Long createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public String getCreateUserName() {
+        return createUserName;
+    }
+
+    public void setCreateUserName(String createUserName) {
+        this.createUserName = createUserName;
+    }
+
+    public String getUpdateTimeStr() {
+        if (StringUtil.isNotNull(updateTimeStr)){
+            return updateTimeStr;
+        }else{
+            return DateUtil.getDateToStr(getUpdateTime());
+        }
+    }
+
+    public void setUpdateTimeStr(String updateTimeStr) {
+        this.updateTimeStr = updateTimeStr;
+    }
+
+    public Long getUpdateUserId() {
+        return updateUserId;
+    }
+
+    public void setUpdateUserId(Long updateUserId) {
+        this.updateUserId = updateUserId;
+    }
+
+    public String getUpdateUserName() {
+        return updateUserName;
+    }
+
+    public void setUpdateUserName(String updateUserName) {
+        this.updateUserName = updateUserName;
     }
 }
