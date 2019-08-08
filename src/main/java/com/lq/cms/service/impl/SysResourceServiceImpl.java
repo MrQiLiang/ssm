@@ -52,7 +52,7 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
 
     @Override
     public List<MenusComposite> findMenusListBySysUserId(Long sysUserId, String contextPath) {
-        Map<String,Object> map=new HashMap();
+        Map<String,Object> map=new HashMap(3);
         map.put("userId",sysUserId);
         map.put("parentId", Constant.TOP_PARENT_ID);
         map.put("permissionId", PermissionTyepEnum.SELECT.getValue());

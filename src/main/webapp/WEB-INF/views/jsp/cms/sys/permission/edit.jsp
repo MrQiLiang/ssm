@@ -28,7 +28,7 @@
                         <td>
                             <select class="easyui-combobox" id="sysResourceId" >
                                 <c:forEach var="menu" items="${menuList}">
-                                    <option value="${menu.id}"  <c:if test="${menu.id==sysResource.parentId}">selected</c:if>  onclick="showUrlPath()" >${menu.menuName}</option>
+                                    <option value="${menu.id}"  <c:if test="${menu.id==sysPermission.sysResourceId}">selected</c:if> >${menu.menuName}</option>
                                 </c:forEach>
                             </select>
                         </td>

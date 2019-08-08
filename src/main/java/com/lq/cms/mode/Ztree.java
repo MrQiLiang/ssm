@@ -5,5 +5,4 @@ package com.lq.cms.mode;
  */
 public class Ztree extends ZtreeComposite {
 
-
 }

@@ -24,12 +24,21 @@
         SELECT <include refid="column_list"/>
           FROM  sys_permission
         WHERE status = 1
+          ORDER BY create_time DESC,update_time DESC
     </select>
 
     <select id="count" resultType="int" parameterType="SysPermissionVo">
         SELECT count(id)
           FROM sys_permission
         WHERE status = 1
+    </select>
+
+    <select id="findBySysResourceId" resultType="com.lq.entity.SysPermission" parameterType="long">
+        SELECT <include refid="column_list"/>
+          FROM sys_permission
+        WHERE status = 1
+          AND sys_resource_id = #{sysResourceId}
+        ORDER BY create_time DESC,update_time DESC
     </select>
 
     <insert id="save"  parameterType="com.lq.entity.SysPermission" useGeneratedKeys="true" keyProperty="id">

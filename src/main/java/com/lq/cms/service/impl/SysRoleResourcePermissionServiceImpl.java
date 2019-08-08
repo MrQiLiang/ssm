@@ -1,5 +1,6 @@
 package com.lq.cms.service.impl;
 
+import com.lq.cms.emun.BasicsPermissionKeyEnum;
 import com.lq.cms.emun.PermissionTyepEnum;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.mode.Ztree;
@@ -48,10 +49,9 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
 
     @Override
     public List<ZtreeComposite> findZtree(Long roleId) {
-        Long startTime = System.currentTimeMillis();
         List<ZtreeComposite> ztreeList=new ArrayList<>();
         List<SysResource> resourceList=sysResourceDao.findByParentId(0L);
-        List<SysPermission> permissionList=sysPermissionDao.findAll();
+
         for (SysResource sysResource:resourceList){
             ZtreeItem ztreeItem=new ZtreeItem();
             ztreeItem.setId(sysResource.getId());
@@ -59,8 +59,6 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
             ztreeItem.setText(sysResource.getMenuName());
             ztreeItem.setChecked(isCheck(sysResource.getId(), PermissionTyepEnum.SELECT.getValue(),roleId));
             ztreeItem.setState("close");
-            Map<String,Object> map=new HashMap<String,Object>();
-            map.put(PERMISSIONID_KEY,sysResource.getId()+RESOURCE_SYMBOL+PermissionTyepEnum.SELECT.getValue());
             ztreeItem.setAttributes(getAttributes(sysResource.getId(), Long.valueOf(PermissionTyepEnum.SELECT.getValue())));
             List<SysResource> menuItmeList=sysResourceDao.findByParentId(sysResource.getId());
             for (SysResource resource:menuItmeList){
@@ -70,8 +68,9 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
                 ztreeItme1.setIconCls(resource.getMenuIco());
                 ztreeItme1.setChecked(isCheck(resource.getId(), PermissionTyepEnum.SELECT.getValue(),roleId));
                 ztreeItme1.setAttributes(getAttributes(resource.getId(),PermissionTyepEnum.SELECT.getValue()));
+                List<SysPermission> permissionList = sysPermissionDao.findBySysResourceId(resource.getId());
                 for (SysPermission sysPermission:permissionList){
-                    if (PermissionTyepEnum.SELECT.getValue().equals(sysPermission.getId())){
+                    if (BasicsPermissionKeyEnum.SELECT_MENU_KEY.getValue().equals(sysPermission.getPermissionKey())){
                         continue;
                     }
                     Ztree ztree=new Ztree();
@@ -86,7 +85,6 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
 
             ztreeList.add(ztreeItem);
         }
-        System.out.println("耗时："+(System.currentTimeMillis()-startTime)+"（毫秒）");
         return ztreeList;
     }
 
@@ -95,7 +93,7 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
     public boolean updateRolePermission(List<SysRoleResourcePermissionVo> list) {
         //角色id
         Long roleId=list.get(0).getRoleId();
-        Map<String,Object> map=new HashMap<>();
+        Map<String,Object> map=new HashMap<>(2);
         map.put("roleId",roleId);
         map.put("state", StatusTypeEnum.STATUS_ACTIVITY_NO.getValue());
         sysRoleResourcePermissionDao.updateByRoleIdAndStatus(map);

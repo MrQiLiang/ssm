@@ -3,16 +3,26 @@ package com.lq.cms.mode;
 import java.util.Map;
 
 /**
- * Created by qi_liang on 2018/2/3.
+ * @author qi
+ * easyUI tree菜单 数据
+ * 抽象对象：节点
  */
 public abstract class ZtreeComposite {
-
+    /**
+     * 资源ID
+     */
     private Long id;
-
+    /**
+     * 节点名称
+     */
     private String text;
-
+    /**
+     * 是否勾选
+     */
     private boolean checked;
-
+    /**
+     * 自定义属性（数据）
+     */
     private Map<String,Object> attributes;
 
     public Long getId() {

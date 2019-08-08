@@ -7,9 +7,17 @@ import java.util.List;
  * Created by qi_liang on 2018/2/3.
  */
 public class ZtreeItem extends ZtreeComposite{
-
+    /**
+     *  子节点集合
+     */
     public List<ZtreeComposite> children=new ArrayList<>();
+    /**
+     * 节点图标
+     */
     private String iconCls;
+    /**
+     * 节点状态("open","closed")
+     */
     private String state;
 
     public String getIconCls() {

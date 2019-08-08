@@ -25,13 +25,14 @@
                 pagination :"true",
                 columns:[[
                     {field:'id',title:'编号',width:50},
-                    {field:'name',title:'权限名称',width:200},
-                    {field:'permissionType',title:'权限类型',width:45},
-                    {field:'permissionKey',title:'权限键值',width:120},
-                    {field:'sysResourceName',title:'目录名称',editor:'text',width:120},
-                    {field:'userName',title:'创建用户',width:100},
-                    {field:'createTimeStr',title:'创建时间',width:150},
-                    {field:'updateTimeStr',title:'更新时间',width:150},
+                    {field:'sysResourceName',title:'目录名称',width:60},
+                    {field:'name',title:'权限名称',width:120},
+                    {field:'permissionType',title:'权限类型',width:60},
+                    {field:'permissionKey',title:'权限键值',width:150},
+                    {field:'createTimeStr',title:'创建时间',width:110},
+                    {field:'createUserName',title:'创建用户',width:50},
+                    {field:'updateTimeStr',title:'更新时间',width:110},
+                    {field:'updateUserName',title:'更新用户',width:50},
                     /* formatter 不能重复field,否则会失效**/
                     {field:'editId',title:'编辑',width:100,formatter:function (value,row,index) {
                         var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
@@ -51,6 +52,7 @@
     </script>
 </head>
 <body>
+
     <table id="dataList"></table>
     <div id="editDate"></div>
 </body>

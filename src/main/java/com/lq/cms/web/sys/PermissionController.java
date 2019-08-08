@@ -89,6 +89,7 @@ public class PermissionController extends BaseController{
     @RequestMapping("/delete")
     @ResponseBody
     public Object delete(SysPermissionVo vo){
+        sysPermissionService.delete(vo.getId());
 
         return new AjaxResult();
     }
