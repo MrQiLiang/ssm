@@ -9,9 +9,18 @@ import java.util.Set;
  */
 public abstract class AbstractDbBuiler {
 
-
+    /**
+     *  自动同步表结构
+     * @param classSet
+     * @return
+     */
     abstract public String automaticUpdateDb(Set<Class> classSet);
 
+    /**
+     * 自动同步表结构（多线程）
+     * @param classQueueDto
+     * @return
+     */
     abstract public String automaticUpdateDbNew(QueueDto<Class> classQueueDto);
 
     /**
