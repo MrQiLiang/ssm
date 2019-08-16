@@ -5,7 +5,8 @@ import com.lq.code.dto.QueueDto;
 import java.util.Set;
 
 /**
- * Created by qi_liang on 2018/6/2.
+ * @author qi
+ * Sql 生成构造器.
  */
 public abstract class AbstractDbBuiler {
 
@@ -42,26 +43,16 @@ public abstract class AbstractDbBuiler {
      * @return
      */
     public String countSql(String sql){
-        StringBuffer sb=new StringBuffer("select count(*) from ( ");
-        sql=sql.toLowerCase();
-
-        if (sql.lastIndexOf("order")>sql.lastIndexOf(")")){
-            sb.append(sql.substring(sql.indexOf("from")+4,sql.lastIndexOf("order")));
-
+        StringBuffer sb=new StringBuffer("SELECT COUNT(*) FROM ");
+        //SQL 转成大写适
+        String upperCaseSql = sql.toUpperCase();
+        //统计SQL排除排序SQL代码
+        if (sql.lastIndexOf(SqlConstant.ORDER_SQL)>sql.lastIndexOf(")")){
+            sb.append(sql.substring(upperCaseSql.indexOf(SqlConstant.FROM_SQL)+SqlConstant.FROM_SQL.length(),upperCaseSql.lastIndexOf(SqlConstant.ORDER_SQL)));
         }else{
-            sb.append(sql.substring(sql.indexOf("from")+4));
+            sb.append(sql.substring(upperCaseSql.indexOf(SqlConstant.FROM_SQL)+SqlConstant.FROM_SQL.length()));
         }
-        sb.append(")");
         return sb.toString();
     }
-
-
-
-
-
-
-
-
-
 
 }
