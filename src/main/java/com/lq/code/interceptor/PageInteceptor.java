@@ -2,6 +2,8 @@ package com.lq.code.interceptor;
 
 import com.lq.code.util.StringUtil;
 import com.lq.code.util.sql.*;
+import com.lq.code.util.sql.factory.DbBuilerFactory;
+import com.lq.code.util.sql.factory.impl.DefaultDbBuilerFactory;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -17,7 +19,7 @@ import java.sql.Connection;
 import java.util.Properties;
 
 /**
- * Created by qi_liang on 2018/2/16.
+ * @author qi
  */
 //注解拦截器并签名
 //@Signature 拦截的类签名 type 拦截的类  method 类里面的方法  args方法里面的参数
@@ -48,13 +50,8 @@ public class PageInteceptor implements Interceptor {
                 BoundSql boundSql=(BoundSql)metaStatementHandler.getValue("delegate.boundSql");
                 String sql=boundSql.getSql();
                 PageInterface pageInterface=(PageInterface)boundSql.getParameterObject();
-                AbstractDbBuiler db = null;
-                if (SqlConstant.DB_TYPE_MYSQL.equals(dialect)){
-                       db = new MysqlBuilder();
-                }
-                if (SqlConstant.DB_TYPE_ORACLE.equals(dialect)){
-                       db = new OracleBuiler();
-                }
+                DbBuilerFactory dbBuilerFactory = new DefaultDbBuilerFactory();
+                AbstractDbBuiler db = dbBuilerFactory.getSqlBuilder(dialect);
                 String pageSql=db.concatPageSql(sql,pageInterface);
                 metaStatementHandler.setValue("delegate.boundSql.sql",pageSql);
 
