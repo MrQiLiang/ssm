@@ -1,7 +1,10 @@
 package com.lq.code.entity;
 
+import com.lq.code.util.BeanUtil;
+
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * Created by qi on 2017/7/16.
@@ -37,9 +40,8 @@ public class IdEntity implements Serializable {
     public String toString() {
         StringBuffer stringBuffer=new StringBuffer();
         Class clazz=this.getClass();
-        Field[] fields=clazz.getDeclaredFields();
-        stringBuffer.append("id:"+this.getId()+"\n");
-        for (Field field:fields){
+        List<Field> fieldList = BeanUtil.getAllField(clazz);
+        fieldList.forEach((field)->{
             field.setAccessible(true);
             Object val=null;
             try {
@@ -48,7 +50,8 @@ public class IdEntity implements Serializable {
                 e.printStackTrace();
             }
             stringBuffer.append(field.getName()+":"+val+"\n");
-        }
+
+        });
         return stringBuffer.toString();
     }
 }
