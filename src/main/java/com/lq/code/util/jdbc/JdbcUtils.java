@@ -12,6 +12,7 @@ import java.util.Properties;
 
 public class JdbcUtils {
 
+
 	private static String driver = null;
 
 	private static String url = null;

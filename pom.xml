@@ -621,7 +621,7 @@
 
     <resources>
       <resource>
-        <directory>${project.basedir}/src/main/resources/${env}</directory>
+        <directory>${project.basedir}/src/main/profile/${env}</directory>
         <includes>
           <include>*</include>
         </includes>
