@@ -1,13 +1,15 @@
 package com.lq.code.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
+ * @author qi
  * Created by qi on 2017/7/16.
  */
-public interface BaseDao<T> {
+public interface BaseDao<T> extends BaseMapper<T> {
 
     /**
      *  保存对象，返回id

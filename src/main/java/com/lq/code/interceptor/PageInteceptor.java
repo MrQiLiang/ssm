@@ -26,7 +26,7 @@ import java.util.Properties;
 //StatementHandler:数据库会话器，专门用于处理数据库会话,statement的执行操作，是一个接口；
 //metaObject：mybatis工具类，可以有效的读取或修改一些重要对象的属性
 @Intercepts({@Signature(type = Executor.class,method = "query",args = {MappedStatement.class,Object.class, RowBounds.class, ResultHandler.class}),
-@Signature(type = StatementHandler.class,method = "prepare",args = {Connection.class})
+@Signature(type = StatementHandler.class,method = "prepare",args = {Connection.class,Integer.class})
 })
 public class PageInteceptor implements Interceptor {
 
