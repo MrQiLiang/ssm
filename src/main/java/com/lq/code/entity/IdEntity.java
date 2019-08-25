@@ -1,9 +1,12 @@
 package com.lq.code.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.lq.code.util.BeanUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -14,6 +17,7 @@ public class IdEntity implements Serializable {
     /**
      *  数据id
      */
+    @TableId(type = IdType.AUTO)
     protected Long id;
     /**
      * 数据状态（与业务逻辑无关）

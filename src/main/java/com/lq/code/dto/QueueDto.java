@@ -1,11 +1,7 @@
 package com.lq.code.dto;
 
-import com.github.jsonzou.jmockdata.JMockData;
-import com.lq.entity.SysUser;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @Author: qi

@@ -18,6 +18,12 @@
         AND status = 1
     </select>
 
+    <select id="findAll" resultType="SysUser">
+        select <include refid="column_list"/>
+          FROM sys_user
+        where status = 1
+    </select>
+
     <select id="findByEmail" resultType="SysUser">
         SELECT <include refid="column_list"/>
           FROM sys_user

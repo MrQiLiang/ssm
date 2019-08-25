@@ -58,6 +58,7 @@
 </body>
 <script type="text/javascript">
     function openEdit(title,id) {
+        console.log(id);
         var url='edit';
         if(id!=null){
             url=url+'?id='+id;

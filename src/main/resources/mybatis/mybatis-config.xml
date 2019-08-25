@@ -23,6 +23,8 @@
           <property name="dialect" value="mysql"/>
           <property name="pageSqlId" value=".*ListPage.*"/>
       </plugin>
+      <plugin interceptor="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+      </plugin>
    </plugins>
 
   </configuration>

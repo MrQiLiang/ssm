@@ -45,7 +45,7 @@ public class InstantiationTracingBeanPostProcessor implements ApplicationListene
             //扫描实体类
             if (isUpdateDB) {
                 Set<Class> set = BeanUtil.getClassSet(packagePath);
-                QueueDto<Class> queueDto = BeanUtil.getQueueDto(packagePath);
+           //     QueueDto<Class> queueDto = BeanUtil.getQueueDto(packagePath);
                 DbBuilerFactory dbBuilerFactory = new DefaultDbBuilerFactory();
                 AbstractDbBuiler dbBuiler = dbBuilerFactory.getSqlBuilder(SqlConstant.DB_TYPE_MYSQL);
                 String sql = dbBuiler.automaticUpdateDb(set);
