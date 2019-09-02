@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>编辑</title>
+    <script type="text/javascript" src="${ctx}/resources/code/js/imageUtil.js"/>
     <script type="text/javascript">
         $(function () {
             $("#image_td").hide();
@@ -22,18 +23,7 @@
             }
         });
 
-        //构建本地图片路径
-        function getObjectURL(file) {
-            var url = null ;
-            if (window.createObjectURL!=undefined) {
-                url = window.createObjectURL(file) ;
-            } else if (window.URL!=undefined) {
-                url = window.URL.createObjectURL(file) ;
-            } else if (window.webkitURL!=undefined) {
-                url = window.webkitURL.createObjectURL(file) ;
-            }
-            return url ;
-        }
+
     </script>
 </head>
 <body>

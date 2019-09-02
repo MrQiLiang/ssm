@@ -403,7 +403,6 @@
                             btn:['确定','取消'],
                             btn1:function(index,layero){
                                 messageSet = bufferSet;
-                                console.log(messageSet);
                                 layer.close(index);
                             },
                             skin: 'layui-layer-rim', //加上边框
@@ -629,7 +628,6 @@
     }
 
     function appendAlertHtml(data){
-     console.log(data);
         var isShow ;
         var wechatMessageList = data.wechatMessageVoList;
         var html = '<div class="alert"><div class="left-navigation"><p>图文('+data.wechatMessageCount+')</p></div>';

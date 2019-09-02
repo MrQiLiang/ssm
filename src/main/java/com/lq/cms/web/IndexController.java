@@ -22,6 +22,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -107,6 +108,14 @@ public class IndexController {
         }
 
         return ajaxResult;
+    }
+
+    @RequestMapping("/userEdit")
+    public String toUserEdit(Model model){
+        Subject subject = SecurityUtils.getSubject();
+        SysUser sysUser = (SysUser) subject.getPrincipal();
+        model.addAttribute("sysUser",sysUser);
+        return "cms/main/userEdit";
     }
 
 }

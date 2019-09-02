@@ -133,7 +133,6 @@ public class UserController {
         if (sysUser!=null&&sysUser.getId()!=null){
             sysUserService.delete(sysUser.getId());
         }
-
         return ajaxResult;
     }
 
@@ -145,7 +144,6 @@ public class UserController {
             String fileType = FileUtil.fileFormat(multipartFile.getOriginalFilename());
             newFileName = "user/"+uuid.toString()+"."+fileType;
             File newFile = new File(FILE_LOAD_PATH +newFileName);
-
             if (!newFile.exists()){
                 newFile.mkdirs();
             }
@@ -173,7 +171,6 @@ public class UserController {
                 sysUserService.update(sysUser);
                 subject.logout();
                 SecurityUtils.getSecurityManager().logout(subject);
-
             }else {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMsg("旧密码不正确!,请重新输入.");
@@ -183,6 +180,17 @@ public class UserController {
             ajaxResult.setMsg("参数为空，请检查");
         }
         return ajaxResult;
+    }
+
+
+    public AjaxResult updateUser(SysUser sysUser){
+        Subject subject = SecurityUtils.getSubject();
+        SysUser loginUser =(SysUser)subject.getPrincipal();
+        if (loginUser!=null){
+            BeanUtil.copyNotNull(loginUser,sysUser);
+            sysUserService.update(loginUser);
+        }
+        return new AjaxResult();
     }
 
 

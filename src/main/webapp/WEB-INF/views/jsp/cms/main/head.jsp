@@ -350,8 +350,30 @@
    }
 
    //设置用户资料
+   var iframeWin ;
    function setUserData() {
-       alert("开发中.....");
+       layer.open({
+           id:"setUserDate",
+           type: 2,
+           area: ['380px', '400px'],
+           fixed: false, //不固定
+           maxmin: false,
+           title:"编辑个人信息",
+           btn:["确定","取消"],
+           btn1:function(index){
+
+               var body = layer.getChildFrame('body', index);
+               // var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+               iframeWin.postDate();
+              layer.close(index);
+           },
+           btnAlign: 'c',
+           content: '${ctx}/cms/userEdit',
+           success: function(layero, index){
+               iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：
+
+           }
+       });
    }
     
 </script> 
