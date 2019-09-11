@@ -33,7 +33,7 @@
                 用户名:
             </td>
             <td class="right_td">
-                <input type="text" name="userName" value="${sysUser.loginName}">
+                <input type="text" id="loginName" name="loginName" value="${sysUser.loginName}">
             </td>
         </tr>
         <tr>
@@ -41,7 +41,7 @@
                 邮箱:
             </td>
             <td class="right_td">
-                <input type="text" name="email" value="${sysUser.email}" >
+                <input type="text" id="email" name="email" value="${sysUser.email}" >
             </td>
         </tr>
         <tr>
@@ -52,21 +52,22 @@
                 <img src="${ctx}/loadFile/${sysUser.imgUrl}" border="2"
                    width="100" height="100" style="border-radius:12px;"
                      id="uploadBtn" onerror="imageError(this)">
-                <input type="file" style="visibility:hidden;" id="uploadFile">
+                <input type="file" style="visibility:hidden;" id="uploadFile" name="uploadFile">
             </td>
         </tr>
         <tr>
             <td class="left_td">
                 备注:
             </td>
-            <td>
-                <textarea id="" rows="4"> </textarea>
+            <td class="right_td">
+                <textarea id="remarks" rows="4">${sysUser.remarks}</textarea>
             </td>
         </tr>
     </table>
 </body>
 <script type="text/javascript" src="${ctx}/resources/code/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/code/js/imageUtil.js"></script>
+<script type="text/javascript" src="${ctx}/resources/code/js/ajaxfileupload.js"></script>
 <script>
     $(function () {
        $("#uploadBtn").click(function () {
@@ -79,7 +80,21 @@
     });
 
     function postDate() {
-        alert("提交数据");
+        var obj = new Object();
+        obj.loginName=$("#loginName").val();
+        obj.remarks=$("#remarks").val();
+        obj.email=$("#email").val();
+        $.ajaxFileUpload({
+            url: "${ctx}/cms/user/updateUser",
+            dataType:"json",
+            type:"post",
+            data:obj,
+            fileElementId:"uploadFile",
+            success: function(result){
+                if(result.success==true){
+                   layer.msg(result.msg);
+                }
+            }});
     }
 
 </script>
