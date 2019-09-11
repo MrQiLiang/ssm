@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-
 public class SysPermissionServiceTest extends BaseTest {
 
     @Autowired
@@ -27,6 +26,10 @@ public class SysPermissionServiceTest extends BaseTest {
     private SysResourceDao sysResourceDao;
 
     @Test
+    public void test1(){
+
+    }
+
     public void test(){
 
         //1.查询所有菜单
