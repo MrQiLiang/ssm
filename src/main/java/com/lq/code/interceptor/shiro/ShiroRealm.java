@@ -87,7 +87,6 @@ public class ShiroRealm extends AuthorizingRealm {
         sysUser.setLastLoginTime(new Date());
         sysUserService.update(sysUser);
         String realmName=this.getName();
-      //  Object principal= token.getPrincipal();
         return new SimpleAuthenticationInfo(sysUser,password,realmName);
     }
 }
