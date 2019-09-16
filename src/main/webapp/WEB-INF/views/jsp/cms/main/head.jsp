@@ -32,7 +32,7 @@
 
     <div class="navbar-header pull-right" role="navigation">
         <ul class="nav ace-nav">
-            <li class="grey">
+          <!--  <li class="grey">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <i class="icon-tasks"></i>
                     <span class="badge badge-grey">4</span>
@@ -240,7 +240,7 @@
                     </li>
                 </ul>
             </li>
-
+            -->
             <li class="light-blue">
                 <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 
@@ -257,7 +257,7 @@
 
                 <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                     <li>
-                        <a href="#">
+                        <a href="javascript:openSetting()">
                             <i class="icon-cog"></i>
                             设置
                         </a>
@@ -374,6 +374,11 @@
 
            }
        });
+   }
+
+   //设置
+   function openSetting() {
+       layer.alert("功能正在开发中。。。。");
    }
     
 </script> 

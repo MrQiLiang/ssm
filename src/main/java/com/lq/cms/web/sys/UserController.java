@@ -143,7 +143,7 @@ public class UserController {
     }
 
     //内部方法 ，上传文件，并返回文件路径
-    private String upLoadFile(MultipartFile multipartFile){
+   final private String upLoadFile(MultipartFile multipartFile){
         String newFileName = null;
         if (multipartFile!=null && multipartFile.getSize()>0){
             UUID uuid = UUID.randomUUID();

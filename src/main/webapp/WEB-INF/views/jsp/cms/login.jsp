@@ -52,7 +52,7 @@
                     <div class="center">
                         <h1>
                             <i class="icon-leaf green"></i>
-                            <span class="red">cms</span>
+                            <span class="red">ssm</span>
                             <span class="white">管理后台应用</span>
                         </h1>
                         <h4 class="blue">&copy; 星期八</h4>
