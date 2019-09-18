@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @Author: qi
@@ -26,7 +27,7 @@ import java.util.List;
  * @Date: Create in 12:06 AM 2019/7/23
  */
 @Service
-public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> implements SysPermissionService{
+public class SysPermissionServiceImpl  implements SysPermissionService{
 
     @Autowired
     private SysPermissionDao sysPermissionDao;
@@ -39,20 +40,23 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
     public List<SysPermissionVo> findListPage(SysPermissionVo vo) {
         List<SysPermissionVo> sysPermissionVos = sysPermissionDao.findListPage(vo);
         sysPermissionVos.forEach(sysPermissionVo1->{
-            if (sysPermissionVo1.getSysResourceId()!=null) {
-                SysResource sysResource = sysResourceDao.findOne(sysPermissionVo1.getSysResourceId());
+            Optional<Long> sysResourceIdOptional = Optional.of(sysPermissionVo1.getSysResourceId());
+            if (sysResourceIdOptional.isPresent()) {
+                SysResource sysResource = sysResourceDao.findOne(sysResourceIdOptional.get());
                 if (sysResource!=null) {
                     sysPermissionVo1.setSysResourceName(sysResource.getMenuName());
                 }
             }
-            if (sysPermissionVo1.getCreateUserId()!=null) {
-                SysUser createUser = sysUserDao.findOne(sysPermissionVo1.getCreateUserId());
+            Optional<Long> createUserIdOptional = Optional.of(sysPermissionVo1.getCreateUserId());
+            if (createUserIdOptional.isPresent()) {
+                SysUser createUser = sysUserDao.findOne(createUserIdOptional.get());
                 if (createUser!=null) {
                     sysPermissionVo1.setCreateUserName(createUser.getLoginName());
                 }
             }
-            if (sysPermissionVo1.getUpdateUserId()!=null) {
-                SysUser updateUser = sysUserDao.findOne(sysPermissionVo1.getUpdateUserId());
+            Optional<Long> updateUserIdOptional = Optional.of(sysPermissionVo1.getUpdateUserId());
+            if (updateUserIdOptional.isPresent()) {
+                SysUser updateUser = sysUserDao.findOne(updateUserIdOptional.get());
                 if (updateUser!=null) {
                     sysPermissionVo1.setUpdateUserName(updateUser.getLoginName());
                 }

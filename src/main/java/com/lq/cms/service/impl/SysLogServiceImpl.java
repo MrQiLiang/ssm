@@ -15,7 +15,7 @@ import java.util.List;
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class SysLogServiceImpl extends BaseServiceImpl<SysLog> implements SysLogService {
+public class SysLogServiceImpl  implements SysLogService {
 
     @Autowired
     private SysLogDao sysLogDao;

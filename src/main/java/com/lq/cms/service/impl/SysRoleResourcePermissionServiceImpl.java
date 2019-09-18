@@ -27,7 +27,7 @@ import java.util.*;
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRoleResourcePermission> implements SysRoleResourcePermissionService {
+public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePermissionService {
 
     public static final String RESOURCE_SYMBOL = "_";
 
@@ -128,10 +128,10 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
     public List<PermissionVo> findAllPermissonVo() {
         List<PermissionVo> list = new ArrayList<>();
         List<SysResource> sysResourceList =  sysResourceDao.findAll();
-        Iterator iterator = sysResourceList.iterator();
+        Iterator<SysResource> iterator = sysResourceList.iterator();
         PermissionTyepEnum[] tyepEnums = PermissionTyepEnum.values();
         while (iterator.hasNext()){
-            SysResource sysResource = (SysResource) iterator.next();
+            SysResource sysResource = iterator.next();
             if (sysResource!=null){
                 for (PermissionTyepEnum permissionTyepEnum:tyepEnums){
                     PermissionVo permissionVo = new PermissionVo();
@@ -151,19 +151,21 @@ public class SysRoleResourcePermissionServiceImpl extends BaseServiceImpl<SysRol
      *内部方法，用于判断角色是否有权限
      */
     private boolean isCheck(Long resourceId,Long permissionId,Long roleId){
-        SysRoleResourcePermission roleResourcePermission=sysRoleResourcePermissionDao.getByResourceIdAndPermissionIdAndRoleId(resourceId,permissionId,roleId);
-        if (roleResourcePermission!=null&&StatusTypeEnum.STATUS_ACTIVITY_YES.getValue().equals(roleResourcePermission.getStatus())){
-            return true;
-        }else{
-            return false;
+        boolean result = false;
+        if (permissionId!=null&&roleId!=null){
+            SysRoleResourcePermission roleResourcePermission=sysRoleResourcePermissionDao.getByResourceIdAndPermissionIdAndRoleId(resourceId,permissionId,roleId);
+            if (roleResourcePermission!=null&&StatusTypeEnum.STATUS_ACTIVITY_YES.getValue().equals(roleResourcePermission.getStatus())){
+                result = true;
+            }
         }
+        return result;
     }
 
     /**
      *内部方法，拼接资源和权限ID
      */
     private Map<String,Object> getAttributes(Long resourceId,Long permissionId){
-        Map<String,Object> map=new HashMap<>();
+        Map<String,Object> map=new HashMap<>(1);
         map.put(PERMISSIONID_KEY,resourceId+RESOURCE_SYMBOL+permissionId);
         return map;
     }

@@ -18,7 +18,7 @@ import java.util.List;
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService {
+public class SysUserServiceImpl implements SysUserService {
 
     @Autowired
     private SysUserDao sysUserDao;
