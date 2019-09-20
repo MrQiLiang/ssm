@@ -131,7 +131,7 @@
                                     </div>
                                 </div><!-- /widget-main -->
 
-                                <div class="toolbar clearfix">
+                            <!--    <div class="toolbar clearfix">
                                     <div>
                                         <a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
                                             <i class="icon-arrow-left"></i>
@@ -146,6 +146,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                -->
                             </div><!-- /widget-body -->
                         </div><!-- /login-box -->
 

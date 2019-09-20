@@ -25,7 +25,7 @@
         <a href="#" class="navbar-brand">
             <small>
                 <i class="icon-leaf"></i>
-                ACE后台管理系统
+                ssm后台管理系统
             </small>
         </a><!-- /.brand -->
     </div><!-- /.navbar-header -->
@@ -256,13 +256,13 @@
                 </a>
 
                 <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                    <li>
+                   <!-- <li>
                         <a href="javascript:openSetting()">
                             <i class="icon-cog"></i>
                             设置
                         </a>
                     </li>
-
+                    -->
                     <li>
                         <a href="javascript:setUserData()">
                             <i class="icon-user"></i>
