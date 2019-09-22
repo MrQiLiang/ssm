@@ -55,7 +55,8 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.SysPermission">
+    <update id="update" parameterType="com.lq.entity.SysPermission" >
+
         UPDATE
             sys_permission
         <trim prefix="set" suffixOverrides=",">

@@ -15,7 +15,7 @@ import java.util.List;
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class WechatInfoServiceImpl extends BaseServiceImpl<WechatInfo> implements WechatInfoService {
+public class WechatInfoServiceImpl implements WechatInfoService {
 
     @Autowired
     private WechatInfoDao wechatInfoDao;

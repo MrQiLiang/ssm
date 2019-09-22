@@ -1,6 +1,7 @@
 package com.lq.code.service;
 
 import com.lq.code.dao.BaseDao;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,20 +12,39 @@ public interface BaseService<T> {
 
     BaseDao<T> getBaseDao();
 
-    T findOne(Long id);
+    default T findOne(Long id){
+       return getBaseDao().findOne(id);
+    }
 
-    List<T> findAll();
+    default List<T> findAll(){
+        return getBaseDao().findAll();
+    }
 
-    Long save(T entity);
+    default Long save(T entity){
+        return getBaseDao().save(entity);
+    }
 
-    void update(T entity);
+    default void update(T entity){
+        getBaseDao().update(entity);
+    }
 
-    void delete(Long id);
+    default void delete(Long id){
+        getBaseDao().delete(id);
+    }
 
-    void batchSave(List<T> entitylist);
+    @Transactional
+    default void batchSave(List<T> entitylist){
+        getBaseDao().batchSave(entitylist);
+    }
 
-    void batchUpdate(List<T> entitylist);
+    @Transactional
+    default void batchUpdate(List<T> entitylist){
+        getBaseDao().batchSave(entitylist);
+    }
 
-    void batchDelete(List<T> entitylist);
+    @Transactional
+    default void batchDelete(List<T> entitylist){
+        getBaseDao().batchDelete(entitylist);
+    }
 
 }

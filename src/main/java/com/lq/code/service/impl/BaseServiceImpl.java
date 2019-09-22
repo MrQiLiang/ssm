@@ -8,7 +8,9 @@ import java.util.List;
 
 /**
  * Created by qi_liang on 2018/6/21.
+ *  采用jdk8 默认方法，所以该实现类废弃
  */
+@Deprecated
 public abstract  class BaseServiceImpl<T> implements BaseService<T>{
     @Override
     public abstract BaseDao<T> getBaseDao();

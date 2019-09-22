@@ -52,13 +52,13 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
 
     @Override
     public List<MenusComposite> findMenusListBySysUserId(Long sysUserId, String contextPath) {
-        Map<String,Object> map=new HashMap(3);
+         Map<String,Object> map=new HashMap(3);
         map.put("userId",sysUserId);
         map.put("parentId", Constant.TOP_PARENT_ID);
         map.put("permissionId", PermissionTyepEnum.SELECT.getValue());
         List<SysResource> menusItmeList=sysResourceDao.findMenu(map);
         List<MenusComposite> list=new ArrayList<>();
-        for (SysResource sysResource:menusItmeList){
+        menusItmeList.forEach(sysResource->{
             MenusItem menusItem=new MenusItem();
             menusItem.setMenuname(sysResource.getMenuName());
             menusItem.setIcon(sysResource.getMenuIco());
@@ -74,7 +74,9 @@ public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> impleme
                 menusItem.add(menus);
             }
             list.add(menusItem);
-        }
+
+        });
+
         return list;
     }
 

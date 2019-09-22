@@ -8,11 +8,17 @@ import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysUserRoleVo;
 import com.lq.cms.vo.SysUserVo;
 import com.lq.code.entity.AjaxResult;
+import com.lq.code.interceptor.shiro.ShiroRealm;
 import com.lq.code.util.*;
 import com.lq.entity.SysUser;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.cache.Cache;
+import org.apache.shiro.mgt.RealmSecurityManager;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -136,7 +142,7 @@ public class UserController {
     }
 
     //内部方法 ，上传文件，并返回文件路径
-    private String upLoadFile(MultipartFile multipartFile){
+   final private String upLoadFile(MultipartFile multipartFile){
         String newFileName = null;
         if (multipartFile!=null && multipartFile.getSize()>0){
             UUID uuid = UUID.randomUUID();
@@ -181,15 +187,28 @@ public class UserController {
         return ajaxResult;
     }
 
-
-    public AjaxResult updateUser(SysUser sysUser){
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public AjaxResult updateUser(SysUser sysUser,@RequestParam(value = "uploadFile",required = false) MultipartFile uploadFile){
         Subject subject = SecurityUtils.getSubject();
         SysUser loginUser =(SysUser)subject.getPrincipal();
         if (loginUser!=null){
             BeanUtil.copyNotNull(loginUser,sysUser);
+            String uploadFileName =upLoadFile(uploadFile);
+            loginUser.setUpdateTime(new Date());
+            if (StringUtil.isNotNull(uploadFileName)) {
+                loginUser.setImgUrl(uploadFileName);
+            }
             sysUserService.update(loginUser);
+            RealmSecurityManager securityManager = (RealmSecurityManager) SecurityUtils.getSecurityManager();
+            PrincipalCollection principalCollection = subject.getPrincipals();
+            String realName = principalCollection.getRealmNames().iterator().next();
+            PrincipalCollection newPrincipalCollection = new SimplePrincipalCollection(loginUser,realName);
+            subject.runAs(newPrincipalCollection);
         }
-        return new AjaxResult();
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.setData(loginUser);
+        return ajaxResult;
     }
 
 

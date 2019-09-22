@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRole> implements SysUserRoleService {
+public class SysUserRoleServiceImpl  implements SysUserRoleService {
 
     @Autowired
     private SysUserRoleDao sysUserRoleDao;

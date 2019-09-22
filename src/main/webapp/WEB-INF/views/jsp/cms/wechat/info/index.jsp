@@ -26,9 +26,9 @@
                            console.log(row);
                             var html="<a href='#' onclick='openEdit(\"编辑\","+row.id+")'>编辑</a>&nbsp&nbsp";
                             html+="<a href='#' onclick='del("+row.id+")'>删除</a>&nbsp&nbsp";
-                            if (row.wechatInfoType!=1){
-                                html+="<a href='#' onclick='openMenu("+row.id+")'>菜单</a>&nbsp&nbsp";
-                            }
+                         //   if (row.wechatInfoType!=1){
+                        //        html+="<a href='#' onclick='openMenu("+row.id+")'>菜单</a>&nbsp&nbsp";
+                        //    }
                             html+="<a href='#' onclick='openRule("+row.id+")'>回复</a>&nbsp&nbsp";
                             return html;
                         }},

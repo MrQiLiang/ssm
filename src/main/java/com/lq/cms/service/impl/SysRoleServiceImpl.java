@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class SysRoleServiceImpl extends BaseServiceImpl<SysRole> implements SysRoleService {
+public class SysRoleServiceImpl  implements SysRoleService {
 
     @Autowired
     private SysRoleDao sysRoleDao;

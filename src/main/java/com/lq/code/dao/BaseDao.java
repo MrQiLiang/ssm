@@ -23,7 +23,7 @@ public interface BaseDao<T> extends BaseMapper<T> {
      * @param entity
      * @return
      */
-     void update(T entity);
+     int update(T entity);
 
     /**
      *  通过id 查找单个对象
@@ -43,25 +43,25 @@ public interface BaseDao<T> extends BaseMapper<T> {
      *  删除一条数据
      * @param id
      */
-     void delete(@Param("id") Long id);
+     int delete(@Param("id") Long id);
 
     /**
      *  批量保存数据
      * @param entitylist
      */
-    void batchSave(List<T> entitylist);
+    int batchSave(List<T> entitylist);
 
     /**
      *  批量更新数据
      * @param entitylist
      */
-     void batchUpdate(List<T> entitylist);
+     int batchUpdate(List<T> entitylist);
 
     /**
      *  批量删除数据
      * @param entitylist
      */
-    void batchDelete(List<T> entitylist);
+    int batchDelete(List<T> entitylist);
 
 
 }
