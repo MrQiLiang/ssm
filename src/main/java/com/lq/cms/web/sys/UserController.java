@@ -119,7 +119,6 @@ public class UserController {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMsg("更新失败");
             }
-
         return  ajaxResult;
     }
 

@@ -1,5 +1,6 @@
 package com.lq.code.interceptor;
 
+import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.code.util.CusAccessObjectUtil;
 import com.lq.dao.SysLogDao;
 import com.lq.entity.SysLog;
@@ -29,6 +30,7 @@ public class SpringmvcInterceptor implements HandlerInterceptor {
         log.setUserIp(ip);
         log.setUrl(request.getRequestURI());
         log.setCreateTime(new Date());
+        log.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         sysLogDao.save(log);
         return true;
     }
