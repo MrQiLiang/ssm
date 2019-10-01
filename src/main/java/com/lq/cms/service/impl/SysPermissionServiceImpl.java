@@ -39,30 +39,6 @@ public class SysPermissionServiceImpl  implements SysPermissionService{
     @Override
     public List<SysPermissionVo> findListPage(SysPermissionVo vo) {
         List<SysPermissionVo> sysPermissionVos = sysPermissionDao.findListPage(vo);
-        sysPermissionVos.forEach(sysPermissionVo1->{
-            Optional<Long> sysResourceIdOptional = Optional.of(sysPermissionVo1.getSysResourceId());
-            if (sysResourceIdOptional.isPresent()) {
-                SysResource sysResource = sysResourceDao.findOne(sysResourceIdOptional.get());
-                if (sysResource!=null) {
-                    sysPermissionVo1.setSysResourceName(sysResource.getMenuName());
-                }
-            }
-            Optional<Long> createUserIdOptional = Optional.of(sysPermissionVo1.getCreateUserId());
-            if (createUserIdOptional.isPresent()) {
-                SysUser createUser = sysUserDao.findOne(createUserIdOptional.get());
-                if (createUser!=null) {
-                    sysPermissionVo1.setCreateUserName(createUser.getLoginName());
-                }
-            }
-            Optional<Long> updateUserIdOptional = Optional.of(sysPermissionVo1.getUpdateUserId());
-            if (updateUserIdOptional.isPresent()) {
-                SysUser updateUser = sysUserDao.findOne(updateUserIdOptional.get());
-                if (updateUser!=null) {
-                    sysPermissionVo1.setUpdateUserName(updateUser.getLoginName());
-                }
-            }
-
-        });
         return sysPermissionVos;
     }
 
