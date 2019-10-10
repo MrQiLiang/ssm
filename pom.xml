@@ -507,6 +507,17 @@
       <systemPath>${basedir}/lib/json.jar</systemPath>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-spring</artifactId>
+      <version>5.14.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+      <version>3.2.8.RELEASE</version>
+    </dependency>
+
     <!-- 自动产生测试数据框架-->
     <dependency>
       <groupId>com.github.jsonzou</groupId>
@@ -529,6 +540,12 @@
       <artifactId>hutool-all</artifactId>
       <version>4.6.3</version>
     </dependency>
+      <dependency>
+          <groupId>org.jetbrains</groupId>
+          <artifactId>annotations</artifactId>
+          <version>16.0.3</version>
+          <scope>compile</scope>
+      </dependency>
 
 
   </dependencies>
