@@ -1,20 +1,21 @@
 package com.lq;
 
 
+import com.github.jsonzou.jmockdata.JMockData;
 import com.lq.cms.emun.BasicsPermissionKeyEnum;
 import com.lq.cms.emun.StatusTypeEnum;
+import com.lq.dao.SysLogDao;
 import com.lq.dao.SysPermissionDao;
 import com.lq.dao.SysResourceDao;
 import com.lq.dao.SysUserDao;
+import com.lq.entity.SysLog;
 import com.lq.entity.SysPermission;
 import com.lq.entity.SysResource;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class SysPermissionServiceTest extends BaseTest {
 
@@ -24,9 +25,20 @@ public class SysPermissionServiceTest extends BaseTest {
     private SysPermissionDao sysPermissionDao;
     @Autowired
     private SysResourceDao sysResourceDao;
+    @Autowired
+    private SysLogDao sysLogDao;
 
     @Test
     public void test1(){
+        int length = 1;
+
+        while (length>0){
+            SysLog sysLog = JMockData.mock(SysLog.class);
+            sysLog.setId(null);
+            sysLog.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+            sysLogDao.save(sysLog);
+            length--;
+        }
 
     }
 
@@ -51,7 +63,7 @@ public class SysPermissionServiceTest extends BaseTest {
                 sysPermission.setUpdateTime(new Date());
                 sysPermission.setUpdateUserId(1L);
               //  sysPermissionList.add(sysPermission);
-                sysPermissionDao.save(sysPermission);
+     //           sysPermissionDao.save(sysPermission);
             }
         });
         //3.权限入库

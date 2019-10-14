@@ -2,6 +2,7 @@ package com.lq.code.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author: qi
@@ -10,13 +11,20 @@ import java.util.List;
  */
 public class QueueDto<T> {
 
+    /**
+     * 队列内部数组
+     */
     private List<T> list;
-
-    private int index;
+    /**
+     * 队列索引　
+     */
+    private AtomicInteger index = new AtomicInteger(0);
 
 
     public QueueDto() {
+
         this.list = new ArrayList<>();
+
     }
 
     public QueueDto(int size) {
@@ -25,14 +33,15 @@ public class QueueDto<T> {
 
     public void add(T t){
         list.add(t);
-        index ++;
+        index.getAndIncrement();
+
     }
 
-    public synchronized T pop(){
+    public  T pop(){
         T t = null;
         if (hasNext()) {
-            index--;
-            t = list.get(index);
+            index.getAndAdd(-1);
+            t = list.get(index.get());
         }
         return t;
     }
@@ -41,9 +50,10 @@ public class QueueDto<T> {
      *  判断是否还有元素存在
      * @return
      */
-    public synchronized boolean hasNext(){
+    public boolean hasNext(){
         boolean result = true;
-        if (index==0){
+        int nowIndex = index.get();
+        if (nowIndex == 0){
             result = false;
         }
         return result;
@@ -51,7 +61,7 @@ public class QueueDto<T> {
 
     public int getIndex(){
 
-        return this.index;
+        return this.index.get();
     }
 
 }

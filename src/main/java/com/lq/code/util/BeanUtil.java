@@ -186,6 +186,11 @@ public class BeanUtil {
         return set;
     }
 
+    /**
+     * 扫描包路径，并返回一个队列class
+     * @param packagePath
+     * @return
+     */
     public static QueueDto<Class> getQueueDto(String packagePath){
         QueueDto<Class> classQueueDto = new QueueDto<>();
         String separator = File.separator;
