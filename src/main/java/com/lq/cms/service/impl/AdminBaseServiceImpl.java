@@ -5,14 +5,13 @@ import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.service.AdminBaseService;
 import com.lq.cms.vo.AdminBaseVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.BeanUtil;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
 
-public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo> extends BaseServiceImpl<T> implements AdminBaseService<T,V>{
+public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo>  implements AdminBaseService<T,V>{
 
     abstract AdminBaseDao<T,V> getAdminBaseDao();
 
