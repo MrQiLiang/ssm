@@ -49,13 +49,13 @@
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="login-container">
-                    <div class="center">
+                    <div id="center" class="center">
                         <h1>
                             <i class="icon-leaf green"></i>
-                            <span class="red">ssm</span>
-                            <span class="white">管理后台应用</span>
+                            <span class="red">{{projectName}}</span>
+                            <span class="white">{{title}}</span>
                         </h1>
-                        <h4 class="blue">&copy; 星期八</h4>
+                        <h4 class="blue">&copy;{{author}}</h4>
                     </div>
 
                     <div class="space-6"></div>
@@ -96,7 +96,7 @@
 
                                             <div class="space"></div>
 
-                                            <div class="clearfix">
+                                            <div id="clearfix" class="clearfix">
                                                 <label class="inline">
                                                     <input type="checkbox" class="ace" id="rememberMe"/>
                                                     <span class="lbl"> 记住 我</span>
@@ -303,9 +303,20 @@
 <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
 <!-- inline scripts related to this page -->
 <script type="text/javascript" src="${ctx}/resources/code/js/jquery.tips.js"></script>
+<script type="text/javascript" src="${ctx}/resources/plugins/vue/vue.js"></script>
 <script type="text/javascript">
-    var mediator = new Object();
+    const stringApp = new Vue({
+       el: '#center',
+       data: {
+           projectName: 'ssm',
+           title: '管理后台应用',
+           author: '星期八',
 
+       }
+
+    });
+
+    var mediator = new Object();
     function show_box(id) {
         jQuery('.widget-box.visible').removeClass('visible');
         jQuery('#'+id).addClass('visible');
