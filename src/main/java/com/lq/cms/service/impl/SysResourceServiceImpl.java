@@ -8,7 +8,6 @@ import com.lq.cms.mode.MenusItem;
 import com.lq.cms.service.SysResourceService;
 import com.lq.cms.vo.SysResourceVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.Constant;
 import com.lq.dao.SysResourceDao;
 import com.lq.entity.SysResource;
@@ -16,13 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 /**
  * Created by qi_liang on 2018/6/21.
  */
 @Service
-public class SysResourceServiceImpl extends BaseServiceImpl<SysResource> implements SysResourceService {
+public class SysResourceServiceImpl  implements SysResourceService {
 
     @Autowired
     private SysResourceDao sysResourceDao;

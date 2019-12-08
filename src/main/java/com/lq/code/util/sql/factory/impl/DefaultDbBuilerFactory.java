@@ -23,6 +23,7 @@ public class DefaultDbBuilerFactory implements DbBuilerFactory {
             case SqlConstant.DB_TYPE_ORACLE:
                 abstractDbBuiler = new OracleBuiler();
                 break;
+           default: abstractDbBuiler = null;
         }
         return abstractDbBuiler;
     }

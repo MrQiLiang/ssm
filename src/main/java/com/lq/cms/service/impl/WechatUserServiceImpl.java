@@ -2,7 +2,6 @@ package com.lq.cms.service.impl;
 
 import com.lq.cms.service.WechatUserService;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.dao.WechatUserDao;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatUser;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @Date: Create in 9:02 PM 2019/3/16
  */
 @Service
-public class WechatUserServiceImpl extends BaseServiceImpl<WechatUser> implements WechatUserService {
+public class WechatUserServiceImpl  implements WechatUserService {
 
     @Autowired
     private WechatUserDao wechatUserDao;

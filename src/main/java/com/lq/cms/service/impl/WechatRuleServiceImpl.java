@@ -6,7 +6,6 @@ import com.lq.cms.emun.WechatMessageTypeEnum;
 import com.lq.cms.service.WechatRuleService;
 import com.lq.cms.vo.WechatRuleVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.BeanUtil;
 import com.lq.dao.WechatKeywordDao;
 import com.lq.dao.WechatMessageDao;
@@ -35,7 +34,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * @Date: Create in 5:55 AM 2019/5/11
  */
 @Service
-public class WechatRuleServiceImpl extends BaseServiceImpl<WechatRule> implements WechatRuleService {
+public class WechatRuleServiceImpl  implements WechatRuleService {
 
     @Autowired
     private WechatRuleDao wechatRuleDao;

@@ -8,14 +8,11 @@ import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysUserRoleVo;
 import com.lq.cms.vo.SysUserVo;
 import com.lq.code.entity.AjaxResult;
-import com.lq.code.interceptor.shiro.ShiroRealm;
 import com.lq.code.util.*;
 import com.lq.entity.SysUser;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.cache.Cache;
 import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
@@ -58,7 +55,7 @@ public class UserController {
     private SysUserRoleService sysUserRoleService;
 
     @Value("${file.upload}")
-    private String FILE_LOAD_PATH;
+    private String fileLoadPath;
 
     @RequestMapping("/index")
     public ModelAndView  index(ModelAndView modelAndView){
@@ -148,7 +145,7 @@ public class UserController {
             UUID uuid = UUID.randomUUID();
             String fileType = FileUtil.fileFormat(multipartFile.getOriginalFilename());
             newFileName = "user/"+uuid.toString()+"."+fileType;
-            File newFile = new File(FILE_LOAD_PATH +newFileName);
+            File newFile = new File(fileLoadPath +newFileName);
             if (!newFile.exists()){
                 newFile.mkdirs();
             }

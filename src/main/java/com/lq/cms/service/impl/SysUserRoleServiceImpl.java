@@ -3,7 +3,6 @@ package com.lq.cms.service.impl;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.service.SysUserRoleService;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.dao.SysUserRoleDao;
 import com.lq.entity.SysUserRole;
 import org.springframework.beans.factory.annotation.Autowired;

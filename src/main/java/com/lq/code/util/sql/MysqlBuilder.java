@@ -42,7 +42,7 @@ public class MysqlBuilder extends AbstractDbBuiler {
         if(tableList!=null&&tableList.size()>0) {
             Iterator<Table> tableIterator = tableList.iterator();
             while (tableIterator.hasNext()) {
-                Table table = (Table) tableIterator.next();
+                Table table = tableIterator.next();
                 if (map.containsKey(table.getTableName())) {
                     Class clazz = map.get(table.getTableName());
                     Map<String, Object> clazzMap = new HashMap<>();

@@ -29,7 +29,7 @@ public class SysFileController  {
 
 
     @Value("${file.upload}")
-    private String FILE_LOAD_PATH;
+    private String fileLoadPath;
     @Autowired
     private SysFileService sysFileService;
 
@@ -41,14 +41,14 @@ public class SysFileController  {
         ajaxResult.setMsg("上传成功");
         Date nowTime = new Date();
         SimpleDateFormat sdf =new SimpleDateFormat("yyyyMMdd");
-        File fileDir = new File(FILE_LOAD_PATH+sdf.format(nowTime));
+        File fileDir = new File(fileLoadPath+sdf.format(nowTime));
         if (!fileDir.exists()){
             fileDir.mkdirs();
         }
         List<SysFile> sysFileList = new ArrayList<>();
         for (MultipartFile multipartFile:files){
             String originalFileName = multipartFile.getOriginalFilename();
-            Path path = FileSystems.getDefault().getPath(FILE_LOAD_PATH+sdf.format(nowTime),originalFileName);
+            Path path = FileSystems.getDefault().getPath(fileLoadPath+sdf.format(nowTime),originalFileName);
             //上传文件
             multipartFile.transferTo(path);
             //保存文件信息

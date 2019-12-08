@@ -44,7 +44,7 @@ public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo>  implements 
 
     @Override
     public T update(AdminBaseVo vo) {
-        T t = (T) getBaseDao().findOne(vo.getId());
+        T t = getBaseDao().findOne(vo.getId());
         BeanUtil.copyNotNull(t,vo);
         getBaseDao().update(t);
         return t;

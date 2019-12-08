@@ -25,8 +25,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("/ueditor")
 public class UmUeditorFileController {
 
+    /**
+     * 文件上传路径
+     */
     @Value("${file.upload}")
-    private String FILE_LOAD_PATH;
+    private String fileLoadPath;
 
 
     @RequestMapping(value = "/fileupload",method = RequestMethod.POST)
@@ -36,7 +39,7 @@ public class UmUeditorFileController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         UeditorVo vo = null;
         if (files!=null&&files.length>0){
-            File fileDir = new File(FILE_LOAD_PATH+"images/"+sdf.format(nowTime));
+            File fileDir = new File(fileLoadPath+"images/"+sdf.format(nowTime));
             if (!fileDir.exists()){
                 fileDir.mkdirs();
             }

@@ -2,16 +2,13 @@ package com.lq.cms.web.wechat;
 
 import com.lq.cms.emun.WechatMessageTypeEnum;
 import com.lq.cms.mode.AdminDataGridParam;
-import com.lq.cms.service.AdminBaseService;
 import com.lq.cms.service.WechatMessageService;
 import com.lq.cms.vo.WechatMessageBo;
 import com.lq.cms.vo.WechatMessageVo;
-import com.lq.cms.web.AdminBaseController;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
 import com.lq.code.util.FileUtil;
 import com.lq.code.util.StringUtil;
-import com.lq.entity.SysUser;
 import com.lq.entity.WechatMessage;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +40,7 @@ public class WechatMessageController {
     private WechatMessageService wechatMessageService;
 
     @Value("${file.upload}")
-    private String FILE_LOAD_PATH;
+    private String fileLoadPath;
 
 
     @RequestMapping("/index")
@@ -131,7 +128,7 @@ public class WechatMessageController {
             UUID uuid = UUID.randomUUID();
             String fileType = FileUtil.fileFormat(multipartFile.getOriginalFilename());
             newFileName = "wechat/"+uuid.toString()+"."+fileType;
-            File newFile = new File(FILE_LOAD_PATH +newFileName);
+            File newFile = new File(fileLoadPath +newFileName);
 
             if (!newFile.exists()){
                 newFile.mkdirs();
