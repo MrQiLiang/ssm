@@ -9,13 +9,13 @@
         country,unionid,sybscribe_scene,qr_scene,qr_scene_str,subscribe_time,city,tagid_id,open_id,nick_name,sex,groupid,language,remark,province,head_img_url,wechat_info_id,id,status
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.WechatUser" parameterType="long">
+    <select id="findOne" resultType="WechatUser" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM  wechat_user
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.WechatUser">
+    <select id="findAll" resultType="WechatUser">
         SELECT <include refid="column_list"/>
           FROM  wechat_user
         WHERE status = 1
@@ -27,7 +27,7 @@
         WHERE status = 1
     </select>
 
-    <insert id="save"  parameterType="com.lq.entity.WechatUser" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save"  parameterType="WechatUser" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -41,7 +41,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.WechatUser">
+    <update id="update" parameterType="WechatUser">
         UPDATE
             wechat_user
         <trim prefix="set" suffixOverrides=",">
