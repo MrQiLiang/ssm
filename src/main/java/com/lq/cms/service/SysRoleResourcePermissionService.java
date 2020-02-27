@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Created by qi_liang on 2018/6/21.
+ * @author qi
+ * 角色菜单权限关联类
  */
 public interface SysRoleResourcePermissionService extends BaseService<SysRoleResourcePermission> {
 
