@@ -9,8 +9,6 @@ import com.lq.code.web.BaseController;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatUser;
 import com.lq.wechat.mode.message.BaseMessage;
-import com.lq.wechat.mode.message.ItemMessage;
-import com.lq.wechat.mode.message.NewsMessage;
 import com.lq.wechat.mode.message.TextMessage;
 import com.lq.wechat.util.CheckUtil;
 import com.lq.wechat.util.ConstantSet;
@@ -26,8 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -92,99 +88,79 @@ public class  WechatController extends BaseController {
             //微信公众号详情
             WechatInfo wechatInfo = wechatInfoService.getByOpenId(wechatOpenId);
 
-            TextMessage text = new TextMessage();
-            text.setFromUserName(wechatOpenId);
-            text.setToUserName(openId);
-            text.setMsgType(ConstantSet.MESSAGE_TYPE_TEXT);
+            if (wechatInfo!=null) {
+                TextMessage text = new TextMessage();
+                text.setFromUserName(wechatOpenId);
+                text.setToUserName(openId);
+                text.setMsgType(ConstantSet.MESSAGE_TYPE_TEXT);
 
-            text.setCreateTime(System.currentTimeMillis());
+                text.setCreateTime(System.currentTimeMillis());
 
-            switch (msgType) {
-                case ConstantSet.MESSAGE_TYPE_TEXT:
-                    String content = map.get(WECHAT_CONTENT_KEY);
-                    BaseMessage baseMessage = wechatRuleService.getByKeyworkdAndWechatInfoId(content,wechatInfo);
-                    baseMessage.setCreateTime(System.currentTimeMillis());
-                    baseMessage.setFromUserName(wechatOpenId);
-                    baseMessage.setToUserName(openId);
-                    message = MessageUtil.MessageToXml(baseMessage);
-//                    if("1".equals(content)){
-//                        NewsMessage newsMessage=new NewsMessage();
-//                        List<ItemMessage> items=new ArrayList<>();
-//                        ItemMessage item=new ItemMessage();
-//                        item.setTitle("六弄咖啡馆");
-//                        item.setDescription("两个人在爱在距离面前是否禁受考验？");
-//                        String path = req.getContextPath();
-//                        String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+path+"/";
-//                        item.setPicUrl("https://img3.doubanio.com/view/photo/l/public/p2367455902.webp");
-//                        item.setUrl("http://www.iqiyi.com/v_19rr95j3vc.html?vfm=2008_aldbd");
-//                        items.add(item);
-//                        newsMessage.setArticles(items);
-//                        newsMessage.setArticleCount(1);
-//                        newsMessage.setCreateTime(System.currentTimeMillis());
-//                        newsMessage.setFromUserName(wechatOpenId);
-//                        newsMessage.setMsgType(ConstantSet.MESSAGE_TYPE_NEW);
-//                        newsMessage.setToUserName(openId);
-//                        message = MessageUtil.MessageToXml(newsMessage);
-//                    } else{
-//                        text.setContent("您发送的消息是：" + content);
-//                        message = MessageUtil.MessageToXml(text);
-//                    }
-                    break;
-                case ConstantSet.MESSAGE_TYPE_IMAGE:
+                switch (msgType) {
+                    case ConstantSet.MESSAGE_TYPE_TEXT:
+                        String content = map.get(WECHAT_CONTENT_KEY);
+                        BaseMessage baseMessage = wechatRuleService.getByKeyworkdAndWechatInfoId(content, wechatInfo);
+                        baseMessage.setCreateTime(System.currentTimeMillis());
+                        baseMessage.setFromUserName(wechatOpenId);
+                        baseMessage.setToUserName(openId);
+                        message = MessageUtil.MessageToXml(baseMessage);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_IMAGE:
 
-                    text.setContent("您发送的消息是：" + "图片");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
-                case ConstantSet.MESSAGE_TYPE_VIDEO:
-                    text.setContent("您发送的消息是：" + "视频");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
-                case ConstantSet.MESSAGE_TYPE_SHORTVIDEO:
-                    text.setContent("您发送的消息是：" + "小视频");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
-                case ConstantSet.MESSAGE_TYPE_VOICE:
-                    text.setContent("您发送的消息是：" + "语音");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
-                case ConstantSet.MESSAGE_TYPE_LINK:
-                    text.setContent("您发送的消息是：" + "链接");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
-                case ConstantSet.MESSAGE_TYPE_LOCATION:
-                    text.setContent("您发送的消息是：" + "位置");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
-                case ConstantSet.MESSAGE_TYPE_EVENT:
-                    String event = map.get("Event");
-                    switch (event) {
-                        case ConstantSet.EVENT_TYPE_SUBSCRIBE:
-                            LOGGER.info("微信公众号关注事件："+wechatInfo.getWechatName());
-                            //公众号在认证的情况下才可以获取用户信息
-                            if (WechatInfoCertificationTypeEnum.CERTIFICATION_YES.getValue().equals(wechatInfo.getCertification())) {
-                                WechatUser wechatUser = wechatUserService.saveWechatUser(openId, wechatInfo);
-                            }
+                        text.setContent("您发送的消息是：" + "图片");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_VIDEO:
+                        text.setContent("您发送的消息是：" + "视频");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_SHORTVIDEO:
+                        text.setContent("您发送的消息是：" + "小视频");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_VOICE:
+                        text.setContent("您发送的消息是：" + "语音");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_LINK:
+                        text.setContent("您发送的消息是：" + "链接");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_LOCATION:
+                        text.setContent("您发送的消息是：" + "位置");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                    case ConstantSet.MESSAGE_TYPE_EVENT:
+                        String event = map.get("Event");
+                        switch (event) {
+                            case ConstantSet.EVENT_TYPE_SUBSCRIBE:
+                                LOGGER.info("微信公众号关注事件：" + wechatInfo.getWechatName());
+                                //公众号在认证的情况下才可以获取用户信息
+                                if (WechatInfoCertificationTypeEnum.CERTIFICATION_YES.getValue().equals(wechatInfo.getCertification())) {
+                                    WechatUser wechatUser = wechatUserService.saveWechatUser(openId, wechatInfo);
+                                }
 
-                            break;
-                        case ConstantSet.EVENT_TYPE_UNSUBSCRIBE:
-                            ;
-                            break;
-                        case ConstantSet.EVENT_TYPE_CLICK:
-                            //自定义菜单点击事件KEY值
-                            String eventKey = map.get(ConstantSet.EVENT_CLICK_KEY);
+                                break;
+                            case ConstantSet.EVENT_TYPE_UNSUBSCRIBE:
+                                ;
+                                break;
+                            case ConstantSet.EVENT_TYPE_CLICK:
+                                //自定义菜单点击事件KEY值
+                                String eventKey = map.get(ConstantSet.EVENT_CLICK_KEY);
 
-                            ;
-                            break;
-                        default:
-                            break;
-                    }
+                                ;
+                                break;
+                            default:
+                                break;
+                        }
 
-                    break;
+                        break;
 
-                default:
-                    text.setContent("您发送的消息是：" + "无法理解");
-                    message = MessageUtil.MessageToXml(text);
-                    break;
+                    default:
+                        text.setContent("您发送的消息是：" + "无法理解");
+                        message = MessageUtil.MessageToXml(text);
+                        break;
+                }
             }
 
         } catch (Exception e) {

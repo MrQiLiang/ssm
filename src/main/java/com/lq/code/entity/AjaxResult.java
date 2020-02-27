@@ -2,13 +2,20 @@ package com.lq.code.entity;
 
 /**
  * Created by qi on 2018-1-9.
+ * @author qi
  */
 public class AjaxResult {
-    //操作结果
-    private Boolean success;
-    //提示信息
+    /**
+     * 操作结果
+     */
+    private boolean success;
+    /**
+     * 提示信息
+     */
     private String msg;
-    //返回数据
+    /**
+     * 返回数据
+     */
     private Object data;
 
     public AjaxResult() {
@@ -45,5 +52,21 @@ public class AjaxResult {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public static AjaxResult getInstance(){
+
+        return new AjaxResult();
+    }
+
+    public static AjaxResult getSuccessInstance(){
+
+        return new AjaxResult();
+    }
+
+    public static AjaxResult getSuccessInstance(Object data){
+        AjaxResult  ajaxResult = new AjaxResult();
+        ajaxResult.setData(data);
+        return ajaxResult;
     }
 }
