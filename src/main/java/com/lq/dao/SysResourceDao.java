@@ -10,6 +10,8 @@ import java.util.Map;
 
 /**
  * Created by qi on 2017-11-29.
+ * @author qi
+ * 菜单资源类
  */
 public interface SysResourceDao extends BaseDao<SysResource> {
      /**
@@ -19,12 +21,32 @@ public interface SysResourceDao extends BaseDao<SysResource> {
       */
      List<SysResource> findByParentId(@Param("parentId") Long parentId);
 
+     /**
+      *  参数查询
+      * @param vo
+      * @return
+      */
      List<SysResource> findList(SysResourceVo vo);
 
+     /**
+      * 参数查询实体类
+      * @param vo
+      * @return
+      */
      List<SysResourceVo> findListPage(SysResourceVo vo);
 
+     /**
+      * 参数统计
+      * @param vo
+      * @return
+      */
      Integer count(SysResourceVo vo);
 
+     /**
+      *
+      * @param map
+      * @return
+      */
      List<SysResource> findMenu(Map<String, Object> map);
 
 }
