@@ -27,6 +27,9 @@
     </script>
 </head>
 <body>
+<div id="searchFrom">
+    时间: <input class="easyui-datebox"> - <input class="easyui-datebox">
+</div>
 <table id="dataList"></table>
 </body>
 </html>
