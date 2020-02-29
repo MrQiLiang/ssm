@@ -9,13 +9,13 @@
         to_url,message_type,create_time,image_url,update_time,id,title,media_id,user_id,content,status
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.WechatMessage" parameterType="long">
+    <select id="findOne" resultType="WechatMessage" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM  wechat_message
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.WechatMessage">
+    <select id="findAll" resultType="WechatMessage">
         SELECT <include refid="column_list"/>
           FROM  wechat_message
         WHERE status = 1
@@ -27,7 +27,7 @@
         WHERE status = 1
     </select>
 
-    <insert id="save"  parameterType="com.lq.entity.WechatMessage" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save"  parameterType="WechatMessage" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -41,7 +41,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.WechatMessage">
+    <update id="update" parameterType="WechatMessage">
         UPDATE
             wechat_message
         <trim prefix="set" suffixOverrides=",">
@@ -78,7 +78,7 @@
           status = 1
     </select>
 
-    <select id="findAllByWechatMessageVo" resultType="com.lq.entity.WechatMessage" parameterType="WechatMessageVo">
+    <select id="findAllByWechatMessageVo" resultType="WechatMessage" parameterType="WechatMessageVo">
         SELECT <include refid="column_list"/>
           FROM wechat_message
         WHERE

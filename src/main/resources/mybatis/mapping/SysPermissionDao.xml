@@ -12,13 +12,13 @@
         permission_type,permission_key,name,sys_resource_id,sp.id,sp.status,sp.create_time,sp.create_user_id,sp.update_time,sp.update_user_id
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.SysPermission" parameterType="long">
+    <select id="findOne" resultType="SysPermission" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM  sys_permission
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.SysPermission">
+    <select id="findAll" resultType="SysPermission">
         SELECT <include refid="column_list"/>
           FROM  sys_permission
         WHERE status = 1
@@ -40,7 +40,7 @@
         WHERE status = 1
     </select>
 
-    <select id="findBySysResourceId" resultType="com.lq.entity.SysPermission" parameterType="long">
+    <select id="findBySysResourceId" resultType="SysPermission" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM sys_permission
         WHERE status = 1
@@ -48,7 +48,7 @@
         ORDER BY create_time DESC,update_time DESC
     </select>
 
-    <insert id="save"  parameterType="com.lq.entity.SysPermission" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save"  parameterType="SysPermission" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -62,7 +62,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.SysPermission" >
+    <update id="update" parameterType="SysPermission" >
 
         UPDATE
             sys_permission

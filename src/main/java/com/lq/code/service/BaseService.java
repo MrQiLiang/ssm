@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface BaseService<T> {
 
-    BaseDao<T> getBaseDao();
+    BaseDao<T>      getBaseDao();
 
     default T findOne(Long id){
        return getBaseDao().findOne(id);
