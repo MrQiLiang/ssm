@@ -72,7 +72,7 @@ public class IndexController {
         context.getServerInfo();
         DbInfo dbInfo = JdbcUtils.getDBInfo();
         OsInfo osInfo = OsUtil.getInfo();
-        String serverIp = NetUtil.getIP();
+        String serverIp = NetUtil.getLocalIpAddr();
         JvmInfo jvmInfo = JvmUtil.getInfo();
         vo.setDbInfo(dbInfo);
         vo.setUserIP(userIp);
