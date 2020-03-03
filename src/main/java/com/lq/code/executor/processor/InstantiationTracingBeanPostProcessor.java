@@ -13,6 +13,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import java.util.Set;
 
 /**
+ * 扫描实体类自动同步表结构类
  * @author qi
  */
 public class InstantiationTracingBeanPostProcessor implements ApplicationListener<ContextRefreshedEvent> {

@@ -9,15 +9,15 @@
     <sql id="column_list">
         id,wechat_open_id,app_secpet,create_time,app_id,encoding_type,wechat_name,url,token,encoding_aes_key,last_update_time,status,wechat_info_type,certification,open_reply
     </sql>
-    <select id="findOne" resultType="com.lq.entity.WechatInfo" parameterType="long">
+    <select id="findOne" resultType="WechatInfo" parameterType="long">
         SELECT <include refid="column_list"/> FROM  wechat_info  WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.WechatInfo">
+    <select id="findAll" resultType="WechatInfo">
         SELECT <include refid="column_list"/> FROM  wechat_info WHERE status = 1
     </select>
 
-    <insert id="save" parameterType="com.lq.entity.WechatInfo" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="WechatInfo" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -31,7 +31,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.WechatInfo">
+    <update id="update" parameterType="WechatInfo">
         UPDATE
             wechat_info
         <trim prefix="set" suffixOverrides=",">
@@ -65,18 +65,18 @@
 
     </delete>
 
-    <select id="count" resultType="int" parameterType="com.lq.cms.vo.WechatInfoVo">
+    <select id="count" resultType="int" parameterType="WechatInfoVo">
         SELECT count(id) FROM wechat_info
     </select>
 
-    <select id="findListPage" parameterType="com.lq.cms.vo.WechatInfoVo" resultType="com.lq.cms.vo.WechatInfoVo">
+    <select id="findListPage" parameterType="WechatInfoVo" resultType="WechatInfoVo">
         SELECT <include refid="column_list"/>
         FROM wechat_info t1
         WHERE status = 1
         ORDER BY t1.create_time DESC
     </select>
 
-    <select id="getByWechatOpenId" resultType="com.lq.entity.WechatInfo" parameterType="string">
+    <select id="getByWechatOpenId" resultType="WechatInfo" parameterType="string">
       SELECT <include refid="column_list"/>
         FROM wechat_info wi
       WHERE

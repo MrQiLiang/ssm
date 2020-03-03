@@ -6,6 +6,7 @@ import java.util.Date;
 
 /** 系统日志表
  * Created by qi on 2017/7/27.
+ * @author qi
  */
 public class SysLog extends IdEntity {
     /**

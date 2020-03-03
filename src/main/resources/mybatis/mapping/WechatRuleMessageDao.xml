@@ -9,13 +9,13 @@
         wechat_rule_id,id,wechat_message_id,status,create_time
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.WechatRuleMessage" parameterType="long">
+    <select id="findOne" resultType="WechatRuleMessage" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM  wechat_rule_message
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.WechatRuleMessage">
+    <select id="findAll" resultType="WechatRuleMessage">
         SELECT <include refid="column_list"/>
           FROM  wechat_rule_message
         WHERE status = 1
@@ -27,7 +27,7 @@
         WHERE status = 1
     </select>
 
-    <insert id="save"  parameterType="com.lq.entity.WechatRuleMessage" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save"  parameterType="WechatRuleMessage" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -41,7 +41,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.WechatRuleMessage">
+    <update id="update" parameterType="WechatRuleMessage">
         UPDATE
             wechat_rule_message
         <trim prefix="set" suffixOverrides=",">
@@ -64,7 +64,7 @@
             id=#{id}
     </update>
     
-    <select id="getByRuleIdAndMessageId" resultType="com.lq.entity.WechatRuleMessage" parameterType="Long">
+    <select id="getByRuleIdAndMessageId" resultType="WechatRuleMessage" parameterType="Long">
         SELECT <include refid="column_list"/>
           FROM wechat_rule_message
         WHERE status = 1
@@ -72,7 +72,7 @@
           AND wechat_rule_id = #{ruleId}
     </select>
 
-    <select id="findByWechatRuleId" resultType="com.lq.entity.WechatRuleMessage" parameterType="Long">
+    <select id="findByWechatRuleId" resultType="WechatRuleMessage" parameterType="Long">
         SELECT <include refid="column_list"/>
           FROM wechat_rule_message
         WHERE status = 1

@@ -51,7 +51,6 @@ public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePer
     public List<ZtreeComposite> findZtree(Long roleId) {
         List<ZtreeComposite> ztreeList=new ArrayList<>();
         List<SysResource> resourceList=sysResourceDao.findByParentId(0L);
-
         for (SysResource sysResource:resourceList){
             ZtreeItem ztreeItem=new ZtreeItem();
             ztreeItem.setId(sysResource.getId());

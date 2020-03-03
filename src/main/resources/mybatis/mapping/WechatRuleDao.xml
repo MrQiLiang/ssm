@@ -9,13 +9,13 @@
         create_user_id,reply_type,create_time,update_user_id,rule_name,wechat_info_id,update_time,id,status
     </sql>
 
-    <select id="findOne" resultType="com.lq.entity.WechatRule" parameterType="long">
+    <select id="findOne" resultType="WechatRule" parameterType="long">
         SELECT <include refid="column_list"/>
           FROM  wechat_rule
         WHERE id=#{id} AND status = 1
     </select>
 
-    <select id="findAll" resultType="com.lq.entity.WechatRule">
+    <select id="findAll" resultType="WechatRule">
         SELECT <include refid="column_list"/>
           FROM  wechat_rule
         WHERE status = 1
@@ -28,7 +28,7 @@
         WHERE status = 1
     </select>
 
-    <insert id="save"  parameterType="com.lq.entity.WechatRule" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save"  parameterType="WechatRule" useGeneratedKeys="true" keyProperty="id">
 
         <selectKey keyProperty="id" order="AFTER" resultType="Long">
             SELECT LAST_INSERT_ID()
@@ -42,7 +42,7 @@
     </insert>
 
 
-    <update id="update" parameterType="com.lq.entity.WechatRule">
+    <update id="update" parameterType="WechatRule">
         UPDATE
             wechat_rule
         <trim prefix="set" suffixOverrides=",">
@@ -70,7 +70,7 @@
             id=#{id}
     </update>
 
-    <select id="findByWechatInfoIdAndStatus" resultType="com.lq.entity.WechatRule" >
+    <select id="findByWechatInfoIdAndStatus" resultType="WechatRule" >
       SELECT  <include refid="column_list"/>
         FROM wechat_rule
       WHERE
