@@ -5,7 +5,6 @@ import com.lq.cms.service.SysRoleService;
 import com.lq.cms.vo.SysRoleVo;
 import com.lq.cms.vo.SysUserRoleVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.dao.SysRoleDao;
 import com.lq.dao.SysRoleResourcePermissionDao;
 import com.lq.dao.SysUserRoleDao;

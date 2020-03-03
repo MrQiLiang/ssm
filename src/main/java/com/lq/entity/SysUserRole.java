@@ -6,6 +6,7 @@ import java.util.Date;
 
 /** 用户角色表
  * Created by qi on 2017-11-29.
+ * @author qi
  */
 public class SysUserRole extends IdEntity {
 

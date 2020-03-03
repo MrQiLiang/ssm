@@ -6,6 +6,7 @@ import java.util.Date;
 
 /** 资源表
  * Created by qi on 2017-11-29.
+ * @author qi
  */
 public class SysResource extends IdEntity {
 

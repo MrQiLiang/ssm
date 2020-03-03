@@ -12,6 +12,7 @@ import java.util.Date;
  *          坏处：
  *            1.在此可能衍生的问题可能是无意的修改导致其他公众号的消息也改变。
  *              有牵一发而动全身的风险。
+ * @author qi
  */
 public class WechatMessage extends IdEntity{
     /**

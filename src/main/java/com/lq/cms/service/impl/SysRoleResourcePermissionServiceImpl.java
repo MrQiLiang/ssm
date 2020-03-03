@@ -10,7 +10,6 @@ import com.lq.cms.service.SysRoleResourcePermissionService;
 import com.lq.cms.vo.PermissionVo;
 import com.lq.cms.vo.SysRoleResourcePermissionVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.dao.SysPermissionDao;
 import com.lq.dao.SysResourceDao;
 import com.lq.dao.SysRoleResourcePermissionDao;

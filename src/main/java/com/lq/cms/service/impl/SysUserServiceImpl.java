@@ -3,7 +3,6 @@ package com.lq.cms.service.impl;
 import com.lq.cms.service.SysUserService;
 import com.lq.cms.vo.SysUserVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.Md5Util;
 import com.lq.dao.SysUserDao;
 import com.lq.dao.SysUserRoleDao;

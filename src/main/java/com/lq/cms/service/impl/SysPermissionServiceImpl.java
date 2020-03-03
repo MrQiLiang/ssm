@@ -4,13 +4,11 @@ import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.service.SysPermissionService;
 import com.lq.cms.vo.SysPermissionVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.code.util.BeanUtil;
 import com.lq.dao.SysPermissionDao;
 import com.lq.dao.SysResourceDao;
 import com.lq.dao.SysUserDao;
 import com.lq.entity.SysPermission;
-import com.lq.entity.SysResource;
 import com.lq.entity.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @Author: qi
