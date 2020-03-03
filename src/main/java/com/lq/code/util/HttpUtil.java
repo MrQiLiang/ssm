@@ -17,7 +17,7 @@ public class HttpUtil {
         BufferedReader in=null;
         try {
             String urlNameString=url+"?"+param;
-            URL reaulUrl=new URL("http://www.baidu.com");
+            URL reaulUrl=new URL(urlNameString);
             URLConnection connection=reaulUrl.openConnection();
             // 设置通用的请求属性
 

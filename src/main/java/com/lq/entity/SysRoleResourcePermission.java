@@ -6,6 +6,7 @@ import java.util.Date;
 
 /** 权限角色资源关联表
  * Created by qi on 2017-11-29.
+ * @author qi
  */
 public class SysRoleResourcePermission extends IdEntity {
 

@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * 微信公众号-获取accessToken
  * Created by qi_liang on 2018/5/24.
+ * @author qi
  */
 public class WechatAccessToken extends IdEntity{
     /**

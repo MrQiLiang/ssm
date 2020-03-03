@@ -4,6 +4,7 @@ import com.lq.code.entity.IdEntity;
 
 /**
  *  微信公众号设置表
+ * @author qi
  */
 public class WechatInfoSetting extends IdEntity {
 

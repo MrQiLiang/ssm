@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * 系统文件
  * Created by qi_liang on 2018/3/25.
+ * @author qi
  */
 public class SysFile extends IdEntity {
     /**
