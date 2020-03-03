@@ -128,7 +128,7 @@ public class HttpsClient {
 	
 	private static HttpPost getMultipartPost(String url,String boundarStr) {  
 	    /* 这里设置一些post的头部信息，具体求百度吧 */  
-	    HttpPost post = new HttpPost(url);  
+	    HttpPost post = new HttpPost(url);
 	    post.addHeader("Connection", "keep-alive");  
 	    post.addHeader("Accept", "*/*");  
 	    post.addHeader("Content-Type", "multipart/form-data;boundary="  

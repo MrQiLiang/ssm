@@ -3,7 +3,6 @@ package com.lq.cms.service.impl;
 import com.lq.cms.service.SysLogService;
 import com.lq.cms.vo.SysLogVo;
 import com.lq.code.dao.BaseDao;
-import com.lq.code.service.impl.BaseServiceImpl;
 import com.lq.dao.SysLogDao;
 import com.lq.entity.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;

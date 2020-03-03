@@ -71,7 +71,7 @@
 
                                     <div class="space-6"></div>
 
-                                    <form>
+                                    <form id="login_form">
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -314,6 +314,12 @@
 
        }
 
+    });
+    var loginForm = new Vue({
+       el: 'login_form',
+       data: {
+
+       }
     });
 
     var mediator = new Object();

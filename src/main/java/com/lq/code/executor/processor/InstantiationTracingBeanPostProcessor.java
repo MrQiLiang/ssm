@@ -10,6 +10,8 @@ import com.lq.code.util.sql.factory.impl.DefaultDbBuilerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -45,6 +47,8 @@ public class InstantiationTracingBeanPostProcessor implements ApplicationListene
             //需要执行的逻辑代码，当spring容器初始化完成后就会执行该方法。
             //扫描实体类
             if (isUpdateDB) {
+                List<String> packageList = Arrays.asList(packagePath.split(","));
+
                 Set<Class> set = BeanUtil.getClassSet(packagePath);
            //     QueueDto<Class> queueDto = BeanUtil.getQueueDto(packagePath);
                 DbBuilerFactory dbBuilerFactory = new DefaultDbBuilerFactory();
