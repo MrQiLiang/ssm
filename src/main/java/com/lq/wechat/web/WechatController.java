@@ -87,7 +87,7 @@ public class  WechatController extends BaseController {
             String openId = map.get(WECHAT_USER_OPENID_KEY);
             //微信公众号详情
             WechatInfo wechatInfo = wechatInfoService.getByOpenId(wechatOpenId);
-
+            BaseMessage baseMessage = null;
             if (wechatInfo!=null) {
                 TextMessage text = new TextMessage();
                 text.setFromUserName(wechatOpenId);
@@ -99,36 +99,37 @@ public class  WechatController extends BaseController {
                 switch (msgType) {
                     case ConstantSet.MESSAGE_TYPE_TEXT:
                         String content = map.get(WECHAT_CONTENT_KEY);
-                        BaseMessage baseMessage = wechatRuleService.getByKeyworkdAndWechatInfoId(content, wechatInfo);
-                        baseMessage.setCreateTime(System.currentTimeMillis());
-                        baseMessage.setFromUserName(wechatOpenId);
-                        baseMessage.setToUserName(openId);
-                        message = MessageUtil.MessageToXml(baseMessage);
+                        baseMessage = wechatRuleService.getByKeyworkdAndWechatInfoId(content, wechatInfo);
+                        if (baseMessage!=null) {
+                            baseMessage.setCreateTime(System.currentTimeMillis());
+                            baseMessage.setFromUserName(wechatOpenId);
+                            baseMessage.setToUserName(openId);
+                        }else {
+                            //
+                            text.setContent("服务器繁忙!");
+                            baseMessage = text;
+
+                        }
+
                         break;
                     case ConstantSet.MESSAGE_TYPE_IMAGE:
 
                         text.setContent("您发送的消息是：" + "图片");
-                        message = MessageUtil.MessageToXml(text);
                         break;
                     case ConstantSet.MESSAGE_TYPE_VIDEO:
                         text.setContent("您发送的消息是：" + "视频");
-                        message = MessageUtil.MessageToXml(text);
                         break;
                     case ConstantSet.MESSAGE_TYPE_SHORTVIDEO:
                         text.setContent("您发送的消息是：" + "小视频");
-                        message = MessageUtil.MessageToXml(text);
                         break;
                     case ConstantSet.MESSAGE_TYPE_VOICE:
                         text.setContent("您发送的消息是：" + "语音");
-                        message = MessageUtil.MessageToXml(text);
                         break;
                     case ConstantSet.MESSAGE_TYPE_LINK:
                         text.setContent("您发送的消息是：" + "链接");
-                        message = MessageUtil.MessageToXml(text);
                         break;
                     case ConstantSet.MESSAGE_TYPE_LOCATION:
                         text.setContent("您发送的消息是：" + "位置");
-                        message = MessageUtil.MessageToXml(text);
                         break;
                     case ConstantSet.MESSAGE_TYPE_EVENT:
                         String event = map.get("Event");
@@ -158,9 +159,10 @@ public class  WechatController extends BaseController {
 
                     default:
                         text.setContent("您发送的消息是：" + "无法理解");
-                        message = MessageUtil.MessageToXml(text);
+                        baseMessage = text;
                         break;
                 }
+            message = MessageUtil.MessageToXml(baseMessage);
             }
 
         } catch (Exception e) {
