@@ -49,15 +49,15 @@ public class ShiroRealm extends AuthorizingRealm {
                 SysRole sysRole = sysRoleIterator.next();
                 String sysRoleName = sysRole.getRoleName();
                 info.addRole(sysRoleName);
-                List<PermissionVo> list = null;
+                List<PermissionVo> permissionVos = null;
                 //admin默认获取全部权限
                 if (StringUtil.isNotNull(sysRoleName)&& Constant.ROLE_ADMIN.equals(sysRoleName)){
-                    list = sysRoleResourcePermissionService.findAllPermissonVo();
+                    permissionVos = sysRoleResourcePermissionService.findAllPermissonVo();
                 }else {
-                    list = sysRoleResourcePermissionService.findByRoleId(sysRole.getId());
+                    permissionVos = sysRoleResourcePermissionService.findByRoleId(sysRole.getId());
                 }
                 //每个角色拥有的权限
-                for (PermissionVo vo:list){
+                for (PermissionVo vo:permissionVos){
                     info.addStringPermission(vo.getMenuUrl()+Constant.PERSSION_MARK+vo.getPermissionName());
                 }
                 if (Constant.ROLE_ADMIN.equals(sysRoleName)){
