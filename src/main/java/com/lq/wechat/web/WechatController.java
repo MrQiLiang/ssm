@@ -105,7 +105,7 @@ public class  WechatController extends BaseController {
                             baseMessage.setFromUserName(wechatOpenId);
                             baseMessage.setToUserName(openId);
                         }else {
-                            //
+                            //默认回复逻辑
                             text.setContent("服务器繁忙!");
                             baseMessage = text;
 

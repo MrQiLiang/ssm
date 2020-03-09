@@ -2,6 +2,7 @@ package com.lq.wechat.mode.message;
 
 /**
  *  被动消息回复父类
+ *  @author qi
  */
 public class BaseMessage {
 	/**

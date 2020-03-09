@@ -14,4 +14,6 @@ import java.util.List;
 public interface WechatKeywordDao extends BaseDao<WechatKeyword>{
 
     List<WechatKeyword> findByWechatRuleIdAndStatus(@Param("wechatRuleId") Long wehcatRuleId,@Param("status") Integer status);
+
+    List<WechatKeyword> findBykeywordAndWechatInfoId(@Param("keyword")String keyword,@Param("wechatInfoId")Long wechatInfoId);
 }

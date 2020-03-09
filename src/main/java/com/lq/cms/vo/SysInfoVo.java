@@ -9,17 +9,29 @@ import com.lq.code.util.os.mode.OsInfo;
  */
 public class SysInfoVo {
 
-    //服务器ip
+    /**
+     * 服务器ip
+     */
     private String sysIp;
-    //客服端ip
+    /**
+     * 客服端ip
+     */
     private String userIP;
-    //操作系统信息
+    /**
+     * 操作系统信息
+     */
     private OsInfo osInfo;
-    //数据库产品信息
+    /**
+     * 数据库产品信息
+     */
     private DbInfo dbInfo;
-    //服务器版本信息
+    /**
+     * 服务器版本信息
+     */
     private String serverInfo;
-    //jvm信息
+    /**
+     * jvm信息
+     */
     private JvmInfo jvmInfo;
 
     public String getSysIp() {

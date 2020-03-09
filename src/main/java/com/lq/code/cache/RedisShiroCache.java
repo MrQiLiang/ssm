@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Collection;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: qi
@@ -14,6 +15,11 @@ import java.util.Set;
  * @Date: Create in 10:07 AM 2019/6/10
  */
 public class RedisShiroCache<K,V> implements Cache<K,V>{
+
+    /**
+     * 过期时间默认2小时
+     */
+    private int defaultExpireTime=7200;
 
     @Autowired
     private RedisTemplate<K,V> redisTemplate;
@@ -28,6 +34,7 @@ public class RedisShiroCache<K,V> implements Cache<K,V>{
     @Override
     public V put(K k, V v) throws CacheException {
         redisTemplate.opsForValue().set(k,v);
+        redisTemplate.expire(k,this.defaultExpireTime, TimeUnit.SECONDS);
         return v;
     }
 

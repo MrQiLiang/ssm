@@ -14,7 +14,7 @@
 	<!-- spring 邮箱-->
 	<import resource="classpath:spring/spring-email.xml"></import>
     <!-- 消息队列中间件 -->
-	<import resource="classpath:spring/spring-activitMq.xml"></import>
+<!--	<import resource="classpath:spring/spring-activitMq.xml"></import>-->
 	<!-- websocket -->
 	<!--<import resource="classpath:spring/spring-websocket.xml"/>-->
 </beans>
