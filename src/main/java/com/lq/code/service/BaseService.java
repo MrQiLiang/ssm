@@ -10,8 +10,17 @@ import java.util.List;
  */
 public interface BaseService<T> {
 
-    BaseDao<T>      getBaseDao();
+    /**
+     * 注入 baseDao
+     * @return
+     */
+    BaseDao<T>  getBaseDao();
 
+    /**
+     * 通过ID查找数据
+     * @param id
+     * @return
+     */
     default T findOne(Long id){
        return getBaseDao().findOne(id);
     }
@@ -32,17 +41,17 @@ public interface BaseService<T> {
         getBaseDao().delete(id);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     default void batchSave(List<T> entitylist){
         getBaseDao().batchSave(entitylist);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     default void batchUpdate(List<T> entitylist){
         getBaseDao().batchSave(entitylist);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     default void batchDelete(List<T> entitylist){
         getBaseDao().batchDelete(entitylist);
     }

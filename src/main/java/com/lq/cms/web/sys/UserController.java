@@ -92,7 +92,7 @@ public class UserController {
         Date nowTime =new Date();
         AjaxResult ajaxResult = new AjaxResult();
         SysUser sysUser = new SysUser();
-        BeanUtil.copyNotNull(vo,sysUser);
+        BeanUtil.copyNotNull(sysUser,vo);
         sysUser.setCreateTime(nowTime);
         sysUser.setPassword(Md5Util.getMd5(sysUser.getPassword()));
         sysUser.setUpdateTime(nowTime);
