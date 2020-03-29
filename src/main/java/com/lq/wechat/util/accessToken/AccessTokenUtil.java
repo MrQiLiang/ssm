@@ -21,10 +21,6 @@ public class AccessTokenUtil {
      *  微信公众号获取access_token接口
      */
     public final static String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-
-    public final static String APPID ="wx76ca7130852c4baa";
-
-    public final static String APPSECRET = "d87125562b8e60618bc7b3120dfe3583";
     /**
      *  微信公众号access_token在reids的生命周期时间(单位：秒)
      */
@@ -51,12 +47,7 @@ public class AccessTokenUtil {
         return accessTokenStr;
     }
 
-    public static void main(String[] args) {
-        String result = getAccessToken(APPID,APPSECRET);
-        System.out.println(result);
-        AccessToken accessToken = JSONObject.parseObject(result,AccessToken.class);
-        System.out.println(accessToken);
-    }
+
 
 
 }
