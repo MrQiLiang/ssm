@@ -55,7 +55,8 @@ public class WechatRuleServiceImpl  implements WechatRuleService {
             wechatKeywordList.forEach(wechatKeyword -> {
                 if (WechatKeywordMatchinTypeEnum.KEYWORD_ALL.getValue().equals( wechatKeyword.getMatchinType())){
                     if (wechatKeyword.getKeyword().equals(keyWord)){
-
+                        WechatMessage wechatMessage = wechatMessageDao.findByRuleId(wechatRule.getId());
+                        wechatMessageAtomicReference.set(wechatMessage);
                     }
                 }
             });
@@ -115,6 +116,7 @@ public class WechatRuleServiceImpl  implements WechatRuleService {
         wechatRule.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
         wechatRule.setCreateTime(new Date());
         wechatRuleDao.save(wechatRule);
+
         List<WechatKeyword> wechatKeywordList = wechatRuleVo.getWechatKeywordList();
         wechatKeywordList.forEach(wechatKeyword -> {
             wechatKeyword.setCreateTime(new Date());
@@ -137,6 +139,28 @@ public class WechatRuleServiceImpl  implements WechatRuleService {
         });
 
         return wechatRule;
+    }
+
+    @Override
+    public WechatRule updateRule(WechatRuleVo wechatRuleVo) {
+        Subject subject= SecurityUtils.getSubject();
+        SysUser loginUser=(SysUser) subject.getPrincipal();
+        WechatRule wechatRule = wechatRuleDao.findOne(wechatRuleVo.getId());
+        BeanUtil.copyNotNull(wechatRule,wechatRuleVo);
+        wechatRule.setCreateUserId(loginUser.getId());
+        wechatRule.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+        wechatRule.setCreateTime(new Date());
+        wechatRuleDao.update(wechatRule);
+        wechatKeywordDao.deleteByWechatRuleId(wechatRule.getId());
+        List<WechatKeyword> wechatKeywordList = wechatRuleVo.getWechatKeywordList();
+        wechatKeywordList.forEach(wechatKeyword -> {
+            wechatKeyword.setWechatRuleId(wechatRule.getId());
+            wechatKeyword.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+            wechatKeyword.setCreateTime(new Date());
+            wechatKeywordDao.save(wechatKeyword);
+        });
+
+        return null;
     }
 
 

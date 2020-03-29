@@ -33,6 +33,13 @@ public interface WechatRuleService extends BaseService<WechatRule> {
     WechatRule saveRule(WechatRuleVo wechatRuleVo);
 
     /**
+     * 更新规则和对应的关键字
+     * @param wechatRuleVo
+     * @return
+     */
+    WechatRule updateRule(WechatRuleVo wechatRuleVo);
+
+    /**
      * 通过微信公众号详情ID查找关联规则
      * @param wechatInfoId
      * @return
