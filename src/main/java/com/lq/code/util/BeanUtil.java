@@ -1,12 +1,14 @@
 package com.lq.code.util;
 
 import com.lq.code.dto.QueueDto;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.io.File;
+import java.io.FileFilter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -122,10 +124,6 @@ public class BeanUtil {
             Map<String,String> map = new HashMap();
             map.put("fieldName",field.getName());
             map.put("fieldType",field.getGenericType().toString());
-       //     Length length = field.getAnnotation(Length.class);
-//            if (length!=null) {
-//                map.put("fieldLength",String.valueOf(length.value()));
-//            }
             list.add(map);
         }
         return list;
@@ -172,7 +170,6 @@ public class BeanUtil {
         if (file.exists()){
             File[] files = file.listFiles();
             try {
-
                 for (File classFile:files){
                     String className = classFile.getName().split("\\.")[0];
                     Class clazz =Class.forName(packagePath+"."+className);
@@ -180,7 +177,6 @@ public class BeanUtil {
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-
             }
         }
         return set;

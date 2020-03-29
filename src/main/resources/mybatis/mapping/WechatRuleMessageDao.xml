@@ -80,4 +80,10 @@
 
     </select>
 
+    <delete id="deleteByWechatRuleId">
+      UPDATE wechat_rule_message
+      SET status = 0
+      WHERE wechat_rule_id = #{wechatRuleId}
+    </delete>
+
 </mapper>

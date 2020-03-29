@@ -95,7 +95,6 @@ public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePer
         map.put("roleId",roleId);
         map.put("state", StatusTypeEnum.STATUS_ACTIVITY_NO.getValue());
         sysRoleResourcePermissionDao.updateByRoleIdAndStatus(map);
-
         for (SysRoleResourcePermissionVo vo:list){
             SysRoleResourcePermission sysRoleResourcePermission=sysRoleResourcePermissionDao.getByResourceIdAndPermissionIdAndRoleId(vo.getResourceId(),vo.getPermissionId(),vo.getRoleId());
             if (sysRoleResourcePermission==null){

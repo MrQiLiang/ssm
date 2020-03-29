@@ -160,7 +160,22 @@ public class WechatRuleServiceImpl  implements WechatRuleService {
             wechatKeywordDao.save(wechatKeyword);
         });
 
-        return null;
+        List<Long> messageIds = wechatRuleVo.getMessageIds();
+        //删除消息与规则关联关系
+        wechatRuleMessageDao.deleteByWechatRuleId(wechatRule.getId());
+        messageIds.forEach((messageId)->{
+            WechatRuleMessage wechatRuleMessage = wechatRuleMessageDao.getByRuleIdAndMessageId(wechatRule.getId(),messageId);
+            if (wechatRuleMessage==null){
+                wechatRuleMessage = new WechatRuleMessage();
+                wechatRuleMessage.setCreateTime(new Date());
+                wechatRuleMessage.setWechatMessageId(messageId);
+                wechatRuleMessage.setWechatRuleId(wechatRule.getId());
+                wechatRuleMessage.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
+                wechatRuleMessageDao.save(wechatRuleMessage);
+            }
+        });
+
+        return wechatRule;
     }
 
 

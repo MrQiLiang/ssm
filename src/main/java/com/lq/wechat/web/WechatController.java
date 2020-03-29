@@ -53,7 +53,7 @@ public class  WechatController extends BaseController {
 
     @RequestMapping(method = { RequestMethod.GET }, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String doget(String signature, String timestamp, String nonce, String echostr, String wechatOpenId, HttpServletResponse response) throws UnsupportedEncodingException {
+    public String doGet(String signature, String timestamp, String nonce, String echostr, String wechatOpenId, HttpServletResponse response) throws UnsupportedEncodingException {
         if (StringUtil.isNotNull(wechatOpenId)){
             //通过微信公众号名称查找公众号资料
             WechatInfo wechatInfo = wechatInfoService.getByOpenId(wechatOpenId);
@@ -110,7 +110,6 @@ public class  WechatController extends BaseController {
                             baseMessage = text;
 
                         }
-
                         break;
                     case ConstantSet.MESSAGE_TYPE_IMAGE:
 

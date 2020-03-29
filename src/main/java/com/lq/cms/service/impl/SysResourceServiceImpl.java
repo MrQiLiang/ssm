@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by qi_liang on 2018/6/21.
@@ -62,7 +63,7 @@ public class SysResourceServiceImpl  implements SysResourceService {
             menusItem.setIcon(sysResource.getMenuIco());
             menusItem.setMenuid(sysResource.getId());
             map.put("parentId",sysResource.getId());
-            List<SysResource> menusList=sysResourceDao.findMenu(map);
+            List<SysResource> menusList=sysResourceDao.findMenu(map);;
             for (SysResource sysResource1: menusList){
                 Menus menus=new Menus();
                 menus.setMenuid(sysResource1.getId());
