@@ -76,5 +76,20 @@
         ORDER BY create_time DESC
     </select>
 
+    <select id="getByWechatRuleIdAndKeyWord" resultType="WechatKeyword">
+        SELECT <include refid="column_list"/>
+          FROM wechat_keyword
+        WHERE
+          wechat_rule_id = #{wechatRuleId}
+        AND
+          keyword=#{keyword}
+    </select>
+
+    <delete id="deleteByWechatRuleId">
+        update wechat_keyword
+        set status = 0
+        where wechat_rule_id = #{wechatRuleId}
+    </delete>
+
     
 </mapper>

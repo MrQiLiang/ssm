@@ -10,5 +10,10 @@ import com.lq.wechat.mode.AccessToken;
  */
 public interface AccessTokenAdapter {
 
+    /**
+     * 获取wehcatToken
+     * @param accessToken
+     * @return
+     */
     WechatAccessToken adapter(AccessToken accessToken);
 }

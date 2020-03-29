@@ -89,5 +89,12 @@
 
     </select>
 
+    <select id="findByRuleId" resultType="WechatMessage">
+      select wm.* from wechat_message wm
+      left join wechat_rule_message wrm ON wm.id = wrm.wechat_message_id
+      where wrm.wechat_rule_id = #{ruleId}
+      LIMIT 1
+    </select>
+
 
 </mapper>

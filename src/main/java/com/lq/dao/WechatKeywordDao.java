@@ -16,4 +16,9 @@ public interface WechatKeywordDao extends BaseDao<WechatKeyword>{
     List<WechatKeyword> findByWechatRuleIdAndStatus(@Param("wechatRuleId") Long wehcatRuleId,@Param("status") Integer status);
 
     List<WechatKeyword> findBykeywordAndWechatInfoId(@Param("keyword")String keyword,@Param("wechatInfoId")Long wechatInfoId);
+
+    WechatKeyword getByWechatRuleIdAndKeyWord(@Param("wechatRuleId")Long wechatRuleId,@Param("keyword")String keyword);
+
+    void deleteByWechatRuleId(@Param("wechatRuleId")Long wechatRuleId);
+
 }

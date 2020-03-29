@@ -155,6 +155,7 @@
 <script type="text/javascript" src="${ctx}/resources/plugins/layer/layer.js"></script>
 <script type="text/javascript" href="${ctx}/resources/cms/wechat/wechat.js"></script>
 <script type="text/javascript">
+    var postUrl = '${ctx}/cms/wechat/rule/save';
     var isCheck = ${wechatInfo.openReply==1};
     var addkeywordRowHtml = $("#keyword").html();
     var wechatInfoId = '${wechatInfo.id}';
@@ -238,6 +239,7 @@
             }
         });
         $("#button4").click(function(){
+            postUrl = '${ctx}/cms/wechat/rule/save';
             if(isCheck){
                 showContent(4);
             }
@@ -287,7 +289,7 @@
             data.wechatInfoId = wechatInfoId;
             $.ajax({
                 type:"post",
-                url:"${ctx}/cms/wechat/rule/save",
+                url:postUrl,
                 traditional:true,
                 data:data,
                 dataType:"json",
@@ -523,6 +525,7 @@
 
     function showeditRule(wechatRuleId) {
         clearEdit();
+        postUrl = '${ctx}/cms/wechat/rule/update'
         var data = new Object();
         data.wechatRuleId = wechatRuleId;
         $.ajax({

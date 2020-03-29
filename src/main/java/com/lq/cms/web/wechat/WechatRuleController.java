@@ -10,7 +10,6 @@ import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.StringUtil;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatKeyword;
-import com.lq.entity.WechatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,6 +71,29 @@ public class WechatRuleController {
         wechatRuleService.saveRule(vo);
 
         return ajaxResult;
+    }
+
+    /**
+     * 更新回复规则
+     * @param vo
+     * @param keywordListStr
+     * @param messageListStr
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/update")
+    public AjaxResult update(WechatRuleVo vo,String keywordListStr,String messageListStr){
+        if (StringUtil.isNotNull(keywordListStr)) {
+            List<WechatKeyword> wechatKeywordList = JSON.parseArray(keywordListStr, WechatKeyword.class);
+            vo.setWechatKeywordList(wechatKeywordList);
+        }
+        if (StringUtil.isNotNull(messageListStr)){
+            List<Long> messageIds = JSON.parseArray(messageListStr, Long.class);
+            vo.setMessageIds(messageIds);
+        }
+        wechatRuleService.updateRule(vo);
+
+        return AjaxResult.getSuccessInstance();
     }
 
     @ResponseBody
