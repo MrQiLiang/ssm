@@ -34,7 +34,7 @@ public class SysUserRoleServiceImpl  implements SysUserRoleService {
         Date nowTime=new Date();
         sysUserRoleDao.deleteByUserId(id);
         if (roleList!=null&&roleList.size()>0) {
-            for (Long roleId : roleList) {
+            roleList.forEach(roleId->{
                 SysUserRole sysUserRole = findByRoleIdAndUserId(id, roleId);
                 if (sysUserRole != null) {
                     sysUserRole.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
@@ -49,7 +49,7 @@ public class SysUserRoleServiceImpl  implements SysUserRoleService {
                     sysUserRole.setRoleId(roleId);
                     sysUserRoleDao.save(sysUserRole);
                 }
-            }
+            });
         }
     }
 
