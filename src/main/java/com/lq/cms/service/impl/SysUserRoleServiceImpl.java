@@ -54,7 +54,7 @@ public class SysUserRoleServiceImpl  implements SysUserRoleService {
     }
 
     public SysUserRole findByRoleIdAndUserId(Long userId,Long roleId){
-        Map<String,Object> map=new HashMap();
+        Map<String,Object> map=new HashMap(2);
         map.put("userId",userId);
         map.put("roleId",roleId);
         List<SysUserRole> list=sysUserRoleDao.findByUserIdAndRoleId(map);

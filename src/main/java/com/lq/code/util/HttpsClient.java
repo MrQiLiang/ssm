@@ -5,6 +5,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
@@ -68,9 +69,11 @@ public class HttpsClient {
                 context);  
         // 建立连接器  
        client = HttpClients.custom()  
-                .setSSLSocketFactory(factory).build();  
+                .setSSLSocketFactory(factory).setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE).build();
+
             // 得到一个post请求的实体  
-            HttpPost post = getMultipartPost(url, boundary);  
+            HttpPost post = getMultipartPost(url, boundary);
+
             // 给请求添加参数  
             post.setEntity(he);  
             // 执行请求并获得结果  
@@ -152,17 +155,21 @@ public class HttpsClient {
 	    return context;  
 	}
 	
-	public static void main(String[] args) throws IOException {
-		File file =new File("/Users/qi_liang/Downloads/timg.jpeg");
-		String url = "https://api.weixin.qq.com/cgi-bin/media/upload";
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("access_token", "10_0oKKCsF9JL30JeGZDyfNWDhiaRvivAL9vs9ihvaledzBuPVM6IMvwcFUc58AFwlETRdvEBAFXOYbF2GoKmbtMmopCs78m9UE8whgrYU4kJww4mSooMcq8el-qnU4JdjPGKruZLjdNS246hXyWOHbAAAHZS");
-		params.put("type", "image");
-		if(file.exists()){
-			params.put("media", file);
-		}
-		String resultStr = post(url,params);
-		System.out.println(resultStr);
+//	public static void main(String[] args) throws IOException {
+//		File file =new File("/Users/qi_liang/Downloads/timg.jpeg");
+//		String url = "https://api.weixin.qq.com/cgi-bin/media/upload";
+//		Map<String, Object> params = new HashMap<String, Object>();
+//		params.put("access_token", "10_0oKKCsF9JL30JeGZDyfNWDhiaRvivAL9vs9ihvaledzBuPVM6IMvwcFUc58AFwlETRdvEBAFXOYbF2GoKmbtMmopCs78m9UE8whgrYU4kJww4mSooMcq8el-qnU4JdjPGKruZLjdNS246hXyWOHbAAAHZS");
+//		params.put("type", "image");
+//		if(file.exists()){
+//			params.put("media", file);
+//		}
+//		String resultStr = post(url,params);
+//		System.out.println(resultStr);
+//	}
+
+	public static void main(String[] args) {
+
 	}
 	  
 }
