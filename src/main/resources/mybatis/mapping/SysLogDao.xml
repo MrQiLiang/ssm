@@ -28,6 +28,7 @@
     <select id="findListPage" resultType="SysLogVo" parameterType="SysLogVo">
         SELECT <include refid="column_list"/>
         FROM sys_log
+        WHERE status = 1
         ORDER BY create_time DESC
     </select>
 
