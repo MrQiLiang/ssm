@@ -21,7 +21,6 @@ public class SpringmvcInterceptor implements HandlerInterceptor {
     @Autowired
     private SysLogDao sysLogDao;
 
-    @Transactional
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 
