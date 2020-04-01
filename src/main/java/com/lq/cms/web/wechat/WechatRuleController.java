@@ -10,6 +10,8 @@ import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.StringUtil;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatKeyword;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/cms/wechat/rule")
 public class WechatRuleController {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(WechatRuleController.class);
 
     @Autowired
     private WechatInfoService wechatInfoService;

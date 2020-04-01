@@ -8,8 +8,9 @@ import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.SysLogService;
 import com.lq.cms.vo.SysLogVo;
 import com.lq.code.util.Constant;
-import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("cms/log")
 public class  LogController {
 
-    private static Logger LOGGER = Logger.getLogger(LogController.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(LogController.class);
 
     public static final String INDEX_URL = "/cms/log/index";
 

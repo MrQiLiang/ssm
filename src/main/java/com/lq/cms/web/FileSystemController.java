@@ -4,6 +4,8 @@ import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.DateUtil;
 import com.lq.code.web.BaseController;
 import com.lq.entity.SysFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +27,7 @@ import java.util.Date;
 @RequestMapping("/cms/file")
 public class FileSystemController extends BaseController{
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(FileSystemController.class);
 //    @Autowired
 //    private SysFileService sysFileService;
 

@@ -16,10 +16,11 @@ import com.lq.code.util.os.OsUtil;
 import com.lq.code.util.os.mode.JvmInfo;
 import com.lq.code.util.os.mode.OsInfo;
 import com.lq.entity.SysUser;
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +40,7 @@ import java.util.List;
 @RequestMapping("/cms")
 public class IndexController {
 
-    private static Logger LOGGER = Logger.getLogger(IndexController.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private SysResourceService sysResourceService;

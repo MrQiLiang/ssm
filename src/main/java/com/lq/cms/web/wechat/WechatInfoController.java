@@ -11,6 +11,8 @@ import com.lq.entity.WechatInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/cms/wechat/info")
 public class WechatInfoController {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(WechatInfoController.class);
 
     public static final String INDEX_URL = "/cms/wechat/info/index";
 

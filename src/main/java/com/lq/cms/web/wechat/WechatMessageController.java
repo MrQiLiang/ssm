@@ -11,6 +11,8 @@ import com.lq.code.util.FileUtil;
 import com.lq.code.util.StringUtil;
 import com.lq.entity.WechatMessage;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.acl.LastOwnerException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +36,8 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/cms/wechat/message")
 public class WechatMessageController {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(WechatMessageController.class);
 
     public static final String INDEX_URL = "/cms/wechat/message/index";
 

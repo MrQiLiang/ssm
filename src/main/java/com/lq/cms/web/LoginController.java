@@ -7,12 +7,13 @@ import com.lq.code.util.DateUtil;
 import com.lq.code.util.StringUtil;
 import com.lq.code.web.BaseController;
 import com.lq.entity.SysUser;
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("/cms/login")
 public class LoginController extends BaseController{
 
-    private static Logger logger = Logger.getLogger(LoginController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private SysUserService sysUserService;

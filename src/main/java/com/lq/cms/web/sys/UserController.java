@@ -10,13 +10,14 @@ import com.lq.cms.vo.SysUserVo;
 import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.*;
 import com.lq.entity.SysUser;
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ import java.util.UUID;
 @RequestMapping("/cms/user")
 public class UserController {
 
-    private final static Logger LOGGER = Logger.getLogger(UserController.class);
+    public final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     private final static String INDEX_URL="/cms/user/index";
 

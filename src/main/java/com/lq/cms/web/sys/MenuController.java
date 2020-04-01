@@ -8,17 +8,17 @@ import com.lq.code.entity.AjaxResult;
 import com.lq.code.util.Constant;
 import com.lq.entity.SysResource;
 import com.lq.entity.SysUser;
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +31,7 @@ import java.util.List;
 @RequestMapping("/cms/menu")
 public class MenuController {
 
-    private static Logger LOGGER = Logger.getLogger(MenuController.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(MenuController.class);
 
     public static final String INDEX_URL = "/cms/menu/index";
 
