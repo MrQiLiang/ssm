@@ -38,14 +38,15 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO
-        sys_log(CREATE_TIME,USER_IP,URL)
+        sys_log(CREATE_TIME,USER_IP,URL,STATUS)
         VALUES
         (
         #{createTime},#{userIp},#{url},#{status}
+        )
     </insert>
 
     <update id="update" parameterType="SysLog">
-        UPDATE sys_log SET CREATE_TIME=#{createTime},USER_IP=#{userIp},URL=#{url} name= WHERE id=#{id}
+        UPDATE sys_log SET CREATE_TIME=#{createTime},USER_IP=#{userIp},URL=#{url},STATUS=#{status} WHERE id=#{id}
     </update>
 
     <delete id="delete" parameterType="Long">
