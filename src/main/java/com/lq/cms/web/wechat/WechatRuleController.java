@@ -24,6 +24,7 @@ import java.util.Map;
 /**
  *  微信公众号消息回复
  * Created by qi_liang on 2018/5/30.
+ * @author qi
  */
 @Controller
 @RequestMapping("/cms/wechat/rule")

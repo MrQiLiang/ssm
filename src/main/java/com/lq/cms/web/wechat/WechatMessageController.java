@@ -32,6 +32,7 @@ import java.util.UUID;
 
 /**
  *   微信公众号消息管理后台控制类
+ * @author qi
  */
 @Controller
 @RequestMapping("/cms/wechat/message")

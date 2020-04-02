@@ -25,6 +25,7 @@ import java.util.Map;
 
 /**微信公众号详情
  * Created by qi_liang on 2018/6/1.
+ * @author qi
  */
 @Controller
 @RequestMapping("/cms/wechat/info")
