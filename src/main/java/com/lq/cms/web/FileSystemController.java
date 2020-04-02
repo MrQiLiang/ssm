@@ -28,8 +28,6 @@ import java.util.Date;
 public class FileSystemController extends BaseController{
 
     public static final Logger LOGGER = LoggerFactory.getLogger(FileSystemController.class);
-//    @Autowired
-//    private SysFileService sysFileService;
 
     public static final String UPLOAD_FILE_PATH="/Users/qi_liang/java/fileManger";
 

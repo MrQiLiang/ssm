@@ -49,9 +49,11 @@ public class RoleController  {
         return modelAndView;
     }
 
-    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
-    @RequestMapping("/list")
+
+
     @ResponseBody
+    @RequestMapping("/list")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysRoleVo vo){
         AdminDataGridParam<SysRoleVo> adminDataGridParam = new AdminDataGridParam<>();
         adminDataGridParam.setTotal(sysRoleService.count(vo));
@@ -78,9 +80,10 @@ public class RoleController  {
         return modelAndView;
     }
 
-    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
-    @RequestMapping("/updatePermission")
+
     @ResponseBody
+    @RequestMapping("/updatePermission")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     public Object updatePermission(@RequestBody List<SysRoleResourcePermissionVo> list){
         AjaxResult ajaxResult=new AjaxResult();
         boolean result=sysRoleResourcePermissionService.updateRolePermission(list);
@@ -91,9 +94,9 @@ public class RoleController  {
         return ajaxResult;
     }
 
-    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
-    @RequestMapping("/save")
     @ResponseBody
+    @RequestMapping("/save")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
     public Object save(SysRole sysRole){
         Date nowTime = new Date();
         AjaxResult ajaxResult = new AjaxResult(true," 保存成功","");
@@ -109,9 +112,9 @@ public class RoleController  {
         return ajaxResult;
     }
 
-    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
-    @RequestMapping("/update")
     @ResponseBody
+    @RequestMapping("/update")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     public Object update(SysRole sysRole){
         AjaxResult ajaxResult = new AjaxResult(true," 保存成功","");
         if (sysRole!=null&&sysRole.getId()!=null){
@@ -126,9 +129,9 @@ public class RoleController  {
         return ajaxResult;
     }
 
-    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)
-    @RequestMapping("/delete")
     @ResponseBody
+    @RequestMapping("/delete")
+    @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_DELETE)
     public Object delte(SysRole sysRole){
         AjaxResult ajaxResult=new AjaxResult();
         if (sysRole!=null&&sysRole.getId()!=null){

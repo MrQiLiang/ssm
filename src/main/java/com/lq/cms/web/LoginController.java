@@ -16,9 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -41,16 +39,15 @@ public class LoginController extends BaseController{
 
     @Autowired
     private SysUserService sysUserService;
-//    @Autowired
-//    private MailService mailService;
 
-    @RequestMapping(value = {"/index",""})
+
+    @GetMapping(value = {"/index",""})
     public String toLogin(){
         return "cms/login";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/doLogin",method = RequestMethod.POST)
+    @PostMapping(value = "/doLogin")
     public Object doLogin(String loginName, String password, HttpSession session,String authCode,Boolean rememberMe){
         AjaxResult ajaxResult= this.getAjaxResult();
         String strCode=(String) session.getAttribute("strCode");

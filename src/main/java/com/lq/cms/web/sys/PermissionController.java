@@ -57,8 +57,8 @@ public class PermissionController extends BaseController{
         return "cms/sys/permission/edit";
     }
 
-    @RequestMapping("/list")
     @ResponseBody
+    @RequestMapping("/list")
     public Object list(SysPermissionVo vo){
         AdminDataGridParam<SysPermissionVo> adminDataGridParam = new AdminDataGridParam<>();
         adminDataGridParam.setRows(sysPermissionService.findListPage(vo));
@@ -66,8 +66,8 @@ public class PermissionController extends BaseController{
         return adminDataGridParam;
     }
 
-    @RequestMapping("/save")
     @ResponseBody
+    @RequestMapping("/save")
     public Object save(SysPermissionVo vo){
         AjaxResult ajaxResult = this.getAjaxResult();
         SysPermission sysPermission = sysPermissionService.save(vo);
@@ -75,8 +75,8 @@ public class PermissionController extends BaseController{
         return ajaxResult;
     }
 
-    @RequestMapping("/update")
     @ResponseBody
+    @RequestMapping("/update")
     public Object update(SysPermissionVo vo){
         AjaxResult ajaxResult = this.getAjaxResult();   
         SysPermission sysPermission = sysPermissionService.update(vo);
@@ -84,8 +84,8 @@ public class PermissionController extends BaseController{
         return ajaxResult;
     }
 
-    @RequestMapping("/delete")
     @ResponseBody
+    @RequestMapping("/delete")
     public Object delete(SysPermissionVo vo){
         sysPermissionService.delete(vo.getId());
 

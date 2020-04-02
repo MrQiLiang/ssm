@@ -50,7 +50,6 @@ public class IndexController {
     @RequestMapping(value = {"/index",""})
     public ModelAndView toCmsIndix(ModelAndView modelAndView, HttpServletRequest request){
         Subject subject=SecurityUtils.getSubject();
-        Session session = subject.getSession();
         SysUser sysUser=(SysUser) subject.getPrincipal();
         List<MenusComposite> list ;
         String contextPath = request.getContextPath();

@@ -46,8 +46,8 @@ public class MenuController {
         return modelAndView;
     }
 
-    @RequestMapping("/list")
     @ResponseBody
+    @RequestMapping("/list")
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_SELECT)
     public Object list(SysResourceVo vo){
         AdminDataGridParam<SysResourceVo> adminDataGridParam = new AdminDataGridParam<>();
