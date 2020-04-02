@@ -41,8 +41,7 @@
         sys_log(CREATE_TIME,USER_IP,URL)
         VALUES
         (
-        #{createTime},#{userIp},#{url}
-        )
+        #{createTime},#{userIp},#{url},#{status}
     </insert>
 
     <update id="update" parameterType="SysLog">
