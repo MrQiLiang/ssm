@@ -40,7 +40,6 @@ public class CreateMapperFileUtil {
         }
         attributeBuffer.deleteCharAt(attributeBuffer.length()-1);
         columnBuffer.deleteCharAt(columnBuffer.length()-1);
-        //columnAndAttributeBuffer.deleteCharAt(columnAndAttributeBuffer.length()-1);
         result=result.replace("@tableColumn",columnBuffer);
         result=result.replace("@beanAttribute",attributeBuffer);
         result=result.replace("@ColumnEqAttribute",columnAndAttributeBuffer);

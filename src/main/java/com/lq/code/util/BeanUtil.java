@@ -16,10 +16,11 @@ import java.util.*;
 
 /**
  * Created by qi_liang on 2018/1/29.
+ * @author qi
  */
 public class BeanUtil {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(BeanUtil.class);
+    public final static Logger LOGGER = LoggerFactory.getLogger(BeanUtil.class);
 
     public static final String FILE_SYMBOL = "/";
 
@@ -71,7 +72,7 @@ public class BeanUtil {
 
         Class sourceClass = source.getClass();
         List<Field> fieldList  = getAllField(sourceClass);
-        Map<String,Field> fieldMap = new HashMap<>();
+        Map<String,Field> fieldMap = new HashMap<>(fieldList.size());
         for (Field field: fieldList){
             field.setAccessible(true);
             fieldMap.put(field.getName(),field);
@@ -85,18 +86,14 @@ public class BeanUtil {
             if (targerField!=null&&targerField.getGenericType().toString().equals(field.getGenericType().toString())){
                 try {
                     PropertyDescriptor pd = new PropertyDescriptor(targerField.getName(), targerClass);
-                    Method wM = pd.getWriteMethod();//获得写方法
+                    //获得写方法
+                    Method wM = pd.getWriteMethod();
                     Object value =  targerField.get(source);
                     if (value!=null) {
                         wM.invoke(targer, value);
                     }
-                   // targerField.set(targer,value);
-        } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (IntrospectionException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+            } catch (Exception e) {
+                    LOGGER.error(e.getMessage());
                 }
             }
         }
@@ -111,7 +108,7 @@ public class BeanUtil {
      * @return
      */
     public static Map<String,String> getFiledType(Field[] fields){
-        Map<String,String> map=new HashMap<>();
+        Map<String,String> map=new HashMap<>(fields.length);
         for (Field field:fields){
             map.put(field.getName(),field.getGenericType().toString());
         }
@@ -121,7 +118,7 @@ public class BeanUtil {
     public static List<Map<String,String>> getFileInfo(Field[] fields){
         List<Map<String,String>> list=new ArrayList<>();
         for (Field field:fields){
-            Map<String,String> map = new HashMap();
+            Map<String,String> map = new HashMap(2);
             map.put("fieldName",field.getName());
             map.put("fieldType",field.getGenericType().toString());
             list.add(map);
@@ -135,7 +132,7 @@ public class BeanUtil {
      * @return
      */
     public static List<String> getFiledName(Field[] fields){
-        List<String> filedNameList=new ArrayList<>();
+        List<String> filedNameList=new ArrayList<>(fields.length);
         for (Field field:fields){
             filedNameList.add(field.getName());
         }
@@ -148,7 +145,7 @@ public class BeanUtil {
      * @return
      */
     public static List<String> getFileTypeList(Field[] fields){
-        List<String> fileTypeList=new ArrayList<>();
+        List<String> fileTypeList=new ArrayList<>(fields.length);
         for (Field field:fields){
             fileTypeList.add(field.getGenericType().toString());
         }
