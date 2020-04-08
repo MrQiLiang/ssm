@@ -11,6 +11,11 @@ import java.util.Set;
 public abstract class AbstractDbBuiler {
 
     /**
+     * 括号
+     */
+    public static final String BRACKETS = ")";
+
+    /**
      *  自动同步表结构
      * @param classSet
      * @return
@@ -47,7 +52,7 @@ public abstract class AbstractDbBuiler {
         //SQL 转成大写适
         String upperCaseSql = sql.toUpperCase();
         //统计SQL排除排序SQL代码
-        if (sql.lastIndexOf(SqlConstant.ORDER_SQL)>sql.lastIndexOf(")")){
+        if (sql.lastIndexOf(SqlConstant.ORDER_SQL)>sql.lastIndexOf(BRACKETS)){
             sb.append(sql.substring(upperCaseSql.indexOf(SqlConstant.FROM_SQL)+SqlConstant.FROM_SQL.length(),upperCaseSql.lastIndexOf(SqlConstant.ORDER_SQL)));
         }else{
             sb.append(sql.substring(upperCaseSql.indexOf(SqlConstant.FROM_SQL)+SqlConstant.FROM_SQL.length()));

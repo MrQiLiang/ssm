@@ -23,6 +23,10 @@ import java.util.Map.Entry;
  * @author
  */
 public class HttpKit {
+    /**
+     * 问号
+     */
+    public static final String QUESTION_MARK = "?";
 
     private static final String DEFAULT_CHARSET = "UTF-8";
     private static final Logger LOGGER = Logger.getLogger(HttpKit.class);
@@ -158,8 +162,8 @@ public class HttpKit {
             return url;
         }
         StringBuilder sb = new StringBuilder(url);
-        if (url.indexOf("?") == -1) {
-            sb.append("?");
+        if (url.indexOf(QUESTION_MARK) == -1) {
+            sb.append(QUESTION_MARK);
         } else {
             sb.append("&");
         }
