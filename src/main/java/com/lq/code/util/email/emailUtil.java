@@ -27,7 +27,6 @@ public class emailUtil {
         props.put("mail.smtp.starttls.enable","true");//使用 STARTTLS安全连接
         props.put("mail.smtp.port", "25");             //google使用465或587端口
         props.put("mail.smtp.auth", "true");        // 使用验证
-        //props.put("mail.debug", "true");
         Session mailSession = Session.getInstance(props,new MyAuthenticator(from,fromUserPassword));
 
         // 第二步：编写消息
@@ -52,6 +51,10 @@ public class emailUtil {
 //       transport.sendMessage(message,);
         Transport.send(message);
         System.out.println("message yes");
+    }
+
+    public void copy(){
+
     }
 
     public static void main(String[] args) {

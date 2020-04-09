@@ -10,6 +10,5 @@ public class CpuUtil {
     public static void getcpu(){
         Sigar sigar = new Sigar();
 
-
     }
 }

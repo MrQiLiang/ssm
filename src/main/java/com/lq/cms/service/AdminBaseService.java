@@ -5,6 +5,11 @@ import com.lq.code.service.BaseService;
 
 import java.util.List;
 
+/**
+ *  @author qi
+ * @param <T>
+ * @param <V>
+ */
 public interface AdminBaseService<T,V extends AdminBaseVo> extends BaseService<T>{
 
     /**

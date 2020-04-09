@@ -147,15 +147,11 @@ public class  WechatController extends BaseController {
                             case ConstantSet.EVENT_TYPE_CLICK:
                                 //自定义菜单点击事件KEY值
                                 String eventKey = map.get(ConstantSet.EVENT_CLICK_KEY);
-
-                                ;
                                 break;
                             default:
                                 break;
                         }
-
                         break;
-
                     default:
                         text.setContent("您发送的消息是：" + "无法理解");
                         baseMessage = text;
@@ -163,11 +159,9 @@ public class  WechatController extends BaseController {
                 }
             message = MessageUtil.MessageToXml(baseMessage);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return message;
     }
-
 }

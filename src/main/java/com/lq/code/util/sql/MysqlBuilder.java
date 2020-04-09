@@ -61,7 +61,6 @@ public class MysqlBuilder extends AbstractDbBuiler {
                             clazzMap.remove(column.getColumnName());
                             columnIterator.remove();
                         }
-
                     }
                     columnIterator = columnList.iterator();
                     while (columnIterator.hasNext()) {

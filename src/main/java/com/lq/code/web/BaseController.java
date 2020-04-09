@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by qi on 2017/7/16.
+ *
+ * @author qi
+ * @date 2017/7/16
  */
 public class BaseController {
 

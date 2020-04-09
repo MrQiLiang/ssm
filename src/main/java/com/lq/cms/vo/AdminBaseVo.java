@@ -2,6 +2,9 @@ package com.lq.cms.vo;
 
 import java.util.Date;
 
+/**
+ * @author qi
+ */
 public class AdminBaseVo extends BasePageVo {
 
     private Long id;

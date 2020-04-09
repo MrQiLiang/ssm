@@ -22,20 +22,7 @@ public class BeanHander implements ResultSetHandler {
 			Object bean = clazz.newInstance();
 			ResultSetMetaData metadata = rs.getMetaData();
 			int coulumnCount = metadata.getColumnCount();
-		/**	for (int i = 0; i < coulumnCount; i++) {
-				String coulmnName = metadata.getColumnLabel(i + 1);
-				Object coulmnData = rs.getObject(i + 1);
-				String fieldName = SqlUtil.humpToCase(coulmnName);
-				Field f = null;
-				try {
-					f = clazz.getDeclaredField(fieldName);
-				}catch (NoSuchFieldException e){
-					continue;
-				}
-				f.setAccessible(true);
-				f.set(bean, coulmnData);
-			}
-		 **/
+
 		 Field [] fields = clazz.getDeclaredFields();
 		 for (Field f:fields){
 		 	String fieldName = f.getName();

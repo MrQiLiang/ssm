@@ -2,6 +2,7 @@ package com.lq.wechat.util;
 
 /**
  *  微信公众号相关常量
+ *  @author qi
  */
 public class ConstantSet {
 	

@@ -4,6 +4,9 @@ import com.lq.code.util.mybatisPlus.xml.converter.SelectMappserXmlDtlConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
+/**
+ * @author qi
+ */
 @XStreamAlias("select")
 @XStreamConverter(SelectMappserXmlDtlConverter.class)
 public class SelectMappserXmlDtl {

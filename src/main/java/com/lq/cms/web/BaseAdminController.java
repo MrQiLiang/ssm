@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 管理后台 父类
  * 强封装，缺少扩展，不建议采用
+ * @author qi
  */
 public abstract class BaseAdminController<T,V extends AdminBaseVo> {
 

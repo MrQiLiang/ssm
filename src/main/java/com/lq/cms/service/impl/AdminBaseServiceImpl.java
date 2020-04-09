@@ -11,6 +11,11 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author qi
+ * @param <T>
+ * @param <V>
+ */
 public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo>  implements AdminBaseService<T,V>{
 
     abstract AdminBaseDao<T,V> getAdminBaseDao();
