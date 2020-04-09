@@ -30,13 +30,13 @@ public class  MessageUtil {
 	 * @throws DocumentException
 	 */
 	public static Map<String, String> xmlToMap(HttpServletRequest req) throws IOException, DocumentException{
-		Map<String, String> map=new HashMap<>();
 		SAXReader reader=new SAXReader();
 		InputStream ins=req.getInputStream();
 		String resultString=IoUtil.convertStreamToString(ins);
 		Document doc=DocumentHelper.parseText(resultString);
 		Element root=doc.getRootElement();
 		List<Element> list=root.elements();
+		Map<String, String> map=new HashMap<>(list.size());
 		for(Element e:list){
 			map.put(e.getName(), e.getText());
 		}

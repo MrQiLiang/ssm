@@ -73,9 +73,10 @@ public class SqlUtil {
      * @return
      */
     public static Map<String,String> getAttributeAndColumn(Class entityClazz){
-        Map<String,String> map=new HashMap<>();
+
         List<Field> fieldsList=BeanUtil.getAllField(entityClazz);
         Iterator iterator = fieldsList.iterator();
+        Map<String,String> map=new HashMap<>(fieldsList.size());
         while (iterator.hasNext()){
             Field field = (Field) iterator.next();
             map.put(field.getName(),caseToHump(field.getName()));
