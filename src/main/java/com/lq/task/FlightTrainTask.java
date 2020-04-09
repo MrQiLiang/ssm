@@ -10,18 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class FlightTrainTask {
 
-//    @Autowired
-//    private MailService mailService;
 
     @Scheduled(cron = "0 15 02 * * ? ")
     public  void taskcyle(){
         System.out.println("===========执行定时任务=======");
-//        try {
-//
-//            mailService.sendMail("qi_liang_gz@163.com","565391376@qq.com","ssm管理后台性能报告","内存为：8g");
-//        } catch (AddressException e) {
-//            e.printStackTrace();
-//        }
     }
 
 
