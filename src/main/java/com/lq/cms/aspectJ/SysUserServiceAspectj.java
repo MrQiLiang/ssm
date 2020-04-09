@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by qi_liang on 2018/4/15.
+ * @author qi
  */
 @Aspect
 @Component
