@@ -38,7 +38,9 @@ public abstract class AbstractDbBuiler {
      abstract public String concatPageSql(String sql, PageInterface pageInterface);
 
     /**
-     *  构建创建表的sql语句
+     * 构建创建表的sql语句
+     * @param clazz
+     * @return
      */
     abstract public String createTableStr(Class clazz);
 
