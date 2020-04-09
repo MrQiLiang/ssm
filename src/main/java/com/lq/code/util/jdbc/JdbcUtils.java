@@ -100,7 +100,7 @@ public class JdbcUtils {
 
 
 
-	public static void update(String sql, Object params[]) {
+	public static void update(String sql,Object[] params) {
 		System.out.println(sql);
 		Connection conn = null;
 		PreparedStatement st = null;
@@ -147,7 +147,7 @@ public class JdbcUtils {
 
 	}
 
-	public static Object query(String sql, Object params[], ResultSetHandler rsh) {
+	public static Object query(String sql, Object[] params, ResultSetHandler rsh) {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;

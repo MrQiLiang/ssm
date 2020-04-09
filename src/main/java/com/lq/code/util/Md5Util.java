@@ -17,7 +17,7 @@ public class Md5Util {
     try {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(plainText.getBytes());
-        byte b[]=md.digest();
+        byte[] b=md.digest();
         int i;
         StringBuffer buffer=new StringBuffer("");
         for (int offset=0;offset<b.length;offset++){

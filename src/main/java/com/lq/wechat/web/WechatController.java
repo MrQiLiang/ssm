@@ -35,13 +35,21 @@ import java.util.Map;
 public class  WechatController extends BaseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WechatController.class);
-    //消息类型
+    /**
+     * 消息类型
+     */
     public static final String WECHAT_MESSAGE_TYPE_KEY = "MsgType";
-    //微信公众号openId
+    /**
+     * 微信公众号openId
+     */
     public static final String WECHAT_OPENID_KEY = "ToUserName";
-    //接收方账号
+    /**
+     * 接收方账号
+     */
     public static final String WECHAT_USER_OPENID_KEY = "FromUserName";
-    //用户-消息内容
+    /**
+     * 用户-消息内容
+     */
     public static final String WECHAT_CONTENT_KEY = "Content";
 
     @Autowired
