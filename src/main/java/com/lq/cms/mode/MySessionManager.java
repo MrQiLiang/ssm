@@ -5,6 +5,7 @@ import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 
 /**
  * Created by qi_liang on 2018/1/26.
+ * @author qi
  */
 public class MySessionManager extends DefaultWebSessionManager {
 

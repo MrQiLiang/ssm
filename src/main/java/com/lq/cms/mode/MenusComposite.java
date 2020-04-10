@@ -1,14 +1,21 @@
 package com.lq.cms.mode;
 
 /** 本目录采用容器模式
- * Created by qi on 2017-11-29.
+ *
+ * @author qi
  */
 public abstract class MenusComposite {
-
+    /**
+     * 菜单ID
+     */
     private Long  menuid;
-
+    /**
+     * 菜单名称
+     */
     private String menuname;
-
+    /**
+     * 菜单图标
+     */
     private String  icon;
 
     public Long getMenuid() {
