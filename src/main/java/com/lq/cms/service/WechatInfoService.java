@@ -7,7 +7,8 @@ import com.lq.entity.WechatInfo;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ *
+ * @author qi
  */
 public interface WechatInfoService extends BaseService<WechatInfo> {
 

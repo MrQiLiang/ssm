@@ -7,7 +7,7 @@ import com.lq.entity.SysUser;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ * @author qi
  */
 public interface SysUserService extends BaseService<SysUser> {
 

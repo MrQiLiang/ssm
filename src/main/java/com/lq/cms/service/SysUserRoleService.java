@@ -6,7 +6,7 @@ import com.lq.entity.SysUserRole;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ * @author qi
  */
 public interface SysUserRoleService extends BaseService<SysUserRole> {
     /**
