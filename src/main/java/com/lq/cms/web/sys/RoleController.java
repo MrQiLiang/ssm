@@ -6,6 +6,7 @@ import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.mode.ZtreeComposite;
 import com.lq.cms.service.SysRoleResourcePermissionService;
 import com.lq.cms.service.SysRoleService;
+import com.lq.cms.service.SysUserRoleService;
 import com.lq.cms.vo.SysRoleResourcePermissionVo;
 import com.lq.cms.vo.SysRoleVo;
 import com.lq.code.entity.AjaxResult;
@@ -40,6 +41,8 @@ public class RoleController  {
     private SysRoleService sysRoleService;
     @Autowired
     private SysRoleResourcePermissionService sysRoleResourcePermissionService;
+    @Autowired
+    private SysUserRoleService sysUserRoleService;
 
 
     @RequestMapping("/index")
@@ -135,7 +138,7 @@ public class RoleController  {
     public Object delte(SysRole sysRole){
         AjaxResult ajaxResult=new AjaxResult();
         if (sysRole!=null&&sysRole.getId()!=null){
-            sysRoleService.delete(sysRole.getId());
+            sysRoleService.deleteRole(sysRole.getId());
         }
         return ajaxResult;
     }
