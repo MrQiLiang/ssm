@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ * 用户相关事务类
+ * @author qi
  */
 @Service
 public class SysUserServiceImpl implements SysUserService {

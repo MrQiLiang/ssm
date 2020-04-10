@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/21.
+ * 微信公众号详情事务类
  * @author qi
  */
 @Service

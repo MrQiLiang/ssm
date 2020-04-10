@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by qi_liang on 2018/6/21.
+ * @author qi
  */
 @Service
 public class SysResourceServiceImpl  implements SysResourceService {

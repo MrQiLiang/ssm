@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author qi
+ */
 @Service
 public class WechatMessageServiceImpl extends AdminBaseServiceImpl<WechatMessage,WechatMessageVo> implements WechatMessageService {
 
