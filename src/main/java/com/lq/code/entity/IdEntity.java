@@ -10,7 +10,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Created by qi on 2017/7/16.
+ * 实体类父类
+ * @author qi
  */
 public class IdEntity implements Serializable {
 
