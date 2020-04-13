@@ -36,7 +36,7 @@ import java.util.UUID;
 
 /**
  * @author qi
- *
+ * 用户相关接口
  */
 @Controller
 @RequestMapping("/cms/user")

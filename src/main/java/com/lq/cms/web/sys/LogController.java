@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 日志控制类
+ * @author qi
  */
 @Controller
 @RequestMapping("cms/log")
