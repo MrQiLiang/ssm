@@ -25,35 +25,64 @@ public interface BaseService<T> {
        return getBaseDao().findOne(id);
     }
 
+    /**
+     * 查询全部
+     * @return
+     */
     default List<T> findAll(){
         return getBaseDao().findAll();
     }
 
+    /**
+     * 保存
+     * @param entity
+     * @return
+     */
     default Long save(T entity){
         return getBaseDao().save(entity);
     }
 
+    /**
+     * 更新
+     * @param entity
+     */
     default void update(T entity){
         getBaseDao().update(entity);
     }
 
+    /**
+     * 删除
+     * @param id
+     */
     default void delete(Long id){
         getBaseDao().delete(id);
     }
 
+    /**
+     * 批量保存
+     * @param entityList
+     */
     @Transactional(rollbackFor = Exception.class)
-    default void batchSave(List<T> entitylist){
-        getBaseDao().batchSave(entitylist);
+    default void batchSave(List<T> entityList){
+        getBaseDao().batchSave(entityList);
     }
 
+    /**
+     * 批量更新
+     * @param entityList
+     */
     @Transactional(rollbackFor = Exception.class)
-    default void batchUpdate(List<T> entitylist){
-        getBaseDao().batchSave(entitylist);
+    default void batchUpdate(List<T> entityList){
+        getBaseDao().batchSave(entityList);
     }
 
+    /**
+     * 批量删除
+     * @param entityList
+     */
     @Transactional(rollbackFor = Exception.class)
-    default void batchDelete(List<T> entitylist){
-        getBaseDao().batchDelete(entitylist);
+    default void batchDelete(List<T> entityList){
+        getBaseDao().batchDelete(entityList);
     }
 
 }

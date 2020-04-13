@@ -62,10 +62,10 @@ public class SysRoleServiceImpl  implements SysRoleService {
 
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteRole(Long roleId) {
         //删除角色关联的权限和菜单
-        Map<String,Object> paramsMap = new HashMap<>();
+        Map<String,Object> paramsMap = new HashMap<>(2);
         paramsMap.put("roleId",roleId);
         paramsMap.put("status", StatusTypeEnum.STATUS_ACTIVITY_NO.getValue());
         sysRoleResourcePermissionDao.updateByRoleIdAndStatus(paramsMap);
