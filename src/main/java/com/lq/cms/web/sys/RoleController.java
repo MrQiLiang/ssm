@@ -89,7 +89,7 @@ public class RoleController  {
     @RequestMapping("/updatePermission")
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     public Object updatePermission(@RequestBody List<SysRoleResourcePermissionVo> list){
-        AjaxResult ajaxResult=new AjaxResult();
+        AjaxResult ajaxResult=AjaxResult.getSuccessInstance();
         boolean result=sysRoleResourcePermissionService.updateRolePermission(list);
         ajaxResult.setSuccess(result);
         if (!result){
@@ -103,7 +103,7 @@ public class RoleController  {
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_INSERT)
     public Object save(SysRole sysRole){
         Date nowTime = new Date();
-        AjaxResult ajaxResult = new AjaxResult(true," 保存成功","");
+        AjaxResult ajaxResult =AjaxResult.getSuccessInstance();
         if (sysRole!=null){
             sysRole.setCreateTime(nowTime);
             sysRole.setUpdateTime(nowTime);
