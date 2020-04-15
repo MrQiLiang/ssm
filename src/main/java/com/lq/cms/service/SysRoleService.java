@@ -27,7 +27,7 @@ public interface SysRoleService extends BaseService<SysRole> {
     List<SysRoleVo> findListPage(SysRoleVo vo);
 
     /**
-     *
+     * 通过用户ID查找相关角色
      * @param userId
      * @return
      */
