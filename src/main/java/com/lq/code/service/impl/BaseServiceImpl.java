@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
+ * @author qi
  * Created by qi_liang on 2018/6/21.
  *  采用jdk8 默认方法，所以该实现类废弃
  */
@@ -26,43 +27,43 @@ public abstract  class BaseServiceImpl<T> implements BaseService<T>{
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Long save(T entity) {
         return getBaseDao().save(entity);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void update(T entity) {
 
         getBaseDao().update(entity);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void delete(Long id) {
 
         getBaseDao().delete(id);
     }
 
     @Override
-    @Transactional
-    public void batchSave(List<T> entitylist) {
+    @Transactional(rollbackFor = Exception.class)
+    public void batchSave(List<T> entityList) {
 
-        getBaseDao().batchSave(entitylist);
+        getBaseDao().batchSave(entityList);
     }
 
     @Override
-    @Transactional
-    public void batchUpdate(List<T> entitylist) {
+    @Transactional(rollbackFor = Exception.class)
+    public void batchUpdate(List<T> entityList) {
 
-        getBaseDao().batchUpdate(entitylist);
+        getBaseDao().batchUpdate(entityList);
     }
 
     @Override
-    @Transactional
-    public void batchDelete(List<T> entitylist) {
+    @Transactional(rollbackFor = Exception.class)
+    public void batchDelete(List<T> entityList) {
 
-        getBaseDao().batchDelete(entitylist);
+        getBaseDao().batchDelete(entityList);
     }
 }

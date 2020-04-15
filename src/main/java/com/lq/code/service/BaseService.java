@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by qi_liang on 2018/6/21.
+ * @author qi
  */
 public interface BaseService<T> {
 

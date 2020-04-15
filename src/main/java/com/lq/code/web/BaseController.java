@@ -15,16 +15,12 @@ public class BaseController {
     @ResponseBody
     public AjaxResult handleException(Exception e) {
         e.printStackTrace();
-        AjaxResult ajaxResult= getAjaxResult();
+        AjaxResult ajaxResult= AjaxResult.getSuccessInstance();
         ajaxResult.setSuccess(false);
         ajaxResult.setMsg(e.getMessage());
         return ajaxResult;
     }
 
-    //返回ajax数据结构
-    public AjaxResult getAjaxResult(){
 
-        return new AjaxResult(true,"操作成功","");
-    }
 
 }
