@@ -56,7 +56,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteUserById(Long userId) {
         //删除用户关联的角色
         sysUserRoleDao.deleteByUserId(userId);

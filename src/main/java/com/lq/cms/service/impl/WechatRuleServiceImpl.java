@@ -80,10 +80,7 @@ public class WechatRuleServiceImpl  implements WechatRuleService {
         }
         if (WechatMessageTypeEnum.IMAGE_TEXT.getValue().equals(wechatMessage.getMessageType())){
             NewsMessage newsMessage = new NewsMessage();
-
         }
-
-
         return baseMessage;
     }
 
