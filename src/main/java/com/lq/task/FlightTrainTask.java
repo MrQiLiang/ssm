@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**  定时任务
  * Created by qi_liang on 2018/3/21.
+ * @author qi
  */
 @Component
 public class FlightTrainTask {
