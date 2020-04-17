@@ -9,9 +9,15 @@ import java.util.Map;
  * @Date: Create in 10:13 PM 2019/3/16
  */
 public enum WechatAccessTokenTypeEnum {
-        CURRENCY(1,"普通令牌"),
-        PAGE_AUTHORIZATION(2,"页面授权")
-        ;
+    /**
+     * 普通token
+     */
+    CURRENCY(1,"普通令牌"),
+    /**
+     * 页面授权token
+     */
+    PAGE_AUTHORIZATION(2,"页面授权")
+    ;
 
     WechatAccessTokenTypeEnum(Integer value, String desc) {
         this.value = value;

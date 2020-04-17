@@ -5,9 +5,12 @@ import java.util.Map;
 
 /**
  * Created by qi_liang on 2018/2/3.
+ * @author qi
  */
-public enum  PermissionTyepEnum {
-
+public enum PermissionTypeEnum {
+    /**
+     * 权限类型
+     */
     SELECT(1L,"查询","SELECT"),
     INSERT(2L,"新增","INSERT"),
     DELETE(3L,"删除","DELETE"),
@@ -26,7 +29,7 @@ public enum  PermissionTyepEnum {
     private String desc;
     private String constant;
 
-    PermissionTyepEnum(Long value, String desc,String constant) {
+    PermissionTypeEnum(Long value, String desc, String constant) {
         this.value = value;
         this.desc = desc;
         this.constant = constant;

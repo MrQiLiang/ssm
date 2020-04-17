@@ -9,7 +9,13 @@ import java.util.Map;
  * @Date: Create in 6:09 AM 2019/4/28
  */
 public enum WechatInfoCertificationTypeEnum {
+    /**
+     * 公众号认证状态-认证
+     */
     CERTIFICATION_YES(1,"认证"),
+    /**
+     * 公众号认证状态-未认证
+     */
     CERTIFICATION_NO(0,"未认证")
     ;
 

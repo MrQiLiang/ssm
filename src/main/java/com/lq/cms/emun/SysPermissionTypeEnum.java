@@ -8,7 +8,9 @@ import java.util.Map;
  * @author qi
  */
 public enum SysPermissionTypeEnum {
-
+    /**
+     * 查询
+     */
     SELECT("SELECT","查询"),
     INSERT("INSERT","新增"),
     UPDATE("UPDATE","更新"),

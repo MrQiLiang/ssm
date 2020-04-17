@@ -9,8 +9,17 @@ import java.util.Map;
  * @Date: Create in 9:44 AM 2019/3/15
  */
 public enum WechatInfoTypeEnum {
+    /**
+     * 公众号类型-订阅号
+     */
     SUBSCRIBE(1,"订阅号"),
+    /**
+     * 公众号类型-服务号
+     */
     SERVICE(2,"服务号"),
+    /**
+     * 公众号类型-企业号
+     */
     ENTERPRISE(3,"企业号")
     ;
     WechatInfoTypeEnum(Integer value, String desc) {

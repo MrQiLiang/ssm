@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * Created by qi_liang on 2018/1/28.
+ * @author qi
  */
 public enum StatusTypeEnum {
 

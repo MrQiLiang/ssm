@@ -9,7 +9,13 @@ import java.util.Map;
  * @Date: Create in 3:14 PM 2019/5/16
  */
 public enum  WechatRuleReplyTypeEnum {
+    /**
+     * 公众号消息回复-全回复
+     */
     REPLY_ALL(1,"全回复"),
+    /**
+     * 公众号消息回复-随机回复
+     */
     REPLY_RANDOM(2,"随机回复")
     ;
 

@@ -6,8 +6,13 @@ package com.lq.cms.emun;
  * @Date: Create in 11:20 AM 2019/5/11
  */
 public enum WechatInfoOpenReplyTypeEnum {
-
+    /**
+     * 公众号回复状态-打开
+     */
     OPEN_YES(1,"打开"),
+    /**
+     * 公众号回复状态-关闭
+     */
     OPEN_ON(0,"关闭")
     ;
     WechatInfoOpenReplyTypeEnum(Integer value, String desc) {

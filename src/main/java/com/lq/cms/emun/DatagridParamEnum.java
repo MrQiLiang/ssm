@@ -2,10 +2,16 @@ package com.lq.cms.emun;
 
 /**
  * 管理后台数据
+ * @author qi
  */
 public enum DatagridParamEnum {
-
+    /**
+     *  数据总数
+     */
     TOTAL("total","数据总数"),
+    /**
+     * 分页列数
+     */
     ROWS("rows","分页数据列")
     ;
     private String value;

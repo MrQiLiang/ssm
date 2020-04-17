@@ -3,9 +3,22 @@ package com.lq.cms.emun;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 公众号消息类型
+ * @author qi
+ */
 public enum WechatMessageTypeEnum {
+    /**
+     * 公众号消息类型-文本
+     */
     TEXT(1,"文本"),
+    /**
+     * 公众号消息类型-图片
+     */
     IMAGE(2,"图片"),
+    /**
+     * 公子号消息类型-图文混合
+     */
     IMAGE_TEXT(3,"图文混合")
     ;
 

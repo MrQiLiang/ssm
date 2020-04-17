@@ -5,10 +5,20 @@ import java.util.Map;
 
 /**
  * Created by qi_liang on 2018/6/14.
+ * @author qi
  */
 public enum  WechatInfoEncodingTypeEnum {
+    /**
+     * 公众号加密方式-明文
+     */
     PLAINTEXT("PLAINTEXT","明文"),
+    /**
+     * 公众号加密方式-混合
+     */
     BLEND("BLEND","混合"),
+    /**
+     * 公众号加密方式-加密
+     */
     ENCRYPT("ENCRYPT","加密")
     ;
     private static Map<String,String> enumMap = new HashMap(WechatInfoEncodingTypeEnum.values().length);
