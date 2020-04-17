@@ -1,6 +1,6 @@
 package com.lq.cms.service.impl;
 
-import com.lq.cms.emun.PermissionTyepEnum;
+import com.lq.cms.emun.PermissionTypeEnum;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.mode.Menus;
 import com.lq.cms.mode.MenusComposite;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by qi_liang on 2018/6/21.
@@ -55,7 +54,7 @@ public class SysResourceServiceImpl  implements SysResourceService {
          Map<String,Object> map=new HashMap(3);
         map.put("userId",sysUserId);
         map.put("parentId", Constant.TOP_PARENT_ID);
-        map.put("permissionId", PermissionTyepEnum.SELECT.getValue());
+        map.put("permissionId", PermissionTypeEnum.SELECT.getValue());
         List<SysResource> menusItmeList=sysResourceDao.findMenu(map);
         List<MenusComposite> list=new ArrayList<>();
         menusItmeList.forEach(sysResource->{

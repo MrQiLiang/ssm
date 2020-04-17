@@ -1,6 +1,6 @@
 package com.lq.cms.web;
 
-import com.lq.cms.emun.PermissionTyepEnum;
+import com.lq.cms.emun.PermissionTypeEnum;
 import com.lq.cms.mode.AdminDataGridParam;
 import com.lq.cms.service.AdminBaseService;
 import com.lq.cms.vo.AdminBaseVo;
@@ -48,7 +48,7 @@ public abstract class BaseAdminController<T,V extends AdminBaseVo> {
     @ResponseBody
     public AdminDataGridParam<V> list(V vo){
         Subject subject = SecurityUtils.getSubject();
-        subject.checkPermission(getIndexUrl()+ Constant.PERSSION_MARK+ PermissionTyepEnum.SELECT.getConstant());
+        subject.checkPermission(getIndexUrl()+ Constant.PERSSION_MARK+ PermissionTypeEnum.SELECT.getConstant());
         AdminDataGridParam<V> adminDataGridParam = setPageDate(vo);
         return adminDataGridParam;
     }
@@ -57,7 +57,7 @@ public abstract class BaseAdminController<T,V extends AdminBaseVo> {
     @ResponseBody
     public AjaxResult save(V vo) throws InstantiationException, IllegalAccessException {
         Subject subject = SecurityUtils.getSubject();
-        subject.checkPermission(getIndexUrl()+Constant.PERSSION_MARK+ PermissionTyepEnum.INSERT.getConstant());
+        subject.checkPermission(getIndexUrl()+Constant.PERSSION_MARK+ PermissionTypeEnum.INSERT.getConstant());
         AjaxResult ajaxResult = new AjaxResult();
         T t = getBaseService().save(vo);
         ajaxResult.setData(t);
@@ -68,7 +68,7 @@ public abstract class BaseAdminController<T,V extends AdminBaseVo> {
     @ResponseBody
     public AjaxResult update(V vo){
         Subject subject = SecurityUtils.getSubject();
-        subject.checkPermission(getIndexUrl()+Constant.PERSSION_MARK+ PermissionTyepEnum.UPDATE.getConstant());
+        subject.checkPermission(getIndexUrl()+Constant.PERSSION_MARK+ PermissionTypeEnum.UPDATE.getConstant());
         AjaxResult ajaxResult= new AjaxResult();
         getBaseService().update(vo);
         return ajaxResult;
@@ -78,7 +78,7 @@ public abstract class BaseAdminController<T,V extends AdminBaseVo> {
     @ResponseBody
     public AjaxResult delete(Long id){
         Subject subject = SecurityUtils.getSubject();
-        subject.checkPermission(getIndexUrl()+Constant.PERSSION_MARK+ PermissionTyepEnum.DELETE.getConstant());
+        subject.checkPermission(getIndexUrl()+Constant.PERSSION_MARK+ PermissionTypeEnum.DELETE.getConstant());
         AjaxResult ajaxResult = new AjaxResult();
         getBaseService().delete(id);
         return ajaxResult;

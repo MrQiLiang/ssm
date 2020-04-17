@@ -1,7 +1,7 @@
 package com.lq.cms.service.impl;
 
 import com.lq.cms.emun.BasicsPermissionKeyEnum;
-import com.lq.cms.emun.PermissionTyepEnum;
+import com.lq.cms.emun.PermissionTypeEnum;
 import com.lq.cms.emun.StatusTypeEnum;
 import com.lq.cms.mode.Ztree;
 import com.lq.cms.mode.ZtreeComposite;
@@ -56,17 +56,17 @@ public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePer
             ztreeItem.setId(sysResource.getId());
             ztreeItem.setIconCls(sysResource.getMenuIco());
             ztreeItem.setText(sysResource.getMenuName());
-            ztreeItem.setChecked(isCheck(sysResource.getId(), PermissionTyepEnum.SELECT.getValue(),roleId));
+            ztreeItem.setChecked(isCheck(sysResource.getId(), PermissionTypeEnum.SELECT.getValue(),roleId));
             ztreeItem.setState("close");
-            ztreeItem.setAttributes(getAttributes(sysResource.getId(), Long.valueOf(PermissionTyepEnum.SELECT.getValue())));
+            ztreeItem.setAttributes(getAttributes(sysResource.getId(), Long.valueOf(PermissionTypeEnum.SELECT.getValue())));
             List<SysResource> menuItmeList=sysResourceDao.findByParentId(sysResource.getId());
             for (SysResource resource:menuItmeList){
                 ZtreeItem ztreeItme1=new ZtreeItem();
                 ztreeItme1.setId(resource.getId());
                 ztreeItme1.setText(resource.getMenuName());
                 ztreeItme1.setIconCls(resource.getMenuIco());
-                ztreeItme1.setChecked(isCheck(resource.getId(), PermissionTyepEnum.SELECT.getValue(),roleId));
-                ztreeItme1.setAttributes(getAttributes(resource.getId(),PermissionTyepEnum.SELECT.getValue()));
+                ztreeItme1.setChecked(isCheck(resource.getId(), PermissionTypeEnum.SELECT.getValue(),roleId));
+                ztreeItme1.setAttributes(getAttributes(resource.getId(), PermissionTypeEnum.SELECT.getValue()));
                 List<SysPermission> permissionList = sysPermissionDao.findBySysResourceId(resource.getId());
                 for (SysPermission sysPermission:permissionList){
                     if (BasicsPermissionKeyEnum.SELECT_MENU_KEY.getValue().equals(sysPermission.getPermissionKey())){
@@ -127,16 +127,16 @@ public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePer
         List<PermissionVo> list = new ArrayList<>();
         List<SysResource> sysResourceList =  sysResourceDao.findAll();
         Iterator<SysResource> iterator = sysResourceList.iterator();
-        PermissionTyepEnum[] tyepEnums = PermissionTyepEnum.values();
+        PermissionTypeEnum[] tyepEnums = PermissionTypeEnum.values();
         while (iterator.hasNext()){
             SysResource sysResource = iterator.next();
             if (sysResource!=null){
-                for (PermissionTyepEnum permissionTyepEnum:tyepEnums){
+                for (PermissionTypeEnum permissionTypeEnum :tyepEnums){
                     PermissionVo permissionVo = new PermissionVo();
                     permissionVo.setMenuId(sysResource.getId());
                     permissionVo.setMenuName(sysResource.getMenuName());
                     permissionVo.setMenuUrl(sysResource.getUrlPath());
-                    permissionVo.setPermissionName(permissionTyepEnum.getConstant());
+                    permissionVo.setPermissionName(permissionTypeEnum.getConstant());
                     list.add(permissionVo);
                 }
             }

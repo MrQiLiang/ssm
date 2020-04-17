@@ -69,7 +69,6 @@ public class LoginController extends BaseController{
 
         Subject subject=SecurityUtils.getSubject();
         UsernamePasswordToken token=new UsernamePasswordToken(loginName,password.toCharArray());
-//        UsernamePasswordToken token=new UsernamePasswordToken(loginName,password,false);
         try {
             subject.login(token);
         }catch (UnknownAccountException e){
