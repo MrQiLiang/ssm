@@ -81,7 +81,6 @@ public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePer
                 }
                 ztreeItem.add(ztreeItme1);
             }
-
             ztreeList.add(ztreeItem);
         }
         return ztreeList;
@@ -110,9 +109,7 @@ public class SysRoleResourcePermissionServiceImpl  implements SysRoleResourcePer
                 sysRoleResourcePermission.setStatus(StatusTypeEnum.STATUS_ACTIVITY_YES.getValue());
                 sysRoleResourcePermissionDao.update(sysRoleResourcePermission);
             }
-
         }
-
         return true;
     }
 

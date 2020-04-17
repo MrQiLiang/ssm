@@ -18,6 +18,10 @@ import java.util.List;
  */
 public abstract class AdminBaseServiceImpl<T,V extends AdminBaseVo>  implements AdminBaseService<T,V>{
 
+    /**
+     * 返回dao
+     * @return
+     */
     abstract AdminBaseDao<T,V> getAdminBaseDao();
 
     @Override

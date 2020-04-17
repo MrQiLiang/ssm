@@ -5,9 +5,17 @@ package com.lq.cms.emun;
  * 结果返回结果枚举
  **/
 public enum  AjaxResultEnum {
-
+    /**
+     * 成功返回值
+     */
     SUCCESS(200,"操作成功!"),
+    /**
+     * 警告返回值
+     */
     WARN(400,"参数不合法!"),
+    /**
+     * 异常返回值
+     */
     ERROR(500,"系统异常!")
     ;
 

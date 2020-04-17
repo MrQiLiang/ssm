@@ -73,9 +73,7 @@ public class SysResourceServiceImpl  implements SysResourceService {
                 menusItem.add(menus);
             }
             list.add(menusItem);
-
         });
-
         return list;
     }
 
@@ -103,7 +101,6 @@ public class SysResourceServiceImpl  implements SysResourceService {
             }
             list.add(menusItem);
         }
-
         return list;
     }
 }

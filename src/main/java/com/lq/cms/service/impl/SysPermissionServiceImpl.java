@@ -28,10 +28,6 @@ public class SysPermissionServiceImpl  implements SysPermissionService{
 
     @Autowired
     private SysPermissionDao sysPermissionDao;
-    @Autowired
-    private SysResourceDao sysResourceDao;
-    @Autowired
-    private SysUserDao sysUserDao;
 
     @Override
     public List<SysPermissionVo> findListPage(SysPermissionVo vo) {
