@@ -34,7 +34,7 @@ public class FileSystemController extends BaseController{
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     @ResponseBody
     public Object fileUpload(@RequestParam("files")MultipartFile[] files, HttpServletRequest request) throws IOException {
-        AjaxResult ajaxResult = this.getAjaxResult();
+        AjaxResult ajaxResult = AjaxResult.getSuccessInstance();
         Date nowTime=new Date();
         if (files!=null&&files.length>0){
             for (MultipartFile file:files){

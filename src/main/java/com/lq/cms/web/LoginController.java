@@ -49,7 +49,7 @@ public class LoginController extends BaseController{
     @ResponseBody
     @PostMapping(value = "/doLogin")
     public Object doLogin(String loginName, String password, HttpSession session,String authCode,Boolean rememberMe){
-        AjaxResult ajaxResult= this.getAjaxResult();
+        AjaxResult ajaxResult= AjaxResult.getSuccessInstance();
         String strCode=(String) session.getAttribute("strCode");
         session.setAttribute("strCode",null);
         //验证码不正确
@@ -83,7 +83,7 @@ public class LoginController extends BaseController{
     @ResponseBody
     @RequestMapping("/sendEmail")
     public Object sendEmail(String email){
-        AjaxResult ajaxResult = this.getAjaxResult();
+        AjaxResult ajaxResult = AjaxResult.getSuccessInstance();
 //        try {
 ////            mailService.sendMail("qi_liang_gz@163.com",email,"忘记密码","重新设置网址为<a href=\"#\">http://www.baidu.com</a>");
 //        } catch (AddressException e) {

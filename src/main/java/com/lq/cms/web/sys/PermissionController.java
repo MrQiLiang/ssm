@@ -69,7 +69,7 @@ public class PermissionController extends BaseController{
     @ResponseBody
     @RequestMapping("/save")
     public Object save(SysPermissionVo vo){
-        AjaxResult ajaxResult = this.getAjaxResult();
+        AjaxResult ajaxResult = AjaxResult.getSuccessInstance();
         SysPermission sysPermission = sysPermissionService.save(vo);
         ajaxResult.setData(sysPermission);
         return ajaxResult;
@@ -78,7 +78,7 @@ public class PermissionController extends BaseController{
     @ResponseBody
     @RequestMapping("/update")
     public Object update(SysPermissionVo vo){
-        AjaxResult ajaxResult = this.getAjaxResult();   
+        AjaxResult ajaxResult = AjaxResult.getSuccessInstance();
         SysPermission sysPermission = sysPermissionService.update(vo);
         ajaxResult.setData(sysPermission);
         return ajaxResult;
