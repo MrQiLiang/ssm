@@ -7,6 +7,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
+ * @author qi
  * Created by qi_liang on 2018/5/25.
  */
 public class JvmUtil {
