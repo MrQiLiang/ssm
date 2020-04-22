@@ -5,7 +5,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * Created by qi on 2017/7/23.
+ *  ip工具类
+ * @author qi
  */
 public class IPUtil {
 
