@@ -9,6 +9,9 @@ import java.util.Map;
  * @Date: Create in 3:04 PM 2019/5/14
  */
 public enum WechatKeywordMatchinTypeEnum {
+    /**
+     *  微信公众号规则匹配
+     */
     KEYWORD_ALL(1,"全匹配"),
     KEYWORD_SECTION(2,"半匹配")
     ;
