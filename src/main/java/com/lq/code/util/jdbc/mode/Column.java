@@ -2,7 +2,7 @@ package com.lq.code.util.jdbc.mode;
 
 /**
  * 列
- * Created by qi_liang on 2018/6/2.
+ * @author qi
  */
 public class Column {
 
@@ -37,11 +37,17 @@ public class Column {
      *  列名
      */
     private String columnName;
-    // 列大小
+    /**
+     *  列大小
+     */
     private Integer columnSize;
-    //默认值
+    /**
+     * 默认值
+     */
     private String columnDef;
-    //备注
+    /**
+     * 备注
+     */
     private String remarks;
 
     public String getColumnName() {

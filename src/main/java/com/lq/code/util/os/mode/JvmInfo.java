@@ -1,14 +1,22 @@
 package com.lq.code.util.os.mode;
 
 /**
- * Created by qi_liang on 2018/6/10.
+ * jvm 详情
+ * @author qi
+ *
  */
 public class JvmInfo {
-    //版本号
+    /**
+     * 版本号
+     */
     private String version;
-    //总内存
+    /**
+     * 总内存
+     */
     private Long totalMemory;
-    //可以使用处理器个数
+    /**
+     * 可以使用处理器个数
+     */
     private Integer cupNum;
 
     public String getVersion() {

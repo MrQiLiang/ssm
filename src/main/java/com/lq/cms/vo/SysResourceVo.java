@@ -5,7 +5,8 @@ import com.lq.code.util.DateUtil;
 import java.util.Date;
 
 /**
- * Created by qi_liang on 2018/1/27.
+ * 菜单视图
+ * @author qi
  */
 public class SysResourceVo  extends BasePageVo{
 
@@ -28,13 +29,20 @@ public class SysResourceVo  extends BasePageVo{
     private String updateTimeStr;
 
     private Integer status;
-    //菜单名称
+    /**
+     * 菜单名称
+     */
     private String menuName;
 
     private Long parentId;
-    //上级菜单名称
+    /**
+     * 上级菜单名称
+     */
+
     private String parentMenuName;
-    //菜单图标
+    /**
+     * 菜单图标
+     */
     private String menuIco;
 
     public Long getId() {

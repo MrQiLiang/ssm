@@ -1,17 +1,27 @@
 package com.lq.cms.vo;
 
 /**
- * Created by qi_liang on 2018/1/25.
+ * 权限视图
+ * @author qi
+ *
  */
 public class PermissionVo {
 
-    //目录ID
+    /**
+     *  目录ID
+     */
     private Long menuId;
-    //目录名称
+    /**
+     * 目录名称
+     */
     private String menuName;
-    //目录URL
+    /**
+     * 目录UR
+     */
     private String menuUrl;
-    //权限名称
+    /**
+     *权限名称
+     */
     private String permissionName;
 
     public Long getMenuId() {

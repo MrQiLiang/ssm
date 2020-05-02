@@ -30,10 +30,14 @@ import java.util.Properties;
 })
 public class PageInteceptor implements Interceptor {
 
-    //数据库类型
-    private static String dialect;
-    //需要拦截的sqlID
-    private static String pageSqlId;
+    /**
+     * 数据库类型
+     */
+    private  String dialect;
+    /**
+     * 需要拦截的sqlID
+     */
+    private  String pageSqlId;
 
 
 

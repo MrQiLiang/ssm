@@ -14,6 +14,28 @@ public class IPUtil {
      * 未知ip
      */
     public static final String IP_UNKNOWM = "unknown";
+    /**
+     * 操作系统-windows
+     */
+    public static final String OS_WINDOWS = "windows";
+    /**
+     * 操作系统-mac
+     */
+    public static final String OS_MAC = "mac";
+    /**
+     * 操作系统-linux
+     */
+    public static final String OS_LINUX = "x11";
+
+    /**
+     * 操作系统-android
+     */
+    public static final String OS_ANDROID = "android";
+    /**
+     * 操作系统-iphone
+     */
+    public static final String OS_IPHONE = "iphone";
+
 
     public static String getIP(HttpServletRequest request){
 
@@ -67,19 +89,19 @@ public class IPUtil {
         String browser = "";
 
         //=================OS Info=======================
-        if (userAgent.toLowerCase().indexOf("windows") >= 0 )
+        if (userAgent.toLowerCase().indexOf(OS_WINDOWS) >= 0 )
         {
             os = "Windows";
-        } else if(userAgent.toLowerCase().indexOf("mac") >= 0)
+        } else if(userAgent.toLowerCase().indexOf(OS_MAC) >= 0)
         {
             os = "Mac";
-        } else if(userAgent.toLowerCase().indexOf("x11") >= 0)
+        } else if(userAgent.toLowerCase().indexOf(OS_LINUX) >= 0)
         {
             os = "Unix";
-        } else if(userAgent.toLowerCase().indexOf("android") >= 0)
+        } else if(userAgent.toLowerCase().indexOf(OS_ANDROID) >= 0)
         {
             os = "Android";
-        } else if(userAgent.toLowerCase().indexOf("iphone") >= 0)
+        } else if(userAgent.toLowerCase().indexOf(OS_IPHONE) >= 0)
         {
             os = "IPhone";
         }else{

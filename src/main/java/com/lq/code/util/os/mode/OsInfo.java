@@ -1,15 +1,22 @@
 package com.lq.code.util.os.mode;
 
 /**
- * Created by qi_liang on 2018/6/10.
+ * 系统详情
+ * @author qi
  */
 public class OsInfo {
 
-    //操作系统名称
+    /**
+     * 操作系统名称
+     */
     private String osName;
-    //操作系统版本号
+    /**
+     * 操作系统版本号
+     */
     private String osVersion;
-    //操作系统架构
+    /**
+     * 操作系统架构
+     */
     private String arch;
 
     public String getOsName() {

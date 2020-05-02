@@ -7,9 +7,13 @@ import com.lq.code.util.sql.PageInterface;
  */
 public class BasePageVo implements PageInterface {
 
-    //页码
+    /**
+     * 页码
+     */
     private Integer page;
-    //行数
+    /**
+     * 行数
+     */
     private Integer rows;
 
     @Override
