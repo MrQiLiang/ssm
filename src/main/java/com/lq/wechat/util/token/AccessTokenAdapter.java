@@ -1,4 +1,4 @@
-package com.lq.wechat.util.accessToken;
+package com.lq.wechat.util.token;
 
 import com.lq.entity.WechatAccessToken;
 import com.lq.wechat.mode.AccessToken;

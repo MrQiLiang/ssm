@@ -1,4 +1,4 @@
-package com.lq.wechat.util.accessToken;
+package com.lq.wechat.util.token;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lq.code.util.HttpKit;

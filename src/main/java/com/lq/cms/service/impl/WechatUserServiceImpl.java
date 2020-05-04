@@ -5,7 +5,7 @@ import com.lq.code.dao.BaseDao;
 import com.lq.dao.WechatUserDao;
 import com.lq.entity.WechatInfo;
 import com.lq.entity.WechatUser;
-import com.lq.wechat.util.accessToken.AccessTokenUtil;
+import com.lq.wechat.util.token.AccessTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

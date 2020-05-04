@@ -1,8 +1,6 @@
-package com.lq.wechat.util.accessToken;
+package com.lq.wechat.util.token;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class AccessTokenUtilTest {
 
