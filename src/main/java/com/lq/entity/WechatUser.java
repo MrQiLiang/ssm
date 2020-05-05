@@ -6,7 +6,6 @@ import java.util.Date;
 
 /**
  * 微信公众号用户
- * Created by qi_liang on 2018/5/24.
  * @author qi
  */
 public class WechatUser extends IdEntity{

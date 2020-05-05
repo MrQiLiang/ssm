@@ -2,7 +2,7 @@ package com.lq.wechat.mode;
 
 /**
  * @Author: qi
- * @Description:
+ * @Description: token对象
  * @Date: Create in 9:28 AM 2019/3/15
  */
 public class AccessToken {
