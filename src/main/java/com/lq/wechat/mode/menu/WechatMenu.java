@@ -3,7 +3,8 @@ package com.lq.wechat.mode.menu;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/1.
+ * @author qi
+ * 菜单类
  */
 public class WechatMenu {
     //菜单类

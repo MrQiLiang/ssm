@@ -1,6 +1,7 @@
 package com.lq.wechat.mode.menu;
 
 /**
+ *
  * Created by qi_liang on 2018/6/1.
  */
 
@@ -8,24 +9,41 @@ import java.util.List;
 
 /**
  *  自定义菜单子菜单
+ *  @author qi
  */
 public class WechatButton {
 
-    // 二级菜单
+    /**
+     * 二级菜单
+     */
     List<WechatButton> sub_button;
-    //菜单名称
+    /**
+     * 菜单名称
+     */
     private String name;
-    //菜单类型
+    /**
+     *菜单类型
+     */
     private String type;
-    //菜单键值
+    /**
+     * 菜单键值
+     */
     private String key;
-    //菜单跳转url
+    /**
+     * 菜单跳转url
+     */
     private String url;
-    //返回永久素材
+    /**
+     * 返回永久素材
+     */
     private String media_id;
-    //微信小程序id
+    /**
+     * 微信小程序id
+     */
     private String appid;
-    //小程序页面路径
+    /**
+     * 小程序页面路径
+     */
     private String pageapth;
 
     public List<WechatButton> getSub_button() {

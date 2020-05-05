@@ -10,12 +10,18 @@ MsgType	视频为video
 MediaId	视频消息媒体id，可以调用多媒体文件下载接口拉取数据。
 ThumbMediaId	视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
 MsgId	消息id，64位整型
- * @author Administrator
+ * @author qi
  *
  */
 @XStreamAlias("xml")
 public class VideoMessage extends BaseMessage {
+	/**
+	 * 视频消息媒体id，可以调用多媒体文件下载接口拉取数据。
+	 */
 	private String MediaId;
+	/**
+	 * 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
+	 */
 	private String ThumbMediaId;
 	public String getMediaId() {
 		return MediaId;

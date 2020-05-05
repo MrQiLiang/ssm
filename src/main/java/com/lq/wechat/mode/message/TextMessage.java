@@ -4,6 +4,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  *  被动回复-文本消息
+ * @author qi
  */
 @XStreamAlias("xml")
 public class TextMessage extends BaseMessage {
