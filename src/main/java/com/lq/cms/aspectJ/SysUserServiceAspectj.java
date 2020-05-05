@@ -16,7 +16,9 @@ public class SysUserServiceAspectj {
     public void perFormEncord(){}
 
 
-    //前置通知
+    /**
+     * 前置通知
+     */
     @Before(value = "perFormEncord()")
     public void before( JoinPoint joinPoint){
         System.out.println("========切入 start========");
@@ -26,13 +28,17 @@ public class SysUserServiceAspectj {
 //        }
     }
 
-    //后置通知
+    /**
+     * 后置通知
+     */
     @After(value = "perFormEncord()")
     public void after(){
         System.out.println("========切入 end========");
     }
 
-    //后置返回通知
+    /**
+     * 后置返回通知
+     */
     @AfterReturning(value = "perFormEncord()",returning = "retVal")
     public void afterReturning(JoinPoint joinPoint,Object retVal){
 
