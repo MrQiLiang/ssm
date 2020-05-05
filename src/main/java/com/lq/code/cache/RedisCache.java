@@ -9,7 +9,7 @@ import org.springframework.util.SerializationUtils;
 import java.util.concurrent.Callable;
 
 /**
- * Created by qi_liang on 2018/3/31.
+ * @author qi
  */
 public class RedisCache implements Cache {
 

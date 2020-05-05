@@ -18,7 +18,7 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by qi_liang on 2018/9/11.
+ * @author qi
  */
 public class RedisSessionDao<K,V> extends EnterpriseCacheSessionDAO {
 
