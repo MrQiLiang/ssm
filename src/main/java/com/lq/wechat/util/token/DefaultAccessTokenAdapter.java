@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * @Author: qi
- * @Description:
+ * @Description:token适配器默认实现
  * @Date: Create in 11:16 PM 2019/3/16
  */
 public class DefaultAccessTokenAdapter implements AccessTokenAdapter{
