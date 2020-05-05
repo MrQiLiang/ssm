@@ -3,11 +3,13 @@ package com.lq.wechat.mode.menu;
 import java.util.List;
 
 /**
- * @author qi
  * 菜单类
+ * @author qi
  */
 public class WechatMenu {
-    //菜单类
+    /**
+     * 菜单类
+     */
     private List<WechatButton> button;
 
     public List<WechatButton> getButton() {

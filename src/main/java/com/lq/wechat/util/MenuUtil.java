@@ -6,7 +6,9 @@ import com.lq.wechat.mode.menu.WechatMenu;
 import com.lq.wechat.mode.menu.WechatMenuCofig;
 
 /**
- * Created by qi_liang on 2018/6/1.
+ *
+ * @author qi
+ * @date 2018/6/1
  */
 public class MenuUtil {
 

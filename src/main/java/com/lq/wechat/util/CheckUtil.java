@@ -3,7 +3,7 @@ package com.lq.wechat.util;
 import java.util.Arrays;
 
 /**
- *  author qi
+ *  @Author qi
  */
 public class CheckUtil {
 

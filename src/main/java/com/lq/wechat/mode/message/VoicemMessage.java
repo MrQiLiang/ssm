@@ -3,7 +3,7 @@ package com.lq.wechat.mode.message;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
- *
+ * 语音消息
  * @author qi
  *
  */

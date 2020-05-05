@@ -5,13 +5,21 @@ import java.util.Map;
 
 /**
  * 构造器默认实现类
- * Created by qi_liang on 2018/6/27.
+ * @author qi
  */
 public class WechatTemplateConcreteBuilder implements WechatTemplateBuilder {
 
-    //默认颜色
+    /**
+     * 默认颜色
+     */
     public static final String DEFAULT_COLORD = "#173177";
+    /**
+     * 消息模板
+     */
     private WechatTemplate wechatTemplate;
+    /**
+     * 业务数据
+     */
     private Map<String,Object> data;
     private int index = 1;
 
