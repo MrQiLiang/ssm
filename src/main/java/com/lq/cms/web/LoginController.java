@@ -28,8 +28,9 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**管理后台登陆页
- * Created by qi on 2017/7/16.
+/**
+ * 管理后台登陆页
+ * @author qi
  */
 @Controller
 @RequestMapping("/cms/login")
@@ -151,7 +152,9 @@ public class LoginController extends BaseController{
         response.getOutputStream().flush();
     }
 
-    //创建颜色
+    /**
+     *  创建颜色
+     */
     private Color getRandColor(int fc,int bc){
         Random random=new Random();
         if(fc>255){

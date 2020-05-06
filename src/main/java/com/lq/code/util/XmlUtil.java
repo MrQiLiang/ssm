@@ -35,18 +35,6 @@ public class XmlUtil {
 
     }
 
-//    public static String objToXml(Writer writer,Object obj) throws UnsupportedEncodingException {
-//        XStream xstream = new XStream(new DomDriver("utf8"));
-//        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//
-//        writer = new OutputStreamWriter(outputStream, "UTF-8");
-//
-//        xstream.toXML(obj, writer);
-//        String xml = outputStream.toString("UTF-8");
-//        return xml;
-//    }
-
     public static String objToXml(Object obj,String str) throws IOException {
         XStream xstream = new XStream(new DomDriver("utf8"));
         xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
@@ -56,17 +44,6 @@ public class XmlUtil {
         xstream.toXML(obj, writer);
         String xml = outputStream.toString("UTF-8");
         return xml;
-    }
-
-    public static void main(String[] args) {
-
-        SqlMapperXmlDtl sqlMapperXmlDtl = new SqlMapperXmlDtl();
-        sqlMapperXmlDtl.setId("findOne");
-        sqlMapperXmlDtl.setVale("select * from sys_id ");
-
-        String xmlStr= objToXml(sqlMapperXmlDtl);
-        System.out.println(xmlStr);
-
     }
 
 }

@@ -10,10 +10,22 @@ import java.util.Calendar;
 import java.util.Properties;
 
 /**
- * Created by qi on 2017/9/8.
+ * email 工具类
+ * @author qi
  */
 public class emailUtil {
 
+    /**
+     *  发送邮件消息
+     * @param smtpHost          发送地址
+     * @param from               账号
+     * @param fromUserPassword   密码
+     * @param to                  目标邮箱
+     * @param subject             主题
+     * @param messageText         消息内容
+     * @param messageType         消息类型
+     * @throws MessagingException
+     */
     @SuppressWarnings("static-access")
     public static void sendMessage(String smtpHost, String from,
                                    String fromUserPassword, String to, String subject,
@@ -53,9 +65,6 @@ public class emailUtil {
         System.out.println("message yes");
     }
 
-    public void copy(){
-
-    }
 
     public static void main(String[] args) {
         try {

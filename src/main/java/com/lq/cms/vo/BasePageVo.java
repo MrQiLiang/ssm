@@ -2,8 +2,9 @@ package com.lq.cms.vo;
 
 import com.lq.code.util.sql.PageInterface;
 
-/**分页父类
- * Created by qi_liang on 2018/1/27.
+/**
+ * 分页父类
+ * @author qi
  */
 public class BasePageVo implements PageInterface {
 

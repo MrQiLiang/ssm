@@ -45,9 +45,9 @@ public class MysqlBuilder extends AbstractDbBuiler {
                 Table table = tableIterator.next();
                 if (map.containsKey(table.getTableName())) {
                     Class clazz = map.get(table.getTableName());
-                    Map<String, Object> clazzMap = new HashMap<>();
                     List<Field> fieldsList = BeanUtil.getAllField(clazz);
                     Iterator<Field> fieldsIterator = fieldsList.iterator();
+                    Map<String, Object> clazzMap = new HashMap<>(fieldsList.size());
                     while (fieldsIterator.hasNext()) {
                         Field f = fieldsIterator.next();
                         clazzMap.put(SqlUtil.caseToHump(f.getName()), f);

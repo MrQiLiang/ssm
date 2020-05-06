@@ -3,11 +3,14 @@ package com.lq.cms.emun;
 
 /**
  * @Author: qi
- * @Description:
+ * @Description:权限默认key美剧
  * @Date: Create in 1:25 PM 2019/8/8
  */
 public enum BasicsPermissionKeyEnum {
 
+    /**
+     * 权限枚举
+     */
     SELECT_MENU_KEY("SELECT_MENU_KEY","查看菜单","SELECT"),
     SELECT_DATA_KEY("SELECT_DATA_KEY","查询全部数据","SELECT"),
     INSERT_KEY("INSERT_KEY","新增数据","INSERT"),

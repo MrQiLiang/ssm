@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
+ * 控制类父类
+ * 统一异常处理
  * @author qi
  * @date 2017/7/16
  */
