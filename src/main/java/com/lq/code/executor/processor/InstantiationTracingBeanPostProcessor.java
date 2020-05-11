@@ -1,6 +1,5 @@
 package com.lq.code.executor.processor;
 
-import com.lq.code.dto.QueueDto;
 import com.lq.code.util.BeanUtil;
 import com.lq.code.util.jdbc.JdbcUtils;
 import com.lq.code.util.sql.AbstractDbBuiler;
@@ -9,12 +8,6 @@ import com.lq.code.util.sql.factory.DbBuilerFactory;
 import com.lq.code.util.sql.factory.impl.DefaultDbBuilerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 /**
