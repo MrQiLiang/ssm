@@ -29,7 +29,6 @@ import java.util.Properties;
 @Signature(type = StatementHandler.class,method = "prepare",args = {Connection.class,Integer.class})
 })
 public class PageInteceptor implements Interceptor {
-
     /**
      * 数据库类型
      */
@@ -38,8 +37,6 @@ public class PageInteceptor implements Interceptor {
      * 需要拦截的sqlID
      */
     private  String pageSqlId;
-
-
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -58,7 +55,6 @@ public class PageInteceptor implements Interceptor {
                 AbstractDbBuiler db = dbBuilerFactory.getSqlBuilder(dialect);
                 String pageSql=db.concatPageSql(sql,pageInterface);
                 metaStatementHandler.setValue("delegate.boundSql.sql",pageSql);
-
             }
         }
         return invocation.proceed();

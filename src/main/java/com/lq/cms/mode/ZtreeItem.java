@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/2/3.
+ * 树选项
  * @author qi
  */
 public class ZtreeItem extends ZtreeComposite{

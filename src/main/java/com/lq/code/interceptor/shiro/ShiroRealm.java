@@ -20,7 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by qi on 2017-12-5.
+ * 授权权
+ * @author qi
  */
 public class ShiroRealm extends AuthorizingRealm {
 
