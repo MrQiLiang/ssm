@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by qi_liang on 2018/4/15.
+ * 系统用户切面
  * @author qi
  */
 @Aspect
