@@ -22,6 +22,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * https 客户端
+ * @author qi
+ */
 public class HttpsClient {
 
 	private static final Logger LOGGER  = LoggerFactory.getLogger(HttpsClient.class);
@@ -142,34 +146,10 @@ public class HttpsClient {
 	}
 	
 	private static SSLContext getTrustAllSSLContext() throws Exception {  
-//	    SSLContext context = SSLContexts.custom().loadTrustMaterial(null, new TrustStrategy() {
-//
-//			@Override
-//			public boolean isTrusted(X509Certificate[] arg0, String arg1)
-//					throws java.security.cert.CertificateException {
-//				// 这一句就是信任任何的证书，当然你也可以去验证服务器的真实性
-//				return true;
-//			}
-//		}).build();
 		SSLContext context = SSLContext.getDefault();
 	    return context;  
 	}
 	
-//	public static void main(String[] args) throws IOException {
-//		File file =new File("/Users/qi_liang/Downloads/timg.jpeg");
-//		String url = "https://api.weixin.qq.com/cgi-bin/media/upload";
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		params.put("access_token", "10_0oKKCsF9JL30JeGZDyfNWDhiaRvivAL9vs9ihvaledzBuPVM6IMvwcFUc58AFwlETRdvEBAFXOYbF2GoKmbtMmopCs78m9UE8whgrYU4kJww4mSooMcq8el-qnU4JdjPGKruZLjdNS246hXyWOHbAAAHZS");
-//		params.put("type", "image");
-//		if(file.exists()){
-//			params.put("media", file);
-//		}
-//		String resultStr = post(url,params);
-//		System.out.println(resultStr);
-//	}
 
-	public static void main(String[] args) {
-
-	}
 	  
 }
