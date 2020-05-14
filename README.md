@@ -1,11 +1,9 @@
 # ssm项目
-
 ## ssm 介绍
 ```java
 一个基于spring mvc+mybatis的框架。页面是采用aceAdmin+easyUI.
 使用shiro作为安全框架，做权限控制
 ```
-
 ## ssm开发环境
 ```java
 1. jdk 1.8
@@ -14,7 +12,6 @@
 4. redis
 5. tomcat 8
 ```
-
 ## ssm 使用说明
 ```java
 1. 菜单目录采用设计模式中的容器模式,理论上是可以实现三级甚至四级的菜单目录（参考代码：com.lq.cms.mode.MenusComposite）.
@@ -24,7 +21,6 @@
 5. 使用spring session整合redis实现在集群中session共享的效果
 6. 微信公众号相关开发代码（com.lq.wechat），其中客服消息采用了建造者模式(com.lq.wechat.mode.template)。
 ```
-
 ## 三层架构理念：
 ```java
 1. 数据库表与mapping.xml一一对应。
@@ -33,7 +29,6 @@
 4. controller层代码密度低 只负责简单的数据接受和转发。以及页面跳转的控制
 
 ```
-
 ## 示例
 ```java
 1. 项目案例：http://106.12.122.216:8080/ssm/cms/

@@ -29,9 +29,11 @@ import java.util.Map;
 @RequestMapping("/cms/permission")
 public class PermissionController extends BaseController{
 
-    private static Logger LOGGER = LoggerFactory.getLogger(PermissionController.class);
-
-    private static final String INDEX_URL = "/cms/permission/index";
+    public static Logger LOGGER = LoggerFactory.getLogger(PermissionController.class);
+    /**
+     * 首页路径
+     */
+    public static final String INDEX_URL = "/cms/permission/index";
 
     @Autowired
     private SysPermissionService sysPermissionService;
