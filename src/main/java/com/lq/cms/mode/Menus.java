@@ -1,11 +1,13 @@
 package com.lq.cms.mode;
 
 /**
- * Created by qi on 2017-11-29.
+ * 菜单模块
  * @author qi
  */
 public class Menus extends MenusComposite{
-
+    /**
+     * 菜单路径
+     */
     private String url;
 
     public String getUrl() {
