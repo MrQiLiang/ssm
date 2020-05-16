@@ -40,26 +40,30 @@ public interface BaseDao<T> extends BaseMapper<T> {
 
 
     /**
-     *  删除一条数据
+     * 删除一条数据
      * @param id
+     * @return
      */
      int delete(@Param("id") Long id);
 
     /**
-     *  批量保存数据
+     * 批量保存数据
      * @param entitylist
+     * @return
      */
     int batchSave(List<T> entitylist);
 
     /**
-     *  批量更新数据
+     * 批量更新数据
      * @param entitylist
+     * @return
      */
      int batchUpdate(List<T> entitylist);
 
     /**
-     *  批量删除数据
+     * 批量删除数据
      * @param entitylist
+     * @return
      */
     int batchDelete(List<T> entitylist);
 
