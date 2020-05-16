@@ -6,6 +6,8 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.SerializationUtils;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.concurrent.Callable;
 
 /**
@@ -97,4 +99,6 @@ public class RedisCache implements Cache {
            return "OK";
         });
     }
+
+
 }

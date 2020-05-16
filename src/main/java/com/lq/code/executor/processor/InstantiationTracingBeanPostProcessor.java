@@ -15,9 +15,13 @@ import java.util.Set;
  * @author qi
  */
 public class InstantiationTracingBeanPostProcessor implements ApplicationListener<ContextRefreshedEvent> {
-
-    private String packagePath ;
-
+    /**
+     * 指定扫描包路径
+     */
+    private String packagePath;
+    /**
+     * 是否更新数据库
+     */
     private boolean isUpdateDB;
 
     public String getPackagePath() {
