@@ -34,7 +34,7 @@ import java.util.Date;
 import java.util.List;
 
 /** 首页控制类
- * Created by qi on 2017/8/20.
+ *  @author qi
  */
 @Controller("CmsIndexController")
 @RequestMapping("/cms")
