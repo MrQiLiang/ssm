@@ -6,7 +6,8 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
- * Created by qi_liang on 2018/3/17.
+ * 邮箱工具类
+ * @author qi
  */
 public class emailUtil2 {
 
