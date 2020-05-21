@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * 富文本编辑器接口
+ * @author qi
+ */
 @Controller
 @RequestMapping("/ueditor")
 public class UeditorController {
