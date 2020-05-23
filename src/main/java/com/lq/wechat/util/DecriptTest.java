@@ -8,6 +8,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+/**
+ *
+ * @author qi
+ */
 public class DecriptTest {
 
 	public static String SHA1(String decript) {

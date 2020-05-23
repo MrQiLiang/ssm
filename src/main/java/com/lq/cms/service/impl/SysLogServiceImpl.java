@@ -6,6 +6,7 @@ import com.lq.code.dao.BaseDao;
 import com.lq.dao.SysLogDao;
 import com.lq.entity.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -6,7 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * Created by qi on 2017/8/3.
+ * io工具类
+ * @author qi
  */
 public class IoUtil {
 

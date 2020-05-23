@@ -8,7 +8,7 @@ import java.lang.reflect.Proxy;
 
 /**
  * 为接口提供动态代理方式，可以尝试模拟 JPA
- * Created by qi_liang on 2018/4/23.
+ * @author qi
  */
 public class InterfaceProxyFactoryUtil implements InvocationHandler {
 

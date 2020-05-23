@@ -5,7 +5,8 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created by qi on 2017/8/13.
+ * string工具类
+ * @author qi
  */
 public class StringUtil {
 

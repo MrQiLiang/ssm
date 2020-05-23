@@ -2,7 +2,7 @@ package com.lq.code.util.jdbc.mode;
 
 /**
  * 数据库详情
- * Created by qi_liang on 2018/6/10.
+ * @author qi
  */
 public class DbInfo {
     /**

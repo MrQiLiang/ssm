@@ -3,7 +3,8 @@ package com.lq.code.util;
 import java.util.regex.Pattern;
 
 /**
- * Created by qi_liang on 2018/1/25.
+ * 数据验证
+ * @author qi
  */
 public class DataValidatorUtil {
 
@@ -127,8 +128,4 @@ public class DataValidatorUtil {
         return Pattern.matches(REGEX_IP_ADDR, ipAddr);
     }
 
-    public static void main(String[] args) {
-        String phone="135";
-        System.out.println(isMobile(phone));
-    }
 }
