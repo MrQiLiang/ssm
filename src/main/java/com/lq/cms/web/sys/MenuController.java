@@ -23,8 +23,8 @@ import java.util.Date;
 import java.util.List;
 
 
-/** 菜单控制类
- * Created by qi_liang on 2018/1/25.
+/**
+ * 菜单控制类
  * @author qi
  */
 @Controller
