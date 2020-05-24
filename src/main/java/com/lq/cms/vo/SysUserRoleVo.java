@@ -1,6 +1,8 @@
 package com.lq.cms.vo;
 
 /**
+ * 用户角色视图
+ * @author qi
  * Created by qi_liang on 2018/2/5.
  */
 public class SysUserRoleVo {
