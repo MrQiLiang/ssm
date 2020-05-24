@@ -8,7 +8,8 @@ import com.lq.code.util.DateUtil;
 import java.util.Date;
 
 /**
- * Created by qi_liang on 2018/6/5.
+ * 微信公众号详情视图
+ * @author qi
  */
 public class WechatInfoVo extends BasePageVo {
 
