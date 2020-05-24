@@ -3,7 +3,8 @@ package com.lq.code.util;
 import java.security.MessageDigest;
 
 /**
- * Created by qi on 2017/8/12.
+ * md5 工具类
+ * @author qi
  */
 public class Md5Util {
 

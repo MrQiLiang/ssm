@@ -6,7 +6,8 @@ import java.text.DecimalFormat;
 import java.util.Properties;
 
 /**
- * Created by qi_liang on 2018/6/9.
+ * jvm工具类
+ * @author qi
  */
 public class JvmUtil {
 

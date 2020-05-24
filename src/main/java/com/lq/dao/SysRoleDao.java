@@ -8,7 +8,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * Created by qi on 2017-11-29.
+ * 系统角色dao类
+ * @author qi
+ *
  */
 public interface SysRoleDao extends BaseDao<SysRole> {
 

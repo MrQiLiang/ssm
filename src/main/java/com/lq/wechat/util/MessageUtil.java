@@ -17,6 +17,7 @@ import java.util.Map;
 
 /**
  *  微信公众号-消息工具类
+ * @author qi
  */
 public class  MessageUtil {
 	

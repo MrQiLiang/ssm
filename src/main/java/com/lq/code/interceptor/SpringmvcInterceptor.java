@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
- * Created by qi on 2017/7/27.
+ * spring 拦截器
+ * @author qi
  */
 public class SpringmvcInterceptor implements HandlerInterceptor {
 

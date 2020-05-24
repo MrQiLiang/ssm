@@ -6,6 +6,10 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import java.util.List;
 
+/**
+ * mapper对象 转xml
+ * @author qi
+ */
 @XStreamAlias("mapper")
 public class MapperXmlDtl {
 

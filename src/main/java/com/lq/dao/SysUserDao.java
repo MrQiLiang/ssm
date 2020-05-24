@@ -8,7 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * Created by qi on 2017-11-29.
+ * 系统用户dao
+ * @author qi
  */
 public interface SysUserDao extends BaseDao<SysUser> {
 
