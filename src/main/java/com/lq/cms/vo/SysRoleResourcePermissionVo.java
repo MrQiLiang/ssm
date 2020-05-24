@@ -1,6 +1,8 @@
 package com.lq.cms.vo;
 
 /**
+ * 角色资源权限视图类
+ * @author qi
  * Created by qi_liang on 2018/2/4.
  */
 public class SysRoleResourcePermissionVo {
