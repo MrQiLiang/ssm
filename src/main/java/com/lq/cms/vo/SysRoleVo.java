@@ -5,6 +5,8 @@ import com.lq.code.util.DateUtil;
 import java.util.Date;
 
 /**
+ * 角色视图
+ * @author qi
  * Created by qi_liang on 2018/2/1.
  */
 public class SysRoleVo extends BasePageVo{
