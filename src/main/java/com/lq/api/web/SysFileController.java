@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 文件服务控制类
+ * @author qi
+ */
 @Controller
 @RequestMapping("/file")
 public class SysFileController  {
