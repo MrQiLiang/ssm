@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * mysql sql构造器
+ * mysql数据库sql构造器
  * @author qi
  */
 public class MysqlBuilder extends AbstractDbBuiler {

@@ -7,6 +7,10 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * sql mapper xml转换类
+ * @author qi
+ */
 public class SqlMapperXmlDtlConverter implements Converter{
 
     /**

@@ -5,7 +5,8 @@ import com.lq.code.util.DateUtil;
 import java.util.Date;
 
 /**
- * Created by qi_liang on 2018/2/24.
+ * 系统日志视图
+ * @author qi
  */
 public class SysLogVo extends BasePageVo {
 

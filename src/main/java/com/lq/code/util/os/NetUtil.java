@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 import java.util.Enumeration;
 
 /** 获取计算机网络信息
- * Created by qi_liang on 2018/6/9.
+ * @author qi
  */
 public class NetUtil {
 

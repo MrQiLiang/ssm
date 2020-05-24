@@ -3,8 +3,7 @@ package com.lq.wechat.mode.template;
 import java.util.Map;
 
 /**微信消息模版
- * Created by qi_liang on 2018/6/27.
- *
+ * @author qi
  *
  参数	是否必填	说明
  touser	是	接收者openid

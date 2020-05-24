@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 百度富文本编辑器 图片上传
- *
+ * @author qi
  */
 @Controller
 @RequestMapping("/ueditor")

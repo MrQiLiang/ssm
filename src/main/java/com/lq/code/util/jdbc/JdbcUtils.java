@@ -10,6 +10,10 @@ import java.sql.*;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * 数据库链接工具类
+ * @author qi
+ */
 public class JdbcUtils {
 
 

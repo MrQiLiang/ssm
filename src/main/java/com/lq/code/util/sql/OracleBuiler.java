@@ -5,7 +5,8 @@ import com.lq.code.dto.QueueDto;
 import java.util.Set;
 
 /**
- * Created by qi_liang on 2018/6/2.
+ * oracle数据库sql构造器
+ * @author qi
  */
 public class OracleBuiler extends AbstractDbBuiler {
 

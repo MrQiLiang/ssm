@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by qi_liang on 2018/8/31.
+ * redis 工具类
+ * @author qi
  */
 @Component
 public class RedisUtil {

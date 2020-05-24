@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by qi on 2017/7/30.
+ * @author qi
  * 网页在线工具
  * 1.ip 查询公网ip
  * 2.在线大小字幕
