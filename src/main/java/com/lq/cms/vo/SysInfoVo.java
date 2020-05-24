@@ -5,7 +5,9 @@ import com.lq.code.util.os.mode.JvmInfo;
 import com.lq.code.util.os.mode.OsInfo;
 
 /**
- * Created by qi_liang on 2018/6/10.
+ *
+ * 系统信息视图类
+ * @author qi
  */
 public class SysInfoVo {
 
