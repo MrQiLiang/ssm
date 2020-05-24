@@ -6,7 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/2/1.
+ * 系统用户视图
+ * @author qi
  */
 public class SysUserVo extends BasePageVo {
 
