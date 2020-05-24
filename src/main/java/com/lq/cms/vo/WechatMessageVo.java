@@ -5,6 +5,10 @@ import com.lq.code.util.DateUtil;
 
 import java.util.Date;
 
+/**
+ *  微信消息视图
+ * @author qi
+ */
 public class WechatMessageVo extends AdminBaseVo{
 
     //消息类型
