@@ -1,5 +1,9 @@
 package com.lq.api.vo;
 
+/**
+ * 富文本编辑器视图
+ * @author qi
+ */
 public class UeditorVo {
 
     //新文件名
