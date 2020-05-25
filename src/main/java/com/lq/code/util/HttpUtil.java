@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by qi on 2017/8/9.
+ * http工具类
+ * @author qi
  */
 public class HttpUtil {
 

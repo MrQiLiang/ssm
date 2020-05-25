@@ -6,7 +6,7 @@ import org.hyperic.sigar.OperatingSystem;
 import java.util.Properties;
 
 /** 获取计算机操作系统信息
- * Created by qi_liang on 2018/6/9.
+ * @author qi
  */
 public class OsUtil {
     static Properties properties = System.getProperties();

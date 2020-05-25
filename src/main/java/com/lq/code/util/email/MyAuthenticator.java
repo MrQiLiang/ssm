@@ -4,7 +4,8 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
 /**
- * Created by qi on 2017/9/8.
+ * 邮箱账号
+ * @author qi
  */
 public class MyAuthenticator extends Authenticator {
 

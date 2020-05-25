@@ -2,7 +2,7 @@ package com.lq.wechat.util;
 
 /**
  * 微信公众号素材工具类
- * Created by qi_liang on 2018/5/24.
+ * @author qi
  */
 public class MediaUtil {
 

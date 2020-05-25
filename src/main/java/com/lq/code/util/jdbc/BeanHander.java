@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+/**
+ * 结果集转实体类
+ * @author qi
+ */
 public class BeanHander implements ResultSetHandler {
 
 	private Class<?> clazz;

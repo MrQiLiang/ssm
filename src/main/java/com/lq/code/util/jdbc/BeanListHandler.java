@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 批量结果集转实体类
+ * @author qi
+ */
 public class BeanListHandler implements ResultSetHandler {
 
 	private Class<?> clazz;

@@ -16,7 +16,8 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Created by qi_liang on 2018/1/29.
+ * 创建mapper文件工具类
+ * @author qi
  */
 public class CreateMapperFileUtil {
 

@@ -2,6 +2,7 @@ package com.lq.code.util;
 
 /**
  * 转型操作工具
+ * @author qi
  */
 public class CastUtil {
 
