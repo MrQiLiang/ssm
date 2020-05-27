@@ -10,6 +10,7 @@ import java.util.Properties;
 
 /**
  * 属性文件工具类
+ * @author qi
  */
 public class PropsUtil {
 

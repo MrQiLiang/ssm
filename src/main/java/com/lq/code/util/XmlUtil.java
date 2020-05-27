@@ -11,6 +11,7 @@ import java.io.Writer;
 
 /**
  * xml 工具类
+ * @author qi
  */
 public class XmlUtil {
 

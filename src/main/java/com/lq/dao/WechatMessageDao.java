@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 微信模板消息 dao
+ * @author qi
+ */
 public interface WechatMessageDao extends AdminBaseDao<WechatMessage,WechatMessageVo> {
     /**
      *

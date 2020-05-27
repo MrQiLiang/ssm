@@ -4,6 +4,7 @@ import com.lq.code.entity.IdEntity;
 
 /**
  * 角色权限关联表
+ * @author qi
  */
 public class SysRolePermission extends IdEntity {
 
