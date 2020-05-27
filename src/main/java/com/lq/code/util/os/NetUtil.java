@@ -48,7 +48,8 @@ public class NetUtil {
                         LOGGER.info("获取到的客户端内网ip为空，从配置文件读取本地ip。");
                         return null;
                     }
-                    return ip.getHostAddress();// 客户端ip
+                    // 客户端ip
+                    return ip.getHostAddress();
                 }
             }
         }

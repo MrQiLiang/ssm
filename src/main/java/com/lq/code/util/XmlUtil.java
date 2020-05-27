@@ -23,7 +23,8 @@ public class XmlUtil {
      */
     public static String objToXml(Object obj){
         XStream xstream = new XStream(new DomDriver("utf8"));
-        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
+        // 识别obj类中的注解
+        xstream.processAnnotations(obj.getClass());
         /*
          // 以压缩的方式输出XML
          StringWriter sw = new StringWriter();
@@ -37,7 +38,8 @@ public class XmlUtil {
 
     public static String objToXml(Object obj,String str) throws IOException {
         XStream xstream = new XStream(new DomDriver("utf8"));
-        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
+        // 识别obj类中的注解
+        xstream.processAnnotations(obj.getClass());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         Writer writer = new OutputStreamWriter(outputStream, "UTF-8");
         writer.write(str);

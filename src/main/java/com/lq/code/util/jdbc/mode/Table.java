@@ -20,27 +20,45 @@ public class Table {
      SELF_REFERENCING_COL_NAME
      REF_GENERATION
      */
-    //类别
+    /**
+     * 类别
+     */
     private String tableCat;
-    //模式
+    /**
+     * 模式
+     */
     private String tableSchem;
-    //表名
+    /**
+     * 表名
+     */
     private String tableName;
-    //表类型
+    /**
+     * 表类型
+     */
     private String tableType;
-    //备注
+    /**
+     * 备注
+     */
     private String remarks;
-    //类型的类别
+    /**
+     * 类型的类别
+     */
     private String typeCat;
-    //类型模式
+    /**
+     * 类型模式
+     */
     private String typeSchem;
-    //类型名称
+    /**
+     * 类型名称
+     */
     private String typeName;
-    // 有类型表的指定 "identifier" 的列的名称
+    /**
+     * 有类型表的指定 "identifier" 的列的名称
+     */
     private String  selfReferencingColName;
-    //
- //   private String refGeneration;
-
+    /**
+     * 表相关的列
+     */
     private List<Column> columns;
 
     public String getTableCat() {

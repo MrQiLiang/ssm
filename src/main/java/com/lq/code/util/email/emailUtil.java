@@ -36,9 +36,12 @@ public class emailUtil {
 
         Properties props = new Properties();
         props.put("mail.smtp.host", smtpHost);
-        props.put("mail.smtp.starttls.enable","true");//使用 STARTTLS安全连接
-        props.put("mail.smtp.port", "25");             //google使用465或587端口
-        props.put("mail.smtp.auth", "true");        // 使用验证
+        //使用 STARTTLS安全连接
+        props.put("mail.smtp.starttls.enable","true");
+        //google使用465或587端口
+        props.put("mail.smtp.port", "25");
+        // 使用验证
+        props.put("mail.smtp.auth", "true");
         Session mailSession = Session.getInstance(props,new MyAuthenticator(from,fromUserPassword));
 
         // 第二步：编写消息

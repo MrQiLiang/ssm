@@ -11,9 +11,18 @@ import java.util.List;
  * @author qi
  */
 public interface WechatInfoService extends BaseService<WechatInfo> {
-
+    /**
+     * 返回统计数据
+     * @param vo
+     * @return
+     */
     Integer count(WechatInfoVo vo);
 
+    /**
+     * 带条件分页查询
+     * @param vo
+     * @return
+     */
     List<WechatInfoVo> findListPage(WechatInfoVo vo);
 
     /**

@@ -52,7 +52,8 @@ public class  MessageUtil {
 	 */
 	public static String MessageToXml(Object obj){
 		XStream xstream = new XStream(new DomDriver("utf8"));
-        xstream.processAnnotations(obj.getClass()); // 识别obj类中的注解
+		// 识别obj类中的注解
+        xstream.processAnnotations(obj.getClass());
         /*
          // 以压缩的方式输出XML
          StringWriter sw = new StringWriter();

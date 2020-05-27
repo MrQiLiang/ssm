@@ -7,11 +7,17 @@ package com.lq.cms.vo;
  */
 public class SysRoleResourcePermissionVo {
 
-    //角色ID
+    /**
+     * 角色ID
+     */
     private Long roleId;
-    //资源ID
+    /**
+     * 资源ID
+     */
     private Long resourceId;
-    //权限ID
+    /**
+     * 权限ID
+     */
     private Long permissionId;
 
     public Long getRoleId() {

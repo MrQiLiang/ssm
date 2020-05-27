@@ -8,6 +8,11 @@ import java.sql.ResultSet;
  */
 public interface ResultSetHandler {
 
+	/**
+	 *  结果集封装成对象
+	 * @param rs
+	 * @return
+	 */
 	 Object handler(ResultSet rs);
 
 }

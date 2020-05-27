@@ -43,7 +43,7 @@ public interface SysResourceDao extends BaseDao<SysResource> {
      Integer count(SysResourceVo vo);
 
      /**
-      *
+      *  查找菜单
       * @param map
       * @return
       */

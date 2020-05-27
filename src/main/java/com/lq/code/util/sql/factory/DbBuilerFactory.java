@@ -8,6 +8,10 @@ import com.lq.code.util.sql.AbstractDbBuiler;
  * @author qi
  */
 public interface DbBuilerFactory {
-
+    /**
+     * 返回sql构造器
+     * @param dbType
+     * @return
+     */
     AbstractDbBuiler getSqlBuilder(String dbType);
 }
