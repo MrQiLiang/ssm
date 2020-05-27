@@ -1,6 +1,5 @@
 package com.lq.code.util;
 
-import com.lq.code.util.mybatisPlus.xml.SqlMapperXmlDtl;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 

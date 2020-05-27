@@ -1,4 +1,4 @@
-package com.lq.code.util.mybatisPlus.xml;
+package com.lq.code.util.mybatis.plus.xml;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

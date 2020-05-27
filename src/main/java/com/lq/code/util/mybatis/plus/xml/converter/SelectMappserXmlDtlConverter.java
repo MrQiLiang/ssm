@@ -1,6 +1,6 @@
-package com.lq.code.util.mybatisPlus.xml.converter;
+package com.lq.code.util.mybatis.plus.xml.converter;
 
-import com.lq.code.util.mybatisPlus.xml.SelectMappserXmlDtl;
+import com.lq.code.util.mybatis.plus.xml.SelectMappserXmlDtl;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

@@ -1,6 +1,6 @@
-package com.lq.code.util.mybatisPlus.xml;
+package com.lq.code.util.mybatis.plus.xml;
 
-import com.lq.code.util.mybatisPlus.xml.converter.SelectMappserXmlDtlConverter;
+import com.lq.code.util.mybatis.plus.xml.converter.SelectMappserXmlDtlConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 

@@ -1,4 +1,4 @@
-package com.lq.code.util.mybatisPlus;
+package com.lq.code.util.mybatis.plus;
 
 import com.lq.code.util.FileUtil;
 import com.lq.code.util.sql.AbstractDbBuiler;
