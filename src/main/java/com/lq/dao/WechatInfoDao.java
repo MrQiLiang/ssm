@@ -8,7 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * Created by qi_liang on 2018/6/1.
+ * 微信公众号详情 dao
+ * @author qi
  */
 public interface WechatInfoDao extends BaseDao<WechatInfo> {
 
