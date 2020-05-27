@@ -1,7 +1,7 @@
 package com.lq.code.util;
 
 /**
- * Created by qi_liang on 2018/5/27.
+ * @author qi
  */
 public class TestUtil {
 

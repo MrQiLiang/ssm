@@ -8,15 +8,29 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by qi on 2017-11-29.
+ * 用户角色dao
+ * @author qi
  */
 public interface SysUserRoleDao extends BaseDao<SysUserRole> {
 
-
+    /**
+     * 通过用户id和角色id查找关联
+     * @param params
+     * @return
+     */
     List<SysUserRole> findByUserIdAndRoleId(Map<String, Object> params);
 
+    /**
+     * 通过用户id查找用户关联角色
+     * @param userId
+     * @return
+     */
     List<SysUserRoleVo> findAllRoleVo(Long userId);
 
+    /**
+     * 通过用户id删除关联
+     * @param userId
+     */
     void deleteByUserId(Long userId);
 
     void deleteByRoleId(Long roleId);

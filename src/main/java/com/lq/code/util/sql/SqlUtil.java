@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by qi_liang on 2018/6/2.
+ * sql 工具类
+ * @author qi
  */
 public class SqlUtil {
 
