@@ -1,4 +1,4 @@
-package com.lq.webUtil.util;
+package com.lq.webutil.util;
 
 
 import java.io.IOException;

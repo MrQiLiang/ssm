@@ -1,4 +1,4 @@
-package com.lq.webUtil.util;
+package com.lq.webutil.util;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;

@@ -1,6 +1,6 @@
-package com.lq.webUtil.web;
+package com.lq.webutil.web;
 
-import com.lq.webUtil.util.IPUtil;
+import com.lq.webutil.util.IPUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

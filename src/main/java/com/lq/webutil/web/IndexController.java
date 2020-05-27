@@ -1,4 +1,4 @@
-package com.lq.webUtil.web;
+package com.lq.webutil.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
