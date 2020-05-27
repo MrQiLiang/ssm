@@ -4,6 +4,10 @@ import com.lq.code.util.mybatisPlus.xml.converter.SqlMapperXmlDtlConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
+/**
+ * sql对象转xml
+ * @author qi
+ */
 @XStreamAlias("sql")
 @XStreamConverter(SqlMapperXmlDtlConverter.class)
 public class SqlMapperXmlDtl {

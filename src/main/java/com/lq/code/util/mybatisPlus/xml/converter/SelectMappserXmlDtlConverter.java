@@ -7,6 +7,10 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * select对象转xml
+ * @author qi
+ */
 public class SelectMappserXmlDtlConverter implements Converter{
 
     @Override

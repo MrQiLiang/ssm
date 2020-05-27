@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by qi on 2017-11-29.
+ * 角色资源权限dao
+ * @author qi
  */
 public interface SysRoleResourcePermissionDao extends BaseDao<SysRoleResourcePermission> {
 
