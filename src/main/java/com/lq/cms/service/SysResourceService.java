@@ -31,12 +31,19 @@ public interface SysResourceService extends BaseService<SysResource> {
      * @return
      */
     List<SysResource> findByParentId(long parenId);
+
     /**
-     *  通过用户查找相关的菜单
+     * 通过用户查找相关的菜单
+     * @param sysUserId
+     * @param contextPath
+     * @return
      */
     List<MenusComposite> findMenusListBySysUserId(Long sysUserId,String contextPath);
+
     /**
      * 用户拥有admin权限查询全部菜单
+     * @param contextPath
+     * @return
      */
     List<MenusComposite> findAllMenusList(String contextPath);
 

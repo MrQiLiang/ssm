@@ -19,12 +19,12 @@ import java.sql.Connection;
 import java.util.Properties;
 
 /**
+ * 注解拦截器并签名
+ * @Signature 拦截的类签名 type 拦截的类  method 类里面的方法  args方法里面的参数
+ * StatementHandler:数据库会话器，专门用于处理数据库会话,statement的执行操作，是一个接口；
+ * metaObject：mybatis工具类，可以有效的读取或修改一些重要对象的属性
  * @author qi
  */
-//注解拦截器并签名
-//@Signature 拦截的类签名 type 拦截的类  method 类里面的方法  args方法里面的参数
-//StatementHandler:数据库会话器，专门用于处理数据库会话,statement的执行操作，是一个接口；
-//metaObject：mybatis工具类，可以有效的读取或修改一些重要对象的属性
 @Intercepts({@Signature(type = Executor.class,method = "query",args = {MappedStatement.class,Object.class, RowBounds.class, ResultHandler.class}),
 @Signature(type = StatementHandler.class,method = "prepare",args = {Connection.class,Integer.class})
 })
