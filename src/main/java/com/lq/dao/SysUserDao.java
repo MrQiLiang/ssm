@@ -13,8 +13,19 @@ import java.util.List;
  */
 public interface SysUserDao extends BaseDao<SysUser> {
 
+    /**
+     * 通过登陆名和密码查找账号
+     * @param loginName
+     * @param password
+     * @return
+     */
     SysUser findByLoginNameAndPassword(@Param("loginName") String loginName, @Param("password") String password);
 
+    /**
+     * 分页查询
+     * @param vo
+     * @return
+     */
     List<SysUserVo> findListPage(SysUserVo vo);
 
     Integer count(SysUserVo vo);

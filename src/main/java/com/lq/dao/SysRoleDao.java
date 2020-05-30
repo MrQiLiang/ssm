@@ -13,12 +13,22 @@ import java.util.List;
  *
  */
 public interface SysRoleDao extends BaseDao<SysRole> {
-
+    /**
+     * 通过用户id查找相关角色
+     * @param userId
+     * @return
+     */
     List<SysRole> findByUserId(@Param("userId") Long userId);
+
     @Override
     List<SysRole> findAll();
 
     Integer count(SysRoleVo vo);
 
+    /**
+     * 带条件分页查询
+     * @param vo
+     * @return
+     */
     List<SysRoleVo> findListPage(SysRoleVo vo);
 }
