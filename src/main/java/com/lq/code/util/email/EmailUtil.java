@@ -13,7 +13,7 @@ import java.util.Properties;
  * email 工具类
  * @author qi
  */
-public class emailUtil {
+public class EmailUtil {
 
     /**
      *  发送邮件消息

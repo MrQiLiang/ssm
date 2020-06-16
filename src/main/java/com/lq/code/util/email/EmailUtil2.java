@@ -9,7 +9,7 @@ import java.util.Properties;
  * 邮箱工具类
  * @author qi
  */
-public class emailUtil2 {
+public class EmailUtil2 {
 
     public static void sendEmail(String emaill,String emailMsg) throws MessagingException {
 
