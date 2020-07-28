@@ -14,8 +14,7 @@ public class IoUtil {
     public  static String convertStreamToString(InputStream inputStream){
         BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder sb=new StringBuilder();
-
-        String line=null;
+        String line;
         try {
             while ((line=reader.readLine())!=null){
                 sb.append(line+"\n");

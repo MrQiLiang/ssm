@@ -31,7 +31,6 @@ public class  MessageUtil {
 	 * @throws DocumentException
 	 */
 	public static Map<String, String> xmlToMap(HttpServletRequest req) throws IOException, DocumentException{
-		SAXReader reader=new SAXReader();
 		InputStream ins=req.getInputStream();
 		String resultString=IoUtil.convertStreamToString(ins);
 		Document doc=DocumentHelper.parseText(resultString);
