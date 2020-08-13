@@ -63,6 +63,7 @@
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy"
     p:hostName="${redis.host}"
     p:port="${redis.port}"
+    p:password="${redis.pass}"
     p:poolConfig-ref="jedisConfig"
     />
 
