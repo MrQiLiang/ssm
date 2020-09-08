@@ -55,6 +55,9 @@ public class UserController {
     @Autowired
     private SysUserRoleService sysUserRoleService;
 
+    @Autowired
+    private MinUtil minUtil;
+
     @Value("${file.upload}")
     private String fileLoadPath;
 
@@ -108,7 +111,9 @@ public class UserController {
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @ResponseBody
     @RequestMapping("/update")
-    public Object update(SysUserVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
+    public Object update(SysUserVo vo,@RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
+            System.out.println(minUtil);
+            minUtil.uploadFile(file.getInputStream());
             Date nowTime = new Date();
             AjaxResult ajaxResult = new AjaxResult();
             if (vo!=null&&vo.getId()!=null){
