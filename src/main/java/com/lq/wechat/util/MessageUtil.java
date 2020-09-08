@@ -20,8 +20,10 @@ import java.util.Map;
  * @author qi
  */
 public class  MessageUtil {
-	
-
+	/**
+	 * 默认字符编辑
+	 */
+	public static final String DEFAULT_ENCODING="utf8";
 	
 	/**
 	 *  xml 转 map对象
@@ -31,7 +33,6 @@ public class  MessageUtil {
 	 * @throws DocumentException
 	 */
 	public static Map<String, String> xmlToMap(HttpServletRequest req) throws IOException, DocumentException{
-		SAXReader reader=new SAXReader();
 		InputStream ins=req.getInputStream();
 		String resultString=IoUtil.convertStreamToString(ins);
 		Document doc=DocumentHelper.parseText(resultString);
@@ -51,7 +52,7 @@ public class  MessageUtil {
 	 * @return
 	 */
 	public static String MessageToXml(Object obj){
-		XStream xstream = new XStream(new DomDriver("utf8"));
+		XStream xstream = new XStream(new DomDriver(DEFAULT_ENCODING));
 		// 识别obj类中的注解
         xstream.processAnnotations(obj.getClass());
         /*

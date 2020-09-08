@@ -5,11 +5,7 @@ import com.lq.code.util.sql.AbstractDbBuiler;
 import com.lq.code.util.sql.MysqlBuilder;
 import com.lq.code.util.sql.SqlUtil;
 import com.lq.dao.SysPermissionDao;
-import com.lq.dao.WechatKeywordDao;
-import com.lq.dao.WechatRuleMessageDao;
 import com.lq.entity.SysPermission;
-import com.lq.entity.WechatKeyword;
-import com.lq.entity.WechatRuleMessage;
 
 import java.io.File;
 import java.io.IOException;
