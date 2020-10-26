@@ -55,6 +55,9 @@ public class UserController {
     @Autowired
     private SysUserRoleService sysUserRoleService;
 
+    @Autowired
+    private MinUtil minUtil;
+
     @Value("${file.upload}")
     private String fileLoadPath;
 
@@ -108,13 +111,19 @@ public class UserController {
     @RequiresPermissions(INDEX_URL+ Constant.PERSSION_MARK+Constant.PERMISSION_UPDATE)
     @ResponseBody
     @RequestMapping("/update")
-    public Object update(SysUserVo vo,@RequestParam(value = "file",required = false) MultipartFile file){
+    public Object update(SysUserVo vo,@RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
+
             Date nowTime = new Date();
             AjaxResult ajaxResult = new AjaxResult();
             if (vo!=null&&vo.getId()!=null){
                 SysUser sysUser = sysUserService.findOne(vo.getId());
                 BeanUtil.copyNotNull(sysUser,vo);
                 sysUser.setUpdateTime(nowTime);
+                UUID uuid = UUID.randomUUID();
+                String fileType = FileUtil.fileFormat(file.getOriginalFilename());
+                String newFileName = "wechat/"+uuid.toString()+"."+fileType;
+
+                minUtil.uploadFile(newFileName,file.getInputStream());
                 String uploadFileName =upLoadFile(file);
                 sysUser.setImgUrl(uploadFileName);
                 sysUserService.update(sysUser);
