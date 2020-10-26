@@ -32,9 +32,6 @@ public class HttpUtil {
             //获取所有响应头字段
             Map<String,List<String>> map=connection.getHeaderFields();
             //遍历所有的响应头字段
-            for (String key:map.keySet()){
-                System.out.println(key+"-------------->"+map.get(key));
-            }
             in=new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
             while ((line=in.readLine())!=null){
