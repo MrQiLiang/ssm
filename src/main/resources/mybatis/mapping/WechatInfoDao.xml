@@ -35,7 +35,6 @@
         UPDATE
             wechat_info
         <trim prefix="set" suffixOverrides=",">
-            
             <if test="wechatOpenId!=null">wechat_open_id=#{wechatOpenId},</if>
             <if test="appSecpet!=null">app_secpet=#{appSecpet},</if>
             <if test="createTime!=null">create_time=#{createTime},</if>
