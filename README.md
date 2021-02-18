@@ -65,7 +65,7 @@
 
 ## 示例
 
-* www.000oo1.com/ssm/cms/
+* http://tomcat.000oo1.com/ssm
 * 默认账号/密码：admin/123
 
 
